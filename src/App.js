@@ -7,6 +7,8 @@ import {
 
 import Navigation from './components/Navigation'
 import Home from './pages/Home'
+import Summary from './pages/Summary'
+import Report from './pages/Report'
 import './App.css'
 
 function App () {
@@ -17,8 +19,8 @@ function App () {
         <main className='card'>
           <Switch>
             <Route path='/' exact component={Home} />
-            {/* <Route path='/summary' exact component={Summary} />
-            <Route path='/report' exact component={Report} /> */}
+            <Route path='/summary' component={Summary} />
+            <Route path='/report' component={Report} />
           </Switch>
         </main>
       </div>
