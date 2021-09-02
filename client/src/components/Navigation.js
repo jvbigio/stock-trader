@@ -9,8 +9,7 @@ import { AiOutlineStock } from 'react-icons/ai'
 
 const Navigation = () => {
   return (
-    <Navbar collapseOnSelect expand='lg' id='navbar-nav' style={{ color: '#f8f8ff' }}>
-      {/* <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark' id='navbar'> */}
+    <Navbar collapseOnSelect expand='lg' id='navbar-menu'>
       <Navbar.Brand
         href='/'
         style={{ color: '#f8f8ff' }}
@@ -18,9 +17,9 @@ const Navigation = () => {
         <span><AiOutlineStock /> </span>
         Stock Trader
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+      <Navbar.Toggle aria-controls='responsive-navbar-nav' id='hamburger' />
       <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='mr-auto'>
+        <Nav className='mr-auto' id='nav-links' style={{ color: '#f8f8ff' }}>
           <Nav.Link href='/'>Home</Nav.Link>
           <Nav.Link href='/summary'>Summary</Nav.Link>
           <Nav.Link href='/report'>Report</Nav.Link>

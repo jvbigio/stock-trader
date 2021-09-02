@@ -1,20 +1,16 @@
-#navbar-nav {
+#navbar-menu {
   color: #f8f8ff;
   background: #003e29;
 }
 
-/* nav {
+#hamburger {
+  outline: #f8f8ff;
+  border: 1px solid #f8f8ff;
+  background-color: #f8f8ff;
   color: #f8f8ff;
+  background: #003e29;
 }
 
-.navbar-toggler-icon {
-  color: #f8f8ff;
+a.nav-link {
+  color: #f8f8ff !important;
 }
-
-#responsive-navbar-nav {
-  color: #f8f8ff;
-}
-
-a .nav-link {
-  color: #f8f8ff;
-} */
