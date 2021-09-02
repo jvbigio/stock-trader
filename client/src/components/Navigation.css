@@ -1,6 +1,12 @@
 #navbar-menu {
   color: #f8f8ff;
   background: #003e29;
+  /* fidelity's color: */
+  background: #368727;
+  /* float: left;
+  margin-left: 15px; */
+  /* display: flex;
+  justify-content: flex-start; */
 }
 
 #hamburger {
@@ -9,6 +15,7 @@
   background-color: #f8f8ff;
   color: #f8f8ff;
   background: #003e29;
+  background: #368727;
 }
 
 a.nav-link {
