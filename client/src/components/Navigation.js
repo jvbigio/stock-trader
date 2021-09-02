@@ -16,7 +16,11 @@ const Navigation = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' id='hamburger' />
       <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='mr-auto' id='nav-links' style={{ color: '#f8f8ff' }}>
+        <Nav
+          activeKey={window.location.pathname}
+          className='mr-auto' id='nav-links'
+          style={{ color: '#f8f8ff' }}
+        >
           <Nav.Link href='/'>Home</Nav.Link>
           <Nav.Link href='/summary'>Summary</Nav.Link>
           <Nav.Link href='/report'>Report</Nav.Link>
