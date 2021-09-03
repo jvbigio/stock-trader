@@ -1,12 +1,6 @@
 #navbar-menu {
   color: #f8f8ff;
-  background: #003e29;
-  /* fidelity's color: */
   background: #368727;
-  /* float: left;
-  margin-left: 15px; */
-  /* display: flex;
-  justify-content: flex-start; */
 }
 
 .nav-title {
@@ -22,16 +16,11 @@
   align-items: center;
 }
 
-/* .nav-logo {
-  color: black;
-} */
-
 #hamburger {
   outline: #f8f8ff;
   border: 1px solid #f8f8ff;
   background-color: #f8f8ff;
   color: #f8f8ff;
-  background: #003e29;
   background: #368727;
 }
 
@@ -39,13 +28,6 @@
 /* #nav-links {
   display: flex;
   justify-content: flex-start;
-  width: 100%;
-} */
-
-/* test */
-/* #responsive-navbar-nav {
-  display: flex;
-  justify-content: space-around;
   width: 100%;
 } */
 
