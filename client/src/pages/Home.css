@@ -1,9 +1,11 @@
 .flex-wrapper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* 
+/*
 box shadow from IEX cloud
 -2px 0px 12px 0px rgb(247 248 251 / 10%);
 
@@ -16,8 +18,11 @@ background: #f1f3f4;
 
 .intro {
   font-weight: 400;
-  /* font-size: 0.91em; */
   font-size: 32px;
   color: #000000;
-  /* background: #1c8ef9; */
 }
+
+/* .bg-image {
+  height: 50%;
+  width: 100%;
+} */

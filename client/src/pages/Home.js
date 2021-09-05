@@ -1,18 +1,35 @@
 import React from 'react'
 import './Home.css'
 
+import { Image } from 'react-bootstrap/'
+
+import chart from '../images/data-chart.jpg'
+
 const Home = () => {
   return (
     <div className='flex-wrapper'>
-      {/* <h2 className='intro'>Simple. Intuitive. Fast.</h2>
-      <h2 className='intro'>Test drive StoX's fantasy trading experience</h2> */}
-      <span className='intro'>
+      <header className='intro'>
         Simple. Intuitive. Fast.
         <br />
         Test drive StoX's fantasy trading experience
-      </span>
+      </header>
+      {/* <Image className='bg-image' src={chart} fluid /> */}
     </div>
   )
 }
+
+// orig
+// const Home = () => {
+//   return (
+//     <div className='flex-wrapper'>
+//       <span className='intro'>
+//         Simple. Intuitive. Fast.
+//         <br />
+//         Test drive StoX's fantasy trading experience
+//       </span>
+//       {/* <Image className='bg-image' src={chart} fluid /> */}
+//     </div>
+//   )
+// }
 
 export default Home
