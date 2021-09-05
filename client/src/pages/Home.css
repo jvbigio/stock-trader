@@ -1,0 +1,11 @@
+.flex-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.intro {
+  font-weight: 400;
+  /* font-size: 0.91em; */
+  font-size: 32px;
+  color: #000000;
+}

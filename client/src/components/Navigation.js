@@ -5,13 +5,13 @@ import './Navigation.css'
 
 import { Navbar, Nav } from 'react-bootstrap/'
 
-import { AiOutlineStock } from 'react-icons/ai'
+// import { AiOutlineStock } from 'react-icons/ai'
 
 const Navigation = () => {
   return (
     <Navbar collapseOnSelect expand='lg' id='navbar-menu'>
       <Navbar.Brand className='nav-title' href='/'>
-        <span className='nav-logo'><AiOutlineStock /> </span>
+        {/* <span className='nav-logo'><AiOutlineStock /> </span> */}
         StoX
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' id='hamburger' />
