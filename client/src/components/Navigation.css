@@ -1,6 +1,10 @@
 #navbar-menu {
   color: #f8f8ff;
   background: #368727;
+  display: flex;
+  /* test: */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-title {
@@ -24,6 +28,10 @@
   background: #368727;
 }
 
+#nav-links {
+  display: flex;
+}
+
 /* works.. keep?? */
 /* #nav-links {
   display: flex;
@@ -42,3 +50,15 @@ a.nav-link {
 a.nav-link.active {
   font-weight: bold;
 }
+
+/* #login-link {
+  color: red;
+  display: flex;
+  margin-left: 1100px;
+  justify-self: flex-end !important;
+}
+
+#responsive-navbar-nav {
+  display: flex;
+  justify-self: flex-end !important;
+} */

@@ -11,7 +11,6 @@ const Navigation = () => {
   return (
     <Navbar collapseOnSelect expand='lg' id='navbar-menu'>
       <Navbar.Brand className='nav-title' href='/'>
-        {/* <span className='nav-logo'><AiOutlineStock /> </span> */}
         StoX
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' id='hamburger' />
@@ -21,10 +20,11 @@ const Navigation = () => {
           className='mr-auto' id='nav-links'
           style={{ color: '#f8f8ff' }}
         >
-          <Nav.Link href='/'>Home</Nav.Link>
-          <Nav.Link href='/portfolio'>Portfolio</Nav.Link>
-          <Nav.Link href='/report'>Report</Nav.Link>
-          <Nav.Link href='/login'>Login</Nav.Link>
+          <Nav.Link className='nav-item' href='/'>Home</Nav.Link>
+          <Nav.Link className='nav-item' href='/portfolio'>Portfolio</Nav.Link>
+          <Nav.Link className='nav-item' href='/report'>Report</Nav.Link>
+          <Nav.Link className='nav-item' href='/about'>About</Nav.Link>
+          <Nav.Link className='nav-item' href='/login' id='login-link'>Login</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

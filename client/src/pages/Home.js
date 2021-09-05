@@ -13,7 +13,10 @@ const Home = () => {
         <br />
         Test drive StoX's fantasy trading experience
       </header>
-      {/* <Image className='bg-image' src={chart} fluid /> */}
+      <main className='content-wrapper'>
+        {/* background image and login? */}
+        {/* <Image className='bg-image' src={chart} fluid /> */}
+      </main>
     </div>
   )
 }
