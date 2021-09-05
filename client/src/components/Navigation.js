@@ -23,7 +23,7 @@ const Navigation = () => {
           style={{ color: '#f8f8ff' }}
         >
           <Nav.Link href='/'>Home</Nav.Link>
-          <Nav.Link href='/summary'>Summary</Nav.Link>
+          <Nav.Link href='/portfolio'>Portfolio</Nav.Link>
           <Nav.Link href='/report'>Report</Nav.Link>
           <Nav.Link href='/login'>Login</Nav.Link>
         </Nav>
