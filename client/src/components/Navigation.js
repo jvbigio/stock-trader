@@ -1,33 +1,31 @@
-// import React from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
-
 import './Navigation.css'
+import { AppBar, Toolbar, Typography, IconButton, Button } from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
 
-import { Navbar, Nav } from 'react-bootstrap/'
-
-// import { AiOutlineStock } from 'react-icons/ai'
+import useStyles from '../styles'
 
 const Navigation = () => {
+  const classes = useStyles()
+
   return (
-    <Navbar collapseOnSelect expand='lg' id='navbar-menu'>
-      <Navbar.Brand className='nav-title' href='/'>
-        StoX
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls='responsive-navbar-nav' id='hamburger' />
-      <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav
-          activeKey={window.location.pathname}
-          className='mr-auto' id='nav-links'
-          style={{ color: '#f8f8ff' }}
-        >
-          <Nav.Link className='nav-item' href='/'>Home</Nav.Link>
-          <Nav.Link className='nav-item' href='/portfolio'>Portfolio</Nav.Link>
-          <Nav.Link className='nav-item' href='/report'>Report</Nav.Link>
-          <Nav.Link className='nav-item' href='/about'>About</Nav.Link>
-          <Nav.Link className='nav-item' href='/login' id='login-link'>Login</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <>
+      <AppBar position='static' className={classes.navbar}>
+        <Toolbar>
+          <IconButton
+            edge='start'
+            color='inherit'
+            aria-label='menu'
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant='h6' className={classes.title}>StoX</Typography>
+          <Button color='inherit'>Login</Button>
+        </Toolbar>
+      </AppBar>
+    </>
   )
 }
 
