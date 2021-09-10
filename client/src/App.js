@@ -13,6 +13,9 @@ import Summary from './pages/Summary'
 import Report from './pages/Report'
 import './App.css'
 
+// This is my orig project before implementing Material ui.
+// keep in case you want to revert back.
+
 function App () {
   return (
     <Router>
