@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import Navbar from './components/Navigation'
+import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Summary from './pages/Summary'
 import Report from './pages/Report'
