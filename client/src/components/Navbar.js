@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import './Navigation.css'
+import './Navbar.css'
 import { AppBar, Toolbar, Typography, IconButton, Button, Drawer } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 
 import useStyles from '../styles'
 
-const Navigation = () => {
+const Navbar = () => {
   const classes = useStyles()
 
   return (
@@ -29,4 +29,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default Navbar

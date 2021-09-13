@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import Navigation from './components/Navigation'
+import Navbar from './components/Navigation'
 import Home from './pages/Home'
 import Summary from './pages/Summary'
 import Report from './pages/Report'
@@ -15,7 +15,7 @@ function App () {
   return (
     <Router>
       <div className='App'>
-        <Navigation />
+        <Navbar />
         <main className='card'>
           <Switch>
             <Route path='/' exact component={Home} />
