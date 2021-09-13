@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import './Navigation.css'
+import { Link } from 'react-router-dom'
+// import './Navbar.css'
 import { AppBar, Toolbar, Typography, IconButton, Button, Drawer } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 
 import useStyles from '../styles'
 
-const Navigation = () => {
+const Navbar = () => {
   const classes = useStyles()
 
   return (
@@ -22,11 +22,11 @@ const Navigation = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' className={classes.title}>StoX</Typography>
-          <Button color='inherit'>Login</Button>
+          <Button component={Link} to='/login' color='inherit'>Login</Button>
         </Toolbar>
       </AppBar>
     </>
   )
 }
 
-export default Navigation
+export default Navbar
