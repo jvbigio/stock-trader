@@ -3,7 +3,7 @@ import React from 'react'
 const Summary = () => {
   return (
     <div>
-      <h1>Summary Page</h1>
+      <h1>Portfolio Page</h1>
     </div>
   )
 }
