@@ -7,6 +7,9 @@ import MenuIcon from '@material-ui/icons/Menu'
 
 import { makeStyles } from '@material-ui/core/styles'
 
+// NAVBAR-TEST BRANCH - VID FROM https://youtu.be/mAPT9Xh6NKE
+
+
 const useStyles = makeStyles((theme) => ({
   navbar: {
     backgroundColor: '#368727'
