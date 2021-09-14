@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 // import './Navbar.css'
 import { AppBar, Toolbar, Typography, IconButton, Button, Drawer, Tab, Tabs } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -54,27 +54,7 @@ const Navbar = () => {
   )
 }
 
-// const Navbar = () => {
-//   const classes = useStyles()
-
-//   return (
-//     <>
-//       <AppBar position='static' className={classes.navbar}>
-//         <Toolbar>
-//           <Typography variant='h5' className={classes.title}>StoX</Typography>
-//           <Tabs>
-//             <Tab label='Home' />
-//             <Tab label='Portfolio' />
-//             <Tab label='Report' />
-//           </Tabs>
-//           <Button variant='contained'>Login</Button>
-//         </Toolbar>
-//       </AppBar>
-//     </>
-//   )
-// }
-
-// orig
+// orig - use this for nav-button-material branch:
 // const Navbar = () => {
 //   const classes = useStyles()
 
