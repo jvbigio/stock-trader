@@ -24,18 +24,22 @@ const Navbar = () => {
 
   const classes = useStyles()
 
+  const handleClickTab = (e, newValue) => {
+    setValue(newValue)
+    // setValue(e.target.value)
+    console.log(value)
+  }
+
   return (
     <>
       <AppBar position='static' className={classes.navbar}>
         <Toolbar>
           <Typography variant='h5' className={classes.title}>StoX</Typography>
           <Tabs
-            // style={{ color: '#f8f8ff' }}
+            onChange={handleClickTab}
             className={classes.pages}
-            value={0}
-            // onChange={handleChange}
+            value={value}
             indicatorColor='primary'
-            // indicatorColor='secondary'
             textColor='inherit'
             centered
           >
