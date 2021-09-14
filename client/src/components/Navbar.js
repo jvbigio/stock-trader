@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
   // }
 }))
 
+// TRY USING LINK COMPONENTS INSTEAD:
+
 const Navbar = () => {
   const [value, setValue] = useState(0)
 
@@ -54,7 +56,7 @@ const Navbar = () => {
   )
 }
 
-// orig - use this for nav-button-material branch:
+// orig - use this for nav-button-material branc:
 // const Navbar = () => {
 //   const classes = useStyles()
 
