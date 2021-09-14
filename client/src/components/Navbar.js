@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 // import './Navbar.css'
 import { AppBar, Toolbar, Typography, IconButton, Button, Drawer, Tab, Tabs } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -9,14 +9,19 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
-    backgroundColor: '#368727',
+    backgroundColor: '#368727'
   },
   pages: {
     flexGrow: 1
   }
+  // active: {
+  //   backgroundColor: 'rgba(255, 255, 255, 0.12)'
+  // }
 }))
 
 const Navbar = () => {
+  const [value, setValue] = useState(0)
+
   const classes = useStyles()
 
   return (
@@ -25,18 +30,20 @@ const Navbar = () => {
         <Toolbar>
           <Typography variant='h5' className={classes.title}>StoX</Typography>
           <Tabs
+            // style={{ color: '#f8f8ff' }}
             className={classes.pages}
-            // value={value}
+            value={0}
             // onChange={handleChange}
             indicatorColor='primary'
+            // indicatorColor='secondary'
             textColor='inherit'
             centered
           >
-            <Tab label='Home' />
-            <Tab label='Portfolio' />
-            <Tab label='Report' />
+            <Tab label='Home' component={NavLink} to='/' />
+            <Tab label='Portfolio' component={NavLink} to='/portfolio' />
+            <Tab label='Report' component={NavLink} to='/report' />
           </Tabs>
-          <Button variant='contained'>Login</Button>
+          <Button variant='contained' component={NavLink} to='/login'>Login</Button>
         </Toolbar>
       </AppBar>
     </>
@@ -53,11 +60,7 @@ const Navbar = () => {
 //           <Typography variant='h5' className={classes.title}>StoX</Typography>
 //           <Tabs>
 //             <Tab label='Home' />
-//           </Tabs>
-//           <Tabs centered>
 //             <Tab label='Portfolio' />
-//           </Tabs>
-//           <Tabs style={{ flexGrow: 1 }}>
 //             <Tab label='Report' />
 //           </Tabs>
 //           <Button variant='contained'>Login</Button>
