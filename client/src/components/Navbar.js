@@ -4,11 +4,13 @@ import { NavLink } from 'react-router-dom'
 import { AppBar, Toolbar, Typography, IconButton, Button, Drawer, Tab, Tabs } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 // import useStyles from '../styles'
+import { flexbox } from '@material-ui/system'
+
+import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
 import { makeStyles } from '@material-ui/core/styles'
 
 // NAVBAR-TEST BRANCH - VID FROM https://youtu.be/mAPT9Xh6NKE
-
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
@@ -46,9 +48,26 @@ const Navbar = () => {
             textColor='inherit'
             centered
           >
-            <Tab label='Home' component={NavLink} to='/' />
-            <Tab label='Portfolio' component={NavLink} to='/portfolio' />
-            <Tab label='Report' component={NavLink} to='/report' />
+            <Tab
+              icon={<GoHome />}
+              // option:
+              disableRipple
+              label='Home'
+              component={NavLink}
+              to='/'
+            />
+            <Tab
+              icon={<GoBriefcase />}
+              label='Portfolio'
+              component={NavLink}
+              to='/portfolio'
+            />
+            <Tab
+              icon={<GoRepo />}
+              label='Report'
+              component={NavLink}
+              to='/report'
+            />
           </Tabs>
           <Button variant='contained' component={NavLink} to='/login'>Login</Button>
         </Toolbar>
