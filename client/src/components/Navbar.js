@@ -18,10 +18,10 @@ const useStyles = makeStyles((theme) => ({
   },
   pages: {
     flexGrow: 1
+  },
+  icon: {
+
   }
-  // active: {
-  //   backgroundColor: 'rgba(255, 255, 255, 0.12)'
-  // }
 }))
 
 const Navbar = () => {
@@ -50,21 +50,25 @@ const Navbar = () => {
             centered
           >
             <Tab
+              className={classes.icon}
               icon={<GoHome />}
-              // option:
               disableRipple
               label='Home'
               component={NavLink}
               to='/'
             />
             <Tab
+              className={classes.icon}
               icon={<GoBriefcase />}
+              disableRipple
               label='Portfolio'
               component={NavLink}
               to='/portfolio'
             />
             <Tab
+              className={classes.icon}
               icon={<GoRepo />}
+              disableRipple
               label='Report'
               component={NavLink}
               to='/report'
