@@ -44,6 +44,7 @@ const Navbar = () => {
             onChange={handleClickTab}
             className={classes.pages}
             value={value}
+            aria-label='menu tabs'
             indicatorColor='primary'
             textColor='inherit'
             centered
