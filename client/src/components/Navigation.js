@@ -6,6 +6,8 @@ import MenuIcon from '@material-ui/icons/Menu'
 
 import useStyles from '../styles'
 
+// save this App bar version to possibly use
+
 const Navigation = () => {
   const classes = useStyles()
 
