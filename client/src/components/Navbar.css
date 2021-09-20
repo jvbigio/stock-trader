@@ -8,11 +8,10 @@
 }
 
 .nav-title {
-  width: 130px; 
+  width: 130px;
   /* height: 43px; */
   color: #f8f8ff !important;
-  font-family: 'Assistant',
-  sans-serif;
+  font-family: 'Assistant', sans-serif;
   font-weight: bold;
   /* testing: */
   font-size: 25px;
