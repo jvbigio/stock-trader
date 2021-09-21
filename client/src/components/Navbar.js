@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-// import './Navbar.css'
 
 import { css } from '@emotion/react'
 
-import { AppBar, Toolbar, Typography, IconButton, Button, Drawer, Tab, Tabs, MenuIcon } from '@mui/material'
+import { AppBar, Toolbar, Typography, Box, IconButton, Button, Drawer, Tab, Tabs, MenuIcon, Divider } from '@mui/material'
 
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
@@ -16,17 +15,19 @@ const Navbar = () => {
   const handleClickTab = (e, newValue) => {
     setValue(newValue)
     // setValue(e.target.value)
-    console.log(value)
+    // console.log(value)
   }
 
   return (
-    <>
+    <Box>
       <AppBar position='static' sx={{ backgroundColor: '#368727' }}>
         <Toolbar>
           <Typography variant='h5'>StoX</Typography>
           <Tabs
             onChange={handleClickTab}
-            sx={{ flexGrow: 1 }}
+            sx={{
+              flexGrow: 1
+            }}
             value={value}
             aria-label='menu tabs'
             indicatorColor='primary'
@@ -64,7 +65,7 @@ const Navbar = () => {
           </Button>
         </Toolbar>
       </AppBar>
-    </>
+    </Box>
   )
 }
 
