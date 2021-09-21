@@ -1,34 +1,38 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 // import './Navbar.css'
-import { AppBar, Toolbar, Typography, IconButton, Button, Drawer, Tab, Tabs } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
+
+import { css } from '@emotion/react'
+
+import { AppBar, Toolbar, Typography, IconButton, Button, Drawer, Tab, Tabs, MenuIcon } from '@mui/material'
+// import { MenuIcon } from '@mui/material'
 // import useStyles from '../styles'
-import { flexbox } from '@material-ui/system'
+// import { flexbox } from '@material-ui/system'
 
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
-import { makeStyles } from '@material-ui/core/styles'
+// import { makeStyles } from '@material-ui/core/styles'
+// import { MenuIcon } from '@material-ui/icons/Menu';
 // This branch updated dependencies for v5 material ui
 
 // NAVBAR-TEST BRANCH - VID FROM https://youtu.be/mAPT9Xh6NKE
 
-const useStyles = makeStyles((theme) => ({
-  navbar: {
-    backgroundColor: '#368727'
-  },
-  pages: {
-    flexGrow: 1
-  },
-  icon: {
+// const useStyles = makeStyles((theme) => ({
+//   navbar: {
+//     backgroundColor: '#368727'
+//   },
+//   pages: {
+//     flexGrow: 1
+//   },
+//   icon: {
 
-  }
-}))
+//   }
+// }))
 
 const Navbar = () => {
   const [value, setValue] = useState(0)
 
-  const classes = useStyles()
+  // const classes = useStyles()
 
   const handleClickTab = (e, newValue) => {
     setValue(newValue)
@@ -38,12 +42,12 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position='static' className={classes.navbar}>
+      <AppBar position='static' sx={{ backgroundColor: '#368727' }}>
         <Toolbar>
-          <Typography variant='h5' className={classes.title}>StoX</Typography>
+          <Typography variant='h5'>StoX</Typography>
           <Tabs
             onChange={handleClickTab}
-            className={classes.pages}
+            sx={{ flexGrow: 1 }}
             value={value}
             aria-label='menu tabs'
             indicatorColor='primary'
@@ -51,7 +55,7 @@ const Navbar = () => {
             centered
           >
             <Tab
-              className={classes.icon}
+              // className={classes.icon}
               icon={<GoHome />}
               disableRipple
               label='Home'
@@ -59,7 +63,7 @@ const Navbar = () => {
               to='/'
             />
             <Tab
-              className={classes.icon}
+              // className={classes.icon}
               icon={<GoBriefcase />}
               disableRipple
               label='Portfolio'
@@ -67,7 +71,7 @@ const Navbar = () => {
               to='/portfolio'
             />
             <Tab
-              className={classes.icon}
+              // className={classes.icon}
               icon={<GoRepo />}
               disableRipple
               label='Report'
@@ -75,7 +79,7 @@ const Navbar = () => {
               to='/report'
             />
           </Tabs>
-          <Button variant='contained' component={NavLink} to='/login'>Login</Button>
+          <Button variant='contained' component={NavLink} color='inherit' to='/login'>Login</Button>
         </Toolbar>
       </AppBar>
     </>
