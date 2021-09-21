@@ -55,7 +55,6 @@ const Navbar = () => {
             centered
           >
             <Tab
-              // className={classes.icon}
               icon={<GoHome />}
               disableRipple
               label='Home'
@@ -63,7 +62,6 @@ const Navbar = () => {
               to='/'
             />
             <Tab
-              // className={classes.icon}
               icon={<GoBriefcase />}
               disableRipple
               label='Portfolio'
@@ -71,7 +69,6 @@ const Navbar = () => {
               to='/portfolio'
             />
             <Tab
-              // className={classes.icon}
               icon={<GoRepo />}
               disableRipple
               label='Report'
@@ -79,7 +76,13 @@ const Navbar = () => {
               to='/report'
             />
           </Tabs>
-          <Button variant='contained' component={NavLink} color='inherit' to='/login'>Login</Button>
+          <Button
+            sx={{ color: 'black', backgroundColor: '#fff' }}
+            variant='contained'
+            component={NavLink}
+            to='/login'
+          >Login
+          </Button>
         </Toolbar>
       </AppBar>
     </>
