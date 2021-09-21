@@ -9,6 +9,7 @@ import { flexbox } from '@material-ui/system'
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
 import { makeStyles } from '@material-ui/core/styles'
+// Attempt navbar below using links instead of tabs!
 
 // NAVBAR-TEST BRANCH - VID FROM https://youtu.be/mAPT9Xh6NKE
 
