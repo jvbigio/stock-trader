@@ -5,6 +5,9 @@ import { css } from '@emotion/react'
 
 import { AppBar, Toolbar, Typography, Box, IconButton, Button, Drawer, Tab, Tabs, MenuIcon, Divider } from '@mui/material'
 
+// do i need this:
+import { spacing } from '@mui/system'
+
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
 // This branch updated dependencies for v5 material ui
@@ -27,6 +30,10 @@ const Navbar = () => {
             onChange={handleClickTab}
             sx={{
               flexGrow: 1
+              // justifyContent: 'center',
+              // width: '100%',
+              // px: 2,
+              // mx: 2
             }}
             value={value}
             aria-label='menu tabs'
@@ -57,7 +64,11 @@ const Navbar = () => {
             />
           </Tabs>
           <Button
-            sx={{ color: 'black', backgroundColor: '#fff' }}
+            sx={{
+              color: 'black',
+              backgroundColor: '#fff'
+              // ml: 'auto'
+            }}
             variant='contained'
             component={NavLink}
             to='/login'
