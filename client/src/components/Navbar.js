@@ -9,6 +9,7 @@ import { flexbox } from '@material-ui/system'
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
 import { makeStyles } from '@material-ui/core/styles'
+// merged from main. Attempt button method below.
 
 // NAVBAR-TEST BRANCH - VID FROM https://youtu.be/mAPT9Xh6NKE
 
