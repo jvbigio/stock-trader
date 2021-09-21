@@ -9,6 +9,7 @@ import { flexbox } from '@material-ui/system'
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
 import { makeStyles } from '@material-ui/core/styles'
+// This branch updated dependencies for v5 material ui
 
 // NAVBAR-TEST BRANCH - VID FROM https://youtu.be/mAPT9Xh6NKE
 
