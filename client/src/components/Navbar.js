@@ -3,13 +3,15 @@ import { NavLink } from 'react-router-dom'
 
 import { css } from '@emotion/react'
 
-import { AppBar, Toolbar, Typography, Box, IconButton, Button, Drawer, Tab, Tabs, MenuIcon, Divider } from '@mui/material'
+import { AppBar, Toolbar, Typography, Box, IconButton, Button, Drawer, Tab, Tabs, MenuIcon, CssBaseline } from '@mui/material'
 
 // do i need this:
 import { spacing } from '@mui/system'
 
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
+// test
+import './Navbar.css'
 // This branch is for tabs navbar option
 
 const Navbar = () => {
@@ -23,18 +25,19 @@ const Navbar = () => {
 
   return (
     <Box>
+      <CssBaseline />
       <AppBar position='static' sx={{ backgroundColor: '#368727' }}>
-        <Toolbar>
+        <Toolbar sx={{ root: 'space-between' }}>
           <Typography variant='h5'>StoX</Typography>
           <Tabs
+            className='tabs-menu'
             onChange={handleClickTab}
             sx={{
               flexGrow: 1
-              // justifyContent: 'center',
-              // width: '100%',
-              // px: 2,
-              // mx: 2
             }}
+            css={css`
+              mx: 0 70px;
+            `}
             value={value}
             aria-label='menu tabs'
             indicatorColor='primary'
@@ -42,6 +45,7 @@ const Navbar = () => {
             centered
           >
             <Tab
+              className='tab-item'
               icon={<GoHome />}
               disableRipple
               label='Home'
@@ -49,6 +53,7 @@ const Navbar = () => {
               to='/'
             />
             <Tab
+              className='tab-item'
               icon={<GoBriefcase />}
               disableRipple
               label='Portfolio'
@@ -56,6 +61,7 @@ const Navbar = () => {
               to='/portfolio'
             />
             <Tab
+              className='tab-item'
               icon={<GoRepo />}
               disableRipple
               label='Report'
