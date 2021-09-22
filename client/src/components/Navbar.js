@@ -15,8 +15,6 @@ import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 import './Navbar.css'
 // This branch is for tabs navbar option
 
-
-
 const Navbar = () => {
   const [value, setValue] = useState(0)
 
@@ -28,24 +26,21 @@ const Navbar = () => {
 
   // breakpoints
   const theme = useTheme()
+  const isMatch = useMediaQuery(theme.breakpoints.down('md'))
 
-  const isMatch = useMediaQuery('960px')
-  console.log(isMatch)
   return (
     <Box>
       <CssBaseline />
       <AppBar position='static' sx={{ backgroundColor: '#368727' }}>
-        <Toolbar sx={{ root: 'space-between' }}>
-          <Typography variant='h5'>StoX</Typography>
+        <Toolbar>
+          {isMatch ? null : <Typography variant='h5'>StoX</Typography>}
+          {/* <Typography variant='h5'>StoX</Typography> */}
           <Tabs
             className='tabs-menu'
             onChange={handleClickTab}
             sx={{
               flexGrow: 1
             }}
-            // css={css`
-            //   mx: 0 70px;
-            // `}
             value={value}
             aria-label='menu tabs'
             indicatorColor='primary'
