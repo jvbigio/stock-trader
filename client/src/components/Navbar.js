@@ -10,7 +10,7 @@ import { spacing } from '@mui/system'
 
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
-// This branch updated dependencies for v5 material ui
+// This branch is for tabs navbar option
 
 const Navbar = () => {
   const [value, setValue] = useState(0)
