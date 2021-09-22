@@ -3,16 +3,19 @@ import { NavLink } from 'react-router-dom'
 
 import { css } from '@emotion/react'
 
-import { AppBar, Toolbar, Typography, Box, IconButton, Button, Drawer, Tab, Tabs, MenuIcon, CssBaseline } from '@mui/material'
+import { AppBar, Toolbar, Typography, Box, IconButton, Button, Drawer, Tab, Tabs, MenuIcon, CssBaseline, useMediaQuery } from '@mui/material'
 
 // do i need this:
-import { spacing } from '@mui/system'
+// import { spacing } from '@mui/system'
+import { styled, useTheme } from '@mui/system'
 
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
 // test
 import './Navbar.css'
 // This branch is for tabs navbar option
+
+
 
 const Navbar = () => {
   const [value, setValue] = useState(0)
@@ -23,6 +26,11 @@ const Navbar = () => {
     // console.log(value)
   }
 
+  // breakpoints
+  const theme = useTheme()
+
+  const isMatch = useMediaQuery('960px')
+  console.log(isMatch)
   return (
     <Box>
       <CssBaseline />
@@ -35,9 +43,9 @@ const Navbar = () => {
             sx={{
               flexGrow: 1
             }}
-            css={css`
-              mx: 0 70px;
-            `}
+            // css={css`
+            //   mx: 0 70px;
+            // `}
             value={value}
             aria-label='menu tabs'
             indicatorColor='primary'
