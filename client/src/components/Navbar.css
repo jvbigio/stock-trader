@@ -3,14 +3,13 @@
 }
 
 /* works */
+/*
 @media screen and (max-width: 640px) {
-  .nav-title {
-    display: none;
-  }
   .tab-item {
-    margin: 0 15px;
+    display: none;
   }
   .btn-login {
     display: none;
   }
 }
+*/

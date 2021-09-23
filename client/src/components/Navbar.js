@@ -25,7 +25,6 @@ const Navbar = () => {
     // console.log(value)
   }
 
-  // breakpoints
   const theme = useTheme()
   const isMatch = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -34,60 +33,63 @@ const Navbar = () => {
       <CssBaseline />
       <AppBar position='static' sx={{ backgroundColor: '#368727' }}>
         <Toolbar>
-          {/* {isMatch ? null : <Typography variant='h5'>StoX</Typography>} */}
           <Typography className='nav-title' variant='h5'>StoX</Typography>
-          <Tabs
-            className='tabs-menu'
-            onChange={handleClickTab}
-            sx={{
-              flexGrow: 1
-            }}
-            value={value}
-            aria-label='menu tabs'
-            indicatorColor='primary'
-            textColor='inherit'
-            centered
-          >
-            <Tab
-              className='tab-item'
-              icon={<GoHome />}
-              disableRipple
-              label='Home'
-              component={NavLink}
-              to='/'
-            />
-            <Tab
-              className='tab-item'
-              icon={<GoBriefcase />}
-              disableRipple
-              label='Portfolio'
-              component={NavLink}
-              to='/portfolio'
-            />
-            <Tab
-              className='tab-item'
-              icon={<GoRepo />}
-              disableRipple
-              label='Report'
-              component={NavLink}
-              to='/report'
-            />
-          </Tabs>
-          <Button
-            sx={{
-              color: 'black',
-              backgroundColor: '#fff'
-              // ml: 'auto'
-            }}
-            variant='contained'
-            component={NavLink}
-            to='/login'
-            className='btn-login'
-          >Login
-          </Button>
+          {isMatch
+            ? <DrawerComponent />
+            : (
+              <>
+                <Tabs
+                  className='tabs-menu'
+                  onChange={handleClickTab}
+                  sx={{
+                    flexGrow: 1
+                  }}
+                  value={value}
+                  aria-label='menu tabs'
+                  indicatorColor='primary'
+                  textColor='inherit'
+                  centered
+                >
+                  <Tab
+                    className='tab-item'
+                    icon={<GoHome />}
+                    disableRipple
+                    label='Home'
+                    component={NavLink}
+                    to='/'
+                  />
+                  <Tab
+                    className='tab-item'
+                    icon={<GoBriefcase />}
+                    disableRipple
+                    label='Portfolio'
+                    component={NavLink}
+                    to='/portfolio'
+                  />
+                  <Tab
+                    className='tab-item'
+                    icon={<GoRepo />}
+                    disableRipple
+                    label='Report'
+                    component={NavLink}
+                    to='/report'
+                  />
+                </Tabs>
+                <Button
+                  sx={{
+                    color: 'black',
+                    backgroundColor: '#fff'
+                  }}
+                  variant='contained'
+                  component={NavLink}
+                  to='/login'
+                  className='btn-login'
+                >Login
+                </Button>
+              </>
+              )}
         </Toolbar>
       </AppBar>
-      <DrawerComponent />
     </Box>
   )
 }
