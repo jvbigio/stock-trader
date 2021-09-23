@@ -33,8 +33,8 @@ const Navbar = () => {
       <CssBaseline />
       <AppBar position='static' sx={{ backgroundColor: '#368727' }}>
         <Toolbar>
-          {isMatch ? null : <Typography variant='h5'>StoX</Typography>}
-          {/* <Typography variant='h5'>StoX</Typography> */}
+          {/* {isMatch ? null : <Typography variant='h5'>StoX</Typography>} */}
+          <Typography className='nav-title' variant='h5'>StoX</Typography>
           <Tabs
             className='tabs-menu'
             onChange={handleClickTab}
@@ -81,6 +81,7 @@ const Navbar = () => {
             variant='contained'
             component={NavLink}
             to='/login'
+            className='btn-login'
           >Login
           </Button>
         </Toolbar>
