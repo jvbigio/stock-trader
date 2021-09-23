@@ -4,6 +4,11 @@ import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Lin
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
+import CoinTree from '../images/coin-tree.jpg'
+import WallStGrey from '../images/wall-street-grey.jpg'
+import Subway from '../images/wall-street-subway.jpg'
+import Investor from '../images/investor.jpg'
+
 const Copyright = (props) => {
   return (
     <Typography variant='body2' color='text.secondary' align='center' {...props}>
@@ -29,7 +34,7 @@ function Login () {
       email: data.get('email'),
       password: data.get('password')
     })
-  }
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,10 +46,7 @@ function Login () {
           sm={4}
           md={7}
           sx={{
-            // random works
-            // backgroundImage: 'url(https://source.unsplash.com/random)',
-            background: "url('../images/money-plant.jpg')",
-            // backgroundImage: "url('../images/money-plant.jpg')",
+            backgroundImage: `url(${Subway})`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
