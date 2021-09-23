@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { css } from '@emotion/react'
+import DrawerComponent from './DrawerComponent'
+// import { css } from '@emotion/react'
 
-import { AppBar, Toolbar, Typography, Box, IconButton, Button, Drawer, Tab, Tabs, MenuIcon, CssBaseline, useMediaQuery } from '@mui/material'
+import { AppBar, Toolbar, Typography, Box, IconButton, Button, Tab, Tabs, MenuIcon, CssBaseline, useMediaQuery } from '@mui/material'
 
 // do i need this:
 // import { spacing } from '@mui/system'
@@ -86,6 +87,7 @@ const Navbar = () => {
           </Button>
         </Toolbar>
       </AppBar>
+      <DrawerComponent />
     </Box>
   )
 }
