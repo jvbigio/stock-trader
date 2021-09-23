@@ -4,8 +4,7 @@ import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Lin
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-// const Copyright = (props) => {
-function Copyright (props) {
+const Copyright = (props) => {
   return (
     <Typography variant='body2' color='text.secondary' align='center' {...props}>
       {'Copyright © '}
@@ -44,7 +43,8 @@ function Login () {
           sx={{
             // random works
             // backgroundImage: 'url(https://source.unsplash.com/random)',
-            backgroundImage: "url('../images/money-plant.jpg')",
+            background: "url('../images/money-plant.jpg')",
+            // backgroundImage: "url('../images/money-plant.jpg')",
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
