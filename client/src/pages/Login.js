@@ -12,8 +12,6 @@ import Business from '../images/business.jpg'
 import Data from '../images/data.jpg'
 import Bull from '../images/bull.jpg'
 
-// const myPix = [CoinTree, WallStGrey, Subway, Investor]
-
 const randomImage = () => {
   const myPix = [CoinTree, WallStGrey, Subway, Investor, Business, Data, Bull]
   const randomized = myPix[Math.floor(Math.random() * myPix.length)]
