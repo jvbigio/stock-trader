@@ -8,6 +8,17 @@ import CoinTree from '../images/coin-tree.jpg'
 import WallStGrey from '../images/wall-street-grey.jpg'
 import Subway from '../images/wall-street-subway.jpg'
 import Investor from '../images/investor.jpg'
+import Business from '../images/business.jpg'
+import Data from '../images/data.jpg'
+import Bull from '../images/bull.jpg'
+
+// const myPix = [CoinTree, WallStGrey, Subway, Investor]
+
+const randomImage = () => {
+  const myPix = [CoinTree, WallStGrey, Subway, Investor, Business, Data, Bull]
+  const randomized = myPix[Math.floor(Math.random() * myPix.length)]
+  return randomized
+}
 
 const Copyright = (props) => {
   return (
@@ -34,7 +45,7 @@ function Login () {
       email: data.get('email'),
       password: data.get('password')
     })
-  };
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -46,7 +57,8 @@ function Login () {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: `url(${Subway})`,
+            // backgroundImage: `url(${Subway})`,
+            backgroundImage: `url(${randomImage()})`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
