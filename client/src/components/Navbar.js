@@ -25,6 +25,10 @@ const Navbar = () => {
     // console.log(value)
   }
 
+  const handleBtnClick = () => {
+    setValue(null)
+  }
+
   const theme = useTheme()
   const isMatch = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -84,6 +88,7 @@ const Navbar = () => {
                   component={NavLink}
                   to='/login'
                   className='btn-login'
+                  onClick={handleBtnClick}
                 >Login
                 </Button>
               </>
