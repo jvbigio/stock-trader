@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import Portfolio from './pages/Portfolio'
 import Report from './pages/Report'
 import Login from './pages/Login'
+import SignUp from './pages/SignUp'
 
 import './App.css'
 
@@ -23,6 +24,7 @@ function App () {
             <Route path='/portfolio' component={Portfolio} />
             <Route path='/report' component={Report} />
             <Route path='/login' component={Login} />
+            <Route path='/signUp' component={SignUp} />
           </Switch>
         </main>
       </div>
