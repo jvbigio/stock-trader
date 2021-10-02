@@ -1,7 +1,7 @@
 import React from 'react'
 import './Home.css'
 
-import { Box, Typography, Paper, Container } from '@mui/material'
+import { Box, Typography, Paper, Container, Card, CardContent, CardMedia, CardActionArea, CardActions } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import chart from '../images/data-chart.jpg'
@@ -31,7 +31,24 @@ const Home = () => {
             Test drive StoX's fantasy trading experience
           </Typography>
         </Box>
+        {/* <Paper >
+          <Box p={5} justifyContent='center'>
+            <img src={chart} alt='chart' />
+          </Box>
+        </Paper> */}
+        {/* <Card sx={{ maxWidth: '100%' }}> */}
       </Container>
+      <Card mx={5}>
+        <CardMedia
+          component='img'
+          // height='200'
+          // height='500'
+          // height='100%'
+          height='700'
+          image={chart}
+          alt='holdings chart'
+        />
+      </Card>
     </ThemeProvider>
   )
 }
