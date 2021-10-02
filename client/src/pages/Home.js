@@ -5,6 +5,7 @@ import { Box, Typography, Paper, Container, Card, CardContent, CardMedia, CardAc
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import chart from '../images/data-chart.jpg'
+import analysis from '../images/analysis.jpg'
 
 const theme = createTheme()
 
@@ -37,18 +38,29 @@ const Home = () => {
           </Box>
         </Paper> */}
         {/* <Card sx={{ maxWidth: '100%' }}> */}
+        <Card mx={5} elevation={3}>
+          <CardMedia
+            component='img'
+          // height='200'
+            height='500'
+          // height='100%'
+          // height='700'
+            image={analysis}
+            alt='holdings chart'
+          />
+        </Card>
       </Container>
-      <Card mx={5}>
+      {/* <Card mx={5} elevation={0}>
         <CardMedia
           component='img'
           // height='200'
-          // height='500'
+          height='500'
           // height='100%'
-          height='700'
-          image={chart}
+          // height='700'
+          image={analysis}
           alt='holdings chart'
         />
-      </Card>
+      </Card> */}
     </ThemeProvider>
   )
 }
