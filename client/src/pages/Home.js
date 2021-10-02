@@ -48,6 +48,12 @@ const Home = () => {
             image={analysis}
             alt='holdings chart'
           />
+          <CardContent>
+            {/* <Typography gutterBottom variant='body2' component='div'> */}
+            <Typography gutterBottom variant='body2' color='text.secondary' textAlign='center'>
+              Take charge of your wealth
+            </Typography>
+          </CardContent>
         </Card>
       </Container>
       {/* <Card mx={5} elevation={0}>
