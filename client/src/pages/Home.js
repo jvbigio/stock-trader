@@ -43,7 +43,9 @@ const Home = () => {
             </Typography>
           </CardContent>
         </Card> */}
-        <QuiltedImageList />
+        <Card mx={5} elevation={3}>
+          <QuiltedImageList />
+        </Card>
       </Container>
     </ThemeProvider>
   )
