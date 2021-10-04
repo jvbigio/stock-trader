@@ -3,11 +3,22 @@ import './Home.css'
 
 import QuiltedImageList from '../components/QuiltedImageList'
 
-import { Box, Typography, Container, Card, CardContent, CardMedia, Paper } from '@mui/material'
+import { Box, Typography, Container, Card, CardContent, CardMedia, Paper, Grid } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-// import chart from '../images/data-chart.jpg'
-// import analysis from '../images/analysis.jpg'
+import chart from '../images/data-chart.jpg'
+import analysis from '../images/analysis.jpg'
+import bull from '../images/bull.jpg'
+import business from '../images/business.jpg'
+import data from '../images/data.jpg'
+import lightBulb from '../images/light-bulb.jpg'
+import suit from '../images/suit.jpg'
+import mobileStocks from '../images/mobile-stocks.jpg'
+import people from '../images/people.jpg'
+import report from '../images/report.jpg'
+import mobileTransaction from '../images/phone-transaction.jpg'
+import hand from '../images/hand.jpg'
+import work from '../images/work.jpg'
 
 const theme = createTheme()
 
@@ -30,22 +41,50 @@ const Home = () => {
             Test drive StoX's fantasy trading experience
           </Typography>
         </Box>
-        {/* <Card mx={5} elevation={3}>
-          <CardMedia
-            component='img'
-            height='500'
-            image={analysis}
-            alt='holdings chart'
-          />
-          <CardContent>
-            <Typography gutterBottom variant='body2' color='text.secondary' textAlign='center'>
-              Take charge of your wealth
-            </Typography>
-          </CardContent>
-        </Card> */}
-        {/* <Card mx={5} elevation={3}>
-          <QuiltedImageList />
-        </Card> */}
+        {/* card & paper, grid is new tag for test */}
+        {/* <Card sx={{ width: 900 }}> */}
+        {/* <Paper sx={{ width: '100%', height: 200 }}> */}
+        {/* <Grid container spacing={1}> */}
+        {/* <Grid item xs={6}> */}
+        <Container maxWidth='lg'>
+          <Box
+            display='flex'
+            flexDirection='row'
+            justifyContent='center'
+          // flexWrap='wrap'
+            p={1}
+            mb={1}
+          // width='100%'
+            maxWidth='md'
+          >
+            <Box
+              component='img'
+            // width='75%'
+            // height='50%'
+              src={hand}
+              p={1}
+              mb={1}
+            />
+            <Box
+              component='img'
+            // width='75%'
+            // height='50%'
+              src={report}
+              p={1}
+              mb={1}
+            />
+            <Box
+              component='img'
+            // width='75%'
+            // height='50%'
+              p={1}
+              mb={1}
+              src={mobileTransaction}
+            />
+          </Box>
+        </Container>
+        {/* </Grid> */}
+        {/* </Grid> */}
       </Container>
     </ThemeProvider>
   )
