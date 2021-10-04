@@ -46,46 +46,48 @@ const Home = () => {
         {/* <Paper sx={{ width: '100%', height: 200 }}> */}
         {/* <Grid container spacing={1}> */}
         {/* <Grid item xs={6}> */}
-        <Container maxWidth='lg'>
-          <Box
-            display='flex'
-            flexDirection='row'
-            justifyContent='center'
+        {/* <Container maxWidth='lg' xs={6}> */}
+        <Box
+          component='div'
+          display='flex'
+          flexDirection='row'
+          justifyContent='center'
           // flexWrap='wrap'
+          p={1}
+          mb={1}
+          // width='100%'
+          // sx={{ width: 100, height: 200 }}
+        >
+          <Box
+            component='img'
+            // width='75%'
+            width='55%'
+            // height='50%'
+            src={hand}
             p={1}
             mb={1}
-          // width='100%'
-            maxWidth='md'
-          >
-            <Box
-              component='img'
-            // width='75%'
+          />
+          <Box
+            component='img'
+            width='55%'
             // height='50%'
-              src={hand}
-              p={1}
-              mb={1}
-            />
-            <Box
-              component='img'
-            // width='75%'
+            src={report}
+            p={1}
+            mb={1}
+          />
+          <Box
+            component='img'
+            width='55%'
             // height='50%'
-              src={report}
-              p={1}
-              mb={1}
-            />
-            <Box
-              component='img'
-            // width='75%'
-            // height='50%'
-              p={1}
-              mb={1}
-              src={mobileTransaction}
-            />
-          </Box>
-        </Container>
-        {/* </Grid> */}
-        {/* </Grid> */}
+            p={1}
+            mb={1}
+            src={mobileTransaction}
+          />
+        </Box>
       </Container>
+      {/* </Grid> */}
+      {/* </Grid> */}
+      {/* </Container> */}
     </ThemeProvider>
   )
 }
