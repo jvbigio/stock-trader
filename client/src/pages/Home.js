@@ -31,12 +31,6 @@ theme.typography.h4 = {
   }
 }
 
-// theme.typography.h6 = {
-//   [theme.breakpoints.down('md')]: {
-//     fontSize: '1rem'
-//   }
-// }
-
 const Home = () => {
   return (
     <ThemeProvider theme={theme}>
