@@ -44,19 +44,22 @@
   max-width: 100%;
   flex: 1 1 auto;
 }
-
-@media screen and (max-width: 640px) {
-  .flex-img {
-    width: 45%;
-    height: auto;
-  }
-} */
+ */
 
 .flex-img {
   width: 55%;
-  /* padding: 10px;
-  margin-bottom: 10px; */
 }
+
+@media screen and (max-width: 640px) {
+  .description-main {
+    overflow: hidden;
+    font-size: 14px;
+    padding: 0 10px;
+    margin: 0 40px;
+    word-wrap: break-word;
+  }
+}
+
 
 /* breakpoints */
 /*
