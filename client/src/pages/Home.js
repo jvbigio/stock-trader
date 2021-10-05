@@ -5,6 +5,7 @@ import QuiltedImageList from '../components/QuiltedImageList'
 
 import { Box, Typography, Container, Card, CardContent, CardMedia, Paper, Grid } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { sizing } from '@mui/system'
 
 import chart from '../images/data-chart.jpg'
 import analysis from '../images/analysis.jpg'
@@ -47,18 +48,23 @@ const Home = () => {
         {/* <Grid container spacing={1}> */}
         {/* <Grid item xs={6}> */}
         {/* <Container maxWidth='lg' xs={6}> */}
+      </Container>
+      <Container
+        maxWidth='md'
+        sx={{ width: { xs: 250, sm: 500, md: 600, lg: 700 } }}
+      >
         <Box
+          className='flex-box'
           component='div'
           display='flex'
           flexDirection='row'
           justifyContent='center'
-          // flexWrap='wrap'
+          alignItems='center'
           p={1}
           mb={1}
-          // width='100%'
-          // sx={{ width: 100, height: 200 }}
         >
           <Box
+            className='flex-img'
             component='img'
             // width='75%'
             width='55%'
@@ -68,6 +74,7 @@ const Home = () => {
             mb={1}
           />
           <Box
+            className='flex-img'
             component='img'
             width='55%'
             // height='50%'
@@ -76,6 +83,7 @@ const Home = () => {
             mb={1}
           />
           <Box
+            className='flex-img'
             component='img'
             width='55%'
             // height='50%'
