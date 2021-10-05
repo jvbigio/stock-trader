@@ -20,6 +20,7 @@ import report from '../images/report.jpg'
 import mobileTransaction from '../images/phone-transaction.jpg'
 import hand from '../images/hand.jpg'
 import work from '../images/work.jpg'
+import MarketTrends from '../images/stockMarketData.png'
 
 const theme = createTheme()
 
@@ -42,12 +43,6 @@ const Home = () => {
             Test drive StoX's fantasy trading experience
           </Typography>
         </Box>
-        {/* card & paper, grid is new tag for test */}
-        {/* <Card sx={{ width: 900 }}> */}
-        {/* <Paper sx={{ width: '100%', height: 200 }}> */}
-        {/* <Grid container spacing={1}> */}
-        {/* <Grid item xs={6}> */}
-        {/* <Container maxWidth='lg' xs={6}> */}
       </Container>
       <Container
         maxWidth='md'
@@ -83,20 +78,21 @@ const Home = () => {
             mb={1}
           />
         </Box>
-        <Card sx={{ display: 'flex', mt: 5 }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <CardContent sx={{ flex: '1 0 auto' }}>
+        <Card sx={{ display: 'flex', mt: 5, justifyContent: 'center' }} elevation={10}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+            {/* <CardContent sx={{ flex: '1 0 auto' }}> */}
+            <CardContent sx={{ display: 'flex', justifyContent: 'center' }}>
               <Typography component='div' variant='h5'>
                 With StoX, you can take control of your wealth
               </Typography>
             </CardContent>
+            <CardMedia
+              component='img'
+              sx={{ width: '100%', height: '100%' }}
+              image={MarketTrends}
+              alt='Market performance'
+            />
           </Box>
-          <CardMedia
-            component='img'
-            sx={{ width: 250 }}
-            image={bull}
-            alt='man in suit'
-          />
         </Card>
       </Container>
       {/* </Grid> */}
