@@ -83,6 +83,21 @@ const Home = () => {
             mb={1}
           />
         </Box>
+        <Card sx={{ display: 'flex', mt: 5 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <CardContent sx={{ flex: '1 0 auto' }}>
+              <Typography component='div' variant='h5'>
+                With StoX, you can take control of your wealth
+              </Typography>
+            </CardContent>
+          </Box>
+          <CardMedia
+            component='img'
+            sx={{ width: 250 }}
+            image={bull}
+            alt='man in suit'
+          />
+        </Card>
       </Container>
       {/* </Grid> */}
       {/* </Grid> */}
