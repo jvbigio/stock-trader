@@ -52,6 +52,12 @@
   }
 } */
 
+.flex-img {
+  width: 55%;
+  /* padding: 10px;
+  margin-bottom: 10px; */
+}
+
 /* breakpoints */
 /*
 Each breakpoint (a key) matches with a fixed screen width (a value): xs,

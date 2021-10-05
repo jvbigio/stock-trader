@@ -60,15 +60,10 @@ const Home = () => {
           flexDirection='row'
           justifyContent='center'
           alignItems='center'
-          p={1}
-          mb={1}
         >
           <Box
             className='flex-img'
             component='img'
-            // width='75%'
-            width='55%'
-            // height='50%'
             src={hand}
             p={1}
             mb={1}
@@ -76,8 +71,6 @@ const Home = () => {
           <Box
             className='flex-img'
             component='img'
-            width='55%'
-            // height='50%'
             src={report}
             p={1}
             mb={1}
@@ -85,11 +78,9 @@ const Home = () => {
           <Box
             className='flex-img'
             component='img'
-            width='55%'
-            // height='50%'
+            src={mobileTransaction}
             p={1}
             mb={1}
-            src={mobileTransaction}
           />
         </Box>
       </Container>
