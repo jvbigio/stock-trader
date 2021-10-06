@@ -4,8 +4,7 @@ import { HoldingsTable } from '../components/HoldingsTable'
 
 import { Grid, Paper, Container, Box, CssBaseline } from '@mui/material'
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles'
-
-const mdTheme = createTheme()
+// const mdTheme = createTheme()
 
 const Portfolio = () => {
   return (
@@ -15,10 +14,10 @@ const Portfolio = () => {
       <Box
         component='main'
         sx={{
-          // backgroundColor: (theme) =>
-          //   theme.palette.mode === 'light'
-          //     ? theme.palette.grey[100]
-          //     : theme.palette.grey[900],
+          backgroundColor: (theme) =>
+            theme.palette.mode === 'light'
+              ? theme.palette.grey[100]
+              : theme.palette.grey[900],
           flexGrow: 1,
           height: '100vh',
           overflow: 'auto'

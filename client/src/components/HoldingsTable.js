@@ -15,10 +15,6 @@ const ROWS = [
   createData(5, 'GameStop Corp', 'GME', 168.26, 5047.80, 30)
 ]
 
-function preventDefault (e) {
-  e.preventDefault()
-}
-
 export const HoldingsTable = () => {
   return (
     <>
