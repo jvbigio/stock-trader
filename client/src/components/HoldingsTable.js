@@ -23,40 +23,7 @@ const rows = [
 export const HoldingsTable = () => {
   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
-
-  const handleClick = (e, name) => {
-    const selectedIndex = selected.indexOf(name)
-    let newSelected = []
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
-    }
-
-    setSelected(newSelected)
-  }
-
-  const handleChangePage = (e, newPage) => {
-    setPage(newPage)
-  }
-
-  const handleChangeRowsPerPage = (e) => {
-    setRowsPerPage(parseInt(e.target.value, 10))
-    setPage(0)
-  }
-
-  const isSelected = (name) => selected.indexOf(name) !== -1
-
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
+  const [rowsPerPage, setRowsPerPage] = useState(5)
 
   return (
     <>
@@ -88,14 +55,6 @@ export const HoldingsTable = () => {
           ))}
         </TableBody>
       </Table>
-      <TablePagination
-        component='div'
-        count={rows.length}
-        page={page}
-        onPageChange={handleChangePage}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
       {/* </TableContainer> */}
     </>
   )
