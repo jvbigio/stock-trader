@@ -17,7 +17,11 @@ const rows = [
   createData(3, 'Facebook Inc', 'FB', 331.45, 16572.50, 50),
   createData(4, 'Apple Inc', 'AAPL', 139.79, 6989.50, 50),
   createData(5, 'GameStop Corp', 'GME', 168.26, 5047.80, 30),
-  createData(6, 'Shopify Inc', 'SHOP', 1348.53, 1348.53, 10)
+  createData(6, 'Shopify Inc', 'SHOP', 1348.53, 1348.53, 10),
+  createData(7, 'Virpax Pharmaceuticals', 'VRPX', 4.34, 4340.00, 1000),
+  createData(8, 'Clover Health Investments Corp', 'CLOV', 7.36, 1840, 250),
+  createData(9, 'United Airlines Holdings Inc', 'UAL', 50.22, 5022, 100),
+  createData(10, 'Shopify Inc', 'AMZN', 3261.01, 32610.10, 10)
 ]
 
 export const HoldingsTable = () => {
@@ -73,19 +77,21 @@ export const HoldingsTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.id}
-              hover
-              onClick={(e) => handleClick(e, row.name)}
-            >
-              <TableCell>{row.name}</TableCell>
-              <TableCell align='right'>{row.symbol}</TableCell>
-              <TableCell align='right'>{row.price}</TableCell>
-              <TableCell align='right'>{row.currentValue}</TableCell>
-              <TableCell align='right'>{row.quantity}</TableCell>
-            </TableRow>
-          ))}
+          {rows
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((row) => (
+              <TableRow
+                key={row.id}
+                hover
+                onClick={(e) => handleClick(e, row.name)}
+              >
+                <TableCell>{row.name}</TableCell>
+                <TableCell align='right'>{row.symbol}</TableCell>
+                <TableCell align='right'>{row.price}</TableCell>
+                <TableCell align='right'>{row.currentValue}</TableCell>
+                <TableCell align='right'>{row.quantity}</TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
       <TablePagination
