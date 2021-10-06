@@ -29,24 +29,8 @@ export const HoldingsTable = () => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
-  const handleClick = (e, name) => {
-    const selectedIndex = selected.indexOf(name)
-    let newSelected = []
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
-    }
-
-    setSelected(newSelected)
+  const handleClick = (e) => {
+    console.log(e.target.innerText)
   }
 
   const handleChangePage = (e, newPage) => {
@@ -58,15 +42,11 @@ export const HoldingsTable = () => {
     setPage(0)
   }
 
-  const isSelected = (name) => selected.indexOf(name) !== -1
-
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
-
   return (
     <>
-      {/* <TableContainer component={Paper}> */}
+      {/* <Paper sx={{ width: '100%', overflow: 'hidden' }}> */}
       <Typography variant='h3' textAlign='center' gutterBottom>Holdings</Typography>
-      <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
+      <Table sx={{ minWidth: 650, overflow: 'hidden' }} size='small' aria-label='holdings table'>
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -100,9 +80,10 @@ export const HoldingsTable = () => {
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
+        rowsPerPageOptions={[10, 25, 50]}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      {/* </TableContainer> */}
+      {/* </Paper> */}
     </>
   )
 }
