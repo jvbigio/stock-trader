@@ -6,7 +6,7 @@ function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 
-// THIS BRANCH IS FOR PAGINATION WITH TABLE, NOT DATA GRID
+// THIS BRANCH IS FOR DATA GRID PAGINATION, NOT TABLE PAGINATION
 
 const rows = [
   createData(0, 'AMC Entertainment Holdings Inc', 'AMC', 36.01, 1800.50, 50),
