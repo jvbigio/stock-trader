@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import { Box, Link, TableContainer, Table, TableBody, TableCell, TableHead, TableRow, TablePagination, Title, Paper, Typography } from '@mui/material'
 
+// import UsePagination from './UsePagination'
+
 function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
@@ -21,9 +23,9 @@ const rows = [
 export const HoldingsTable = () => {
   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(5)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
 
-  const handleClick = (event, name) => {
+  const handleClick = (e, name) => {
     const selectedIndex = selected.indexOf(name)
     let newSelected = []
 
@@ -43,12 +45,12 @@ export const HoldingsTable = () => {
     setSelected(newSelected)
   }
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (e, newPage) => {
     setPage(newPage)
   }
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10))
+  const handleChangeRowsPerPage = (e) => {
+    setRowsPerPage(parseInt(e.target.value, 10))
     setPage(0)
   }
 
@@ -72,7 +74,11 @@ export const HoldingsTable = () => {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.id}>
+            <TableRow
+              key={row.id}
+              hover
+              onClick={(e) => handleClick(e, row.name)}
+            >
               <TableCell>{row.name}</TableCell>
               <TableCell align='right'>{row.symbol}</TableCell>
               <TableCell align='right'>{row.price}</TableCell>
@@ -83,12 +89,11 @@ export const HoldingsTable = () => {
         </TableBody>
       </Table>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
         component='div'
         count={rows.length}
-        rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
       {/* </TableContainer> */}
