@@ -1,4 +1,7 @@
 .flex-wrapper {
-  background: black;
+  /* background: black;
+  height: 100vh; */
+  width: 100%;
+  border: 3px solid red;
   height: 100vh;
 }

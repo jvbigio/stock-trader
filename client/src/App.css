@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
-/* html, body {
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
-} */
+html, body {
+  /* font-family: 'IBM Plex Sans Arabic', sans-serif; */
+  background-color: #f5f5f5;
+}

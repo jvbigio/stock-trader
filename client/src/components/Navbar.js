@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import DrawerComponent from './DrawerComponent'
 // import { css } from '@emotion/react'
 
-import { AppBar, Toolbar, Typography, Box, IconButton, Button, Tab, Tabs, MenuIcon, CssBaseline, useMediaQuery } from '@mui/material'
+import { AppBar, Toolbar, Typography, Box, Button, Tab, Tabs, CssBaseline, useMediaQuery } from '@mui/material'
 
 import { styled, useTheme } from '@mui/system'
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
@@ -17,7 +17,8 @@ const Navbar = () => {
   const handleClickTab = (e, newValue) => {
     setValue(newValue)
     // setValue(e.target.value)
-    // console.log(value)
+    // console.log(e.target.value)
+    console.log(e.currentTarget)
   }
 
   const handleBtnClick = () => {

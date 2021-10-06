@@ -50,6 +50,7 @@
   width: 55%;
 }
 
+
 @media screen and (max-width: 640px) {
   .description-main {
     overflow: hidden;
