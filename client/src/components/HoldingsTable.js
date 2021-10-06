@@ -6,7 +6,7 @@ import { DataGrid } from '@mui/x-data-grid'
 
 // THIS BRANCH IS FOR DATA GRID PAGINATION, NOT TABLE PAGINATION
 const columns = [
-  { field: 'id', headerName: 'ID', type: 'number', width: 70 },
+  { field: 'id', headerName: 'ID', width: 70 },
   { field: 'name', headerName: 'Name', width: 130 },
   { field: 'symbol', headerName: 'Symbol', width: 130 },
   { field: 'price', headerName: 'Price', type: 'number', width: 90 },
@@ -25,18 +25,17 @@ const rows = [
 ]
 
 export default function HoldingsTable () {
-  const [page, setPage] = useState(0)
+  // const [page, setPage] = useState(0)
 
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
-        getRowId={(r) => r.id}
-        page={page}
-        onPageChange={(newPage) => setPage(newPage)}
+        rows={rows}
+        columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
-        pagination
-        checkBoxSelection
+        checkboxSelection
+        disableSelectionOnClick
       />
     </div>
   )
