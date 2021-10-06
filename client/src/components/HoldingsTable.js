@@ -43,37 +43,38 @@ export const HoldingsTable = () => {
   }
 
   return (
-    <>
-      {/* <Paper sx={{ width: '100%', overflow: 'hidden' }}> */}
-      <Typography variant='h3' textAlign='center' gutterBottom>Holdings</Typography>
-      <Table sx={{ minWidth: 650, overflow: 'hidden' }} size='small' aria-label='holdings table'>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align='right'>Symbol</TableCell>
-            <TableCell align='right'>Price</TableCell>
-            <TableCell align='right'>Current Value</TableCell>
-            <TableCell align='right'>Quantity</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row) => (
-              <TableRow
-                key={row.id}
-                hover
-                onClick={(e) => handleClick(e, row.name)}
-              >
-                <TableCell>{row.name}</TableCell>
-                <TableCell align='right'>{row.symbol}</TableCell>
-                <TableCell align='right'>{row.price}</TableCell>
-                <TableCell align='right'>{row.currentValue}</TableCell>
-                <TableCell align='right'>{row.quantity}</TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
+    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+      <TableContainer sx={{ maxHeight: 440 }}>
+        <Typography variant='h3' textAlign='center' gutterBottom>Holdings</Typography>
+        <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell align='right'>Symbol</TableCell>
+              <TableCell align='right'>Price</TableCell>
+              <TableCell align='right'>Current Value</TableCell>
+              <TableCell align='right'>Quantity</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
+                <TableRow
+                  key={row.id}
+                  hover
+                  onClick={(e) => handleClick(e, row.name)}
+                >
+                  <TableCell>{row.name}</TableCell>
+                  <TableCell align='right'>{row.symbol}</TableCell>
+                  <TableCell align='right'>{row.price}</TableCell>
+                  <TableCell align='right'>{row.currentValue}</TableCell>
+                  <TableCell align='right'>{row.quantity}</TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <TablePagination
         component='div'
         count={rows.length}
@@ -83,7 +84,6 @@ export const HoldingsTable = () => {
         rowsPerPageOptions={[10, 25, 50]}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      {/* </Paper> */}
-    </>
+    </Paper>
   )
 }
