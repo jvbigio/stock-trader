@@ -21,7 +21,7 @@ const rows = [
   createData(7, 'Virpax Pharmaceuticals', 'VRPX', 4.34, 4340.00, 1000),
   createData(8, 'Clover Health Investments Corp', 'CLOV', 7.36, 1840, 250),
   createData(9, 'United Airlines Holdings Inc', 'UAL', 50.22, 5022, 100),
-  createData(10, 'Shopify Inc', 'AMZN', 3261.01, 32610.10, 10)
+  createData(10, 'AMAZONCOM INC', 'AMZN', 3261.01, 32610.10, 10)
 ]
 
 export const HoldingsTable = () => {
