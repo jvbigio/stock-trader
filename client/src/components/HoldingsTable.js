@@ -43,7 +43,8 @@ export const HoldingsTable = () => {
   }
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+    <>
+      {/* <Paper sx={{ width: '100%', overflow: 'hidden' }}> */}
       <TableContainer sx={{ maxHeight: 440 }}>
         <Typography variant='h3' textAlign='center' gutterBottom>Holdings</Typography>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
@@ -84,6 +85,7 @@ export const HoldingsTable = () => {
         rowsPerPageOptions={[10, 25, 50]}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </Paper>
+      {/* </Paper> */}
+    </>
   )
 }
