@@ -6,14 +6,10 @@ import DrawerComponent from './DrawerComponent'
 
 import { AppBar, Toolbar, Typography, Box, IconButton, Button, Tab, Tabs, MenuIcon, CssBaseline, useMediaQuery } from '@mui/material'
 
-// do i need this:
-// import { spacing } from '@mui/system'
 import { styled, useTheme } from '@mui/system'
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
-// test
 import './Navbar.css'
-// This branch is for tabs navbar option
 
 const Navbar = () => {
   const [value, setValue] = useState(0)
