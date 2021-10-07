@@ -93,7 +93,7 @@ const Home = () => {
         </CardContent>
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <ExpandMoreIcon />
-          <Paper sx={{ bgcolor: 'whitesmoke', display: 'flex', flexDirection: 'column', height: 250, width: 500, mt: 5 }} elevation={0}>
+          <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 250, width: 500, mt: 5 }} elevation={0}>
             <Typography variant='body2' align='center' flexDirection='column' pt={2}>
               Add content here...
             </Typography>
