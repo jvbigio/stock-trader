@@ -47,7 +47,7 @@ export const HoldingsTable = () => {
       <TableContainer sx={{ maxHeight: 440 }}>
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} mb={4}>
           <Typography variant='h3' textAlign='center' component='div' flexGrow='1' gutterBottom mt={1}>Holdings</Typography>
-          <Button variant='contained'>Buy</Button>
+          <Button variant='outlined' sx={{ color: '#368727' }}>Buy</Button>
         </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
           <TableHead>
