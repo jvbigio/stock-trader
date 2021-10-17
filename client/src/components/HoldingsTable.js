@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 
-import { Box, Link, TableContainer, Table, TableBody, TableCell, TableHead, TableRow, TablePagination, Title, Paper, Typography, Button } from '@mui/material'
+import {
+  Box, Link, TableContainer, Table, TableBody, TableCell, TableHead,
+  TableRow, TablePagination, Title, Paper, Typography, Button, Fab,
+  Tooltip, Fade
+} from '@mui/material'
+
+import AddIcon from '@mui/icons-material/Add'
 
 // import UsePagination from './UsePagination'
 
@@ -48,7 +54,20 @@ export const HoldingsTable = () => {
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} mb={4}>
           <Typography variant='h3' textAlign='center' component='div' flexGrow='1' gutterBottom mt={1}>Holdings</Typography>
           {/* <Button variant='contained' sx={{ backgroundColor: '#368727' }}>Buy</Button> */}
-          <Button variant='contained' color='info'>Buy</Button>
+          {/* <Button variant='contained' color='info'>Buy</Button> */}
+          <Box sx={{ '& > :not(style)': { m: 1 } }}>
+            <Tooltip
+              title='Buy'
+              placement='left'
+              arrow
+              TransitionComponent={Fade}
+              TransitionProps={{ timeout: 800 }}
+            >
+              <Fab color='primary' aria-label='add'>
+                <AddIcon />
+              </Fab>
+            </Tooltip>
+          </Box>
         </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
           <TableHead>
