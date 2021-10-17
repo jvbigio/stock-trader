@@ -7,6 +7,7 @@ import {
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 
 // import UsePagination from './UsePagination'
 
@@ -64,9 +65,9 @@ export const HoldingsTable = () => {
               TransitionProps={{ timeout: 800 }}
             >
               {/* <Fab color='primary' aria-label='add'> */}
-              <Fab sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add' variant='extended'>
-                {/* <AddIcon sx={{ mr: 1 }} /> */}
-                Buy
+              <Fab sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
+                <AddIcon />
+                {/* <AttachMoneyIcon /> */}
               </Fab>
             </Tooltip>
           </Box>
