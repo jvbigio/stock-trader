@@ -63,8 +63,10 @@ export const HoldingsTable = () => {
               TransitionComponent={Fade}
               TransitionProps={{ timeout: 800 }}
             >
-              <Fab color='primary' aria-label='add'>
-                <AddIcon />
+              {/* <Fab color='primary' aria-label='add'> */}
+              <Fab sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add' variant='extended'>
+                {/* <AddIcon sx={{ mr: 1 }} /> */}
+                Buy
               </Fab>
             </Tooltip>
           </Box>
