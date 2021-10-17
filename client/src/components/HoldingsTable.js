@@ -9,6 +9,9 @@ import {
 import AddIcon from '@mui/icons-material/Add'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import SellIcon from '@mui/icons-material/Sell'
+import RemoveIcon from '@mui/icons-material/Remove'
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn'
+import MonetizationOn from '@mui/icons-material/MonetizationOn'
 
 // import UsePagination from './UsePagination'
 
@@ -52,7 +55,6 @@ export const HoldingsTable = () => {
 
   return (
     <>
-      {/* <TableContainer sx={{ maxHeight: 440 }}> */}
       <TableContainer sx={{ maxHeight: 550 }}>
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} mb={4}>
           <Typography variant='h3' textAlign='center' component='div' flexGrow='1' gutterBottom mt={1}>Holdings</Typography>
@@ -80,6 +82,7 @@ export const HoldingsTable = () => {
               <TableCell align='right'>Price</TableCell>
               <TableCell align='right'>Current Value</TableCell>
               <TableCell align='right'>Quantity</TableCell>
+              {/* <TableCell>Trade</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -97,8 +100,23 @@ export const HoldingsTable = () => {
                   <TableCell align='right'>{row.currentValue}</TableCell>
                   <TableCell align='right'>{row.quantity}</TableCell>
                   <Box ml={2}>
-                    {/* <SellIcon sx={{ cursor: 'pointer' }} /> */}
-                    <Button variant='outlined' color='inherit' size='small'>Sell</Button>
+                    <Tooltip
+                      title='Sell'
+                      placement='right'
+                      arrow
+                      TransitionComponent={Fade}
+                      TransitionProps={{ timeout: 800 }}
+                    >
+                      <SellIcon sx={{ cursor: 'pointer' }} color='action' />
+                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='primary' /> */}
+                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='secondary' /> */}
+                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='error' /> */}
+                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='info' /> */}
+                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='success' /> */}
+                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='warning' /> */}
+                      {/* <Button variant='outlined' color='inherit' size='small'>Sell</Button> */}
+                      {/* <MonetizationOn /> */}
+                    </Tooltip>
                   </Box>
                 </TableRow>
               ))}
