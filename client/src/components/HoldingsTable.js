@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Box, Link, TableContainer, Table, TableBody, TableCell, TableHead, TableRow, TablePagination, Title, Paper, Typography } from '@mui/material'
+import { Box, Link, TableContainer, Table, TableBody, TableCell, TableHead, TableRow, TablePagination, Title, Paper, Typography, Button } from '@mui/material'
 
 // import UsePagination from './UsePagination'
 
@@ -30,7 +30,7 @@ export const HoldingsTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
   const handleClick = (e) => {
-    console.log(e.target.innerText)
+    // console.log(e.target.innerText)
   }
 
   const handleChangePage = (e, newPage) => {
@@ -44,9 +44,11 @@ export const HoldingsTable = () => {
 
   return (
     <>
-      {/* <Paper sx={{ width: '100%', overflow: 'hidden' }}> */}
       <TableContainer sx={{ maxHeight: 440 }}>
-        <Typography variant='h3' textAlign='center' gutterBottom>Holdings</Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} mb={4}>
+          <Typography variant='h3' textAlign='center' component='div' flexGrow='1' gutterBottom mt={1}>Holdings</Typography>
+          <Button variant='contained'>Buy</Button>
+        </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
           <TableHead>
             <TableRow>
@@ -85,7 +87,6 @@ export const HoldingsTable = () => {
         rowsPerPageOptions={[10, 25, 50]}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      {/* </Paper> */}
     </>
   )
 }
