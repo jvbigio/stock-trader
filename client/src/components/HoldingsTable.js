@@ -51,11 +51,10 @@ export const HoldingsTable = () => {
 
   return (
     <>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      {/* <TableContainer sx={{ maxHeight: 440 }}> */}
+      <TableContainer sx={{ maxHeight: 550 }}>
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} mb={4}>
           <Typography variant='h3' textAlign='center' component='div' flexGrow='1' gutterBottom mt={1}>Holdings</Typography>
-          {/* <Button variant='contained' sx={{ backgroundColor: '#368727' }}>Buy</Button> */}
-          {/* <Button variant='contained' color='info'>Buy</Button> */}
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
             <Tooltip
               title='Buy'
@@ -96,6 +95,10 @@ export const HoldingsTable = () => {
                   <TableCell align='right'>{row.price}</TableCell>
                   <TableCell align='right'>{row.currentValue}</TableCell>
                   <TableCell align='right'>{row.quantity}</TableCell>
+                  <Box ml={2}>
+                    {/* <Button variant='outlined' color='info' size='small'>Sell</Button> */}
+                    <Button variant='contained' color='inherit' size='small'>Sell</Button>
+                  </Box>
                 </TableRow>
               ))}
           </TableBody>
