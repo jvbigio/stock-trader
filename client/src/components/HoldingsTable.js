@@ -8,6 +8,7 @@ import {
 
 import AddIcon from '@mui/icons-material/Add'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
+import SellIcon from '@mui/icons-material/Sell'
 
 // import UsePagination from './UsePagination'
 
@@ -96,8 +97,8 @@ export const HoldingsTable = () => {
                   <TableCell align='right'>{row.currentValue}</TableCell>
                   <TableCell align='right'>{row.quantity}</TableCell>
                   <Box ml={2}>
-                    {/* <Button variant='outlined' color='info' size='small'>Sell</Button> */}
-                    <Button variant='contained' color='inherit' size='small'>Sell</Button>
+                    {/* <SellIcon sx={{ cursor: 'pointer' }} /> */}
+                    <Button variant='outlined' color='inherit' size='small'>Sell</Button>
                   </Box>
                 </TableRow>
               ))}
