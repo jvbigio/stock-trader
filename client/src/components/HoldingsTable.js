@@ -114,8 +114,10 @@ export const HoldingsTable = () => {
                       {/* <SellIcon sx={{ cursor: 'pointer' }} color='info' /> */}
                       {/* <SellIcon sx={{ cursor: 'pointer' }} color='success' /> */}
                       {/* <SellIcon sx={{ cursor: 'pointer' }} color='warning' /> */}
-                      {/* <Button variant='outlined' color='inherit' size='small'>Sell</Button> */}
-                      {/* <MonetizationOn /> */}
+                      {/* <Button variant='text' color='success' size='small'>Sell</Button> */}
+                      {/* <Button variant='text' color='primary' size='small'>Sell</Button> */}
+                      {/* <Button variant='text' color='info' size='small'>Sell</Button> */}
+                      {/* <Button variant='text' color='warning' size='small'>Sell</Button> */}
                     </Tooltip>
                   </Box>
                 </TableRow>
