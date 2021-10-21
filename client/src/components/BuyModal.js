@@ -16,31 +16,16 @@ const style = {
   p: 4
 }
 
-export default function BuyModal () {
+export default function BuyModal ({ open, handleClose }) {
   // const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true)
   // const handleClose = () => setOpen(false)
 
   return (
     <>
-      {/* <Tooltip
-        title='Buy'
-        placement='left'
-        arrow
-        TransitionComponent={Fade}
-        TransitionProps={{ timeout: 800 }}
-      >
-        <Fab
-          sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }}
-          aria-label='add'
-          onClick={handleOpen}
-        >
-          <AddIcon />
-        </Fab>
-      </Tooltip> */}
       <Modal
-        // open={open}
-        // onClose={handleClose}
+        open={open}
+        onClose={handleClose}
       >
         <Box sx={style}>
           <Typography id='modal-modal-title' variant='h6' component='h2'>
