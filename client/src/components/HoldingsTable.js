@@ -101,8 +101,8 @@ export const HoldingsTable = () => {
                 >
                   <TableCell>{row.name}</TableCell>
                   <TableCell align='right'>{row.symbol}</TableCell>
-                  <TableCell align='right'>{row.price}</TableCell>
-                  <TableCell align='right'>{row.currentValue}</TableCell>
+                  <TableCell align='right'>${row.price}</TableCell>
+                  <TableCell align='right'>${row.currentValue}</TableCell>
                   <TableCell align='right'>{row.quantity}</TableCell>
                   <Box ml={2}>
                     <Tooltip
