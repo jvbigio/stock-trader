@@ -69,7 +69,6 @@ export const HoldingsTable = () => {
               {/* <Fab color='primary' aria-label='add'> */}
               <Fab sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
                 <AddIcon />
-                {/* <AttachMoneyIcon /> */}
               </Fab>
             </Tooltip>
           </Box>
