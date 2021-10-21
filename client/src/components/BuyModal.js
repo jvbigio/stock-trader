@@ -16,13 +16,25 @@ const style = {
   p: 4
 }
 
-export default function BuyModal ({ open, handleClose }) {
-  // const [open, setOpen] = useState(false)
-  // const handleOpen = () => setOpen(true)
-  // const handleClose = () => setOpen(false)
+// export default function BuyModal ({ open, handleClose }) {
+export default function BuyModal () {
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   return (
     <>
+      <Tooltip
+        title='Buy'
+        placement='left'
+        arrow
+        TransitionComponent={Fade}
+        TransitionProps={{ timeout: 800 }}
+      >
+        <Fab onClick={handleOpen} sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
+          <AddIcon />
+        </Fab>
+      </Tooltip>
       <Modal
         open={open}
         onClose={handleClose}

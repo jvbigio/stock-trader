@@ -41,9 +41,9 @@ export const HoldingsTable = () => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   // test
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  // const [open, setOpen] = useState(false)
+  // const handleOpen = () => setOpen(true)
+  // const handleClose = () => setOpen(false)
 
   const handleClick = (e) => {
     // console.log(e.target.innerText)
@@ -64,7 +64,7 @@ export const HoldingsTable = () => {
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} mb={4}>
           <Typography variant='h3' textAlign='center' component='div' flexGrow='1' gutterBottom mt={1}>Holdings</Typography>
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
-            <Tooltip
+            {/* <Tooltip
               title='Buy'
               placement='left'
               arrow
@@ -74,8 +74,9 @@ export const HoldingsTable = () => {
               <Fab onClick={handleOpen} sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
                 <AddIcon />
               </Fab>
-            </Tooltip>
-            <BuyModal open={open} onClose={handleClose} />
+            </Tooltip> */}
+            {/* <BuyModal open={open} onClose={handleClose} /> */}
+            <BuyModal />
           </Box>
         </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
