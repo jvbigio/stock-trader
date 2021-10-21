@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
-import { Modal, Box, Button, Typography } from '@mui/material'
+import { Modal, Box, Button, Typography, Fade, Fab, Tooltip } from '@mui/material'
+
+import AddIcon from '@mui/icons-material/Add'
 
 const style = {
   position: 'absolute',
@@ -15,20 +17,34 @@ const style = {
 }
 
 export default function BuyModal () {
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  // const [open, setOpen] = useState(false)
+  // const handleOpen = () => setOpen(true)
+  // const handleClose = () => setOpen(false)
 
   return (
     <>
-      {/* <Button onClick={handleOpen}>Open modal</Button> */}
+      {/* <Tooltip
+        title='Buy'
+        placement='left'
+        arrow
+        TransitionComponent={Fade}
+        TransitionProps={{ timeout: 800 }}
+      >
+        <Fab
+          sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }}
+          aria-label='add'
+          onClick={handleOpen}
+        >
+          <AddIcon />
+        </Fab>
+      </Tooltip> */}
       <Modal
-        open={open}
-        onClose={handleClose}
+        // open={open}
+        // onClose={handleClose}
       >
         <Box sx={style}>
           <Typography id='modal-modal-title' variant='h6' component='h2'>
-            Text in a modal
+            Buy
           </Typography>
           <Typography id='modal-modal-description' sx={{ mt: 2 }}>
             Buy stock form here...

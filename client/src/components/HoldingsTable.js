@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import BuyModal from './BuyModal'
-
 import {
   Box, Link, TableContainer, Table, TableBody, TableCell, TableHead,
   TableRow, TablePagination, Title, Paper, Typography, Button, Fab,
@@ -16,6 +14,7 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn'
 import MonetizationOn from '@mui/icons-material/MonetizationOn'
 
 // import UsePagination from './UsePagination'
+import BuyModal from './BuyModal'
 
 function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
@@ -41,6 +40,10 @@ export const HoldingsTable = () => {
   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  // test
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   const handleClick = (e) => {
     // console.log(e.target.innerText)
@@ -68,12 +71,11 @@ export const HoldingsTable = () => {
               TransitionComponent={Fade}
               TransitionProps={{ timeout: 800 }}
             >
-              {/* orig FAB color = primary */}
-              <Fab sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
+              <Fab onClick={handleOpen} sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
                 <AddIcon />
               </Fab>
             </Tooltip>
-            <BuyModal />
+            <BuyModal open={open} onClose={handleClose} />
           </Box>
         </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
