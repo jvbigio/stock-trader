@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import BuyModal from './BuyModal'
+
 import {
   Box, Link, TableContainer, Table, TableBody, TableCell, TableHead,
   TableRow, TablePagination, Title, Paper, Typography, Button, Fab,
@@ -66,11 +68,12 @@ export const HoldingsTable = () => {
               TransitionComponent={Fade}
               TransitionProps={{ timeout: 800 }}
             >
-              {/* <Fab color='primary' aria-label='add'> */}
+              {/* orig FAB color = primary */}
               <Fab sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
                 <AddIcon />
               </Fab>
             </Tooltip>
+            <BuyModal />
           </Box>
         </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>

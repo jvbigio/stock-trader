@@ -2,15 +2,11 @@ import React from 'react'
 import './Portfolio.css'
 import { HoldingsTable } from '../components/HoldingsTable'
 
-import { Grid, Paper, Container, Box, CssBaseline } from '@mui/material'
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles'
-// const mdTheme = createTheme()
+import { Grid, Paper, Container, Box } from '@mui/material'
 
 const Portfolio = () => {
   return (
-  // <ThemeProvider theme={mdTheme}>
     <Box sx={{ display: 'flex' }}>
-      {/* <CssBaseline /> */}
       <Box
         component='main'
         sx={{
@@ -32,7 +28,6 @@ const Portfolio = () => {
         </Container>
       </Box>
     </Box>
-  // </ThemeProvider>
   )
 }
 
