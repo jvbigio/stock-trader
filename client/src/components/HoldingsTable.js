@@ -15,6 +15,7 @@ import MonetizationOn from '@mui/icons-material/MonetizationOn'
 
 // import UsePagination from './UsePagination'
 import BuyModal from './BuyModal'
+import SellModal from './SellModal'
 
 function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
@@ -111,7 +112,8 @@ export const HoldingsTable = () => {
                       TransitionComponent={Fade}
                       TransitionProps={{ timeout: 800 }}
                     >
-                      <SellIcon sx={{ cursor: 'pointer' }} color='action' />
+                      <SellModal />
+                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='action' /> */}
                       {/* <SellIcon sx={{ cursor: 'pointer' }} color='primary' /> */}
                       {/* <SellIcon sx={{ cursor: 'pointer' }} color='secondary' /> */}
                       {/* <SellIcon sx={{ cursor: 'pointer' }} color='error' /> */}
