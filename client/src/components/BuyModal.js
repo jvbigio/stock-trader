@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Modal, Box, Button, Typography, Fade, Fab, Tooltip, TextField } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
+import SearchIcon from '@mui/icons-material/Search'
 
 const style = {
   position: 'absolute',
@@ -52,6 +53,7 @@ export default function BuyModal () {
               justifyContent: 'center',
               alignItems: 'center'
             }}
+            maxWidth='md'
             noValidate
             autoComplete='off'
           >
