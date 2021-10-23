@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Modal, Box, Button, Typography, Fade, Fab, Tooltip } from '@mui/material'
+import { Modal, Box, Button, Typography, Fade, Fab, Tooltip, TextField } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
 
@@ -14,9 +14,9 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4
+  // textAlign: 'center'
 }
 
-// export default function BuyModal ({ open, handleClose }) {
 export default function BuyModal () {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -40,12 +40,24 @@ export default function BuyModal () {
         onClose={handleClose}
       >
         <Box sx={style}>
-          <Typography id='modal-modal-title' variant='h6' component='h2'>
+          <Typography id='modal-modal-title' variant='h6' component='h2' gutterBottom>
             Buy
           </Typography>
-          <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-            Buy stock form here...
-          </Typography>
+          <Box
+            component='form'
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+            noValidate
+            autoComplete='off'
+          >
+            <TextField id='stock-symbol' label='Symbol' variant='outlined' color='success' sx={{ justifyContent: 'center' }} />
+            <TextField id='share-amount' label='Share Amount' variant='outlined' color='success' />
+          </Box>
         </Box>
       </Modal>
     </>

@@ -75,7 +75,6 @@ export const HoldingsTable = () => {
                 <AddIcon />
               </Fab>
             </Tooltip> */}
-            {/* <BuyModal open={open} onClose={handleClose} /> */}
             <BuyModal />
           </Box>
         </Box>
