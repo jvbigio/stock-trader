@@ -55,8 +55,18 @@ export default function BuyModal () {
             noValidate
             autoComplete='off'
           >
-            <TextField id='stock-symbol' label='Symbol' variant='outlined' color='success' sx={{ justifyContent: 'center' }} />
+            <TextField id='stock-symbol' label='Symbol' variant='outlined' color='success' />
             <TextField id='share-amount' label='Share Amount' variant='outlined' color='success' />
+            <Button
+              variant='contained'
+              sx={{
+                backgroundColor: '#1373B4',
+                '&:hover': { backgroundColor: '#1976D2' },
+                color: '#FFF'
+              }}
+            >
+              Order
+            </Button>
           </Box>
         </Box>
       </Modal>
