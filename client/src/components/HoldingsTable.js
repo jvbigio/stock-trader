@@ -13,15 +13,12 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn'
 import MonetizationOn from '@mui/icons-material/MonetizationOn'
 
-// import UsePagination from './UsePagination'
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
 function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
-
-// THIS BRANCH IS FOR PAGINATION WITH TABLE, NOT DATA GRID
 
 const rows = [
   createData(0, 'AMC Entertainment Holdings Inc', 'AMC', 36.01, 1800.50, 50),
@@ -41,10 +38,6 @@ export const HoldingsTable = () => {
   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-  // test
-  // const [open, setOpen] = useState(false)
-  // const handleOpen = () => setOpen(true)
-  // const handleClose = () => setOpen(false)
 
   const handleClick = (e) => {
     // console.log(e.target.innerText)
@@ -65,17 +58,6 @@ export const HoldingsTable = () => {
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} mb={4}>
           <Typography variant='h3' textAlign='center' component='div' flexGrow='1' gutterBottom mt={1}>Holdings</Typography>
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
-            {/* <Tooltip
-              title='Buy'
-              placement='left'
-              arrow
-              TransitionComponent={Fade}
-              TransitionProps={{ timeout: 800 }}
-            >
-              <Fab onClick={handleOpen} sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
-                <AddIcon />
-              </Fab>
-            </Tooltip> */}
             <BuyModal />
           </Box>
         </Box>
@@ -87,7 +69,6 @@ export const HoldingsTable = () => {
               <TableCell align='right'>Price</TableCell>
               <TableCell align='right'>Current Value</TableCell>
               <TableCell align='right'>Quantity</TableCell>
-              {/* <TableCell>Trade</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -113,17 +94,6 @@ export const HoldingsTable = () => {
                       TransitionProps={{ timeout: 800 }}
                     >
                       <SellModal />
-                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='action' /> */}
-                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='primary' /> */}
-                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='secondary' /> */}
-                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='error' /> */}
-                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='info' /> */}
-                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='success' /> */}
-                      {/* <SellIcon sx={{ cursor: 'pointer' }} color='warning' /> */}
-                      {/* <Button variant='text' color='success' size='small'>Sell</Button> */}
-                      {/* <Button variant='text' color='primary' size='small'>Sell</Button> */}
-                      {/* <Button variant='text' color='info' size='small'>Sell</Button> */}
-                      {/* <Button variant='text' color='warning' size='small'>Sell</Button> */}
                     </Tooltip>
                   </Box>
                 </TableRow>
