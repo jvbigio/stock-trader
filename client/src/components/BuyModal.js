@@ -44,7 +44,7 @@ export default function BuyModal () {
           <Typography id='modal-modal-title' variant='h6' component='h2' gutterBottom>
             Buy
           </Typography>
-          <Typography variant='subtitle2' textAlign='center' gutterBottom>Cash Available to Trade: ${50000}</Typography>
+          <Typography variant='subtitle2' textAlign='center' gutterBottom>Cash Available to Trade: ${100000.00}</Typography>
 
           <Box
             component='form'
