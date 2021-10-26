@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
-import { Modal, Box, Button, Typography, Fade, Fab, Tooltip, TextField } from '@mui/material'
+import { Modal, Box, Button, Typography, Fade, Tooltip, TextField } from '@mui/material'
 
-import SearchIcon from '@mui/icons-material/Search'
 import SellIcon from '@mui/icons-material/Sell'
 
 const style = {
