@@ -42,10 +42,12 @@ const Report = () => {
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240
+                // height: 240
+                height: 350
               }}
             >
               {/* Render Market activity chart here */}
+              <MarketActivityChart />
             </Paper>
           </Grid>
         </Grid>
