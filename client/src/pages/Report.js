@@ -30,7 +30,7 @@ const Report = () => {
                 height: 240
               }}
             >
-              {/* Render holdings value here */}
+              {/* Render holdings value  with pie chart here showing %'s */}
             </Paper>
           </Grid>
           {/* Market Activity */}
