@@ -43,6 +43,8 @@ export default function BuyModal () {
           <Typography id='modal-modal-title' variant='h6' component='h2' gutterBottom>
             Buy
           </Typography>
+          <Typography variant='subtitle2' textAlign='center' gutterBottom>Cash Available to Trade: ${100000.00}</Typography>
+
           <Box
             component='form'
             sx={{
@@ -56,8 +58,8 @@ export default function BuyModal () {
             noValidate
             autoComplete='off'
           >
-            <TextField id='stock-symbol' label='Symbol' variant='outlined' color='success' />
-            <TextField id='share-amount' label='Share Amount' variant='outlined' color='success' />
+            <TextField id='stock-symbol' label='Symbol' variant='outlined' color='success' helperText={`Last Price: $${36.64}`} />
+            <TextField id='share-amount' label='Share Amount' variant='outlined' color='success' helperText={`Estimated Value: $${7500.14}`} />
             <Button
               variant='contained'
               sx={{
