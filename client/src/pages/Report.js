@@ -1,5 +1,7 @@
 import React from 'react'
 
+import MarketActivityChart from '../components/MarketActivityChart'
+
 import { Container, Box, Paper, Grid, Typography } from '@mui/material'
 
 const Report = () => {
