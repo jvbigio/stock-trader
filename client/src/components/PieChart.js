@@ -11,12 +11,17 @@ const PieChart = () => {
         height='300px'
         chartType='PieChart'
         loader={<div>Loading Chart</div>}
+        // data={[
+        //   ['Asset Type', 'Asset Percentage Held'],
+        //   ['Domestic Stock', 11],
+        //   ['Foreign Stock', 5],
+        //   ['Bonds', 3],
+        //   ['Short Term', 2],
+        //   ['Cash', 7]
+        // ]}
         data={[
           ['Asset Type', 'Asset Percentage Held'],
-          ['Domestic Stock', 11],
-          ['Foreign Stock', 2],
-          ['Bonds', 2],
-          ['Short Term', 2],
+          ['Stock', 11],
           ['Cash', 7]
         ]}
         options={{
