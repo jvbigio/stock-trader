@@ -1,14 +1,17 @@
 import React from 'react'
 
-import MarketActivityChart from '../components/MarketActivityChart'
+import MarketActivityChart from '../components/DowActivityChart'
+import NasdaqActivityChart from '../components/NasdaqActivityChart'
+import SAndPActivityChart from '../components/SAndPActivityChart'
 
 import { Container, Box, Paper, Grid, Typography } from '@mui/material'
 
 const Report = () => {
   return (
     <>
-      <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
-        <Grid container spacing={3}>
+      {/* <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}> */}
+      <Container maxWidth='xl' sx={{ mt: 4, mb: 4 }}>
+        <Grid container spacing={2}>
           {/* Holdings Chart */}
           <Grid item xs={12} md={8} lg={9}>
             <Paper
@@ -35,8 +38,9 @@ const Report = () => {
               {/* Render holdings value  with pie chart here showing %'s */}
             </Paper>
           </Grid>
-          {/* Market Activity */}
-          <Grid item xs={12}>
+          {/* DJIA Activity */}
+          {/* <Grid item xs={12} md={12} lg={6}> */}
+          <Grid item xs={12} md={12} lg={4}>
             <Paper
               sx={{
                 p: 2,
@@ -48,6 +52,34 @@ const Report = () => {
             >
               {/* Render Market activity chart here */}
               <MarketActivityChart />
+            </Paper>
+          </Grid>
+          {/* NASDAQ Activity */}
+          {/* <Grid item xs={12} md={12} lg={6}> */}
+          <Grid item xs={12} md={12} lg={4}>
+            <Paper
+              sx={{
+                p: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                // height: 240
+                height: 350
+              }}
+            >
+              <NasdaqActivityChart />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={12} lg={4}>
+            <Paper
+              sx={{
+                p: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                // height: 240
+                height: 350
+              }}
+            >
+              <SAndPActivityChart />
             </Paper>
           </Grid>
         </Grid>

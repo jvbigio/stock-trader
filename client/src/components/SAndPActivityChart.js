@@ -2,31 +2,32 @@ import React from 'react'
 
 import { Chart } from 'react-google-charts'
 
-const MarketActivityChart = () => {
+const SAndPActivityChart = () => {
   return (
-    <div style={{ display: 'flex', maxWidth: 900 }}>
+    <div style={{ display: 'flex', maxWidth: 900, justifyContent: 'center' }}>
       <Chart
         // width={400}
         // width={900}
-        width={550}
+        width={450}
+        // width={350}
+        style={{ color: 'red' }}
         height='300px'
         chartType='AreaChart'
         loader={<div>Loading Chart</div>}
         data={[
-          ['Time', 'Index  Average'],
-          ['10A', 35812],
-          ['11A', 35861],
-          ['12P', 35834],
-          ['1P', 35749],
-          ['2P', 35791],
-          ['3P', 35839],
-          ['4P', 35754],
-          ['5P', 35756]
+          ['Time', 'Index  Avg'],
+          ['10A', 4587.14],
+          ['11A', 4594.97],
+          ['12P', 4585.22],
+          ['1P', 4575.72],
+          ['2P', 4579.68],
+          ['3P', 4583.93],
+          ['4P', 4574.47]
         ]}
         options={{
-          title: 'DJIA',
+          title: 'S&P 500',
           hAxis: { title: 'TUE', titleTextStyle: { color: '#333' } },
-          vAxis: { minValue: 35000 },
+          vAxis: { minValue: 4500 },
           // For the legend to fit, we make the chart area smaller
           // chartArea: { width: '50%', height: '70%' }
           chartArea: { width: '50%', height: '70%' }
@@ -37,4 +38,4 @@ const MarketActivityChart = () => {
   )
 }
 
-export default MarketActivityChart
+export default SAndPActivityChart
