@@ -14,11 +14,13 @@ const Report = () => {
       <Container maxWidth='xl' sx={{ mt: 4, mb: 4 }}>
         <Grid container spacing={2}>
           {/* Holdings Chart */}
-          <Grid item xs={12} md={8} lg={8}>
+          {/* <Grid item xs={12} md={8} lg={8}> */}
+          <Grid item xs={12} md={6} lg={8}>
             <Paper
               sx={{
                 p: 2,
                 display: 'flex',
+                // alignContent: 'center',
                 flexDirection: 'column',
                 // height: 240
                 height: 350
@@ -28,12 +30,16 @@ const Report = () => {
             </Paper>
           </Grid>
           {/* Total Value of holdings based on gains/losses, stocks percentages, or stocks vs cash? */}
-          <Grid item xs={12} md={4} lg={4}>
+          {/* <Grid item xs={12} md={4} lg={4}> */}
+          <Grid item xs={12} md={6} lg={4}>
             <Paper
               sx={{
-                p: 2,
+                p: 1,
                 display: 'flex',
+                flexWrap: 'wrap',
                 flexDirection: 'column',
+                alignContent: 'center',
+                alignItems: 'center',
                 // height: 240
                 height: 350
               }}

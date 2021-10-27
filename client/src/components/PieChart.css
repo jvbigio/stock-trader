@@ -1,0 +1,29 @@
+@media screen and (max-width: 1024px) {
+  .pie-chart {
+    /* max-width: 300px; */
+    /* max-width: 80%; */
+    /* margin-left: 50px; */
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .pie-chart {
+    max-width: 320px;
+    display: flex;
+    /* flex-shrink: 3; */
+    justify-content: center;
+    /* align-items: center; */
+    align-content: center;
+    /* margin-left: 40px; */
+  }
+}
+
+/* MUI breakpoints */
+/*
+Each breakpoint (a key) matches with a fixed screen width (a value): xs,
+extra-small: 0px sm,
+small: 600px md,
+medium: 900px lg,
+large: 1200px xl,
+extra-large: 1536px
+*/
