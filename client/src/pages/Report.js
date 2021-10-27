@@ -3,6 +3,7 @@ import React from 'react'
 import MarketActivityChart from '../components/DowActivityChart'
 import NasdaqActivityChart from '../components/NasdaqActivityChart'
 import SAndPActivityChart from '../components/SAndPActivityChart'
+import PieChart from '../components/PieChart'
 
 import { Container, Box, Paper, Grid, Typography } from '@mui/material'
 
@@ -13,29 +14,33 @@ const Report = () => {
       <Container maxWidth='xl' sx={{ mt: 4, mb: 4 }}>
         <Grid container spacing={2}>
           {/* Holdings Chart */}
-          <Grid item xs={12} md={8} lg={9}>
+          <Grid item xs={12} md={8} lg={8}>
             <Paper
               sx={{
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240
+                // height: 240
+                height: 350
               }}
             >
               {/* render chart  here */}
             </Paper>
           </Grid>
-          {/* Total Value of holdings based on gains/losses */}
-          <Grid item xs={12} md={4} lg={3}>
+          {/* Total Value of holdings based on gains/losses, stocks percentages, or stocks vs cash? */}
+          <Grid item xs={12} md={4} lg={4}>
             <Paper
               sx={{
                 p: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                height: 240
+                // height: 240
+                height: 350
               }}
             >
               {/* Render holdings value  with pie chart here showing %'s */}
+              <PieChart />
+              {/* MAYBE SHOW CASH/STOCK RATIO */}
             </Paper>
           </Grid>
           {/* DJIA Activity */}
