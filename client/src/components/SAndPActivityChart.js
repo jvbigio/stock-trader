@@ -28,6 +28,7 @@ const SAndPActivityChart = () => {
           title: 'S&P 500',
           hAxis: { title: 'TUE', titleTextStyle: { color: '#333' } },
           vAxis: { minValue: 4500 },
+          colors: ['green', '#004411'],
           // For the legend to fit, we make the chart area smaller
           // chartArea: { width: '50%', height: '70%' }
           chartArea: { width: '50%', height: '70%' }

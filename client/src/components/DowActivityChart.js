@@ -27,12 +27,12 @@ const DowActivityChart = () => {
           ['5P', 35756]
         ]}
         options={{
-          title: 'DJIA',
+          title: 'Dow Jones Industrial Average',
           hAxis: { title: 'TUE', titleTextStyle: { color: '#333' } },
           vAxis: { minValue: 35000 },
           // For the legend to fit, we make the chart area smaller
           // chartArea: { width: '50%', height: '70%' }
-          chartArea: { width: '50%', height: '70%' },
+          chartArea: { width: '50%', height: '70%' }
           // lineWidth: 25
           // annotations: {
           //   boxStyle: {
