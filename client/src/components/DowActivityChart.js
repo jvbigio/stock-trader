@@ -25,7 +25,7 @@ const DowActivityChart = () => {
         ]}
         options={{
           title: 'Dow Jones Industrial Average',
-          hAxis: { title: 'TUE', titleTextStyle: { color: '#333' } },
+          hAxis: { title: 'TUE, OCTOBER 27, 2021', titleTextStyle: { color: '#333' } },
           vAxis: { minValue: 35000 },
           chartArea: { width: '50%', height: '70%' }
         }}

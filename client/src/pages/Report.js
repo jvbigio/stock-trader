@@ -4,6 +4,7 @@ import MarketActivityChart from '../components/DowActivityChart'
 import NasdaqActivityChart from '../components/NasdaqActivityChart'
 import SAndPActivityChart from '../components/SAndPActivityChart'
 import PieChart from '../components/PieChart'
+import LineChart from '../components/LineChart'
 
 import { Container, Box, Paper, Grid, Typography } from '@mui/material'
 
@@ -26,7 +27,7 @@ const Report = () => {
                 height: 350
               }}
             >
-              {/* render chart  here */}
+              <LineChart />
             </Paper>
           </Grid>
           {/* Total Value of holdings based on gains/losses, stocks percentages, or stocks vs cash? */}
