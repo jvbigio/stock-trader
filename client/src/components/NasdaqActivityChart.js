@@ -6,11 +6,7 @@ const NasdaqActivityChart = () => {
   return (
     <div style={{ display: 'flex', maxWidth: 900, justifyContent: 'center' }}>
       <Chart
-        // width={400}
-        // width={900}
         width={450}
-        // width={350}
-        style={{ color: 'red' }}
         height='300px'
         chartType='AreaChart'
         loader={<div>Loading Chart</div>}
@@ -29,11 +25,7 @@ const NasdaqActivityChart = () => {
           hAxis: { title: 'TUE', titleTextStyle: { color: '#333' } },
           vAxis: { minValue: 15000 },
           colors: ['red', '#004411'],
-          // For the legend to fit, we make the chart area smaller
-          // chartArea: { width: '50%', height: '70%' }
           chartArea: { width: '50%', height: '70%' }
-          // color: '#368727'
-          // lineWidth: 25
         }}
       />
     </div>

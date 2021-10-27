@@ -8,10 +8,7 @@ const DowActivityChart = () => {
     <div style={{ display: 'flex', maxWidth: 900, justifyContent: 'center' }}>
       <Chart
         className='dow-chart'
-        // width={400}
-        // width={900}
         width={450}
-        // width={350}
         height='300px'
         chartType='AreaChart'
         loader={<div>Loading Chart</div>}
@@ -30,25 +27,7 @@ const DowActivityChart = () => {
           title: 'Dow Jones Industrial Average',
           hAxis: { title: 'TUE', titleTextStyle: { color: '#333' } },
           vAxis: { minValue: 35000 },
-          // For the legend to fit, we make the chart area smaller
-          // chartArea: { width: '50%', height: '70%' }
           chartArea: { width: '50%', height: '70%' }
-          // lineWidth: 25
-          // annotations: {
-          //   boxStyle: {
-          //     // Color of the box outline.
-          //     stroke: '#888',
-          //     // Thickness of the box outline.
-          //     strokeWidth: 1,
-          //     // x-radius of the corner curvature.
-          //     rx: 10,
-          //     // y-radius of the corner curvature.
-          //     ry: 10,
-          //     // Attributes for linear gradient fill.
-
-          //     }
-          //   }
-          // }
         }}
       />
     </div>
