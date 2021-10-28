@@ -32,8 +32,6 @@ const LineChart = () => {
             { type: 'date', label: 'Day' },
             'Current Balance'
           ],
-          // [new Date(2021, 9), 5000],
-          // [new Date(2021, 9), 6400]
           [new Date('2021-10-22'), 5000],
           [new Date('2021-10-23'), 6200],
           [new Date('2021-10-24'), 5900],
