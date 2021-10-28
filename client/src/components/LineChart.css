@@ -1,0 +1,5 @@
+@media screen and (max-width: 375px) {
+  .line-chart {
+    max-width: 320px;
+  }
+}

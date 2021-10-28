@@ -1,11 +1,14 @@
 import React from 'react'
 
+import './LineChart.css'
+
 import { Chart } from 'react-google-charts'
 
 const LineChart = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Chart
+        className='line-chart'
         // width='600px'
         width={900}
         // height='400px'

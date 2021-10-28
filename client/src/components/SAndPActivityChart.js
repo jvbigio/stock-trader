@@ -6,6 +6,7 @@ const SAndPActivityChart = () => {
   return (
     <div style={{ display: 'flex', maxWidth: 900, justifyContent: 'center' }}>
       <Chart
+        className='sp-chart'
         width={450}
         height='300px'
         chartType='AreaChart'
