@@ -21,6 +21,7 @@ import mobileTransaction from '../images/phone-transaction.jpg'
 import hand from '../images/hand.jpg'
 import work from '../images/work.jpg'
 import MarketTrends from '../images/stockMarketData.png'
+import nyse from '../images/nyse.png.jpg'
 
 const theme = createTheme()
 
