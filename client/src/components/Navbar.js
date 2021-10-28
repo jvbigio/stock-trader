@@ -34,6 +34,7 @@ const Navbar = () => {
       <AppBar position='static' sx={{ backgroundColor: '#368727' }}>
         <Toolbar>
           <Typography className='nav-title' variant='h5'>StoX</Typography>
+          {/* <Button className='nav-title' variant='text' size='large' color='inherit' disableRipple>StoX</Button> */}
           {isMatch
             ? <DrawerComponent />
             : (
