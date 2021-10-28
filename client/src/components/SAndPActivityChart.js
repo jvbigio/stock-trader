@@ -22,7 +22,7 @@ const SAndPActivityChart = () => {
         ]}
         options={{
           title: 'S&P 500',
-          hAxis: { title: 'TUE', titleTextStyle: { color: '#333' } },
+          hAxis: { title: 'TUE, OCTOBER 27, 2021', titleTextStyle: { color: '#333' } },
           vAxis: { minValue: 4500 },
           colors: ['green', '#004411'],
           chartArea: { width: '50%', height: '70%' }
