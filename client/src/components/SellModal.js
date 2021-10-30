@@ -16,10 +16,6 @@ const style = {
   p: 4
 }
 
-const tableIcons = {
-  Sell: forwardRef((props, ref) => <SellIcon {...props} ref={ref} />)
-}
-
 export default function BuyModal () {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -34,7 +30,6 @@ export default function BuyModal () {
         TransitionComponent={Fade}
         TransitionProps={{ timeout: 800 }}
       >
-        {/* orig icon way: */}
         <SellIcon onClick={handleOpen} sx={{ cursor: 'pointer' }} color='action' />
 
       </Tooltip>
