@@ -69,7 +69,7 @@ export const HoldingsTable = () => {
               <TableCell>Name</TableCell>
               <TableCell align='right'>Symbol</TableCell>
               <TableCell align='right'>Price</TableCell>
-              <TableCell align='right'>Current Value</TableCell>
+              <TableCell align='right'>Value</TableCell>
               <TableCell align='right'>Quantity</TableCell>
               <TableCell align='right'>Action</TableCell>
             </TableRow>
