@@ -35,6 +35,7 @@ export default function BuyModal () {
           <AddIcon />
         </Fab>
       </Tooltip>
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -62,6 +63,7 @@ export default function BuyModal () {
             <TextField id='share-amount' label='Share Amount' variant='outlined' color='success' helperText={`Estimated Value: $${7500.14}`} />
             <Button
               variant='contained'
+              // component='span'
               sx={{
                 backgroundColor: '#1373B4',
                 '&:hover': { backgroundColor: '#1976D2' },
