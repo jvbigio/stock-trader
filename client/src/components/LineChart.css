@@ -1,5 +1,32 @@
+/* Mobile  orig 375px */
 @media screen and (max-width: 375px) {
   .line-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* max-width: 320px; */
     max-width: 320px;
+  }
+}
+
+/* Tablet orig width 375px */
+@media screen and (min-width: 600px) {
+  .line-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* max-width: 320px; */
+    max-width: 620px;
+    /* min-width: 50%;
+    max-width: 75%; */
+  }
+}
+/* large screens */
+@media screen and (min-width: 992px) {
+  .line-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
   }
 }
