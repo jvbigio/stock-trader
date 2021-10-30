@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, forwardRef } from 'react'
 
 import { Modal, Box, Button, Typography, Fade, Tooltip, TextField } from '@mui/material'
 
@@ -14,6 +14,10 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4
+}
+
+const tableIcons = {
+  Sell: forwardRef((props, ref) => <SellIcon {...props} ref={ref} />)
 }
 
 export default function BuyModal () {
