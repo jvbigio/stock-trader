@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jvbigio/stock-trader#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "pg": "^8.7.1"
@@ -26,6 +27,6 @@
   "devDependencies": {
     "concurrently": "^6.2.1",
     "nodemon": "^2.0.12",
-    "standard": "^16.0.3"
+    "standard": "^16.0.4"
   }
 }
