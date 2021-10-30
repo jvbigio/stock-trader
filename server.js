@@ -17,6 +17,10 @@ app.get('/*', (req, res) => {
 
 // GET /search/{fragment}
 // GET /search/tsla
+
+/* IEX sandbox: https://sandbox.iexapis.com/stable/search/tsla?token=Tpk_3bc2802cc8fe46b6aff7cc63e23ca4fc
+*/
+
 const TSLA =
   [
     {
