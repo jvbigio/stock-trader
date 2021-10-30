@@ -69,6 +69,7 @@ export const HoldingsTable = () => {
               <TableCell align='right'>Price</TableCell>
               <TableCell align='right'>Current Value</TableCell>
               <TableCell align='right'>Quantity</TableCell>
+              <TableCell align='right'>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -85,19 +86,7 @@ export const HoldingsTable = () => {
                   <TableCell align='right'>${row.price}</TableCell>
                   <TableCell align='right'>${row.currentValue}</TableCell>
                   <TableCell align='right'>{row.quantity}</TableCell>
-                  {/* orig  - THIS IS THROWING ERROR ABOUT DIV CANNOT BE NESTED INSIDE TR */}
-                  <Box ml={2} component='div'>
-                    <Tooltip
-                      title='Sell'
-                      placement='right'
-                      arrow
-                      TransitionComponent={Fade}
-                      TransitionProps={{ timeout: 800 }}
-                    >
-                      <SellModal />
-                    </Tooltip>
-                  </Box>
-                  {/* <Button variant='text' color='info' size='small'>Sell</Button> */}
+                  <TableCell align='right'><SellModal /></TableCell>
                 </TableRow>
               ))}
           </TableBody>
