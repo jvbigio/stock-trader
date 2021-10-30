@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import {
   Box, Link, TableContainer, Table, TableBody, TableCell, TableHead,
   TableRow, TablePagination, Title, Paper, Typography, Button, Fab,
-  Tooltip, Fade
+  Tooltip, Fade, circularProgressClasses
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
@@ -19,7 +19,9 @@ import SellModal from './SellModal'
 function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
+// request dummy data from server here...
 
+// hardcoded table data
 const rows = [
   createData(0, 'AMC Entertainment Holdings Inc', 'AMC', 36.01, 1800.50, 50),
   createData(1, 'Alphabet Inc', 'GOOGL', 2727.13, 54542.60, 20),

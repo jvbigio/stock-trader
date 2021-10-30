@@ -18,7 +18,7 @@ const Navbar = () => {
     setValue(newValue)
     // setValue(e.target.value)
     // console.log(e.target.value)
-    console.log(e.currentTarget)
+    // console.log(e.currentTarget)
   }
 
   const handleBtnClick = () => {
