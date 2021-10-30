@@ -5,6 +5,8 @@ import './LineChart.css'
 import { Chart } from 'react-google-charts'
 
 const LineChart = () => {
+  const date = new Date('2021-10-22')
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Chart
@@ -16,7 +18,10 @@ const LineChart = () => {
         chartType='LineChart'
         loader={<div>Loading Chart</div>}
         // data={[
-        //   ['x', 'Current Balance'],
+        //   [
+        //     { type: 'number', label: 'Value' },
+        //     'Current Balance'
+        //   ],
         //   [0, 0],
         //   [1, 10],
         //   [2, 23],
@@ -30,6 +35,10 @@ const LineChart = () => {
         //   [10, 32],
         //   [11, 35]
         // ]}
+        // options={{
+        //   hAxis: {
+        //     title: 'Current Value'
+        //   },
         data={[
           [
             { type: 'date', label: 'Day' },
