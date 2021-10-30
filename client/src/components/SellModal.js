@@ -23,17 +23,15 @@ export default function BuyModal () {
 
   return (
     <>
-      {/* <Tooltip
+      <Tooltip
         title='Sell'
         placement='right'
         arrow
         TransitionComponent={Fade}
         TransitionProps={{ timeout: 800 }}
-      > */}
-      {/* orig icon way: */}
-      {/* <SellIcon onClick={handleOpen} sx={{ cursor: 'pointer' }} color='action' /> */}
-      {/* <SellIcon onClick={handleOpen} sx={{ cursor: 'pointer' }} color='action' /> */}
-      {/* </Tooltip> */}
+      >
+        <SellIcon onClick={handleOpen} sx={{ cursor: 'pointer' }} color='action' />
+      </Tooltip>
       <Modal
         open={open}
         onClose={handleClose}
