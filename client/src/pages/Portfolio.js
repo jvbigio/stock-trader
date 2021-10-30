@@ -3,7 +3,7 @@ import './Portfolio.css'
 import { HoldingsTable } from '../components/HoldingsTable'
 
 import { Grid, Paper, Container, Box } from '@mui/material'
-import BuyModal from '../components/BuyModal'
+// import BuyModal from '../components/BuyModal'
 
 const Portfolio = () => {
   return (

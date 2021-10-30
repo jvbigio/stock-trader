@@ -71,6 +71,7 @@ export const HoldingsTable = () => {
               <TableCell align='right'>Price</TableCell>
               <TableCell align='right'>Current Value</TableCell>
               <TableCell align='right'>Quantity</TableCell>
+              <TableCell align='right'>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -87,17 +88,7 @@ export const HoldingsTable = () => {
                   <TableCell align='right'>${row.price}</TableCell>
                   <TableCell align='right'>${row.currentValue}</TableCell>
                   <TableCell align='right'>{row.quantity}</TableCell>
-                  <Box ml={2}>
-                    <Tooltip
-                      title='Sell'
-                      placement='right'
-                      arrow
-                      TransitionComponent={Fade}
-                      TransitionProps={{ timeout: 800 }}
-                    >
-                      <SellModal />
-                    </Tooltip>
-                  </Box>
+                  <TableCell align='right'><SellModal /></TableCell>
                 </TableRow>
               ))}
           </TableBody>

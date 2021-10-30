@@ -31,7 +31,6 @@ export default function BuyModal () {
         TransitionProps={{ timeout: 800 }}
       >
         <SellIcon onClick={handleOpen} sx={{ cursor: 'pointer' }} color='action' />
-
       </Tooltip>
       <Modal
         open={open}
