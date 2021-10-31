@@ -2,10 +2,28 @@ import React, { useState } from 'react'
 import './Portfolio.css'
 import { HoldingsTable } from '../components/HoldingsTable'
 
+import axios from 'axios'
+
 import { Grid, Paper, Container, Box } from '@mui/material'
 // import BuyModal from '../components/BuyModal'
 
 const Portfolio = () => {
+  const [input, setInput] = useState('')
+
+  // console.log(e.currentTarget)
+  const getUserInput = e => setInput(e.target.value)
+
+  const handleSearch = async (e) => {
+    e.preventDefault()
+
+    try {
+      const response = await axios.get('/api/stocks/buy')
+      console.log(response)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
       <Box

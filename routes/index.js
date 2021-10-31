@@ -100,4 +100,8 @@ const TSLA =
     }
   ]
 
+router.get('/stocks/buy', async (req, res) => {
+  res.send('Request Received!')
+})
+
 module.exports = router
