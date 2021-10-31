@@ -100,7 +100,8 @@ const TSLA =
     }
   ]
 
-router.get('/stocks/buy', async (req, res) => {
+// router.get('/stocks/buy', async (req, res) => {
+router.get('/portfolio', async (req, res) => {
   res.send('Request Received!')
 })
 

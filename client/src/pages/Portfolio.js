@@ -15,14 +15,18 @@ const Portfolio = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault()
-
+    console.log('worked')
     try {
-      const response = await axios.get('/api/stocks/buy')
-      console.log(response)
+      // const response = await axios.get('/api/stocks/buy')
+      const response = await axios.get('/api/portfolio')
+      console.log(response.data)
     } catch (error) {
       console.error(error)
     }
   }
+
+  // testing in postman
+  // handleSearch()
 
   return (
     <Box sx={{ display: 'flex' }}>
