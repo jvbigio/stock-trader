@@ -103,7 +103,15 @@ const Home = () => {
             </Typography>
             {/* testing video embed */}
             {/* <iframe width={500} height={350} src='https://www.youtube.com/embed/y7iVTTH5tOA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen /> */}
-            <iframe width='500px' height={350} src='https://www.youtube.com/embed/y7iVTTH5tOA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen />
+            <iframe
+              width={500}
+              height={350}
+              src='https://www.youtube.com/embed/y7iVTTH5tOA'
+              title='YouTube video player'
+              frameborder='0'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              allowfullscreen
+            />
           </Paper>
         </Box>
       </Box>
