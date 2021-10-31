@@ -103,7 +103,7 @@ const Home = () => {
             </Typography>
             {/* testing video embed */}
             {/* <iframe width={500} height={350} src='https://www.youtube.com/embed/y7iVTTH5tOA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen /> */}
-            <iframe
+            {/* <iframe
               width={500}
               height={350}
               src='https://www.youtube.com/embed/y7iVTTH5tOA'
@@ -111,7 +111,19 @@ const Home = () => {
               frameborder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
               allowfullscreen
-            />
+            /> */}
+            {/* or as link: */}
+            <a href='https://www.youtube.com/embed/y7iVTTH5tOA' target='_blank' rel='noreferrer' onClick={() => window.open('https://www.youtube.com/embed/y7iVTTH5tOA', '_blank')}>
+              <iframe
+                width={500}
+                height={350}
+                src='https://www.youtube.com/embed/y7iVTTH5tOA'
+                title='YouTube video player'
+                frameborder='0'
+                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                allowfullscreen
+              />
+            </a>
           </Paper>
         </Box>
       </Box>
