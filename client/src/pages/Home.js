@@ -94,10 +94,16 @@ const Home = () => {
         </CardContent>
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <ExpandMoreIcon />
-          <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 250, width: 500, mt: 5 }} elevation={0}>
-            <Typography variant='body2' align='center' flexDirection='column' pt={2}>
-              Add content here...
+          {/* original */}
+          {/* <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 250, width: 500, mt: 5 }} elevation={0}> */}
+          <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 350, width: 500, mt: 5 }} elevation={11}>
+            {/* <Typography variant='body2' align='center' flexDirection='column' pt={2}> */}
+            <Typography variant='body2' align='center' flexDirection='column'>
+              {/* Add content here... */}
             </Typography>
+            {/* testing video embed */}
+            {/* <iframe width={500} height={350} src='https://www.youtube.com/embed/y7iVTTH5tOA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen /> */}
+            <iframe width='500px' height={350} src='https://www.youtube.com/embed/y7iVTTH5tOA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen />
           </Paper>
         </Box>
       </Box>
