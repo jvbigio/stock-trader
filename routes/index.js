@@ -102,8 +102,11 @@ const TSLA =
 
 // router.get('/stocks/buy', async (req, res) => {
 router.get('/portfolio', async (req, res) => {
-  const response = await res.send('HELLO')
-  console.log(response)
+  // works but sends a bunch of data back on terminal.. errors?
+  // const response = await res.send('HELLO')
+  // console.log(response)
+  // OR
+  await res.send(TSLA) // works
 })
 
 module.exports = router
