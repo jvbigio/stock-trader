@@ -49,8 +49,7 @@ export const HoldingsTable = ({ handleSearch }) => {
     // console.log(e.currentTarget)
 
     try {
-      // const response = await axios.get('/api/stocks/buy')
-      const response = await axios.get('/api/portfolio')
+      const response = await axios.get('/api/stocks/buy')
       console.log(response.data)
     } catch (error) {
       console.error(error)

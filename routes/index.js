@@ -100,8 +100,7 @@ const TSLA =
     }
   ]
 
-// router.get('/stocks/buy', async (req, res) => {
-router.get('/portfolio', async (req, res) => {
+router.get('/stocks/buy', async (req, res) => {
   // works but sends a bunch of data back on terminal.. errors?
   // const response = await res.send('HELLO')
   // console.log(response)
