@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import axios from 'axios'
+
 import {
   Box, Link, TableContainer, Table, TableBody, TableCell, TableHead,
   TableRow, TablePagination, Title, Paper, Typography, Button, Fab,
@@ -36,13 +38,23 @@ const rows = [
   createData(10, 'AMAZONCOM INC', 'AMZN', 3261.01, 32610.10, 10)
 ]
 
-export const HoldingsTable = () => {
+export const HoldingsTable = ({ handleSearch }) => {
   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
+    // both work:
     // console.log(e.target.innerText)
+    // console.log(e.currentTarget)
+
+    try {
+      // const response = await axios.get('/api/stocks/buy')
+      const response = await axios.get('/api/portfolio')
+      console.log(response.data)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const handleChangePage = (e, newPage) => {
@@ -81,7 +93,9 @@ export const HoldingsTable = () => {
                 <TableRow
                   key={row.id}
                   hover
-                  onClick={(e) => handleClick(e, row.name)}
+                  // returns data in table:
+                  // onClick={(e) => handleClick(e, row.name)}
+                  onClick={handleClick}
                 >
                   <TableCell>{row.name}</TableCell>
                   <TableCell align='right'>{row.symbol}</TableCell>

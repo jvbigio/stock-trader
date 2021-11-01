@@ -95,11 +95,14 @@ const Home = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <ExpandMoreIcon />
           {/* original */}
-          {/* <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 250, width: 500, mt: 5 }} elevation={0}> */}
-          <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 350, width: 500, mt: 5 }} elevation={11}>
-            {/* <Typography variant='body2' align='center' flexDirection='column' pt={2}> */}
-            <Typography variant='body2' align='center' flexDirection='column'>
-              {/* Add content here... */}
+          <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 250, width: 500, mt: 5 }} elevation={0}>
+            {/* Good option for embedded video: */}
+            {/* <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 350, width: 500, mt: 5 }} elevation={11}> */}
+            <Typography variant='body2' align='center' flexDirection='column' pt={2}>
+
+              {/* embedded video typography: */}
+              {/* <Typography variant='body2' align='center' flexDirection='column'> */}
+              Add content here...
             </Typography>
             {/* testing video embed */}
             {/* <iframe width={500} height={350} src='https://www.youtube.com/embed/y7iVTTH5tOA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen /> */}
@@ -113,7 +116,7 @@ const Home = () => {
               allowfullscreen
             /> */}
             {/* or as link: */}
-            <a href='https://www.youtube.com/embed/y7iVTTH5tOA' target='_blank' rel='noreferrer' onClick={() => window.open('https://www.youtube.com/embed/y7iVTTH5tOA', '_blank')}>
+            {/* <a href='https://www.youtube.com/embed/y7iVTTH5tOA' target='_blank' rel='noreferrer' onClick={() => window.open('https://www.youtube.com/embed/y7iVTTH5tOA', '_blank')}>
               <iframe
                 width={500}
                 height={350}
@@ -123,7 +126,7 @@ const Home = () => {
                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                 allowfullscreen
               />
-            </a>
+            </a> */}
           </Paper>
         </Box>
       </Box>

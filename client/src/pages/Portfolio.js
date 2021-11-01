@@ -4,7 +4,7 @@ import { HoldingsTable } from '../components/HoldingsTable'
 
 import axios from 'axios'
 
-import { Grid, Paper, Container, Box } from '@mui/material'
+import { Grid, Paper, Container, Box, circularProgressClasses } from '@mui/material'
 // import BuyModal from '../components/BuyModal'
 
 const Portfolio = () => {
@@ -14,19 +14,16 @@ const Portfolio = () => {
   const getUserInput = e => setInput(e.target.value)
 
   const handleSearch = async (e) => {
-    e.preventDefault()
-    console.log('worked')
-    try {
-      // const response = await axios.get('/api/stocks/buy')
-      const response = await axios.get('/api/portfolio')
-      console.log(response.data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+    // e.preventDefault()
+    console.log(e.target.value)
 
-  // testing in postman
-  // handleSearch()
+    // try {
+    //   const response = await axios.get('/api/stocks/buy')
+    //   console.log(response.data)
+    // } catch (error) {
+    //   console.error(error)
+    // }
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
