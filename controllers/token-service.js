@@ -1,10 +1,10 @@
 const axios = require('axios')
 require('dotenv').config()
 
-const getAccessToken = () => {
+const getBearerToken = () => {
   // code here
 }
 
 module.exports = {
-  getAccessToken
+  getBearerToken
 }
