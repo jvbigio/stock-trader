@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
-import { Modal, Box, Button, Typography, Fade, Fab, Tooltip, TextField } from '@mui/material'
+import {
+  Modal,
+  Box,
+  Button,
+  Typography,
+  Fade,
+  Fab,
+  Tooltip,
+  TextField
+} from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
 import SearchIcon from '@mui/icons-material/Search'
@@ -17,11 +27,16 @@ const style = {
   p: 4
 }
 
-export default function BuyModal () {
+export default function BuyModal() {
   const [open, setOpen] = useState(false)
+  const [input, setInput] = useState('')
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
+  const getUserInput = e => {
+    setInput(e.target.value)
+    console.log(input) // abc => returns ab
+  }
   return (
     <>
       <Tooltip
@@ -31,20 +46,32 @@ export default function BuyModal () {
         TransitionComponent={Fade}
         TransitionProps={{ timeout: 800 }}
       >
-        <Fab onClick={handleOpen} sx={{ backgroundColor: '#1373B4', '&:hover': { backgroundColor: '#1976D2' }, color: '#FFF' }} aria-label='add'>
+        <Fab
+          onClick={handleOpen}
+          sx={{
+            backgroundColor: '#1373B4',
+            '&:hover': { backgroundColor: '#1976D2' },
+            color: '#FFF'
+          }}
+          aria-label='add'
+        >
           <AddIcon />
         </Fab>
       </Tooltip>
 
-      <Modal
-        open={open}
-        onClose={handleClose}
-      >
+      <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Typography id='modal-modal-title' variant='h6' component='h2' gutterBottom>
+          <Typography
+            id='modal-modal-title'
+            variant='h6'
+            component='h2'
+            gutterBottom
+          >
             Buy
           </Typography>
-          <Typography variant='subtitle2' textAlign='center' gutterBottom>Cash Available to Trade: ${100000.00}</Typography>
+          <Typography variant='subtitle2' textAlign='center' gutterBottom>
+            Cash Available to Trade: ${100000.0}
+          </Typography>
 
           <Box
             component='form'
@@ -59,11 +86,24 @@ export default function BuyModal () {
             noValidate
             autoComplete='off'
           >
-            <TextField id='stock-symbol' label='Symbol' variant='outlined' color='success' helperText={`Last Price: $${36.64}`} />
-            <TextField id='share-amount' label='Share Amount' variant='outlined' color='success' helperText={`Estimated Value: $${7500.14}`} />
+            <TextField
+              id='stock-symbol'
+              label='Symbol'
+              variant='outlined'
+              color='success'
+              helperText={`Last Price: $${36.64}`}
+              value={input}
+              onChange={getUserInput}
+            />
+            <TextField
+              id='share-amount'
+              label='Share Amount'
+              variant='outlined'
+              color='success'
+              helperText={`Estimated Value: $${7500.14}`}
+            />
             <Button
               variant='contained'
-              // component='span'
               sx={{
                 backgroundColor: '#1373B4',
                 '&:hover': { backgroundColor: '#1976D2' },
