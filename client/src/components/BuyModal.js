@@ -37,6 +37,7 @@ export default function BuyModal() {
     setInput(e.target.value)
     console.log(input) // abc => returns ab
   }
+
   return (
     <>
       <Tooltip
