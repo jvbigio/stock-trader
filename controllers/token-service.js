@@ -1,10 +1,10 @@
 const axios = require('axios')
 require('dotenv').config()
 
-const getBearerToken = () => {
-  // code here
+const getAccessToken = () => {
+  const token = process.env.API_SANDBOX_KEY
 }
 
 module.exports = {
-  getBearerToken
+  getAccessToken
 }

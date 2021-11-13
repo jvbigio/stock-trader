@@ -17,8 +17,10 @@ https://sandbox.iexapis.com/stable/ref-data/symbols?token=<API_KEY>
 
 */
 
-router.get('/stocks/buy', (req, res) => {
-  res.send(dummyData) // works
+router.get('/stocks/buy', async (req, res) => {
+  // res.send(dummyData) // works
+  const token = await tokenService.getAccessToken()
+  const URL = `https://sandbox.iexapis.com/stable/stock/${input}/quotetoken=?${token}`
 })
 
 // router.get('/stocks/buy', async (req, res) => {
