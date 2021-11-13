@@ -28,17 +28,22 @@ const style = {
 
 export default function BuyModal() {
   const [open, setOpen] = useState(false)
-  const [input, setInput] = useState('')
+  const [inputs, setInputs] = useState({})
+  const [submitDisabled, setSubmitDisabled] = useState(true)
+
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   const getUserInput = e => {
-    e.preventDefault()
-    setInput(e.target.value)
-    console.log(input) // abc => returns ab
+    const submitValid = inputs.stockSymbol && inputs.shareAmount
+    setSubmitDisabled(!submitValid)
+    setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
 
-  // useEffect(() => {}, [input])
+  const handleSubmit = async e => {
+    e.preventDefault()
+    console.log(inputs.stockSymbol, inputs.shareAmount)
+  }
 
   return (
     <>
@@ -88,6 +93,7 @@ export default function BuyModal() {
             maxWidth='md'
             noValidate
             autoComplete='off'
+            // onSubmit={handleSubmit} // not working
           >
             <TextField
               id='stock-symbol'
@@ -95,7 +101,8 @@ export default function BuyModal() {
               variant='outlined'
               color='success'
               helperText={`Last Price: $${36.64}`}
-              value={input}
+              name='stockSymbol'
+              value={inputs.stockSymbol || ''}
               onChange={getUserInput}
             />
             <TextField
@@ -104,8 +111,13 @@ export default function BuyModal() {
               variant='outlined'
               color='success'
               helperText={`Estimated Value: $${7500.14}`}
+              name='shareAmount'
+              value={inputs.shareAmount || ''}
+              onChange={getUserInput}
             />
             <Button
+              disabled={submitDisabled}
+              onClick={handleSubmit} // works
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',
