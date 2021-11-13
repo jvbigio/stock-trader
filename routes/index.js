@@ -6,8 +6,16 @@ require('dotenv').config()
 
 const router = express.Router()
 
-/* IEX sandbox: https://sandbox.iexapis.com/stable/search/tsla?token=Tpk_3bc2802cc8fe46b6aff7cc63e23ca4fc
- */
+/*
+IEX sandbox:
+
+https://sandbox.iexapis.com/stable/search/tsla?token=<API_KEY>
+
+https://sandbox.iexapis.com/stable/stock/aapl/quote?token=<API_KEY>
+
+https://sandbox.iexapis.com/stable/ref-data/symbols?token=<API_KEY>
+
+*/
 
 router.get('/stocks/buy', (req, res) => {
   res.send(dummyData) // works
