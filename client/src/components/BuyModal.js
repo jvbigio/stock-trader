@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import {
@@ -13,7 +13,6 @@ import {
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
-import SearchIcon from '@mui/icons-material/Search'
 
 const style = {
   position: 'absolute',
@@ -34,9 +33,12 @@ export default function BuyModal() {
   const handleClose = () => setOpen(false)
 
   const getUserInput = e => {
+    e.preventDefault()
     setInput(e.target.value)
     console.log(input) // abc => returns ab
   }
+
+  // useEffect(() => {}, [input])
 
   return (
     <>
