@@ -9,7 +9,8 @@ import {
   Fade,
   Fab,
   Tooltip,
-  TextField
+  TextField,
+  FormControl
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
@@ -26,7 +27,7 @@ const style = {
   p: 4
 }
 
-export default function BuyModal() {
+export default function BuyModal () {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [submitDisabled, setSubmitDisabled] = useState(true)
@@ -66,8 +67,8 @@ export default function BuyModal() {
           <AddIcon />
         </Fab>
       </Tooltip>
-
       <Modal open={open} onClose={handleClose}>
+        {/* <form onSubmit={handleSubmit}> */}
         <Box sx={style}>
           <Typography
             id='modal-modal-title'
@@ -80,8 +81,9 @@ export default function BuyModal() {
           <Typography variant='subtitle2' textAlign='center' gutterBottom>
             Cash Available to Trade: ${100000.0}
           </Typography>
-
           <Box
+            autoComplete='off'
+            // onSubmit={handleSubmit} // not working
             component='form'
             sx={{
               '& > :not(style)': { m: 1, width: '25ch' },
@@ -92,8 +94,6 @@ export default function BuyModal() {
             }}
             maxWidth='md'
             noValidate
-            autoComplete='off'
-            // onSubmit={handleSubmit} // not working
           >
             <TextField
               id='stock-symbol'
@@ -117,7 +117,7 @@ export default function BuyModal() {
             />
             <Button
               disabled={submitDisabled}
-              onClick={handleSubmit} // works
+              onClick={handleSubmit}
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',
@@ -129,6 +129,7 @@ export default function BuyModal() {
             </Button>
           </Box>
         </Box>
+        {/* </form> */}
       </Modal>
     </>
   )
