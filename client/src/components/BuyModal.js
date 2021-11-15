@@ -27,7 +27,7 @@ const style = {
   p: 4
 }
 
-export default function BuyModal () {
+export default function BuyModal() {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [submitDisabled, setSubmitDisabled] = useState(true)
@@ -44,6 +44,16 @@ export default function BuyModal () {
   const handleSubmit = async e => {
     e.preventDefault()
     console.log(inputs.stockSymbol, inputs.shareAmount)
+    // send input to backend routes
+    // https://cloud.iexapis.com/stable/stock/aapl/quote?token=YOUR_TOKEN_HERE
+    // const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+    try {
+      return await axios.get(
+        `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+      )
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (

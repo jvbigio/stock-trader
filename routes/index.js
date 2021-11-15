@@ -20,7 +20,21 @@ https://sandbox.iexapis.com/stable/ref-data/symbols?token=<API_KEY>
 router.get('/stocks/buy', async (req, res) => {
   // res.send(dummyData) // works
   const token = await tokenService.getAccessToken()
-  // const URL = `https://sandbox.iexapis.com/stable/stock/${input}/quotetoken=?${token}`
+  // const URL = `https://sandbox.iexapis.com/stable/stock/${input}/quote?token=?${token}`
+  const URL = 'https://sandbox.iexapis.com/stable/stock'
+
+  const config = {
+    params: {
+      q: req.query.stock_symbol
+    }
+  }
+  axios
+    .get(URL, config)
+    .then(response => res.send(response.data))
+    .catch(error => {
+      console.error(error)
+      res.sendStatus(500).send(error)
+    })
 })
 
 // router.get('/stocks/buy', async (req, res) => {
