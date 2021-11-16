@@ -27,7 +27,7 @@ const style = {
   p: 4
 }
 
-export default function BuyModal () {
+export default function BuyModal() {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
@@ -44,7 +44,7 @@ export default function BuyModal () {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    console.log(inputs.stockSymbol, inputs.shareAmount)
+    // console.log(inputs.stockSymbol, inputs.shareAmount) // works
     // send input to backend routes
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     try {
@@ -53,6 +53,7 @@ export default function BuyModal () {
     } catch (err) {
       console.error(err)
     }
+    setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
   return (
