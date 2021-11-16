@@ -18,17 +18,19 @@ https://sandbox.iexapis.com/stable/ref-data/symbols?token=<API_KEY>
 */
 
 router.get('/stocks/buy', async (req, res) => {
-  const token = await tokenService.getAccessToken()
+  // const token = await tokenService.getAccessToken()
+  const token = process.env.API_SANDBOX_KEY
 
-  const URL = `https://sandbox.iexapis.com/stable/stock/${stock_symbol}/quote?token=${token}`
-
-  axios
-    .get(URL)
-    .then(response => res.send(response.data))
-    .catch(error => {
-      console.error(error)
-      res.sendStatus(500).send(error)
-    })
+  try {
+    const response = await axios.get(
+      `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
+    )
+    console.log(response.data)
+    res.send(response.data)
+  } catch (err) {
+    console.error(err)
+    res.sendStatus(500).send(err)
+  }
 })
 
 module.exports = router
