@@ -27,7 +27,7 @@ const style = {
   p: 4
 }
 
-export default function BuyModal() {
+export default function BuyModal () {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
@@ -53,6 +53,7 @@ export default function BuyModal() {
     } catch (err) {
       console.error(err)
     }
+    // console.log(inputs) // works
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
