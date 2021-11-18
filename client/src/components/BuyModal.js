@@ -53,7 +53,6 @@ export default function BuyModal () {
     } catch (err) {
       console.error(err)
     }
-    // console.log(inputs) // works
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
