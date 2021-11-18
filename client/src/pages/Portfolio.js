@@ -1,14 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Portfolio.css'
 import { HoldingsTable } from '../components/HoldingsTable'
 
 import { Grid, Paper, Container, Box } from '@mui/material'
 
 const Portfolio = () => {
-  // testing moving modal state here
-  const [inputs, setInputs] = useState({})
-  const [stockData, setStockData] = useState({})
-
   return (
     <Box sx={{ display: 'flex' }}>
       <Box
@@ -26,7 +22,7 @@ const Portfolio = () => {
         <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
           <Grid item xs={12}>
             <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-              <HoldingsTable inputs={inputs} stockData={stockData} getUserInput={getUserInput} />
+              <HoldingsTable />
             </Paper>
           </Grid>
         </Container>

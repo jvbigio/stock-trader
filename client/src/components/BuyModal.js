@@ -29,20 +29,20 @@ const style = {
 
 export default function BuyModal () {
   const [open, setOpen] = useState(false)
-  // const [inputs, setInputs] = useState({})
-  // const [stockData, setStockData] = useState({})
+  const [inputs, setInputs] = useState({})
+  const [stockData, setStockData] = useState({})
   const [submitDisabled, setSubmitDisabled] = useState(true)
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  // const getUserInput = e => {
-  //   const submitValid = inputs.stockSymbol && inputs.shareAmount
-  //   setSubmitDisabled(!submitValid)
-  //   setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
-  // }
+  const getUserInput = e => {
+    const submitValid = inputs.stockSymbol && inputs.shareAmount
+    setSubmitDisabled(!submitValid)
+    setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
+  }
 
-  const handleSubmit = async e => {h
+  const handleSubmit = async e => {
     e.preventDefault()
     // console.log(inputs.stockSymbol, inputs.shareAmount) // works
     // send input to backend routes
