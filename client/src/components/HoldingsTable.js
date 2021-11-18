@@ -39,6 +39,7 @@ export const HoldingsTable = ({ handleSearch }) => {
   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  
   const handleClick = e => {
     // both work:
     // console.log(e.target.innerText)
@@ -98,9 +99,7 @@ export const HoldingsTable = ({ handleSearch }) => {
                 <TableRow
                   key={row.id}
                   hover
-                  // returns data in table:
                   onClick={e => handleClick(e, row.name)}
-                  // onClick={handleClick}
                 >
                   <TableCell>{row.name}</TableCell>
                   <TableCell align='right'>{row.symbol}</TableCell>

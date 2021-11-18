@@ -42,7 +42,7 @@ export default function BuyModal () {
   //   setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   // }
 
-  const handleSubmit = async e => {h
+  const handleSubmit = async e => {
     e.preventDefault()
     // console.log(inputs.stockSymbol, inputs.shareAmount) // works
     // send input to backend routes

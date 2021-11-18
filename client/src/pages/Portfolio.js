@@ -5,7 +5,6 @@ import { HoldingsTable } from '../components/HoldingsTable'
 import { Grid, Paper, Container, Box } from '@mui/material'
 
 const Portfolio = () => {
-  // testing moving modal state here
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
 
