@@ -2,35 +2,19 @@ import React, { useState } from 'react'
 import './Portfolio.css'
 import { HoldingsTable } from '../components/HoldingsTable'
 
-import axios from 'axios'
-
-import { Grid, Paper, Container, Box, circularProgressClasses } from '@mui/material'
-// import BuyModal from '../components/BuyModal'
+import { Grid, Paper, Container, Box } from '@mui/material'
 
 const Portfolio = () => {
-  const [input, setInput] = useState('')
-
-  // console.log(e.currentTarget)
-  const getUserInput = e => setInput(e.target.value)
-
-  const handleSearch = async (e) => {
-    // e.preventDefault()
-    console.log(e.target.value)
-
-    // try {
-    //   const response = await axios.get('/api/stocks/buy')
-    //   console.log(response.data)
-    // } catch (error) {
-    //   console.error(error)
-    // }
-  }
+  // testing moving modal state here
+  const [inputs, setInputs] = useState({})
+  const [stockData, setStockData] = useState({})
 
   return (
     <Box sx={{ display: 'flex' }}>
       <Box
         component='main'
         sx={{
-          backgroundColor: (theme) =>
+          backgroundColor: theme =>
             theme.palette.mode === 'light'
               ? theme.palette.grey[100]
               : theme.palette.grey[900],
@@ -42,7 +26,7 @@ const Portfolio = () => {
         <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
           <Grid item xs={12}>
             <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-              <HoldingsTable />
+              <HoldingsTable inputs={inputs} stockData={stockData} getUserInput={getUserInput} />
             </Paper>
           </Grid>
         </Container>

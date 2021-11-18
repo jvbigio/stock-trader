@@ -14,22 +14,13 @@ import {
   Typography
 } from '@mui/material'
 
-// import AddIcon from '@mui/icons-material/Add'
-// import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
-// import SellIcon from '@mui/icons-material/Sell'
-// import RemoveIcon from '@mui/icons-material/Remove'
-// import MonetizationOnIcon from '@mui/icons-material/MonetizationOn'
-// import MonetizationOn from '@mui/icons-material/MonetizationOn'
-
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
 function createData(id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
-// request dummy data from server here...
 
-// hardcoded table data
 const rows = [
   createData(0, 'AMC Entertainment Holdings Inc', 'AMC', 36.01, 1800.5, 50),
   createData(1, 'Alphabet Inc', 'GOOGL', 2727.13, 54542.6, 20),
@@ -48,18 +39,10 @@ export const HoldingsTable = ({ handleSearch }) => {
   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-
   const handleClick = e => {
     // both work:
-    console.log(e.target.innerText)
+    // console.log(e.target.innerText)
     // console.log(e.currentTarget)
-
-    // try {
-    //   const response = await axios.get('/api/stocks/buy')
-    //   console.log(response.data)
-    // } catch (error) {
-    //   console.error(error)
-    // }
   }
 
   const handleChangePage = (e, newPage) => {

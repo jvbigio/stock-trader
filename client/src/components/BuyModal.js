@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 import {
@@ -29,20 +29,20 @@ const style = {
 
 export default function BuyModal () {
   const [open, setOpen] = useState(false)
-  const [inputs, setInputs] = useState({})
-  const [stockData, setStockData] = useState({})
+  // const [inputs, setInputs] = useState({})
+  // const [stockData, setStockData] = useState({})
   const [submitDisabled, setSubmitDisabled] = useState(true)
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const getUserInput = e => {
-    const submitValid = inputs.stockSymbol && inputs.shareAmount
-    setSubmitDisabled(!submitValid)
-    setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
-  }
+  // const getUserInput = e => {
+  //   const submitValid = inputs.stockSymbol && inputs.shareAmount
+  //   setSubmitDisabled(!submitValid)
+  //   setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
+  // }
 
-  const handleSubmit = async e => {
+  const handleSubmit = async e => {h
     e.preventDefault()
     // console.log(inputs.stockSymbol, inputs.shareAmount) // works
     // send input to backend routes
@@ -54,8 +54,11 @@ export default function BuyModal () {
       console.error(err)
     }
     // console.log(inputs) // works
+    // console.log(iexClose, `Quantity: ${inputs.shareAmount}`)
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
+
+  // console.log(stockData.iexClose)  // works
 
   return (
     <>
@@ -79,7 +82,6 @@ export default function BuyModal () {
         </Fab>
       </Tooltip>
       <Modal open={open} onClose={handleClose}>
-        {/* <form onSubmit={handleSubmit}> not working */}
         <Box sx={style}>
           <Typography
             id='modal-modal-title'
@@ -94,7 +96,6 @@ export default function BuyModal () {
           </Typography>
           <Box
             autoComplete='off'
-            // onSubmit={handleSubmit} // not working
             component='form'
             sx={{
               '& > :not(style)': { m: 1, width: '25ch' },
@@ -140,7 +141,6 @@ export default function BuyModal () {
             </Button>
           </Box>
         </Box>
-        {/* </form> */}
       </Modal>
     </>
   )
