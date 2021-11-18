@@ -10,7 +10,6 @@ import {
   Fab,
   Tooltip,
   TextField,
-  FormControl
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
@@ -44,8 +43,6 @@ export default function BuyModal () {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // console.log(inputs.stockSymbol, inputs.shareAmount) // works
-    // send input to backend routes
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     try {
       const response = await axios.get(buyStockUrl)
@@ -53,8 +50,7 @@ export default function BuyModal () {
     } catch (err) {
       console.error(err)
     }
-    // console.log(inputs) // works
-    // console.log(iexClose, `Quantity: ${inputs.shareAmount}`)
+    // console.log(iexClose, `Quantity: ${inputs.shareAmount}`) // works
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
