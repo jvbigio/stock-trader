@@ -1,7 +1,7 @@
 const express = require('express')
 const axios = require('axios').default
 const tokenService = require('../controllers/token-service')
-const dummyData = require('../DummyData')
+// const dummyData = require('../DummyData')
 require('dotenv').config()
 
 const router = express.Router()
