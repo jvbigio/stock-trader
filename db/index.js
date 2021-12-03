@@ -1,6 +1,7 @@
 const { Client } = require('pg')
 require('dotenv').config()
 
+// test db setup...
 const client = new Client({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
