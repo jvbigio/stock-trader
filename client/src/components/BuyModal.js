@@ -9,7 +9,7 @@ import {
   Fade,
   Fab,
   Tooltip,
-  TextField,
+  TextField
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
@@ -26,7 +26,7 @@ const style = {
   p: 4
 }
 
-export default function BuyModal () {
+export default function BuyModal() {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
@@ -54,7 +54,7 @@ export default function BuyModal () {
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
-  // console.log(stockData.iexClose)  // works
+  // console.log(stockData.iexClose) // works
 
   return (
     <>
