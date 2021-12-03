@@ -2,11 +2,11 @@ const { Client } = require('pg')
 require('dotenv').config()
 
 const client = new Client({
-  user: 'postgres',
-  password: process.env.PGPASSWORD,
-  host: 'localhost',
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
   port: 5432,
-  database: 'test'
+  database: process.env.DB_NAME
 })
 
 const execute = async () => {
@@ -14,7 +14,6 @@ const execute = async () => {
     await client.connect()
     console.log('Connected successfully...')
     const results = await client.query('SELECT * FROM car')
-    // console.table(results.rows)
     console.log(results)
     await client.end()
     console.log('Client disconnected...')
