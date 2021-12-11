@@ -18,7 +18,6 @@ https://sandbox.iexapis.com/stable/ref-data/symbols?token=<API_KEY>
 */
 
 router.get('/stocks/buy', async (req, res) => {
-  // const token = await tokenService.getAccessToken()
   const token = process.env.API_SANDBOX_KEY
 
   try {
