@@ -1,26 +1,20 @@
-const { Client } = require('pg')
+const express = require('express')
+
+const { Pool } = require('pg')
+
 require('dotenv').config()
 
-// test db setup...
-const client = new Client({
+const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   host: process.env.DB_HOST,
-  port: 5432,
+  port: process.env.DB_PORT,
   database: process.env.DB_NAME
 })
 
-const execute = async () => {
-  try {
-    await client.connect()
-    console.log('Connected successfully...')
-    const results = await client.query('SELECT * FROM car')
-    console.log(results)
-    await client.end()
-    console.log('Client disconnected...')
-  } catch (err) {
-    console.error(err)
-  }
-}
+pool
+  .connect()
+  .then(() => console.log(`Connected to database: ${process.env.DB_NAME}`))
+  .catch(err => console.error(err))
 
-execute()
+module.exports = pool
