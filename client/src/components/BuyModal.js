@@ -50,10 +50,12 @@ export default function BuyModal() {
     } catch (err) {
       console.error(err)
     }
-    // console.log(iexClose, `Quantity: ${inputs.shareAmount}`) // works
+    // console.log(stockData.iexClose, `Quantity: ${inputs.shareAmount}`)
+    // console.log(`Stock: ${inputs.stockSymbol}, Quantity: ${inputs.shareAmount}`) // works
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
+  console.log(stockData.symbol, stockData.iexClose) // GOOGL, 2953.02
   // console.log(stockData.iexClose) // works
 
   return (
