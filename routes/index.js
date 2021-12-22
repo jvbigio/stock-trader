@@ -6,8 +6,10 @@ require('dotenv').config()
 
 const router = express.Router()
 
-// create new transaction in transaction table, then run SQL statement
-// ... INSERT INTO transaction <include all data> ... then return that data back
+// create new transaction in transactions table, then run SQL statement
+// ... INSERT INTO transactions <include all data> ... then return that data back
+// also, ADD to holdings table
+// transactions is to keep track of ALL transactions. Holdings table would be for the "Holdings Table" on portfolio page
 router.get('/stocks/buy', async (req, res) => {
   const token = process.env.API_SANDBOX_KEY
   try {
