@@ -1,5 +1,4 @@
 {
-  "cSpell.words": [
-    "allowfullscreen"
-  ]
+  "cSpell.words": ["allowfullscreen"],
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
 }
