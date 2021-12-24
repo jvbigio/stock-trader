@@ -14,6 +14,9 @@ import {
 
 import AddIcon from '@mui/icons-material/Add'
 
+
+// const buyStockQuery = require('../db/queries/transactions')
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -57,6 +60,8 @@ export default function BuyModal() {
       // test
       // console.log(response.data.companyName) // works
       // console.log(stockData.companyName)
+      // const stockRes = await buyStockQuery.buyStock()
+      // console.log(stockRes)
     } catch (err) {
       console.error(err)
     }
