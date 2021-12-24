@@ -16,6 +16,11 @@ router.get('/stocks/buy', async (req, res) => {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
+    // console.log(response.data) // works on node terminal
+    const buyStock = (companyName, symbol, latestPrice) => pool.query(
+      'INSERT INTO holdings(companyName, symbol, latestPrice) VALUES($1, $2, $3) RETURNING *', [companyName, symbol, latestPrice]
+    )
+
     res.send(response.data)
   } catch (err) {
     console.error(err)

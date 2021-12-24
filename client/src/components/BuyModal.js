@@ -26,6 +26,13 @@ const style = {
   p: 4
 }
 
+// TODO:
+/*
+ In your buy modal, purchase the stock
+- Server side: save stock to db
+- In either your portfolio page or your report page you’ll have access to the latest data once you’re db is update from the previous step.
+*/
+
 export default function BuyModal () {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
@@ -50,12 +57,13 @@ export default function BuyModal () {
     } catch (err) {
       console.error(err)
     }
+    // console.log(inputs) // works
     // console.log(stockData.iexClose, `Quantity: ${inputs.shareAmount}`)
     // console.log(`Stock: ${inputs.stockSymbol}, Quantity: ${inputs.shareAmount}`) // works
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
-  console.log(stockData.symbol, stockData.iexClose) // GOOGL, 2953.02
+  // console.log(stockData.symbol, stockData.iexClose) // GOOGL, 2953.02
   // console.log(stockData.iexClose) // works
 
   return (
