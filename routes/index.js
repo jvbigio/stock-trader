@@ -1,5 +1,6 @@
 const express = require('express')
 const axios = require('axios').default
+// const tokenService = require('../controllers/token-service')
 const pool = require('../db/index')
 
 require('dotenv').config()
@@ -16,6 +17,7 @@ const buyQuery = require('../db/queries/transactions')
 
 router.get('/stocks/buy', async (req, res) => {
   const token = process.env.API_SANDBOX_KEY
+  // const token = await tokenService.getAccessToken()
   try {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
@@ -27,6 +29,7 @@ router.get('/stocks/buy', async (req, res) => {
 
     res.send(response.data)
   } catch (err) {
+    // console.error(err)
     console.error(err)
     res.sendStatus(500).send(err)
   }
