@@ -15,13 +15,13 @@ const buyQuery = require('../db/queries/transactions')
 // also, ADD to holdings table
 // transactions is to keep track of ALL transactions. Holdings table would be for the "Holdings Table" on portfolio page
 
-router.get('/stocks/buy', async (req, res) => {
+router.post('/stocks/buy', async (req, res) => {
   const token = process.env.API_SANDBOX_KEY
-  // const token = await tokenService.getAccessToken()
   try {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
+    const stockData = req.body.stockData
     await buyQuery.buyStock()
     // const buyStock = (companyName, symbol, latestPrice) => pool.query(
     //   'INSERT INTO holdings(companyName, symbol, latestPrice) VALUES($1, $2, $3) RETURNING *', [companyName, symbol, latestPrice]
@@ -29,7 +29,6 @@ router.get('/stocks/buy', async (req, res) => {
 
     res.send(response.data)
   } catch (err) {
-    // console.error(err)
     console.error(err)
     res.sendStatus(500).send(err)
   }

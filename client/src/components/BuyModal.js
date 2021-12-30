@@ -52,7 +52,7 @@ export default function BuyModal () {
     e.preventDefault()
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     try {
-      const response = await axios.get(buyStockUrl)
+      const response = await axios.post(buyStockUrl, { stockData: stockData })
       setStockData(response.data)
     } catch (err) {
       console.error(err)
