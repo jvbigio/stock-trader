@@ -1,13 +1,13 @@
 const express = require('express')
 const axios = require('axios').default
 // const tokenService = require('../controllers/token-service')
-const pool = require('../db/index')
+const pool = require('../database/db')
 
 require('dotenv').config()
 
 const router = express.Router()
 
-const buyQuery = require('../db/queries/transactions')
+const buyQuery = require('../database/queries/transactions')
 
 // TODO:
 // create new transaction in transactions table, then run SQL statement
@@ -22,7 +22,8 @@ router.post('/stocks/buy', async (req, res) => {
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
     const stockData = req.body.stockData
-    await buyQuery.buyStock()
+    // await buyQuery.buyStock(companyName, symbol, latestPrice)
+    
     // const buyStock = (companyName, symbol, latestPrice) => pool.query(
     //   'INSERT INTO holdings(companyName, symbol, latestPrice) VALUES($1, $2, $3) RETURNING *', [companyName, symbol, latestPrice]
     // )
