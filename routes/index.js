@@ -33,10 +33,9 @@ router.post('/stocks/buy', async (req, res) => {
         [name, symbol, price]
       )
     // return buyStock.rows[0]
-    // res.json(buyStock) // testing
+    res.json(buyStock.rows) // testing
 
-    res.send(response.data) // orig
-    // res.send(buyStock) // testing
+    // res.send(response.data) // orig
   } catch (err) {
     console.error(err)
     res.sendStatus(500).send(err)

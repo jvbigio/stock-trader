@@ -56,6 +56,7 @@ export default function BuyModal () {
       setStockData(response.data)
       // console.log(stockData) // doesn't return API data
       console.log(response.data) // returns API data
+      console.log(inputs)
     } catch (err) {
       console.error(err)
     }
