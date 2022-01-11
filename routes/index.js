@@ -7,7 +7,8 @@ require('dotenv').config()
 
 const router = express.Router()
 
-const buyQuery = require('../database/queries/transactions')
+// const buyQuery = require('../database/queries/transactions')
+// TESTING FROM PERN STACK YOUTUBE TUTORIAL
 
 // TODO:
 // create new transaction in transactions table, then run SQL statement
@@ -21,14 +22,21 @@ router.post('/stocks/buy', async (req, res) => {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
-    const stockData = req.body.stockData
-    // await buyQuery.buyStock(companyName, symbol, latestPrice)
-    
-    // const buyStock = (companyName, symbol, latestPrice) => pool.query(
-    //   'INSERT INTO holdings(companyName, symbol, latestPrice) VALUES($1, $2, $3) RETURNING *', [companyName, symbol, latestPrice]
-    // )
+    const { stockData } = req.body
+    // or is it:
+    // const { name, symbol, price } = req.body
 
-    res.send(response.data)
+    // table columns: id, name, symbol, price, value, quantity, created_at, user_id
+    const buyStock = (name, symbol, price) =>
+      pool.query(
+        'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
+        [name, symbol, price]
+      )
+    // return buyStock.rows[0]
+    // res.json(buyStock) // testing
+
+    res.send(response.data) // orig
+    // res.send(buyStock) // testing
   } catch (err) {
     console.error(err)
     res.sendStatus(500).send(err)
