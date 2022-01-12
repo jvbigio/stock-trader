@@ -27,15 +27,15 @@ router.post('/stocks/buy', async (req, res) => {
     // const { name, symbol, price } = req.body
 
     // table columns: id, name, symbol, price, value, quantity, created_at, user_id
-    const buyStock = (name, symbol, price) =>
-      pool.query(
-        'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
-        [name, symbol, price]
-      )
+    // const buyStock = (name, symbol, price) =>
+    //   pool.query(
+    //     'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
+    //     [name, symbol, price]
+    //   )
     // return buyStock.rows[0]
-    res.json(buyStock.rows) // testing
+    // res.json(buyStock.rows) // testing
 
-    // res.send(response.data) // orig
+    res.send(response.data) // orig
   } catch (err) {
     console.error(err)
     res.sendStatus(500).send(err)
