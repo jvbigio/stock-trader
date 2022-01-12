@@ -7,7 +7,7 @@ require('dotenv').config()
 
 const router = express.Router()
 
-const buyQuery = require('../database/queries/transactions')
+// const buyQuery = require('../database/queries/transactions')
 
 // TODO:
 // create new transaction in transactions table, then run SQL statement
@@ -21,9 +21,9 @@ router.post('/stocks/buy', async (req, res) => {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
-    const stockData = req.body.stockData
+    const { stockData } = req.body
     // await buyQuery.buyStock(companyName, symbol, latestPrice)
-    
+
     // const buyStock = (companyName, symbol, latestPrice) => pool.query(
     //   'INSERT INTO holdings(companyName, symbol, latestPrice) VALUES($1, $2, $3) RETURNING *', [companyName, symbol, latestPrice]
     // )

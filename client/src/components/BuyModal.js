@@ -33,7 +33,7 @@ const style = {
 - In either your portfolio page or your report page you’ll have access to the latest data once you’re db is updated from the previous step.
 */
 
-export default function BuyModal() {
+export default function BuyModal () {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
@@ -54,6 +54,7 @@ export default function BuyModal() {
     try {
       const response = await axios.post(buyStockUrl, { stockData: stockData })
       setStockData(response.data)
+      console.log(inputs)
     } catch (err) {
       console.error(err)
     }
