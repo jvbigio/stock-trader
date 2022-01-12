@@ -27,7 +27,6 @@ router.post('/stocks/buy', async (req, res) => {
     // const buyStock = (companyName, symbol, latestPrice) => pool.query(
     //   'INSERT INTO holdings(companyName, symbol, latestPrice) VALUES($1, $2, $3) RETURNING *', [companyName, symbol, latestPrice]
     // )
-
     res.send(response.data)
   } catch (err) {
     console.error(err)
