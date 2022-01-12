@@ -13,6 +13,7 @@ import {
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
+// import { json } from 'express'
 
 const style = {
   position: 'absolute',
@@ -51,12 +52,14 @@ export default function BuyModal () {
   const handleSubmit = async e => {
     e.preventDefault()
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+    // const body = { stockData }
     try {
       const response = await axios.post(buyStockUrl, { stockData: stockData })
-      setStockData(response.data)
+      setStockData(response.data) // orig
       // console.log(stockData) // doesn't return API data
       console.log(response.data) // returns API data
-      console.log(inputs)
+      // console.log(inputs)
+      // console.log(response)
     } catch (err) {
       console.error(err)
     }
@@ -118,7 +121,10 @@ export default function BuyModal () {
               helperText={`Last Price: $${36.64}`}
               name='stockSymbol'
               value={inputs.stockSymbol || ''}
+              // value={inputs.stockSymbol}
               onChange={getUserInput}
+              // other option
+              // onChange={e => setInputs(e.target.value)}
             />
             <TextField
               id='share-amount'
@@ -128,7 +134,9 @@ export default function BuyModal () {
               helperText={`Estimated Value: $${7500.14}`}
               name='shareAmount'
               value={inputs.shareAmount || ''}
+              // value={inputs.shareAmount}
               onChange={getUserInput}
+              // onChange={e => setInputs(e.target.value)}
             />
             <Button
               disabled={submitDisabled}

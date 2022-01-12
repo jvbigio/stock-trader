@@ -27,11 +27,12 @@ router.post('/stocks/buy', async (req, res) => {
     // const { name, symbol, price } = req.body
 
     // table columns: id, name, symbol, price, value, quantity, created_at, user_id
-    // const buyStock = (name, symbol, price) =>
-    //   pool.query(
-    //     'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
-    //     [name, symbol, price]
-    //   )
+    // IEX API: companyName, symbol, latestPrice
+    const buyStock = (name, symbol, price) =>
+      pool.query(
+        'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
+        [name, symbol, price]
+      )
     // return buyStock.rows[0]
     // res.json(buyStock.rows) // testing
 
