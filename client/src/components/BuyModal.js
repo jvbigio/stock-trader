@@ -57,8 +57,7 @@ export default function BuyModal () {
       const response = await axios.get(fetchStockData, {
         stockData: stockData
       })
-      setStockData(response.data) // orig
-      // setStockData(response.data.rows)
+      setStockData(response.data)
 
       // console.log(stockData) // doesn't return API data
       console.log(response.data) // returns API data

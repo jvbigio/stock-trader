@@ -8,7 +8,6 @@ require('dotenv').config()
 const router = express.Router()
 
 // const buyQuery = require('../database/queries/transactions')
-// TESTING FROM PERN STACK YOUTUBE TUTORIAL
 
 // TODO:
 // create new transaction in transactions table, then run SQL statement
