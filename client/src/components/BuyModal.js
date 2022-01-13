@@ -51,15 +51,18 @@ export default function BuyModal () {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
-    // const body = { stockData }
+    const fetchStockData = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     try {
-      const response = await axios.post(buyStockUrl, { stockData: stockData })
+      // originally a POST request
+      const response = await axios.get(fetchStockData, {
+        stockData: stockData
+      })
       setStockData(response.data) // orig
+      // setStockData(response.data.rows)
+
       // console.log(stockData) // doesn't return API data
       console.log(response.data) // returns API data
       // console.log(inputs)
-      // console.log(response)
     } catch (err) {
       console.error(err)
     }

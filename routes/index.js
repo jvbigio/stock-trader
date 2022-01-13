@@ -16,27 +16,36 @@ const router = express.Router()
 // also, ADD to holdings table
 // transactions is to keep track of ALL transactions. Holdings table would be for the "Holdings Table" on portfolio page
 
-router.post('/stocks/buy', async (req, res) => {
+// GET API data
+router.get('/stocks/buy', async (req, res) => {
   const token = process.env.API_SANDBOX_KEY
+
   try {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
-    const { stockData } = req.body
-    // or is it:
-    // const { name, symbol, price } = req.body
 
+    res.send(response.data)
+  } catch (error) {
+    res.sendStatus(500).send(error)
+  }
+})
+
+// INSERT API data into database
+router.post('/stocks/buy', async (req, res) => {
+  // const { stockData } = req.body
+  // const { name, symbol, price } = req.body
+  try {
     // table columns: id, name, symbol, price, value, quantity, created_at, user_id
     // IEX API: companyName, symbol, latestPrice
     const buyStock = (name, symbol, price) =>
+      // const { name, symbol, price } = req.body
       pool.query(
         'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
         [name, symbol, price]
       )
-    // return buyStock.rows[0]
-    // res.json(buyStock.rows) // testing
-
-    res.send(response.data) // orig
+    // res.send(response.data) // orig
+    res.json(buyStock.rows[0]) // testing
   } catch (err) {
     console.error(err)
     res.sendStatus(500).send(err)
