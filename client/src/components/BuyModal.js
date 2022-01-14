@@ -33,7 +33,7 @@ const style = {
 - In either your portfolio page or your report page you’ll have access to the latest data once you’re db is updated from the previous step.
 */
 
-export default function BuyModal () {
+export default function BuyModal() {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
@@ -49,26 +49,31 @@ export default function BuyModal () {
   }
 
   const handleSubmit = async e => {
+    let stockData
+
     e.preventDefault()
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+
     try {
       // const response = await axios.post(buyStockUrl)
       const response = await axios.post(buyStockUrl, { stockData: stockData }) // orig
       // works:
-      const name = response.data.companyName
-      const symbol = response.data.symbol
-      const price = response.data.latestPrice
-
+      // const name = response.data.companyName
+      // const symbol = response.data.symbol
+      // const price = response.data.latestPrice
+      // or
+      stockData = {
+        name: response.data.companyName,
+        symbol: response.data.symbol,
+        price: response.data.latestPrice
+      }
       // console.log(name, symbol, price)
+      // console.log(stockData.name, stockData.symbol, stockData.price)
 
       setStockData(response.data)
-      // console.log(stockData.stockData)
-      // console.log(response.stockData)
-      // console.log(response.data.stockData)
-      // console.log(response.stockData.symbol)
-      // console.log(response.stockData.data.symbol)
-      console.log(response.data)
-      console.log(inputs)
+      console.log(stockData) // works on name, symbol, price
+      // console.log(response.data)
+      // console.log(inputs)
     } catch (err) {
       console.error(err)
     }
