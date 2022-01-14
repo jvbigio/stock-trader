@@ -22,23 +22,21 @@ router.post('/stocks/buy', async (req, res) => {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
-    // const { name, symbol, price } = req.body
-    // works:
-    const name = response.data.companyName
-    const symbol = response.data.symbol
-    const price = response.data.latestPrice
-    console.log(name, symbol, price)
+    let { name, symbol, price, value, amount } = req.body
+
+    name = response.data.companyName
+    symbol = response.data.symbol
+    price = response.data.latestPrice
+    value = price * parseInt(amount)
+    console.log(name, symbol, price, amount, value)
 
     // holdings table: id, name, symbol, price, value (price * quantity), quantity (inputs.shareAmount), user_id:
+    const buyStock = await pool.query(
+      'INSERT INTO holdings(name, symbol, price, value, quantity) VALUES($1, $2, $3, $4, $5) RETURNING *',
+      [name, symbol, price, value, amount]
+    )
 
-    // const buyStock = await pool.query(
-    //   'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
-    //   [name, symbol, price]
-    // )
-
-    // res.send(buyStock.rows[0])
-    res.send(response.data)
-    // res.send(buyStock.rows[0])
+    res.send(buyStock.rows[0])
   } catch (err) {
     console.error(err)
     res.sendStatus(500).send(err)
