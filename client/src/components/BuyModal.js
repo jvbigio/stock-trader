@@ -55,8 +55,7 @@ export default function BuyModal() {
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
 
     try {
-      // const response = await axios.post(buyStockUrl)
-      const response = await axios.post(buyStockUrl, { stockData: stockData }) // orig
+      const response = await axios.post(buyStockUrl, { stockData: stockData })
       // works:
       // const name = response.data.companyName
       // const symbol = response.data.symbol
@@ -67,13 +66,9 @@ export default function BuyModal() {
         symbol: response.data.symbol,
         price: response.data.latestPrice
       }
-      // console.log(name, symbol, price)
-      // console.log(stockData.name, stockData.symbol, stockData.price)
 
       setStockData(response.data)
       console.log(stockData) // works on name, symbol, price
-      // console.log(response.data)
-      // console.log(inputs)
     } catch (err) {
       console.error(err)
     }
