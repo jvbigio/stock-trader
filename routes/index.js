@@ -17,17 +17,27 @@ const router = express.Router()
 
 router.post('/stocks/buy', async (req, res) => {
   const token = process.env.API_SANDBOX_KEY
+
   try {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
-    const { stockData } = req.body
+    // const { stockData } = req.body
+    const { name, symbol, price } = req.body
+    // const { name, symbol, price } = req.body
     // await buyQuery.buyStock(companyName, symbol, latestPrice)
 
-    // const buyStock = (companyName, symbol, latestPrice) => pool.query(
-    //   'INSERT INTO holdings(companyName, symbol, latestPrice) VALUES($1, $2, $3) RETURNING *', [companyName, symbol, latestPrice]
+    const buyStock = (name, symbol, price) =>
+      pool.query(
+        'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
+        [name, symbol, price]
+      )
+    // const buyStock = await pool.query(
+    //   'INSERT INTO holdings(name, symbol, price) VALUES($1, $2, $3) RETURNING *',
+    //   [name, symbol, price]
     // )
-    res.send(response.data)
+    res.send(response.data) // orig
+    // res.json(buyStock.rows[0])
   } catch (err) {
     console.error(err)
     res.sendStatus(500).send(err)
