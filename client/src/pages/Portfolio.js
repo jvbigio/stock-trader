@@ -4,7 +4,12 @@ import { HoldingsTable } from '../components/HoldingsTable'
 
 import { Grid, Paper, Container, Box } from '@mui/material'
 
+// const axios = require('axios').default
+
 const Portfolio = () => {
+  // Now to get all the stocks you can make a separate route and call that from the client to get all the stocks per user.
+  // const getTableData = await axios.get('api/stocks')
+  // console.log(getTableData)
   return (
     <Box sx={{ display: 'flex' }}>
       <Box
