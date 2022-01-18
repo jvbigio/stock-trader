@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import axios from 'axios'
 
@@ -17,7 +17,9 @@ import {
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
-function createData (id, name, symbol, price, currentValue, quantity) {
+import { StockProvider, StockContext } from '../StockContext'
+
+function createData(id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 
@@ -36,9 +38,11 @@ const rows = [
 ]
 
 export const HoldingsTable = ({ handleSearch }) => {
+  // const [stockData, setStockData] = useContext(StockContext) // error
   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+
   const handleClick = e => {
     // both work:
     // console.log(e.target.innerText)
@@ -56,74 +60,83 @@ export const HoldingsTable = ({ handleSearch }) => {
 
   return (
     <>
-      <TableContainer sx={{ maxHeight: 550 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-          mb={4}
-        >
-          <Typography
-            variant='h3'
-            textAlign='center'
-            component='div'
-            flexGrow='1'
-            gutterBottom
-            mt={1}
+      {/* stockProvider is new */}
+      <StockProvider>
+        <TableContainer sx={{ maxHeight: 550 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+            mb={4}
           >
-            Holdings
-          </Typography>
-          <Box sx={{ '& > :not(style)': { m: 1 } }}>
-            <BuyModal />
+            <Typography
+              variant='h3'
+              textAlign='center'
+              component='div'
+              flexGrow='1'
+              gutterBottom
+              mt={1}
+            >
+              Holdings
+              {/* Testing: */}
+              {/* {stockData.symbol} */}
+            </Typography>
+            <Box sx={{ '& > :not(style)': { m: 1 } }}>
+              <BuyModal />
+            </Box>
           </Box>
-        </Box>
-        <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell align='right'>Symbol</TableCell>
-              <TableCell align='right'>Price</TableCell>
-              <TableCell align='right'>Value</TableCell>
-              <TableCell align='right'>Quantity</TableCell>
-              <TableCell align='right'>Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map(row => (
-                <TableRow
-                  key={row.id}
-                  hover
-                  // returns data in table:
-                  onClick={e => handleClick(e, row.name)}
-                  // onClick={handleClick}
-                >
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell align='right'>{row.symbol}</TableCell>
-                  <TableCell align='right'>${row.price}</TableCell>
-                  <TableCell align='right'>${row.currentValue}</TableCell>
-                  <TableCell align='right'>{row.quantity}</TableCell>
-                  <TableCell align='right'>
-                    <SellModal />
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        component='div'
-        count={rows.length}
-        page={page}
-        onPageChange={handleChangePage}
-        rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[10, 25, 50]}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+          <Table
+            sx={{ minWidth: 650 }}
+            size='small'
+            aria-label='holdings table'
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell align='right'>Symbol</TableCell>
+                <TableCell align='right'>Price</TableCell>
+                <TableCell align='right'>Value</TableCell>
+                <TableCell align='right'>Quantity</TableCell>
+                <TableCell align='right'>Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map(row => (
+                  <TableRow
+                    key={row.id}
+                    hover
+                    // returns data in table:
+                    onClick={e => handleClick(e, row.name)}
+                    // onClick={handleClick}
+                  >
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell align='right'>{row.symbol}</TableCell>
+                    <TableCell align='right'>${row.price}</TableCell>
+                    <TableCell align='right'>${row.currentValue}</TableCell>
+                    <TableCell align='right'>{row.quantity}</TableCell>
+                    <TableCell align='right'>
+                      <SellModal />
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          component='div'
+          count={rows.length}
+          page={page}
+          onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={[10, 25, 50]}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </StockProvider>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
 
 import {
@@ -13,6 +13,9 @@ import {
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
+
+// import StockProvider from '../StockContext'
+import { StockContext } from '../StockContext'
 
 const style = {
   position: 'absolute',
@@ -33,10 +36,11 @@ const style = {
 - In either your portfolio page or your report page you’ll have access to the latest data once you’re db is updated from the previous step.
 */
 
-export default function BuyModal () {
+export default function BuyModal() {
+  const [stockData, setStockData] = useContext(StockContext)
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
-  const [stockData, setStockData] = useState({})
+  // const [stockData, setStockData] = useState({})
   const [submitDisabled, setSubmitDisabled] = useState(true)
 
   const handleOpen = () => setOpen(true)
@@ -57,14 +61,6 @@ export default function BuyModal () {
     const response = await axios.post(buyStockUrl, data)
     setStockData(response.data)
   }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  // useEffect(() => {
-  //   console.log(stockData)
-  // }, [stockData])
 
   const handleSubmit = async e => {
     e.preventDefault()
