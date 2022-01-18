@@ -27,9 +27,9 @@ const Portfolio = () => {
     setStockData(response.data)
   }
 
-  useEffect(() => {
-    fetchData()
-  }, [])
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -57,7 +57,7 @@ const Portfolio = () => {
             <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
               <HoldingsTable
                 stockData={stockData}
-                fetchData={fetchData}
+                // fetchData={fetchData}
                 inputs={inputs}
                 submitDisabled={submitDisabled}
                 getUserInput={getUserInput}

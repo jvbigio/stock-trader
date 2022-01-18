@@ -35,7 +35,7 @@ const style = {
 
 export default function BuyModal({
   stockData,
-  fetchData,
+  // fetchData,
   inputs,
   getUserInput,
   submitDisabled,
@@ -48,6 +48,7 @@ export default function BuyModal({
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const handleModalOnSubmit = () => setOpen(!true)
 
   // const getUserInput = e => {
   //   const submitValid = inputs.stockSymbol && inputs.shareAmount
