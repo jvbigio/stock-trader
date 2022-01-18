@@ -62,9 +62,9 @@ export default function BuyModal () {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    console.log(stockData)
-  }, [stockData])
+  // useEffect(() => {
+  //   console.log(stockData)
+  // }, [stockData]) // only re-run effect if StockData changes
 
   const handleSubmit = async e => {
     e.preventDefault()
