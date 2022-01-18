@@ -88,7 +88,7 @@ export const HoldingsTable = ({
           </Typography>
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
             <BuyModal
-              stockData={stockData}
+              // stockData={stockData}
               inputs={inputs}
               getUserInput={getUserInput}
               submitDisabled={submitDisabled}

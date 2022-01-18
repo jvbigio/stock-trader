@@ -33,7 +33,7 @@ const style = {
 */
 
 export default function BuyModal ({
-  stockData,
+  // stockData,
   inputs,
   getUserInput,
   submitDisabled,
