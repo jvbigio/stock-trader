@@ -17,7 +17,7 @@ import {
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
-function createData(id, name, symbol, price, currentValue, quantity) {
+function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 
