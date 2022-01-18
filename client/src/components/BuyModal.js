@@ -33,45 +33,52 @@ const style = {
 - In either your portfolio page or your report page you’ll have access to the latest data once you’re db is updated from the previous step.
 */
 
-export default function BuyModal () {
+export default function BuyModal ({
+  stockData,
+  fetchData,
+  inputs,
+  getUserInput,
+  submitDisabled,
+  handleSubmit
+}) {
   const [open, setOpen] = useState(false)
-  const [inputs, setInputs] = useState({})
-  const [stockData, setStockData] = useState({})
-  const [submitDisabled, setSubmitDisabled] = useState(true)
+  // const [inputs, setInputs] = useState({}) // moved to Portfolio
+  // const [stockData, setStockData] = useState({}) // move to Portfolio
+  // const [submitDisabled, setSubmitDisabled] = useState(true)
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const getUserInput = e => {
-    const submitValid = inputs.stockSymbol && inputs.shareAmount
-    setSubmitDisabled(!submitValid)
-    setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
-  }
+  // const getUserInput = e => {
+  //   const submitValid = inputs.stockSymbol && inputs.shareAmount
+  //   setSubmitDisabled(!submitValid)
+  //   setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
+  // }
+  // moved to portfolio page
+  // const fetchData = async () => {
+  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+  //   const data = {
+  //     symbol: inputs.stockSymbol,
+  //     amount: inputs.shareAmount
+  //   }
+  //   const response = await axios.post(buyStockUrl, data)
+  //   setStockData(response.data)
+  // }
 
-  const fetchData = async () => {
-    const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
-    const data = {
-      symbol: inputs.stockSymbol,
-      amount: inputs.shareAmount
-    }
-    const response = await axios.post(buyStockUrl, data)
-    setStockData(response.data)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
 
   // useEffect(() => {
   //   console.log(stockData)
   // }, [stockData]) // only re-run effect if StockData changes
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-    fetchData()
+  // const handleSubmit = async e => {
+  //   e.preventDefault()
+  //   fetchData()
 
-    setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
-  }
+  //   setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
+  // }
 
   return (
     <>

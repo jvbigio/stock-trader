@@ -16,6 +16,8 @@ import {
 
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
+// test
+import Portfolio from '../pages/Portfolio'
 
 function createData(id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
@@ -35,8 +37,16 @@ const rows = [
   createData(10, 'AMAZONCOM INC', 'AMZN', 3261.01, 32610.1, 10)
 ]
 
-export const HoldingsTable = ({ handleSearch }) => {
-  const [selected, setSelected] = useState([])
+export const HoldingsTable = ({
+  handleSearch,
+  stockData,
+  fetchData,
+  inputs,
+  getUserInput,
+  submitDisabled,
+  handleSubmit
+}) => {
+  // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const handleClick = e => {
@@ -77,7 +87,14 @@ export const HoldingsTable = ({ handleSearch }) => {
             Holdings
           </Typography>
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
-            <BuyModal />
+            <BuyModal
+              stockData={stockData}
+              fetchData={fetchData}
+              inputs={inputs}
+              getUserInput={getUserInput}
+              submitDisabled={submitDisabled}
+              handleSubmit={handleSubmit}
+            />
           </Box>
         </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
