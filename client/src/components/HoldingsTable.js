@@ -16,10 +16,8 @@ import {
 
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
-// test
-import Portfolio from '../pages/Portfolio'
 
-function createData(id, name, symbol, price, currentValue, quantity) {
+function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 

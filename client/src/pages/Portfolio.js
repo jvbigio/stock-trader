@@ -24,7 +24,6 @@ const Portfolio = () => {
       amount: inputs.shareAmount
     }
     const response = await axios.post(buyStockUrl, data)
-    console.log(inputs)
     setStockData(response.data)
   }
 

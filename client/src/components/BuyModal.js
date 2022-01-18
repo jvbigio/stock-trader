@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 
 import {
   Modal,
@@ -33,7 +33,7 @@ const style = {
 - In either your portfolio page or your report page you’ll have access to the latest data once you’re db is updated from the previous step.
 */
 
-export default function BuyModal ({
+export default function BuyModal({
   stockData,
   fetchData,
   inputs,
@@ -68,10 +68,6 @@ export default function BuyModal ({
   // useEffect(() => {
   //   fetchData()
   // }, [])
-
-  // useEffect(() => {
-  //   console.log(stockData)
-  // }, [stockData]) // only re-run effect if StockData changes
 
   // const handleSubmit = async e => {
   //   e.preventDefault()
