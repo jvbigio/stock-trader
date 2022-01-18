@@ -35,48 +35,14 @@ const style = {
 
 export default function BuyModal({
   stockData,
-  // fetchData,
   inputs,
   getUserInput,
   submitDisabled,
-  handleSubmit
+  handleSubmit,
+  open,
+  handleOpen,
+  handleClose
 }) {
-  const [open, setOpen] = useState(false)
-  // const [inputs, setInputs] = useState({}) // moved to Portfolio
-  // const [stockData, setStockData] = useState({}) // move to Portfolio
-  // const [submitDisabled, setSubmitDisabled] = useState(true)
-
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
-  const handleModalOnSubmit = () => setOpen(!true)
-
-  // const getUserInput = e => {
-  //   const submitValid = inputs.stockSymbol && inputs.shareAmount
-  //   setSubmitDisabled(!submitValid)
-  //   setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
-  // }
-  // moved to portfolio page
-  // const fetchData = async () => {
-  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
-  //   const data = {
-  //     symbol: inputs.stockSymbol,
-  //     amount: inputs.shareAmount
-  //   }
-  //   const response = await axios.post(buyStockUrl, data)
-  //   setStockData(response.data)
-  // }
-
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
-
-  // const handleSubmit = async e => {
-  //   e.preventDefault()
-  //   fetchData()
-
-  //   setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
-  // }
-
   return (
     <>
       <Tooltip

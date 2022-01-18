@@ -7,9 +7,13 @@ import { Grid, Paper, Container, Box } from '@mui/material'
 import axios from 'axios'
 
 const Portfolio = () => {
+  const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
   const [submitDisabled, setSubmitDisabled] = useState(true)
+
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   const getUserInput = e => {
     const submitValid = inputs.stockSymbol && inputs.shareAmount
@@ -27,14 +31,10 @@ const Portfolio = () => {
     setStockData(response.data)
   }
 
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
-
   const handleSubmit = async e => {
     e.preventDefault()
     fetchData()
-
+    handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
@@ -57,11 +57,13 @@ const Portfolio = () => {
             <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
               <HoldingsTable
                 stockData={stockData}
-                // fetchData={fetchData}
                 inputs={inputs}
                 submitDisabled={submitDisabled}
                 getUserInput={getUserInput}
                 handleSubmit={handleSubmit}
+                open={open}
+                handleOpen={handleOpen}
+                handleClose={handleClose}
               />
             </Paper>
           </Grid>

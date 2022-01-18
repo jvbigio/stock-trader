@@ -38,11 +38,13 @@ const rows = [
 export const HoldingsTable = ({
   handleSearch,
   stockData,
-  fetchData,
   inputs,
   getUserInput,
   submitDisabled,
-  handleSubmit
+  handleSubmit,
+  open,
+  handleOpen,
+  handleClose
 }) => {
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
@@ -87,11 +89,13 @@ export const HoldingsTable = ({
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
             <BuyModal
               stockData={stockData}
-              // fetchData={fetchData}
               inputs={inputs}
               getUserInput={getUserInput}
               submitDisabled={submitDisabled}
               handleSubmit={handleSubmit}
+              open={open}
+              handleOpen={handleOpen}
+              handleClose={handleClose}
             />
           </Box>
         </Box>
