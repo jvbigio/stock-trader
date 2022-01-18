@@ -7,7 +7,7 @@ import { Grid, Paper, Container, Box } from '@mui/material'
 import axios from 'axios'
 
 const Portfolio = () => {
-  const [inputs, setInputs] = useState({}) // do i need this here?
+  const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
   const [submitDisabled, setSubmitDisabled] = useState(true)
 
