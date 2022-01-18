@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
+
+import { StockContext } from '../App'
 
 import {
   Modal,
@@ -57,14 +59,6 @@ export default function BuyModal () {
     const response = await axios.post(buyStockUrl, data)
     setStockData(response.data)
   }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  useEffect(() => {
-    console.log(stockData)
-  }, [stockData])
 
   const handleSubmit = async e => {
     e.preventDefault()
