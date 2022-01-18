@@ -44,14 +44,15 @@ router.post('/stocks/buy', async (req, res) => {
 })
 
 // Get all the stocks - make a separate route and call that from the client to get all the stocks per user.
-// router.get('/stocks', async (req, res) => {
-//   try {
-//     // no users created yet, will need to refactor to select data WHERE user_id = user
-//     const tableData = await pool.query('SELECT * FROM holdings')
-//     res.send(tableData.rows)
-//   } catch (error) {
-//     res.sendStatus(500).send(error)
-//   }
-// })
+router.get('/stocks', async (req, res) => {
+  try {
+    // no users created yet, will need to refactor to select data WHERE user_id = user
+    const tableData = await pool.query('SELECT * FROM holdings')
+    console.log(tableData.rows)
+    res.send(tableData.rows)
+  } catch (error) {
+    res.sendStatus(500).send(error)
+  }
+})
 
 module.exports = router
