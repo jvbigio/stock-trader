@@ -10,15 +10,13 @@ const Portfolio = () => {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
-  const [submitDisabled, setSubmitDisabled] = useState(true)
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   const getUserInput = e => {
-    const submitValid = inputs.stockSymbol && inputs.shareAmount
-    setSubmitDisabled(!submitValid)
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
+    console.log(inputs)
   }
 
   const fetchData = async () => {
@@ -58,7 +56,6 @@ const Portfolio = () => {
               <HoldingsTable
                 stockData={stockData}
                 inputs={inputs}
-                submitDisabled={submitDisabled}
                 getUserInput={getUserInput}
                 handleSubmit={handleSubmit}
                 open={open}

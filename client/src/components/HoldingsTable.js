@@ -17,7 +17,7 @@ import {
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
-function createData (id, name, symbol, price, currentValue, quantity) {
+function createData(id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 
@@ -40,7 +40,6 @@ export const HoldingsTable = ({
   stockData,
   inputs,
   getUserInput,
-  submitDisabled,
   handleSubmit,
   open,
   handleOpen,
@@ -88,10 +87,8 @@ export const HoldingsTable = ({
           </Typography>
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
             <BuyModal
-              // stockData={stockData}
               inputs={inputs}
               getUserInput={getUserInput}
-              submitDisabled={submitDisabled}
               handleSubmit={handleSubmit}
               open={open}
               handleOpen={handleOpen}

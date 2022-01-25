@@ -33,10 +33,8 @@ const style = {
 */
 
 export default function BuyModal ({
-  // stockData,
   inputs,
   getUserInput,
-  submitDisabled,
   handleSubmit,
   open,
   handleOpen,
@@ -110,7 +108,7 @@ export default function BuyModal ({
               onChange={getUserInput}
             />
             <Button
-              disabled={submitDisabled}
+              disabled={!(inputs.stockSymbol && inputs.shareAmount)}
               onClick={handleSubmit}
               variant='contained'
               sx={{
