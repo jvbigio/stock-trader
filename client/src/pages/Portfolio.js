@@ -2,22 +2,14 @@ import React, { useState, useEffect } from 'react'
 import './Portfolio.css'
 import { HoldingsTable } from '../components/HoldingsTable'
 
-import {
-  Grid,
-  Paper,
-  Container,
-  Box,
-  inputAdornmentClasses
-} from '@mui/material'
+import { Grid, Paper, Container, Box } from '@mui/material'
 
 import axios from 'axios'
 
 const Portfolio = () => {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
-  // const [inputs, setInputs] = useState({ stockSymbol: '', shareAmount: '' })
   const [stockData, setStockData] = useState({})
-  const [submitDisabled, setSubmitDisabled] = useState(true)
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -28,17 +20,7 @@ const Portfolio = () => {
 
   const getUserInput = e => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
-    const submitValid = inputs.stockSymbol && inputs.shareAmount
-    setSubmitDisabled(!submitValid)
-
-    // const submitValid =
-    //   inputs.stockSymbol && inputs.shareAmount
-    //     ? setSubmitDisabled(false)
-    //     : setSubmitDisabled(true)
-    // setSubmitDisabled(false)
-    // setInputs(prevState => ({ ...prevState, [inputs.stockSymbol && inputs.shareAmount]})
-    // setInputs(e.target.value)
-    // setSubmitDisabled(!submitValid)
+    console.log(inputs)
   }
 
   const fetchData = async () => {
@@ -78,7 +60,6 @@ const Portfolio = () => {
               <HoldingsTable
                 stockData={stockData}
                 inputs={inputs}
-                submitDisabled={submitDisabled}
                 getUserInput={getUserInput}
                 handleSubmit={handleSubmit}
                 open={open}
