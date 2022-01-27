@@ -16,7 +16,6 @@ const Portfolio = () => {
 
   const getUserInput = e => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
-    console.log(inputs)
   }
 
   const fetchData = async () => {
@@ -27,6 +26,8 @@ const Portfolio = () => {
     }
     const response = await axios.post(buyStockUrl, data)
     setStockData(response.data)
+    console.log(response.data) // returns data
+    // console.log(stockData) // empty object
   }
 
   const handleSubmit = async e => {
@@ -34,6 +35,7 @@ const Portfolio = () => {
     fetchData()
     handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
+    // console.log(stockData)
   }
 
   return (
