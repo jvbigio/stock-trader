@@ -26,8 +26,6 @@ const Portfolio = () => {
     }
     const response = await axios.post(buyStockUrl, data)
     setStockData(response.data)
-    console.log(response.data) // returns data
-    // console.log(stockData) // empty object
   }
 
   const handleSubmit = async e => {
@@ -35,7 +33,6 @@ const Portfolio = () => {
     fetchData()
     handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
-    // console.log(stockData)
   }
 
   return (

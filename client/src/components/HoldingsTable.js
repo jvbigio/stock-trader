@@ -53,6 +53,35 @@ export const HoldingsTable = ({
     // console.log(e.target.innerText)
     // console.log(e.currentTarget)
   }
+  const getTableData = async () => {
+    const response = await axios.get('/api/stocks')
+    console.log(response.data)
+  }
+  getTableData()
+
+  // console.log(stockData) // works
+  // console.log(stockData.symbol) // works
+
+  // const getTableData = () => {
+  //   for (const stock in stockData) {
+  //     // console.log(stockData[stock]) // works
+  //   }
+  // }
+
+  // getTableData()
+
+  // Object.entries(stockData).map(([key, value]) => {
+  // Object.entries(stockData).map(stock => {
+  //   // return console.log(key, value) // works
+  //   // return console.log(stock) // works
+  //   console.log(stock)
+  // })
+
+  // Object.values(stockData).map(stock => console.log(stock)) // works
+
+  // for (const stock in stockData) {
+  //   console.log(stockData[stock]) // works
+  // }
 
   const handleChangePage = (e, newPage) => {
     setPage(newPage)
