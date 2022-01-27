@@ -48,8 +48,13 @@ router.get('/stocks', async (req, res) => {
   try {
     // no users created yet, will need to refactor to select data WHERE user_id = user
     const tableData = await pool.query('SELECT * FROM holdings')
-    console.log(tableData.rows)
-    res.send(tableData.rows)
+
+    // const holdings = tableData.rows
+    // holdings.map(stock => console.log(stock)) // returns all the stocks in node
+
+    // console.log(tableData.rows)
+    res.send(tableData.rows) // original
+    // res.send(holdings)
   } catch (error) {
     res.sendStatus(500).send(error)
   }
