@@ -7,7 +7,6 @@ require('dotenv').config()
 
 const router = express.Router()
 const buyStock = require('../database/queries/db-stock')
-// const buyQuery = require('../database/queries/transactions')
 
 // TODO:
 // create new transaction in transactions table, then run SQL statement
@@ -35,10 +34,10 @@ router.post('/stocks/buy', async (incomingReq, outgoingRes) => {
     //   [name, symbol, price, value, amount]
     // )
 
-    // await buyStock.buyStockQuery(name, symbol, price, value, amount)
     await buyStock.buyStockQuery(name, symbol, price, value, amount)
 
-    outgoingRes.send(buyStock.rows[0])
+    // outgoingRes.send(buyStock.rows[0])
+    outgoingRes.send(buyStock.buyStockQuery.rows[0])
   } catch (err) {
     console.error(err)
     outgoingRes.sendStatus(500).send(err)
