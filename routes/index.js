@@ -6,7 +6,7 @@ const pool = require('../database/db')
 require('dotenv').config()
 
 const router = express.Router()
-
+const buyStock = require('../database/queries/db-stock')
 // const buyQuery = require('../database/queries/transactions')
 
 // TODO:
@@ -30,10 +30,13 @@ router.post('/stocks/buy', async (incomingReq, outgoingRes) => {
     value = price * parseInt(amount)
 
     // holdings table: id, name, symbol, price, value (price * quantity), quantity (inputs.shareAmount), user_id:
-    const buyStock = await pool.query(
-      'INSERT INTO holdings(name, symbol, price, value, quantity) VALUES($1, $2, $3, $4, $5) RETURNING *',
-      [name, symbol, price, value, amount]
-    )
+    // const buyStock = await pool.query(
+    //   'INSERT INTO holdings(name, symbol, price, value, quantity) VALUES($1, $2, $3, $4, $5) RETURNING *',
+    //   [name, symbol, price, value, amount]
+    // )
+
+    // await buyStock.buyStockQuery(name, symbol, price, value, amount)
+    await buyStock.buyStockQuery(name, symbol, price, value, amount)
 
     outgoingRes.send(buyStock.rows[0])
   } catch (err) {
