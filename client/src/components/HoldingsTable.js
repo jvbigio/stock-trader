@@ -17,7 +17,7 @@ import {
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
-function createData (id, name, symbol, price, currentValue, quantity) {
+function createData(id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 
@@ -63,7 +63,7 @@ export const HoldingsTable = ({
   getTableData()
 
   // stockData.map(stock => console.log(stock))
-  // console.log(stockData) // empty object
+  // console.log(stockData) // works after buying stock
   // for (const stock in stockData) {
   //   // console.log(stockData[stock])
   //   console.log(stockData[stock].name)
