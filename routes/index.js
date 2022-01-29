@@ -15,14 +15,14 @@ const router = express.Router()
 // also, ADD to holdings table
 // transactions is to keep track of ALL transactions. Holdings table would be for the "Holdings Table" on portfolio page
 
-router.post('/stocks/buy', async (req, res) => {
+router.post('/stocks/buy', async (incomingReq, outgoingRes) => {
   const token = process.env.API_SANDBOX_KEY
 
   try {
     const response = await axios.get(
-      `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
+      `https://sandbox.iexapis.com/stable/stock/${incomingReq.query.stock_symbol}/quote?token=${token}`
     )
-    let { name, symbol, price, value, amount } = req.body
+    let { name, symbol, price, value, amount } = incomingReq.body
 
     name = response.data.companyName
     symbol = response.data.symbol
@@ -35,10 +35,10 @@ router.post('/stocks/buy', async (req, res) => {
       [name, symbol, price, value, amount]
     )
 
-    res.send(buyStock.rows[0])
+    outgoingRes.send(buyStock.rows[0])
   } catch (err) {
     console.error(err)
-    res.sendStatus(500).send(err)
+    outgoingRes.sendStatus(500).send(err)
   }
 })
 

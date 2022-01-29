@@ -17,7 +17,7 @@ const Portfolio = () => {
   const getUserInput = e => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
-
+  // user table: id: d72220bc-6844-4a97-b6b9-32303abc60a8, email: jdoe@gmail.com, password: 1234
   const fetchData = async () => {
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     const data = {
@@ -29,7 +29,6 @@ const Portfolio = () => {
   }
 
   const handleSubmit = async e => {
-    // debugger
     e.preventDefault()
     fetchData()
     handleClose()

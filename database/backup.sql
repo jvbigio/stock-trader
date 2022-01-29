@@ -5,7 +5,7 @@
 -- Dumped from database version 14.1
 -- Dumped by pg_dump version 14.1
 
--- Started on 2021-12-19 02:30:35 EST
+-- Started on 2022-01-29 15:11:41 EST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -88,7 +88,6 @@ ALTER TABLE public.holdings OWNER TO postgres;
 
 CREATE TABLE public.users (
     id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
-    username character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
     password character varying(255) NOT NULL
 );
@@ -123,7 +122,7 @@ ALTER TABLE ONLY public.holdings
     ADD CONSTRAINT holdings_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
--- Completed on 2021-12-19 02:30:35 EST
+-- Completed on 2022-01-29 15:11:41 EST
 
 --
 -- PostgreSQL database dump complete
