@@ -17,7 +17,7 @@ import {
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
-function createData(id, name, symbol, price, currentValue, quantity) {
+function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 
@@ -48,6 +48,7 @@ export const HoldingsTable = ({
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+
   const handleClick = e => {
     // both work:
     // console.log(e.target.innerText)
@@ -55,10 +56,18 @@ export const HoldingsTable = ({
   }
   const getTableData = async () => {
     const response = await axios.get('/api/stocks')
-    // console.log(response.data)
+    // console.log(response.data) // works
+    // console.log(response.data.name) // undefined
     return response.data
   }
   getTableData()
+
+  // stockData.map(stock => console.log(stock))
+  // console.log(stockData) // empty object
+  // for (const stock in stockData) {
+  //   // console.log(stockData[stock])
+  //   console.log(stockData[stock].name)
+  // }
 
   const handleChangePage = (e, newPage) => {
     setPage(newPage)

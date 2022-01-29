@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 
-import { Modal, Box, Button, Typography, Fade, Tooltip, TextField } from '@mui/material'
+import {
+  Modal,
+  Box,
+  Button,
+  Typography,
+  Fade,
+  Tooltip,
+  TextField
+} from '@mui/material'
 
 import SellIcon from '@mui/icons-material/Sell'
 
@@ -16,6 +24,9 @@ const style = {
   p: 4
 }
 
+// TODO: Have stock symbol already selected in modal since you click that specific stock row.
+// TODO: validate input.shareAmount for button
+
 export default function BuyModal () {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -30,14 +41,20 @@ export default function BuyModal () {
         TransitionComponent={Fade}
         TransitionProps={{ timeout: 800 }}
       >
-        <SellIcon onClick={handleOpen} sx={{ cursor: 'pointer' }} color='action' />
+        <SellIcon
+          onClick={handleOpen}
+          sx={{ cursor: 'pointer' }}
+          color='action'
+        />
       </Tooltip>
-      <Modal
-        open={open}
-        onClose={handleClose}
-      >
+      <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Typography id='modal-modal-title' variant='h6' component='h2' gutterBottom>
+          <Typography
+            id='modal-modal-title'
+            variant='h6'
+            component='h2'
+            gutterBottom
+          >
             Sell
           </Typography>
           <Box
@@ -53,9 +70,21 @@ export default function BuyModal () {
             noValidate
             autoComplete='off'
           >
-            <TextField id='stock-symbol' label='Symbol' variant='outlined' color='success' />
-            <TextField id='share-amount' label='Share Amount' variant='outlined' color='success' helperText={`Shares Owned:${100}`} />
+            <TextField
+              id='stock-symbol'
+              label='Symbol'
+              variant='outlined'
+              color='success'
+            />
+            <TextField
+              id='share-amount'
+              label='Share Amount'
+              variant='outlined'
+              color='success'
+              helperText={`Shares Owned:${100}`}
+            />
             <Button
+              // disabled={!(inputs.stockSymbol && inputs.shareAmount)}
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',

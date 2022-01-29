@@ -28,7 +28,6 @@ router.post('/stocks/buy', async (req, res) => {
     symbol = response.data.symbol
     price = response.data.latestPrice
     value = price * parseInt(amount)
-    // console.log(name, symbol, price, amount, value) // works
 
     // holdings table: id, name, symbol, price, value (price * quantity), quantity (inputs.shareAmount), user_id:
     const buyStock = await pool.query(
