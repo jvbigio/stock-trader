@@ -55,8 +55,9 @@ export const HoldingsTable = ({
     // console.log(e.currentTarget)
   }
   const getTableData = async () => {
-    const response = await axios.get('/api/stocks')
-    // console.log(response.data) // works
+    const response = await axios.get('/api/stocks') // orig
+    // const response = await axios.get('/api/stocks/:user_id')
+    console.log(response.data) // works
     // console.log(response.data.name) // undefined
     return response.data
   }
