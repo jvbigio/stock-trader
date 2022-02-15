@@ -17,7 +17,7 @@ import {
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
-function createData(id, name, symbol, price, currentValue, quantity) {
+function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 
@@ -48,21 +48,24 @@ export const HoldingsTable = ({
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  // const [userTable, setUserTable] = useState([])
 
   const handleClick = e => {
     // both work:
     // console.log(e.target.innerText)
     // console.log(e.currentTarget)
   }
-  const getTableData = async () => {
-    const response = await axios.get('/api/stocks') // orig
-    // const response = await axios.get('/api/stocks/:user_id')
-    console.log(response.data) // works
-    // console.log(response.data.name) // undefined
-    return response.data
-  }
-  getTableData()
-
+  // const getUserHoldings = async () => {
+  //   const response = await axios.get('/api/stocks/user') // orig
+  //   // const response = await axios.get('/api/stocks/:user_id')
+  //   // console.log(response.rows[0].id)
+  //   // return response.data // orig
+  //   setUserTable(response.data.rows)
+  //   console.log(userTable)
+  //   console.log(response.data.rows)
+  // }
+  // getUserHoldings()
+  // console.log(userTable)
   // stockData.map(stock => console.log(stock))
   // console.log(stockData) // works after buying stock
   // for (const stock in stockData) {

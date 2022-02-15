@@ -10,6 +10,7 @@ const Portfolio = () => {
   const [open, setOpen] = useState(false)
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
+  const [userTable, setUserTable] = useState([])
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -17,6 +18,7 @@ const Portfolio = () => {
   const getUserInput = e => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
+
   // holdings table: id, name, symbol, price, value, quantity, created_at, user_id
   // user table: id: d72220bc-6844-4a97-b6b9-32303abc60a8, email: jdoe@gmail.com, password: 1234
   const fetchData = async () => {
@@ -29,9 +31,20 @@ const Portfolio = () => {
     setStockData(response.data)
   }
 
+  const getUserHoldings = async () => {
+    const response = await axios.get('/api/stocks/user') // orig
+    // const response = await axios.get('/api/stocks/:user_id')
+    // console.log(response.rows[0].id)
+    // return response.data // orig
+    setUserTable(response.data.rows)
+    console.log(userTable.rows)
+    console.log(response.data)
+  }
+
   const handleSubmit = async e => {
     e.preventDefault()
     fetchData()
+    getUserHoldings()
     handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
