@@ -32,13 +32,9 @@ const Portfolio = () => {
   }
 
   const getUserHoldings = async () => {
-    const response = await axios.get('/api/stocks/user') // orig
-    // const response = await axios.get('/api/stocks/:user_id')
-    // console.log(response.rows[0].id)
-    // return response.data // orig
-    setUserTable(response.data.rows)
-    console.log(userTable.rows)
-    console.log(response.data)
+    const response = await axios.get('/api/stocks/user')
+    setUserTable(response.data)
+    // console.log(response.data)
   }
 
   const handleSubmit = async e => {
@@ -74,6 +70,8 @@ const Portfolio = () => {
                 open={open}
                 handleOpen={handleOpen}
                 handleClose={handleClose}
+                // test:
+                userTable={userTable}
               />
             </Paper>
           </Grid>
