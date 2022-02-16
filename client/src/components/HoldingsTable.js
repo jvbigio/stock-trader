@@ -124,7 +124,7 @@ export const HoldingsTable = ({
               <TableCell align='right'>Price</TableCell>
               <TableCell align='right'>Value</TableCell>
               <TableCell align='right'>Quantity</TableCell>
-              <TableCell align='right'>Action</TableCell>
+              <TableCell align='right'>Sell</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

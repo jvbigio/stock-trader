@@ -1,3 +1,4 @@
+const { response } = require('express')
 const express = require('express')
 const axios = require('axios').default
 // const tokenService = require('../controllers/token-service')
@@ -54,12 +55,14 @@ router.post('/stocks/user', async (req, res) => {
     // const { id } = req.body
     const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
-    const tableData = await pool.query(
+    const userHoldings = await pool.query(
       'SELECT * FROM holdings WHERE user_id = ($1)',
       [id]
     )
 
-    res.send(tableData.rows)
+    userHoldings.rows.map(stock => console.log(stock.name))
+
+    res.send(userHoldings.rows)
   } catch (error) {
     res.sendStatus(500).send(error)
   }
