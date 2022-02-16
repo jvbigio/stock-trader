@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Portfolio.css'
 import { HoldingsTable } from '../components/HoldingsTable'
 
@@ -38,10 +38,15 @@ const Portfolio = () => {
     // console.log(response.data)
   }
 
+  // test
+  useEffect(() => {
+    getUserHoldings()
+  }, [])
+
   const handleSubmit = async e => {
     e.preventDefault()
     fetchData()
-    getUserHoldings()
+    // getUserHoldings()
     handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }

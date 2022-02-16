@@ -62,15 +62,15 @@ export const HoldingsTable = ({
 
   // console.log(userTable) // works
 
-  userTable.map(stock =>
-    console.log(
-      stock.name,
-      stock.symbol,
-      stock.price,
-      stock.value,
-      stock.quantity
-    )
-  ) // works
+  // userTable.map(stock =>
+  //   console.log(
+  //     stock.name,
+  //     stock.symbol,
+  //     stock.price,
+  //     stock.value,
+  //     stock.quantity
+  //   )
+  // ) // works
 
   // TODO: change hardcoded dummy data to map over userTable
 
@@ -153,7 +153,7 @@ export const HoldingsTable = ({
       </TableContainer>
       <TablePagination
         component='div'
-        count={rows.length}
+        count={userTable.length}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
