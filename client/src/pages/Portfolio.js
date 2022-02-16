@@ -31,8 +31,9 @@ const Portfolio = () => {
     setStockData(response.data)
   }
 
+  // GET or POST? Originally GET, but changed to POST to test POST functionality
   const getUserHoldings = async () => {
-    const response = await axios.get('/api/stocks/user')
+    const response = await axios.post('/api/stocks/user')
     setUserTable(response.data)
     // console.log(response.data)
   }

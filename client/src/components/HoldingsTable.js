@@ -17,7 +17,10 @@ import {
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
 
-function createData(id, name, symbol, price, currentValue, quantity) {
+/*
+  HoldingsTable Dummy Data:
+
+function createData (id, name, symbol, price, currentValue, quantity) {
   return { id, name, symbol, price, currentValue, quantity }
 }
 
@@ -34,6 +37,7 @@ const rows = [
   createData(9, 'United Airlines Holdings Inc', 'UAL', 50.22, 5022, 100),
   createData(10, 'AMAZONCOM INC', 'AMZN', 3261.01, 32610.1, 10)
 ]
+*/
 
 export const HoldingsTable = ({
   handleSearch,
@@ -49,7 +53,6 @@ export const HoldingsTable = ({
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-  // const [userTable, setUserTable] = useState([])
 
   const handleClick = e => {
     // both work:
@@ -59,7 +62,15 @@ export const HoldingsTable = ({
 
   // console.log(userTable) // works
 
-  // userTable.map(stock => console.log(stock.symbol)) // works
+  userTable.map(stock =>
+    console.log(
+      stock.name,
+      stock.symbol,
+      stock.price,
+      stock.value,
+      stock.quantity
+    )
+  ) // works
 
   // TODO: change hardcoded dummy data to map over userTable
 
@@ -117,21 +128,21 @@ export const HoldingsTable = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {userTable
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map(row => (
+              .map(stock => (
                 <TableRow
-                  key={row.id}
+                  key={stock.id}
                   hover
                   // returns data in table:
-                  onClick={e => handleClick(e, row.name)}
+                  onClick={e => handleClick(e, stock.name)}
                   // onClick={handleClick}
                 >
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell align='right'>{row.symbol}</TableCell>
-                  <TableCell align='right'>${row.price}</TableCell>
-                  <TableCell align='right'>${row.currentValue}</TableCell>
-                  <TableCell align='right'>{row.quantity}</TableCell>
+                  <TableCell>{stock.name}</TableCell>
+                  <TableCell align='right'>{stock.symbol}</TableCell>
+                  <TableCell align='right'>${stock.price}</TableCell>
+                  <TableCell align='right'>${stock.currentValue}</TableCell>
+                  <TableCell align='right'>{stock.quantity}</TableCell>
                   <TableCell align='right'>
                     <SellModal />
                   </TableCell>
