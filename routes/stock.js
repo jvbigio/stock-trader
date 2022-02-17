@@ -52,7 +52,7 @@ router.post('/stocks/user', async (req, res) => {
   //   // user table: id: d72220bc-6844-4a97-b6b9-32303abc60a8, email: jdoe@gmail.com, password: 1234
   //   // user_id is a foreign key to the user table id
   try {
-    // const { id } = req.body
+    const { symbol, price, value, quantity } = req.body
     const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
     const userHoldings = await pool.query(
@@ -60,7 +60,12 @@ router.post('/stocks/user', async (req, res) => {
       [id]
     )
 
-    userHoldings.rows.map(stock => console.log(stock.name))
+    // userHoldings.rows.map(stock => {
+    //   return console.log(stock.name) // works
+    // })
+
+    // console.log(userHoldings.rows)
+    // console.log(userHoldings.rows[0].quantity)
 
     res.send(userHoldings.rows)
   } catch (error) {
