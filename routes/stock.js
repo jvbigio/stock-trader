@@ -28,7 +28,7 @@ router.post('/stocks/buy', async (req, res) => {
     name = response.data.companyName
     symbol = response.data.symbol
     price = response.data.latestPrice
-    value = price * parseInt(amount)
+    value = parseInt(price) * parseInt(amount)
     id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
     // holdings table: id, name, symbol, price, value (price * quantity), quantity (inputs.shareAmount), user_id:
@@ -46,7 +46,6 @@ router.post('/stocks/buy', async (req, res) => {
 
 // Get all the stocks - make a separate route and call that from the client to get all the stocks per user.
 
-// GET or POST? Originally GET, but changed to POST to test POST functionality
 router.get('/stocks/user', async (req, res) => {
   //   // holdings table: id, name, symbol, price, value, quantity, created_at, user_id
   //   // user table: id: d72220bc-6844-4a97-b6b9-32303abc60a8, email: jdoe@gmail.com, password: 1234
