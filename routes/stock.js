@@ -47,7 +47,7 @@ router.post('/stocks/buy', async (req, res) => {
 // Get all the stocks - make a separate route and call that from the client to get all the stocks per user.
 
 // GET or POST? Originally GET, but changed to POST to test POST functionality
-router.post('/stocks/user', async (req, res) => {
+router.get('/stocks/user', async (req, res) => {
   //   // holdings table: id, name, symbol, price, value, quantity, created_at, user_id
   //   // user table: id: d72220bc-6844-4a97-b6b9-32303abc60a8, email: jdoe@gmail.com, password: 1234
   //   // user_id is a foreign key to the user table id
