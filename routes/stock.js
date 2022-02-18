@@ -23,6 +23,12 @@ router.post('/stocks/buy', async (req, res) => {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
+    // ck if record exists in holdings table
+    const initiateNewTransaction = await pool.query(
+      'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
+      [req.query.stock_symbol, req.query.user_id]
+    )
+
     let { name, symbol, price, value, amount, id } = req.body
 
     name = response.data.companyName
