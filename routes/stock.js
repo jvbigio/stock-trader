@@ -23,11 +23,6 @@ router.post('/stocks/buy', async (req, res) => {
     const response = await axios.get(
       `https://sandbox.iexapis.com/stable/stock/${req.query.stock_symbol}/quote?token=${token}`
     )
-    // ck if record exists in holdings table
-    const initiateNewTransaction = await pool.query(
-      'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
-      [req.query.stock_symbol, req.query.user_id]
-    )
 
     let { name, symbol, price, value, amount, id } = req.body
 
@@ -36,6 +31,36 @@ router.post('/stocks/buy', async (req, res) => {
     price = response.data.latestPrice
     value = parseInt(price) * parseInt(amount)
     id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+
+    // ck if record exists in holdings table
+    const checkExists = await pool.query(
+      'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
+      [symbol, id]
+    )
+    // console.log(checkExists.rows.includes(symbol))
+    // console.log(checkExists.rows.includes(req.query.stock_symbol))
+
+    // console.log(checkExists.rows) // returns stock already in table
+    // console.log(checkExists.rows.includes(symbol)) // false
+    console.log(checkExists.rows.includes(req.query.stock_symbol))
+
+    // req.query.stock_symbol.toUpperCase().includes(symbol))
+
+    checkExists.rows.map(stock => {
+      const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
+      return exists
+      // return stock.symbol.includes(req.stock_symbol.toUpperCase())
+    })
+
+    res.send(checkExists.rows)
+
+    // let { name, symbol, price, value, amount, id } = req.body
+
+    // name = response.data.companyName
+    // symbol = response.data.symbol
+    // price = response.data.latestPrice
+    // value = parseInt(price) * parseInt(amount)
+    // id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
     // holdings table: id, name, symbol, price, value (price * quantity), quantity (inputs.shareAmount), user_id:
     const buyStock = await pool.query(
