@@ -37,34 +37,21 @@ router.post('/stocks/buy', async (req, res) => {
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id]
     )
-    // console.log(checkExists.rows.includes(symbol))
-    // console.log(checkExists.rows.includes(req.query.stock_symbol))
 
-    // console.log(checkExists.rows) // returns stock already in table
-    // console.log(checkExists.rows.includes(symbol)) // false
-    // console.log(checkExists.rows.includes(req.query.stock_symbol)) // not working correctly
-    // console.log(checkExists.rows.includes(req.query.stock_symbol.toUpperCase())) // not working correctly
-
-    // req.query.stock_symbol.toUpperCase().includes(symbol))
-
-    // stock is whole stock object: id, name, symbol, price, value, amount, user_id
-
-    // current code: errors out if stock doesn't exist in holdings table, still adds to holdings
-    // shows exists = true if stock does exist
     checkExists.rows.map(stock => {
       const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
       console.log(exists)
       if (exists) {
+        // update holdings table
         console.log(`${stock.symbol} already exists`)
       } else {
+        // insert into holdings table
         console.log(`${stock.symbol} does not exist`)
       }
-      // return stock.symbol.includes(req.stock_symbol.toUpperCase())
     })
 
     res.send(checkExists.rows)
 
-    // holdings table: id, name, symbol, price, value (price * quantity), quantity (inputs.shareAmount), user_id:
     const buyStock = await pool.query(
       'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
       [name, symbol, price, value, amount, id]
@@ -89,13 +76,6 @@ router.get('/stocks/user', async (req, res) => {
       'SELECT * FROM holdings WHERE user_id = ($1)',
       [id]
     )
-
-    // userHoldings.rows.map(stock => {
-    //   return console.log(stock.name) // works
-    // })
-
-    // console.log(userHoldings.rows)
-    // console.log(userHoldings.rows[0].quantity)
 
     res.send(userHoldings.rows)
   } catch (error) {
