@@ -42,25 +42,27 @@ router.post('/stocks/buy', async (req, res) => {
 
     // console.log(checkExists.rows) // returns stock already in table
     // console.log(checkExists.rows.includes(symbol)) // false
-    console.log(checkExists.rows.includes(req.query.stock_symbol))
+    // console.log(checkExists.rows.includes(req.query.stock_symbol)) // not working correctly
+    // console.log(checkExists.rows.includes(req.query.stock_symbol.toUpperCase())) // not working correctly
 
     // req.query.stock_symbol.toUpperCase().includes(symbol))
 
+    // stock is whole stock object: id, name, symbol, price, value, amount, user_id
+
+    // current code: errors out if stock doesn't exist in holdings table, still adds to holdings
+    // shows exists = true if stock does exist
     checkExists.rows.map(stock => {
       const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
-      return exists
+      console.log(exists)
+      if (exists) {
+        console.log(`${stock.symbol} already exists`)
+      } else {
+        console.log(`${stock.symbol} does not exist`)
+      }
       // return stock.symbol.includes(req.stock_symbol.toUpperCase())
     })
 
     res.send(checkExists.rows)
-
-    // let { name, symbol, price, value, amount, id } = req.body
-
-    // name = response.data.companyName
-    // symbol = response.data.symbol
-    // price = response.data.latestPrice
-    // value = parseInt(price) * parseInt(amount)
-    // id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
     // holdings table: id, name, symbol, price, value (price * quantity), quantity (inputs.shareAmount), user_id:
     const buyStock = await pool.query(
@@ -78,11 +80,9 @@ router.post('/stocks/buy', async (req, res) => {
 // Get all the stocks - make a separate route and call that from the client to get all the stocks per user.
 
 router.get('/stocks/user', async (req, res) => {
-  //   // holdings table: id, name, symbol, price, value, quantity, created_at, user_id
-  //   // user table: id: d72220bc-6844-4a97-b6b9-32303abc60a8, email: jdoe@gmail.com, password: 1234
   //   // user_id is a foreign key to the user table id
   try {
-    const { symbol, price, value, quantity } = req.body
+    // const { symbol, price, value, quantity } = req.body
     const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
     const userHoldings = await pool.query(
