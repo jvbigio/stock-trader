@@ -48,6 +48,7 @@ router.post('/stocks/buy', async (req, res) => {
         // insert into holdings table
         console.log(`${stock.symbol} does not exist`)
       }
+      // return stock.symbol.includes(req.stock_symbol.toUpperCase())
     })
 
     res.send(checkExists.rows)
