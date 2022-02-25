@@ -37,6 +37,10 @@ router.post('/stocks/buy', async (req, res) => {
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id]
     )
+    console.log(checkExists.rows)
+    console.log(checkExists.rows.length)
+    console.log(checkExists)
+    console.log(checkExists.rows[0])
 
     checkExists.rows.map(stock => {
       const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
