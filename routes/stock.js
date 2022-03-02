@@ -37,23 +37,32 @@ router.post('/stocks/buy', async (req, res) => {
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id]
     )
-    console.log(checkExists.rows)
-    console.log(checkExists.rows.length)
-    console.log(checkExists)
-    console.log(checkExists.rows[0])
+    // console.log(checkExists.rows)
+    console.log(checkExists.rows.length) // test this
+    // console.log(checkExists)
+    // console.log(checkExists.rows[0])
 
-    checkExists.rows.map(stock => {
-      const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
-      console.log(exists)
-      if (exists) {
-        // update holdings table
-        console.log(`${stock.symbol} already exists`)
-      } else {
-        // insert into holdings table
-        console.log(`${stock.symbol} does not exist`)
-      }
-      // return stock.symbol.includes(req.stock_symbol.toUpperCase())
-    })
+    // const validate = checkExists.rows[0].indexOf(req.query.stock_symbol)
+    // // console.log(validate)
+    // if (validate) {
+    //   console.log(`${symbol} is already in your holdings`)
+    // } else {
+    //   console.log(`${symbol} is not in your holdings`)
+    //   return validate
+    // }
+
+    // checkExists.rows.map(stock => {
+    //   const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
+    //   console.log(exists)
+    //   if (exists) {
+    //     // update holdings table
+    //     console.log(`${stock.symbol} already exists`)
+    //   } else {
+    //     // insert into holdings table
+    //     console.log(`${stock.symbol} does not exist`)
+    //   }
+    //   // return stock.symbol.includes(req.stock_symbol.toUpperCase())
+    // })
 
     res.send(checkExists.rows)
 
