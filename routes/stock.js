@@ -38,7 +38,21 @@ router.post('/stocks/buy', async (req, res) => {
       [symbol, id]
     )
     // console.log(checkExists.rows)
-    console.log(checkExists.rows.length) // test this
+
+    console.log(checkExists.rows.length) // exists = 1, not = 0:
+
+    // const checkTable = checkExists.rows
+    //   ? `${checkExists.rows[0].symbol}`
+    //   : 'no record'
+
+    // console.log(checkTable)
+    // (checkExists.rows) ? `${checkExists.rows[0].symbol}` : 'no record'
+
+    // const test = checkExists.rows[0].symbol.includes(
+    //   req.query.stock_symbol.toUpperCase()
+    // )
+    // console.log(test)
+
     // console.log(checkExists)
     // console.log(checkExists.rows[0])
 
@@ -50,21 +64,24 @@ router.post('/stocks/buy', async (req, res) => {
     //   console.log(`${symbol} is not in your holdings`)
     //   return validate
     // }
-
-    // checkExists.rows.map(stock => {
-    //   const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
-    //   console.log(exists)
-    //   if (exists) {
-    //     // update holdings table
-    //     console.log(`${stock.symbol} already exists`)
-    //   } else {
-    //     // insert into holdings table
-    //     console.log(`${stock.symbol} does not exist`)
-    //   }
-    //   // return stock.symbol.includes(req.stock_symbol.toUpperCase())
-    // })
-
-    res.send(checkExists.rows)
+    const checkHoldings = async () => {
+      checkExists.rows.forEach(stock => {
+        // const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
+        const exists = checkExists.rows.length
+        console.log(exists)
+        if (exists) {
+          // update holdings table
+          console.log(`${stock.symbol} already exists`)
+        } else {
+          // insert into holdings table
+          console.log(`${stock.symbol} does not exist`)
+        }
+        // return res.json(checkExists.rows)
+        return stock
+      })
+    }
+    res.send(checkHoldings(checkExists.rows))
+    // res.send(checkExists.rows) // orig
 
     const buyStock = await pool.query(
       'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
@@ -73,8 +90,9 @@ router.post('/stocks/buy', async (req, res) => {
 
     res.send(buyStock.rows[0])
   } catch (err) {
-    console.error(err)
-    res.sendStatus(500).send(err)
+    // console.error(err)
+    // res.sendStatus(500).send(err)
+    res.status(500).send(err.message)
   }
 })
 
@@ -93,7 +111,8 @@ router.get('/stocks/user', async (req, res) => {
 
     res.send(userHoldings.rows)
   } catch (error) {
-    res.sendStatus(500).send(error)
+    // res.sendStatus(500).send(error)
+    res.status(500).send(error.message)
   }
 })
 
