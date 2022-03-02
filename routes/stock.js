@@ -64,23 +64,24 @@ router.post('/stocks/buy', async (req, res) => {
     //   console.log(`${symbol} is not in your holdings`)
     //   return validate
     // }
-    const checkHoldings = async () => {
-      checkExists.rows.forEach(stock => {
-        // const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
-        const exists = checkExists.rows.length
-        console.log(exists)
-        if (exists) {
-          // update holdings table
-          console.log(`${stock.symbol} already exists`)
-        } else {
-          // insert into holdings table
-          console.log(`${stock.symbol} does not exist`)
-        }
-        // return res.json(checkExists.rows)
-        return stock
-      })
-    }
-    res.send(checkHoldings(checkExists.rows))
+
+    // testing try/catch
+    // const checkHoldings = async () => {
+    checkExists.rows.forEach(stock => {
+      // const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
+      const exists = checkExists.rows.length
+      console.log(exists)
+      if (exists) {
+        // update holdings table
+        console.log(`${stock.symbol} already exists`)
+      } else {
+        // insert into holdings table
+        console.log(`${stock.symbol} does not exist`)
+      }
+      // return res.json(checkExists.rows)
+      return stock
+    })
+
     // res.send(checkExists.rows) // orig
 
     const buyStock = await pool.query(
@@ -90,7 +91,7 @@ router.post('/stocks/buy', async (req, res) => {
     // testing:
     // res.setHeader('Content-Type', 'application/json')
     // res.send(buyStock.rows[0]) // orig
-    res.json(buyStock.rows[0])
+    res.json(buyStock.rows[0]) // testing
   } catch (err) {
     // console.error(err)
     // res.sendStatus(500).send(err)
