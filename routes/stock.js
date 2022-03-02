@@ -87,12 +87,15 @@ router.post('/stocks/buy', async (req, res) => {
       'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
       [name, symbol, price, value, amount, id]
     )
-
-    res.send(buyStock.rows[0])
+    // testing:
+    // res.setHeader('Content-Type', 'application/json')
+    // res.send(buyStock.rows[0]) // orig
+    res.json(buyStock.rows[0])
   } catch (err) {
     // console.error(err)
     // res.sendStatus(500).send(err)
-    res.status(500).send(err.message)
+    // res.status(500).send(err.message)
+    res.status(500).json({ error: err.message })
   }
 })
 
@@ -108,11 +111,13 @@ router.get('/stocks/user', async (req, res) => {
       'SELECT * FROM holdings WHERE user_id = ($1)',
       [id]
     )
-
-    res.send(userHoldings.rows)
+    // testing:
+    // res.setHeader('Content-Type', 'application/json')
+    // res.send(userHoldings.rows) // original
+    res.json(userHoldings.rows)
   } catch (error) {
     // res.sendStatus(500).send(error)
-    res.status(500).send(error.message)
+    // res.status(500).send(error.message)
   }
 })
 
