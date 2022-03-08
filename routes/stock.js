@@ -39,7 +39,7 @@ router.post('/stocks/buy', async (req, res) => {
     )
     // console.log(checkExists.rows)
 
-    console.log(checkExists.rows.length) // exists = 1, not = 0:
+    // console.log(checkExists.rows.length) // exists = 1, not = 0
 
     // const checkTable = checkExists.rows
     //   ? `${checkExists.rows[0].symbol}`
@@ -67,22 +67,22 @@ router.post('/stocks/buy', async (req, res) => {
 
     // testing try/catch
     // const checkHoldings = async () => {
-    checkExists.rows.forEach(stock => {
-      // const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
-      const exists = checkExists.rows.length
-      console.log(exists)
-      if (exists) {
-        // update holdings table
-        console.log(`${stock.symbol} already exists`)
-      } else {
-        // insert into holdings table
-        console.log(`${stock.symbol} does not exist`)
-      }
-      // return res.json(checkExists.rows)
-      return stock
-    })
+    // checkExists.rows.forEach(stock => {
+    //   // const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
+    //   const exists = checkExists.rows.length
+    //   console.log(exists)
+    //   if (exists) {
+    //     // update holdings table
+    //     console.log(`${stock.symbol} already exists`)
+    //   } else {
+    //     // insert into holdings table
+    //     console.log(`${stock.symbol} does not exist`)
+    //   }
+    //   return res.json(checkExists.rows)
+    //   // return stock
+    // })
 
-    // res.send(checkExists.rows) // orig
+    res.send(checkExists.rows) // orig
 
     const buyStock = await pool.query(
       'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
@@ -94,9 +94,9 @@ router.post('/stocks/buy', async (req, res) => {
     res.json(buyStock.rows[0]) // testing
   } catch (err) {
     // console.error(err)
-    // res.sendStatus(500).send(err)
+    res.sendStatus(500).send(err)
     // res.status(500).send(err.message)
-    res.status(500).json({ error: err.message })
+    // res.status(500).json({ error: err.message })
   }
 })
 
@@ -117,7 +117,7 @@ router.get('/stocks/user', async (req, res) => {
     // res.send(userHoldings.rows) // original
     res.json(userHoldings.rows)
   } catch (error) {
-    // res.sendStatus(500).send(error)
+    res.sendStatus(500).send(error)
     // res.status(500).send(error.message)
   }
 })
