@@ -33,25 +33,31 @@ router.post('/stocks/buy', async (req, res) => {
     id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
     // ck if record exists in holdings table
-    const checkExists = await pool.query(
+    const isStockInHoldings = await pool.query(
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id]
     )
-    // console.log(checkExists.rows)
 
-    // console.log(checkExists.rows.length) // exists = 1, not = 0
+    // res.send(isStockInHoldings.rows) // original
 
-    res.send(checkExists.rows) // orig
+    if (isStockInHoldings.rows.length) {
+      // exists = 1, !exists = 0
+      const buyStock = await pool.query(
+        'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
+        [name, symbol, price, value, amount, id]
+      )
 
-    const buyStock = await pool.query(
-      'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
-      [name, symbol, price, value, amount, id]
-    )
+      res.send(buyStock.rows[0])
+    } else {
+      const updateStockHoldings = await pool.query(
+        'UPDATE holdings SET quantity = quantity + $1, value = value + $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
+        [amount, value, symbol, id]
+      )
 
-    // res.send(buyStock.rows[0]) // orig
-    res.json(buyStock.rows[0]) // testing
-  } catch (err) {
-    res.sendStatus(500).send(err)
+      res.send(updateStockHoldings.rows[0])
+    }
+  } catch (error) {
+    res.send(error)
   }
 })
 
