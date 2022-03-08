@@ -32,6 +32,8 @@ router.post('/stocks/buy', async (req, res) => {
     value = parseInt(price) * parseInt(amount)
     id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
+    value = value.toFixed(2)
+
     const isStockInHoldings = await pool.query(
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id]
@@ -70,7 +72,7 @@ router.get('/stocks/user', async (req, res) => {
       'SELECT * FROM holdings WHERE user_id = ($1)',
       [id]
     )
-    res.send(userHoldings.rows) // original
+    res.send(userHoldings.rows)
   } catch (error) {
     res.sendStatus(500).send(error)
   }
