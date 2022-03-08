@@ -32,13 +32,10 @@ router.post('/stocks/buy', async (req, res) => {
     value = parseInt(price) * parseInt(amount)
     id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
-    // ck if record exists in holdings table
     const isStockInHoldings = await pool.query(
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id]
     )
-
-    // res.send(isStockInHoldings.rows) // original
 
     if (!isStockInHoldings.rows.length) {
       // exists = 1, !exists = 0
@@ -57,7 +54,6 @@ router.post('/stocks/buy', async (req, res) => {
       res.send(updateStockHoldings.rows[0])
     }
   } catch (error) {
-    // res.sendStatus(500)
     res.sendStatus(500).send(error)
   }
 })
@@ -77,7 +73,6 @@ router.get('/stocks/user', async (req, res) => {
     res.send(userHoldings.rows) // original
   } catch (error) {
     res.sendStatus(500).send(error)
-    // res.status(500).send(error.message)
   }
 })
 
