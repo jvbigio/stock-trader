@@ -40,7 +40,7 @@ router.post('/stocks/buy', async (req, res) => {
 
     // res.send(isStockInHoldings.rows) // original
 
-    if (isStockInHoldings.rows.length) {
+    if (!isStockInHoldings.rows.length) {
       // exists = 1, !exists = 0
       const buyStock = await pool.query(
         'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
@@ -73,8 +73,7 @@ router.get('/stocks/user', async (req, res) => {
       'SELECT * FROM holdings WHERE user_id = ($1)',
       [id]
     )
-    // res.send(userHoldings.rows) // original
-    res.json(userHoldings.rows)
+    res.send(userHoldings.rows) // original
   } catch (error) {
     res.sendStatus(500).send(error)
     // res.status(500).send(error.message)
