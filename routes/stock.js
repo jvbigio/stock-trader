@@ -41,62 +41,17 @@ router.post('/stocks/buy', async (req, res) => {
 
     // console.log(checkExists.rows.length) // exists = 1, not = 0
 
-    // const checkTable = checkExists.rows
-    //   ? `${checkExists.rows[0].symbol}`
-    //   : 'no record'
-
-    // console.log(checkTable)
-    // (checkExists.rows) ? `${checkExists.rows[0].symbol}` : 'no record'
-
-    // const test = checkExists.rows[0].symbol.includes(
-    //   req.query.stock_symbol.toUpperCase()
-    // )
-    // console.log(test)
-
-    // console.log(checkExists)
-    // console.log(checkExists.rows[0])
-
-    // const validate = checkExists.rows[0].indexOf(req.query.stock_symbol)
-    // // console.log(validate)
-    // if (validate) {
-    //   console.log(`${symbol} is already in your holdings`)
-    // } else {
-    //   console.log(`${symbol} is not in your holdings`)
-    //   return validate
-    // }
-
-    // testing try/catch
-    // const checkHoldings = async () => {
-    // checkExists.rows.forEach(stock => {
-    //   // const exists = stock.symbol.includes(req.query.stock_symbol.toUpperCase())
-    //   const exists = checkExists.rows.length
-    //   console.log(exists)
-    //   if (exists) {
-    //     // update holdings table
-    //     console.log(`${stock.symbol} already exists`)
-    //   } else {
-    //     // insert into holdings table
-    //     console.log(`${stock.symbol} does not exist`)
-    //   }
-    //   return res.json(checkExists.rows)
-    //   // return stock
-    // })
-
     res.send(checkExists.rows) // orig
 
     const buyStock = await pool.query(
       'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
       [name, symbol, price, value, amount, id]
     )
-    // testing:
-    // res.setHeader('Content-Type', 'application/json')
+
     // res.send(buyStock.rows[0]) // orig
     res.json(buyStock.rows[0]) // testing
   } catch (err) {
-    // console.error(err)
     res.sendStatus(500).send(err)
-    // res.status(500).send(err.message)
-    // res.status(500).json({ error: err.message })
   }
 })
 
@@ -112,8 +67,6 @@ router.get('/stocks/user', async (req, res) => {
       'SELECT * FROM holdings WHERE user_id = ($1)',
       [id]
     )
-    // testing:
-    // res.setHeader('Content-Type', 'application/json')
     // res.send(userHoldings.rows) // original
     res.json(userHoldings.rows)
   } catch (error) {
