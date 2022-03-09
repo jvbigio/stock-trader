@@ -29,20 +29,27 @@ router.post('/stocks/buy', async (req, res) => {
     name = response.data.companyName
     symbol = response.data.symbol
     price = response.data.latestPrice
+    // price = parseInt(response.data.latestPrice)
     value = parseInt(price) * parseInt(amount)
+    // Number.isInteger(price)
+    // amount = parseInt(amount)
+    // parseInt(value).toFixed(2) // test
     id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
-    value = value.toFixed(2)
+    // value = value.toFixed(2)
 
     const isStockInHoldings = await pool.query(
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id]
     )
+    const convertValue = parseInt(value)
+    const convertAmount = parseInt(amount)
 
     if (!isStockInHoldings.rows.length) {
       // exists = 1, !exists = 0
       const buyStock = await pool.query(
         'INSERT INTO holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
+        // [name, symbol, price, convertValue, amount, id]
         [name, symbol, price, value, amount, id]
       )
 
@@ -50,8 +57,14 @@ router.post('/stocks/buy', async (req, res) => {
     } else {
       const updateStockHoldings = await pool.query(
         'UPDATE holdings SET quantity = quantity + $1, value = value + $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
+        // [amount, convertValue, symbol, id]
         [amount, value, symbol, id]
       )
+      // test
+      // Number(updateStockHoldings.rows[0].quantity)
+      // Number(updateStockHoldings.rows[0].value)
+      // parseInt(updateStockHoldings.rows[0].value)
+      // parseInt(updateStockHoldings.rows[0].quantity)
 
       res.send(updateStockHoldings.rows[0])
     }
