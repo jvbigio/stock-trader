@@ -38,9 +38,6 @@ export const HoldingsTable = ({
     // console.log(e.currentTarget)
   }
 
-  // userTable.map(stock => console.log(typeof stock.value)) // works
-  // userTable.map(stock => console.log(stock.value))
-
   const handleChangePage = (e, newPage) => {
     setPage(newPage)
   }
