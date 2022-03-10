@@ -49,8 +49,6 @@ router.post('/stocks/buy', async (req, res) => {
   }
 })
 
-// Get all the stocks - make a separate route and call that from the client to get all the stocks per user.
-
 router.get('/stocks/user', async (req, res) => {
   //   // user_id is a foreign key to the user table id
   try {

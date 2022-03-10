@@ -34,7 +34,7 @@ export const HoldingsTable = ({
 
   const handleClick = e => {
     // both work:
-    // console.log(e.target.innerText)
+    console.log(e.target.innerText)
     // console.log(e.currentTarget)
   }
 
@@ -48,7 +48,8 @@ export const HoldingsTable = ({
   }
 
   const roundAccurately = (number, decimalPlaces) =>
-    Number(Math.round(number + 'e' + decimalPlaces) + 'e-' + decimalPlaces)
+    // Number(Math.round(number + 'e' + decimalPlaces) + 'e-' + decimalPlaces)
+    Number(Math.round(`${number}e${decimalPlaces}`) + `e-${decimalPlaces}`)
 
   return (
     <>
@@ -102,8 +103,8 @@ export const HoldingsTable = ({
                   key={stock.id}
                   hover
                   // returns data in table:
-                  onClick={e => handleClick(e, stock.name)}
-                  // onClick={handleClick}
+                  // onClick={e => handleClick(e, stock.name)}
+                  onClick={handleClick}
                 >
                   {/* TODO: try to shrink just the name table cell. it's taking too much width */}
                   <TableCell>{stock.name}</TableCell>
