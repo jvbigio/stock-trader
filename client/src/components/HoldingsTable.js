@@ -34,7 +34,7 @@ export const HoldingsTable = ({
 
   const handleClick = e => {
     // both work:
-    console.log(e.target.innerText)
+    // console.log(e.target.innerText)
     // console.log(e.currentTarget)
   }
 
@@ -62,17 +62,8 @@ export const HoldingsTable = ({
             alignItems: 'center'
           }}
           mb={4}
+          // ml={1} // testing for when FAB on left side of holdings table
         >
-          <Typography
-            variant='h3'
-            textAlign='center'
-            component='div'
-            flexGrow='1'
-            gutterBottom
-            mt={1}
-          >
-            Holdings
-          </Typography>
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
             <BuyModal
               inputs={inputs}
@@ -83,6 +74,26 @@ export const HoldingsTable = ({
               handleClose={handleClose}
             />
           </Box>
+          <Typography
+            variant='h3'
+            textAlign='center'
+            component='div'
+            flexGrow='1'
+            gutterBottom
+            mt={1}
+          >
+            Holdings
+          </Typography>
+          {/* <Box sx={{ '& > :not(style)': { m: 1 } }}>
+            <BuyModal
+              inputs={inputs}
+              getUserInput={getUserInput}
+              handleSubmit={handleSubmit}
+              open={open}
+              handleOpen={handleOpen}
+              handleClose={handleClose}
+            />
+          </Box> */}
         </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
           <TableHead>
@@ -115,7 +126,14 @@ export const HoldingsTable = ({
                   </TableCell>
                   <TableCell align='right'>{stock.quantity}</TableCell>
                   <TableCell align='right'>
-                    <SellModal />
+                    <SellModal
+                      inputs={inputs}
+                      getUserInput={getUserInput}
+                      handleSubmit={handleSubmit}
+                      // open={open}
+                      handleOpen={handleOpen}
+                      handleClose={handleClose}
+                    />
                   </TableCell>
                 </TableRow>
               ))}

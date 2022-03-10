@@ -44,7 +44,9 @@ export default function BuyModal ({
     <>
       <Tooltip
         title='Buy'
-        placement='left'
+        // when on right side of screen:
+        // placement='left'
+        placement='right'
         arrow
         TransitionComponent={Fade}
         TransitionProps={{ timeout: 800 }}
@@ -92,7 +94,7 @@ export default function BuyModal ({
               label='Symbol'
               variant='outlined'
               color='success'
-              helperText={`Last Price: $${36.64}`}
+              helperText={`Current Price: $${36.64}`}
               name='stockSymbol'
               value={inputs.stockSymbol || ''}
               onChange={getUserInput}

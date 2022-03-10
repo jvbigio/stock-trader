@@ -27,10 +27,19 @@ const style = {
 // TODO: Have stock symbol already selected in modal since you click that specific stock row.
 // TODO: validate input.shareAmount for button
 
-export default function BuyModal () {
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+export default function SellModal ({
+  inputs,
+  getUserInput,
+  handleSubmit,
+  // open causes error where only sell modal opens on buy too and background is black
+  open,
+  handleOpen,
+  handleClose
+}) {
+  // const open = () => !false
+  // const [open, setOpen] = useState(false)
+  // const handleOpen = () => setOpen(true)
+  // const handleClose = () => setOpen(false)
 
   return (
     <>
@@ -75,6 +84,8 @@ export default function BuyModal () {
               label='Symbol'
               variant='outlined'
               color='success'
+              // value={inputs.stockSymbol || ''}
+              onChange={getUserInput}
             />
             <TextField
               id='share-amount'
@@ -82,9 +93,13 @@ export default function BuyModal () {
               variant='outlined'
               color='success'
               helperText={`Shares Owned:${100}`}
+              name='shareAmount'
+              // value={inputs.shareAmount || ''}
+              onChange={getUserInput}
             />
             <Button
-              // disabled={!(inputs.stockSymbol && inputs.shareAmount)}
+              disabled={!(inputs.stockSymbol && inputs.shareAmount)}
+              onClick={handleSubmit}
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',

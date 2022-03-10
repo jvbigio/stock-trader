@@ -36,7 +36,6 @@ const Portfolio = () => {
     setUserTable(response.data)
   }
 
-  // blank array doesn't render table after first purchase in table
   useEffect(() => {
     getUserHoldings()
   }, [userTable])
@@ -74,7 +73,6 @@ const Portfolio = () => {
                 open={open}
                 handleOpen={handleOpen}
                 handleClose={handleClose}
-                // test:
                 userTable={userTable}
               />
             </Paper>
