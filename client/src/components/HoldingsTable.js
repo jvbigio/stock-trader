@@ -39,6 +39,7 @@ export const HoldingsTable = ({
   }
 
   // userTable.map(stock => console.log(typeof stock.value)) // works
+  // userTable.map(stock => console.log(stock.value))
 
   const handleChangePage = (e, newPage) => {
     setPage(newPage)
@@ -48,6 +49,9 @@ export const HoldingsTable = ({
     setRowsPerPage(parseInt(e.target.value, 10))
     setPage(0)
   }
+
+  const roundAccurately = (number, decimalPlaces) =>
+    Number(Math.round(number + 'e' + decimalPlaces) + 'e-' + decimalPlaces)
 
   return (
     <>
@@ -108,7 +112,9 @@ export const HoldingsTable = ({
                   <TableCell>{stock.name}</TableCell>
                   <TableCell align='right'>{stock.symbol}</TableCell>
                   <TableCell align='right'>${stock.price}</TableCell>
-                  <TableCell align='right'>${stock.currentValue}</TableCell>
+                  <TableCell align='right'>
+                    ${roundAccurately(stock.value, 2).toFixed(2)}
+                  </TableCell>
                   <TableCell align='right'>{stock.quantity}</TableCell>
                   <TableCell align='right'>
                     <SellModal />
