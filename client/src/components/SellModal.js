@@ -27,7 +27,7 @@ const style = {
 // TODO: Have stock symbol already selected in modal since you click that specific stock row.
 // TODO: validate input.shareAmount for button
 
-export default function SellModal ({
+export default function SellModal({
   inputs,
   getUserInput
   // handleSubmit
@@ -40,9 +40,16 @@ export default function SellModal ({
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const handleOpen = e => {
+    const stockSymbolArr = []
     setOpen(true)
-    // console.log(e.currentTarget)
-    console.log(e.target.parentNode.parentNode.parentNode)
+    // console.log(e.target.className.includes('stock-symbol').innerText)
+    const stockSymbol = e.target.parentNode.parentNode.parentNode.innerText.split(
+      ' '
+    )
+    // console.log(stockSymbol)
+    let symbol = stockSymbolArr.push(stockSymbol)
+    // console.log(stockSymbolArr)
+    console.log(symbol)
   }
   const handleClose = () => setOpen(false)
 
