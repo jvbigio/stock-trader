@@ -30,16 +30,16 @@ const style = {
 export default function SellModal ({
   inputs,
   getUserInput,
-  handleSubmit,
+  // handleSubmit
   // open causes error where only sell modal opens on buy too and background is black
-  open,
-  handleOpen,
-  handleClose
+  // open,
+  // handleOpen,
+  // handleClose
 }) {
   // const open = () => !false
-  // const [open, setOpen] = useState(false)
-  // const handleOpen = () => setOpen(true)
-  // const handleClose = () => setOpen(false)
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   return (
     <>
@@ -84,7 +84,8 @@ export default function SellModal ({
               label='Symbol'
               variant='outlined'
               color='success'
-              // value={inputs.stockSymbol || ''}
+              name='stockSymbol'
+              value={inputs.stockSymbol || ''}
               onChange={getUserInput}
             />
             <TextField
@@ -94,12 +95,13 @@ export default function SellModal ({
               color='success'
               helperText={`Shares Owned:${100}`}
               name='shareAmount'
-              // value={inputs.shareAmount || ''}
+              value={inputs.shareAmount || ''}
               onChange={getUserInput}
             />
             <Button
               disabled={!(inputs.stockSymbol && inputs.shareAmount)}
-              onClick={handleSubmit}
+              // handleSubmit is linked to /api/stocks/buy
+              // onClick={handleSubmit}
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',

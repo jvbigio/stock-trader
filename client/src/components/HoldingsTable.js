@@ -48,7 +48,6 @@ export const HoldingsTable = ({
   }
 
   const roundAccurately = (number, decimalPlaces) =>
-    // Number(Math.round(number + 'e' + decimalPlaces) + 'e-' + decimalPlaces)
     Number(Math.round(`${number}e${decimalPlaces}`) + `e-${decimalPlaces}`)
 
   return (
@@ -129,10 +128,10 @@ export const HoldingsTable = ({
                     <SellModal
                       inputs={inputs}
                       getUserInput={getUserInput}
-                      handleSubmit={handleSubmit}
+                      // handleSubmit={handleSubmit}
                       // open={open}
-                      handleOpen={handleOpen}
-                      handleClose={handleClose}
+                      // handleOpen={handleOpen}
+                      // handleClose={handleClose}
                     />
                   </TableCell>
                 </TableRow>
