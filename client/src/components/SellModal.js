@@ -29,7 +29,7 @@ const style = {
 
 export default function SellModal ({
   inputs,
-  getUserInput,
+  getUserInput
   // handleSubmit
   // open causes error where only sell modal opens on buy too and background is black
   // open,
@@ -38,7 +38,12 @@ export default function SellModal ({
 }) {
   // const open = () => !false
   const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
+  // const handleOpen = () => setOpen(true) // original
+  const handleOpen = e => {
+    setOpen(true)
+    // console.log(e.currentTarget)
+    console.log(e.target.parentNode.parentNode.parentNode)
+  }
   const handleClose = () => setOpen(false)
 
   return (
