@@ -40,16 +40,12 @@ export default function SellModal({
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const handleOpen = e => {
-    const stockSymbolArr = []
     setOpen(true)
-    // console.log(e.target.className.includes('stock-symbol').innerText)
-    const stockSymbol = e.target.parentNode.parentNode.parentNode.innerText.split(
-      ' '
-    )
-    // console.log(stockSymbol)
-    let symbol = stockSymbolArr.push(stockSymbol)
-    // console.log(stockSymbolArr)
-    console.log(symbol)
+
+    const stockSymbol =
+      e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
+        .innerText
+    console.log(stockSymbol)
   }
   const handleClose = () => setOpen(false)
 
