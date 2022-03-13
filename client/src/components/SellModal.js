@@ -24,7 +24,8 @@ const style = {
   p: 4
 }
 
-export default function SellModal ({ inputs, getUserInput, handleClose }) {
+// export default function SellModal ({ inputs, getUserInput, handleClose }) {
+export default function SellModal ({ inputs, getUserInput }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
@@ -40,7 +41,7 @@ export default function SellModal ({ inputs, getUserInput, handleClose }) {
     setSellingStockSymbol(stockSymbol)
   }
 
-  // const handleClose = () => setOpen(false)
+  const handleClose = () => setOpen(false)
 
   const handleSellButtonClick = e => {
     e.preventDefault()
@@ -87,6 +88,7 @@ export default function SellModal ({ inputs, getUserInput, handleClose }) {
             maxWidth='md'
             noValidate
             autoComplete='off'
+            onsubmit={handleSellButtonClick} // test
           >
             <TextField
               id='stock-symbol'
@@ -109,8 +111,8 @@ export default function SellModal ({ inputs, getUserInput, handleClose }) {
             />
             <Button
               disabled={!inputs.shareAmount}
-              // onClick={handleSellButtonClick}
-              onsubmit={handleSellButtonClick}
+              onClick={handleSellButtonClick}
+              // onsubmit={handleSellButtonClick} // not working
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',

@@ -118,7 +118,7 @@ export const HoldingsTable = ({
                     <SellModal
                       inputs={inputs}
                       getUserInput={getUserInput}
-                      handleClose={handleClose}
+                      // handleClose={handleClose}
                     />
                   </TableCell>
                 </TableRow>

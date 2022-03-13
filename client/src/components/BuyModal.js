@@ -88,6 +88,7 @@ export default function BuyModal ({
             }}
             maxWidth='md'
             noValidate
+            onSubmit={handleSubmit} // testing
           >
             <TextField
               id='stock-symbol'
@@ -113,6 +114,7 @@ export default function BuyModal ({
             <Button
               disabled={!(inputs.stockSymbol && inputs.shareAmount)}
               onClick={handleSubmit}
+              // onSubmit={handleSubmit} // not working
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',
