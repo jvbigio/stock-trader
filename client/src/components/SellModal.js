@@ -27,7 +27,7 @@ const style = {
 // TODO: Have stock symbol already selected in modal since you click that specific stock row.
 // TODO: validate input.shareAmount for button
 
-export default function SellModal({
+export default function SellModal ({
   inputs,
   getUserInput
   // handleSubmit
@@ -36,9 +36,10 @@ export default function SellModal({
   // handleOpen,
   // handleClose
 }) {
-  // const open = () => !false
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
+  const [sellingStock, setSellingStock] = useState('')
+
   const handleOpen = e => {
     setOpen(true)
 
@@ -46,8 +47,14 @@ export default function SellModal({
       e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
         .innerText
     console.log(stockSymbol)
+    setSellingStock(stockSymbol)
   }
+
   const handleClose = () => setOpen(false)
+
+  const handleSellButtonClick = e => {
+    console.log(sellingStock)
+  }
 
   return (
     <>
@@ -93,7 +100,7 @@ export default function SellModal({
               variant='outlined'
               color='success'
               name='stockSymbol'
-              value={inputs.stockSymbol || ''}
+              value={sellingStock}
               onChange={getUserInput}
             />
             <TextField
@@ -110,6 +117,7 @@ export default function SellModal({
               disabled={!(inputs.stockSymbol && inputs.shareAmount)}
               // handleSubmit is linked to /api/stocks/buy
               // onClick={handleSubmit}
+              onClick={handleSellButtonClick}
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',

@@ -118,10 +118,7 @@ export const HoldingsTable = ({
                 >
                   {/* TODO: try to shrink just the name table cell. it's taking too much width */}
                   <TableCell>{stock.name}</TableCell>
-                  <TableCell className='stock-symbol' align='right'>
-                    {/* <TableCell className='stockSymbol' align='right'> */}
-                    {stock.symbol}
-                  </TableCell>
+                  <TableCell align='right'>{stock.symbol}</TableCell>
                   <TableCell align='right'>${stock.price}</TableCell>
                   <TableCell align='right'>
                     ${roundAccurately(stock.value, 2).toFixed(2)}
