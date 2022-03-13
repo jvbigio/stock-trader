@@ -38,7 +38,8 @@ export default function SellModal ({
 }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
-  const [sellingStock, setSellingStock] = useState('')
+  const [sellingStockSymbol, setSellingStockSymbol] = useState('')
+  const [sellingStockQuantity, setSellingStockQuantity] = useState('')
 
   const handleOpen = e => {
     setOpen(true)
@@ -47,13 +48,14 @@ export default function SellModal ({
       e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
         .innerText
     console.log(stockSymbol)
-    setSellingStock(stockSymbol)
+    setSellingStockSymbol(stockSymbol)
   }
 
   const handleClose = () => setOpen(false)
 
   const handleSellButtonClick = e => {
-    console.log(sellingStock)
+    // console.log(sellingStockSymbol)
+    console.log(inputs.shareAmount)
   }
 
   return (
@@ -100,8 +102,7 @@ export default function SellModal ({
               variant='outlined'
               color='success'
               name='stockSymbol'
-              value={sellingStock}
-              onChange={getUserInput}
+              value={sellingStockSymbol}
             />
             <TextField
               id='share-amount'
@@ -110,13 +111,12 @@ export default function SellModal ({
               color='success'
               helperText={`Shares Owned:${100}`}
               name='shareAmount'
+              type='number'
               value={inputs.shareAmount || ''}
               onChange={getUserInput}
             />
             <Button
-              disabled={!(inputs.stockSymbol && inputs.shareAmount)}
-              // handleSubmit is linked to /api/stocks/buy
-              // onClick={handleSubmit}
+              disabled={!inputs.shareAmount}
               onClick={handleSellButtonClick}
               variant='contained'
               sx={{

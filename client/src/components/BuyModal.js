@@ -106,6 +106,7 @@ export default function BuyModal ({
               color='success'
               helperText={`Estimated Value: $${7500.14}`}
               name='shareAmount'
+              type='number'
               value={inputs.shareAmount || ''}
               onChange={getUserInput}
             />
