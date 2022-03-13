@@ -19,8 +19,6 @@ const Portfolio = () => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
 
-  // holdings table: id, name, symbol, price, value, quantity, created_at, user_id
-  // user table: id: d72220bc-6844-4a97-b6b9-32303abc60a8, email: jdoe@gmail.com, password: 1234
   const fetchData = async () => {
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     const data = {
@@ -47,6 +45,15 @@ const Portfolio = () => {
     handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
+
+  // testing
+  // const handleSellButtonClick = e => {
+  //   e.preventDefault()
+  //   // console.log(sellingStockSymbol)
+  //   console.log(inputs.shareAmount)
+  //   setSellingStockQuantity(inputs.shareAmount)
+  //   handleClose()
+  // }
 
   return (
     <Box sx={{ display: 'flex' }}>

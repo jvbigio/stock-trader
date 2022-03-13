@@ -83,16 +83,6 @@ export const HoldingsTable = ({
           >
             Holdings
           </Typography>
-          {/* <Box sx={{ '& > :not(style)': { m: 1 } }}>
-            <BuyModal
-              inputs={inputs}
-              getUserInput={getUserInput}
-              handleSubmit={handleSubmit}
-              open={open}
-              handleOpen={handleOpen}
-              handleClose={handleClose}
-            />
-          </Box> */}
         </Box>
         <Table sx={{ minWidth: 650 }} size='small' aria-label='holdings table'>
           <TableHead>
@@ -128,10 +118,7 @@ export const HoldingsTable = ({
                     <SellModal
                       inputs={inputs}
                       getUserInput={getUserInput}
-                      // handleSubmit={handleSubmit}
-                      // open={open}
-                      // handleOpen={handleOpen}
-                      // handleClose={handleClose}
+                      handleClose={handleClose}
                     />
                   </TableCell>
                 </TableRow>

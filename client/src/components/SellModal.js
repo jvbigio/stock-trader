@@ -24,18 +24,7 @@ const style = {
   p: 4
 }
 
-// TODO: Have stock symbol already selected in modal since you click that specific stock row.
-// TODO: validate input.shareAmount for button
-
-export default function SellModal ({
-  inputs,
-  getUserInput
-  // handleSubmit
-  // open causes error where only sell modal opens on buy too and background is black
-  // open,
-  // handleOpen,
-  // handleClose
-}) {
+export default function SellModal ({ inputs, getUserInput, handleClose }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
@@ -47,15 +36,18 @@ export default function SellModal ({
     const stockSymbol =
       e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
         .innerText
-    console.log(stockSymbol)
+    // console.log(stockSymbol)
     setSellingStockSymbol(stockSymbol)
   }
 
-  const handleClose = () => setOpen(false)
+  // const handleClose = () => setOpen(false)
 
   const handleSellButtonClick = e => {
+    e.preventDefault()
     // console.log(sellingStockSymbol)
     console.log(inputs.shareAmount)
+    setSellingStockQuantity(inputs.shareAmount)
+    handleClose()
   }
 
   return (
@@ -117,7 +109,8 @@ export default function SellModal ({
             />
             <Button
               disabled={!inputs.shareAmount}
-              onClick={handleSellButtonClick}
+              // onClick={handleSellButtonClick}
+              onsubmit={handleSellButtonClick}
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',
