@@ -24,31 +24,40 @@ const style = {
   p: 4
 }
 
-export default function SellModal ({ inputs, getUserInput, handleClose }) {
-  const [open, setOpen] = useState(false)
+export default function SellModal ({
+  inputs,
+  getUserInput,
+  handleClose,
+  sellingStockSymbol,
+  sellingStockQuantity,
+  handleSellModalOpen,
+  handleSellButtonClick,
+  open
+}) {
+  // const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
-  const [sellingStockSymbol, setSellingStockSymbol] = useState('')
-  const [sellingStockQuantity, setSellingStockQuantity] = useState('')
+  // const [sellingStockSymbol, setSellingStockSymbol] = useState('')
+  // const [sellingStockQuantity, setSellingStockQuantity] = useState('')
 
-  const handleOpen = e => {
-    setOpen(true)
+  // const handleOpen = e => {
+  //   setOpen(true)
 
-    const stockSymbol =
-      e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
-        .innerText
-    // console.log(stockSymbol)
-    setSellingStockSymbol(stockSymbol)
-  }
+  //   const stockSymbol =
+  //     e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
+  //       .innerText
+  //   // console.log(stockSymbol)
+  //   setSellingStockSymbol(stockSymbol)
+  // }
 
   // const handleClose = () => setOpen(false)
 
-  const handleSellButtonClick = e => {
-    e.preventDefault()
-    // console.log(sellingStockSymbol)
-    console.log(inputs.shareAmount)
-    setSellingStockQuantity(inputs.shareAmount)
-    handleClose()
-  }
+  // const handleSellButtonClick = e => {
+  //   e.preventDefault()
+  //   // console.log(sellingStockSymbol)
+  //   console.log(inputs.shareAmount)
+  //   setSellingStockQuantity(inputs.shareAmount)
+  //   handleClose()
+  // }
 
   return (
     <>
@@ -60,7 +69,8 @@ export default function SellModal ({ inputs, getUserInput, handleClose }) {
         TransitionProps={{ timeout: 800 }}
       >
         <SellIcon
-          onClick={handleOpen}
+          // onClick={handleOpen}
+          onClick={handleSellModalOpen}
           sx={{ cursor: 'pointer' }}
           color='action'
         />
@@ -109,8 +119,8 @@ export default function SellModal ({ inputs, getUserInput, handleClose }) {
             />
             <Button
               disabled={!inputs.shareAmount}
-              // onClick={handleSellButtonClick}
-              onsubmit={handleSellButtonClick}
+              onClick={handleSellButtonClick}
+              // onsubmit={handleSellButtonClick}
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',

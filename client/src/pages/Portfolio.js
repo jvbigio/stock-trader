@@ -11,6 +11,9 @@ const Portfolio = () => {
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
   const [userTable, setUserTable] = useState([])
+  // testing
+  const [sellingStockSymbol, setSellingStockSymbol] = useState('')
+  const [sellingStockQuantity, setSellingStockQuantity] = useState('')
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -47,13 +50,24 @@ const Portfolio = () => {
   }
 
   // testing
-  // const handleSellButtonClick = e => {
-  //   e.preventDefault()
-  //   // console.log(sellingStockSymbol)
-  //   console.log(inputs.shareAmount)
-  //   setSellingStockQuantity(inputs.shareAmount)
-  //   handleClose()
-  // }
+  const handleSellModalOpen = e => {
+    setOpen(true)
+
+    const stockSymbol =
+      e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
+        .innerText
+    // console.log(stockSymbol)
+    setSellingStockSymbol(stockSymbol)
+  }
+
+  // testing
+  const handleSellButtonClick = e => {
+    e.preventDefault()
+    // console.log(sellingStockSymbol)
+    console.log(inputs.shareAmount)
+    setSellingStockQuantity(inputs.shareAmount)
+    handleClose()
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -81,6 +95,10 @@ const Portfolio = () => {
                 handleOpen={handleOpen}
                 handleClose={handleClose}
                 userTable={userTable}
+                sellingStockSymbol={sellingStockSymbol}
+                sellingStockQuantity={sellingStockQuantity}
+                handleSellButtonClick={handleSellButtonClick}
+                handleSellModalOpen={handleSellModalOpen}
               />
             </Paper>
           </Grid>
