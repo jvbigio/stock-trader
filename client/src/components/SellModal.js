@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 import {
   Modal,
@@ -25,7 +26,7 @@ const style = {
 }
 
 // export default function SellModal ({ inputs, getUserInput, handleClose }) {
-export default function SellModal ({ inputs, getUserInput }) {
+export default function SellModal({ inputs, getUserInput }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
@@ -43,12 +44,22 @@ export default function SellModal ({ inputs, getUserInput }) {
 
   const handleClose = () => setOpen(false)
 
-  const handleSellButtonClick = e => {
-    e.preventDefault()
-    // console.log(sellingStockSymbol)
-    console.log(inputs.shareAmount)
-    setSellingStockQuantity(inputs.shareAmount)
-    handleClose()
+  const handleSellButtonClick = async e => {
+    try {
+      // send sell request to server with stockSymbol and sellingStockQuantity
+      e.preventDefault()
+      // console.log(sellingStockSymbol)
+      console.log(inputs.shareAmount)
+      const sellStockRequest = await axios.post('/api/stocks/sell', {
+        stockSymbol: sellingStockSymbol,
+        sellingStockQuantity: sellingStockQuantity
+      })
+      console.log(sellStockRequest)
+      setSellingStockQuantity(inputs.shareAmount)
+      handleClose()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -88,7 +99,7 @@ export default function SellModal ({ inputs, getUserInput }) {
             maxWidth='md'
             noValidate
             autoComplete='off'
-            onsubmit={handleSellButtonClick} // test
+            // onsubmit={handleSellButtonClick} // test
           >
             <TextField
               id='stock-symbol'
