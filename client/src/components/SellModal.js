@@ -49,13 +49,18 @@ export default function SellModal({ inputs, getUserInput }) {
       // send sell request to server with stockSymbol and sellingStockQuantity
       e.preventDefault()
       // console.log(sellingStockSymbol)
-      console.log(inputs.shareAmount)
-      const sellStockRequest = await axios.post('/api/stocks/sell', {
+      // console.log(inputs.shareAmount) // works
+      // const sellStockRequest = await axios.post('/api/stocks/sell', {
+      const SellStockRequest = '/api/stocks/sell'
+      const data = {
         stockSymbol: sellingStockSymbol,
-        sellingStockQuantity: sellingStockQuantity
-      })
-      console.log(sellStockRequest)
-      setSellingStockQuantity(inputs.shareAmount)
+        amount: inputs.shareAmount
+      }
+
+      const sellStockResponse = await axios.post(SellStockRequest, data)
+      console.log(sellStockResponse.data)
+      // setSellingStockQuantity(inputs.shareAmount)
+      // setSellingStockQuantity(sellStockResponse.data.sellingStockQuantity)
       handleClose()
     } catch (error) {
       console.log(error)
