@@ -25,10 +25,7 @@ const style = {
   p: 4
 }
 
-export default function SellModal ({
-  inputs,
-  getUserInput
-}) {
+export default function SellModal ({ inputs, getUserInput }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
@@ -61,7 +58,6 @@ export default function SellModal ({
       console.log(sellStockResponse.data)
 
       // setSellingStockQuantity(inputs.shareAmount)
-      // setSellingStockQuantity(sellStockResponse.data.sellingStockQuantity)
       handleClose()
     } catch (error) {
       console.log(error)
@@ -79,7 +75,6 @@ export default function SellModal ({
       >
         <SellIcon
           onClick={handleSellOpen}
-          // onClick={handleOpen}
           sx={{ cursor: 'pointer' }}
           color='action'
         />
@@ -106,7 +101,7 @@ export default function SellModal ({
             maxWidth='md'
             noValidate
             autoComplete='off'
-            // onsubmit={handleSellButtonClick} // test
+            // onsubmit={handleSellButtonClick} // not working
           >
             <TextField
               id='stock-symbol'

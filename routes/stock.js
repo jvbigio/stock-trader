@@ -66,11 +66,28 @@ router.get('/stocks/user', async (req, res) => {
 })
 
 router.post('/stocks/sell', async (req, res) => {
+  const { name, symbol, price, value, quantity, id } = req.body
+  // id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+
   try {
-    const stockHoldingsSell = await pool.query(
-      'DELETE FROM holdings WHERE (name, symbol, price, value, quantity) = ($1, $2, $3, $4, $5) AND user_id = $6 RETURNING *'
-    )
-    res.send(stockHoldingsSell.rows[0])
+    if (quantity > 0) {
+      const sellStock = await pool.query(
+        // 'DELETE FROM holdings WHERE (name, symbol, price, value, quantity) = ($1, $2, $3, $4, $5) AND user_id = $6 RETURNING *',
+        // 'DELETE FROM holdings WHERE (name, symbol, price, value, quantity, user_id) = ($1, $2, $3, $4, $5, $6) RETURNING *',
+        // [name, symbol, price, value, quantity, id]
+        // 'DELETE FROM holdings WHERE id = ($1) AND user_id = $2',
+        'DELETE FROM holdings WHERE id = $1',
+        [id]
+      )
+      res.send(sellStock.rows[0])
+    } else {
+      // res.sendStatus(500).send('You do not have enough shares to sell')
+      const updateStockHoldings = await pool.query(
+        'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
+        [quantity, value, symbol, id]
+      )
+      res.send(updateStockHoldings.rows[0])
+    }
   } catch (error) {
     res.status(500).send(error)
     // res.sendStatus(500).send(error)
