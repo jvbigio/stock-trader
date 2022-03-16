@@ -72,7 +72,8 @@ router.post('/stocks/sell', async (req, res) => {
     )
     res.send(stockHoldingsSell.rows[0])
   } catch (error) {
-    res.sendStatus(500).send(error)
+    res.status(500).send(error)
+    // res.sendStatus(500).send(error)
   }
 })
 

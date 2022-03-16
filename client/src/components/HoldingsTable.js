@@ -26,7 +26,10 @@ export const HoldingsTable = ({
   open,
   handleOpen,
   handleClose,
-  userTable
+  userTable,
+  handleSellOpen,
+  handleSellButtonClick
+  // sellingStockSymbol
 }) => {
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
@@ -119,6 +122,9 @@ export const HoldingsTable = ({
                       inputs={inputs}
                       getUserInput={getUserInput}
                       // handleClose={handleClose}
+                      handleSellOpen={handleSellOpen}
+                      handleSellButtonClick={handleSellButtonClick}
+                      // sellingStockSymbol={sellingStockSymbol}
                     />
                   </TableCell>
                 </TableRow>
