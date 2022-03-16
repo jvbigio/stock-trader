@@ -11,7 +11,6 @@ const Portfolio = () => {
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
   const [userTable, setUserTable] = useState([])
-  const [sellingStockSymbol, setSellingStockSymbol] = useState('')
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -47,39 +46,6 @@ const Portfolio = () => {
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
 
-  // selling stock
-  const handleSellOpen = e => {
-    setOpen(true)
-
-    const stockSymbol =
-      e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
-        .innerText
-    console.log(stockSymbol)
-    setSellingStockSymbol(stockSymbol)
-  }
-
-  const handleSellButtonClick = async e => {
-    try {
-      // send sell request to server with stockSymbol and sellingStockQuantity
-      e.preventDefault()
-      // console.log(inputs.shareAmount) // works
-      const SellStockRequest = '/api/stocks/sell'
-      const data = {
-        stockSymbol: sellingStockSymbol,
-        amount: inputs.shareAmount
-      }
-
-      const sellStockResponse = await axios.post(SellStockRequest, data)
-      console.log(sellStockResponse.data)
-
-      // setSellingStockQuantity(inputs.shareAmount)
-      // setSellingStockQuantity(sellStockResponse.data.sellingStockQuantity)
-      handleClose()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   return (
     <Box sx={{ display: 'flex' }}>
       <Box
@@ -106,9 +72,6 @@ const Portfolio = () => {
                 handleOpen={handleOpen}
                 handleClose={handleClose}
                 userTable={userTable}
-                handleSellOpen={handleSellOpen}
-                handleSellButtonClick={handleSellButtonClick}
-                sellingStockSymbol={sellingStockSymbol}
               />
             </Paper>
           </Grid>

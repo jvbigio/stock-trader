@@ -25,51 +25,48 @@ const style = {
   p: 4
 }
 
-export default function SellModal({
+export default function SellModal ({
   inputs,
-  getUserInput,
-  handleSellButtonClick,
-  sellingStockSymbol,
-  handleSellOpen
+  getUserInput
 }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
-  // const [sellingStockSymbol, setSellingStockSymbol] = useState('')
+  const [sellingStockSymbol, setSellingStockSymbol] = useState('')
   const [sellingStockQuantity, setSellingStockQuantity] = useState('')
 
-  // const handleSellOpen = e => {
-  //   setOpen(true)
+  const handleSellOpen = e => {
+    setOpen(true)
 
-  //   const stockSymbol =
-  //     e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
-  //       .innerText
-  //   // console.log(stockSymbol) // works
-  //   setSellingStockSymbol(stockSymbol)
-  // }
+    const stockSymbol =
+      e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
+        .innerText
+    // console.log(stockSymbol) // works
+    setSellingStockSymbol(stockSymbol)
+  }
 
   const handleClose = () => setOpen(false)
 
-  // const handleSellButtonClick = async e => {
-  //   try {
-  //     // send sell request to server with stockSymbol and sellingStockQuantity
-  //     e.preventDefault()
-  //     // console.log(inputs.shareAmount) // works
-  //     const SellStockRequest = '/api/stocks/sell'
-  //     const data = {
-  //       stockSymbol: sellingStockSymbol,
-  //       amount: inputs.shareAmount
-  //     }
+  const handleSellButtonClick = async e => {
+    try {
+      // send sell request to server with stockSymbol and sellingStockQuantity
+      e.preventDefault()
+      // console.log(inputs.shareAmount) // works
+      const SellStockRequest = '/api/stocks/sell'
+      const data = {
+        stockSymbol: sellingStockSymbol,
+        amount: inputs.shareAmount
+      }
 
-  //     const sellStockResponse = await axios.post(SellStockRequest, data)
-  //     console.log(sellStockResponse.data)
+      const sellStockResponse = await axios.post(SellStockRequest, data)
+      console.log(sellStockResponse.data)
 
-  //     // setSellingStockQuantity(inputs.shareAmount)
-  //     // setSellingStockQuantity(sellStockResponse.data.sellingStockQuantity)
-  //     handleClose()
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+      // setSellingStockQuantity(inputs.shareAmount)
+      // setSellingStockQuantity(sellStockResponse.data.sellingStockQuantity)
+      handleClose()
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
