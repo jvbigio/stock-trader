@@ -39,7 +39,7 @@ const Portfolio = () => {
     getUserHoldings()
   }, [userTable])
 
-  const handleSubmit = async e => {
+  const handleBuySubmit = async e => {
     e.preventDefault()
     fetchData()
     // getUserHoldings()
@@ -48,15 +48,15 @@ const Portfolio = () => {
   }
 
   // selling stock
-  // const handleSellOpen = e => {
-  //   setOpen(true)
+  const handleSellOpen = e => {
+    setOpen(true)
 
-  //   const stockSymbol =
-  //     e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
-  //       .innerText
-  //   console.log(stockSymbol)
-  //   setSellingStockSymbol(stockSymbol)
-  // }
+    const stockSymbol =
+      e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
+        .innerText
+    console.log(stockSymbol)
+    setSellingStockSymbol(stockSymbol)
+  }
 
   const handleSellButtonClick = async e => {
     try {
@@ -101,14 +101,14 @@ const Portfolio = () => {
                 stockData={stockData}
                 inputs={inputs}
                 getUserInput={getUserInput}
-                handleSubmit={handleSubmit}
+                handleBuySubmit={handleBuySubmit}
                 open={open}
                 handleOpen={handleOpen}
                 handleClose={handleClose}
                 userTable={userTable}
-                // handleSellOpen={handleSellOpen}
+                handleSellOpen={handleSellOpen}
                 handleSellButtonClick={handleSellButtonClick}
-                // sellingStockSymbol={sellingStockSymbol}
+                sellingStockSymbol={sellingStockSymbol}
               />
             </Paper>
           </Grid>

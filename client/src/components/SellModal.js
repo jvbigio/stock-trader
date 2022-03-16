@@ -28,24 +28,24 @@ const style = {
 export default function SellModal({
   inputs,
   getUserInput,
-  handleSellButtonClick
-  // sellingStockSymbol
-  // handleSellOpen
+  handleSellButtonClick,
+  sellingStockSymbol,
+  handleSellOpen
 }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
-  const [sellingStockSymbol, setSellingStockSymbol] = useState('')
+  // const [sellingStockSymbol, setSellingStockSymbol] = useState('')
   const [sellingStockQuantity, setSellingStockQuantity] = useState('')
 
-  const handleSellOpen = e => {
-    setOpen(true)
+  // const handleSellOpen = e => {
+  //   setOpen(true)
 
-    const stockSymbol =
-      e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
-        .innerText
-    // console.log(stockSymbol)
-    setSellingStockSymbol(stockSymbol)
-  }
+  //   const stockSymbol =
+  //     e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
+  //       .innerText
+  //   // console.log(stockSymbol) // works
+  //   setSellingStockSymbol(stockSymbol)
+  // }
 
   const handleClose = () => setOpen(false)
 
