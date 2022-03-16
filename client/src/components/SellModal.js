@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 import {
   Modal,
@@ -24,39 +25,50 @@ const style = {
   p: 4
 }
 
-export default function SellModal ({
+export default function SellModal({
   inputs,
   getUserInput,
-  handleClose,
-  sellingStockSymbol,
-  sellingStockQuantity,
-  handleSellModalOpen,
   handleSellButtonClick,
-  open
+  sellingStockSymbol,
+  handleSellOpen
 }) {
-  // const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   // const [sellingStockSymbol, setSellingStockSymbol] = useState('')
-  // const [sellingStockQuantity, setSellingStockQuantity] = useState('')
+  const [sellingStockQuantity, setSellingStockQuantity] = useState('')
 
-  // const handleOpen = e => {
+  // const handleSellOpen = e => {
   //   setOpen(true)
 
   //   const stockSymbol =
   //     e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
   //       .innerText
-  //   // console.log(stockSymbol)
+  //   // console.log(stockSymbol) // works
   //   setSellingStockSymbol(stockSymbol)
   // }
 
-  // const handleClose = () => setOpen(false)
+  const handleClose = () => setOpen(false)
 
-  // const handleSellButtonClick = e => {
-  //   e.preventDefault()
-  //   // console.log(sellingStockSymbol)
-  //   console.log(inputs.shareAmount)
-  //   setSellingStockQuantity(inputs.shareAmount)
-  //   handleClose()
+  // const handleSellButtonClick = async e => {
+  //   try {
+  //     // send sell request to server with stockSymbol and sellingStockQuantity
+  //     e.preventDefault()
+  //     // console.log(inputs.shareAmount) // works
+  //     const SellStockRequest = '/api/stocks/sell'
+  //     const data = {
+  //       stockSymbol: sellingStockSymbol,
+  //       amount: inputs.shareAmount
+  //     }
+
+  //     const sellStockResponse = await axios.post(SellStockRequest, data)
+  //     console.log(sellStockResponse.data)
+
+  //     // setSellingStockQuantity(inputs.shareAmount)
+  //     // setSellingStockQuantity(sellStockResponse.data.sellingStockQuantity)
+  //     handleClose()
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
   // }
 
   return (
@@ -69,8 +81,8 @@ export default function SellModal ({
         TransitionProps={{ timeout: 800 }}
       >
         <SellIcon
+          onClick={handleSellOpen}
           // onClick={handleOpen}
-          onClick={handleSellModalOpen}
           sx={{ cursor: 'pointer' }}
           color='action'
         />
@@ -97,6 +109,7 @@ export default function SellModal ({
             maxWidth='md'
             noValidate
             autoComplete='off'
+            // onsubmit={handleSellButtonClick} // test
           >
             <TextField
               id='stock-symbol'
@@ -120,7 +133,7 @@ export default function SellModal ({
             <Button
               disabled={!inputs.shareAmount}
               onClick={handleSellButtonClick}
-              // onsubmit={handleSellButtonClick}
+              // onsubmit={handleSellButtonClick} // not working
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',

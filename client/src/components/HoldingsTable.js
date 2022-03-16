@@ -22,15 +22,14 @@ export const HoldingsTable = ({
   stockData,
   inputs,
   getUserInput,
-  handleSubmit,
+  handleBuySubmit,
   open,
   handleOpen,
   handleClose,
   userTable,
-  sellingStockSymbol,
-  sellingStockQuantity,
-  handleSellModalOpen,
-  handleSellButtonClick
+  handleSellOpen,
+  handleSellButtonClick,
+  sellingStockSymbol
 }) => {
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
@@ -71,7 +70,7 @@ export const HoldingsTable = ({
             <BuyModal
               inputs={inputs}
               getUserInput={getUserInput}
-              handleSubmit={handleSubmit}
+              handleBuySubmit={handleBuySubmit}
               open={open}
               handleOpen={handleOpen}
               handleClose={handleClose}
@@ -122,12 +121,10 @@ export const HoldingsTable = ({
                     <SellModal
                       inputs={inputs}
                       getUserInput={getUserInput}
-                      handleClose={handleClose}
-                      sellingStockSymbol={sellingStockSymbol}
-                      sellingStockQuantity={sellingStockQuantity}
-                      handleSellModalOpen={handleSellModalOpen}
+                      // handleClose={handleClose}
+                      handleSellOpen={handleSellOpen}
                       handleSellButtonClick={handleSellButtonClick}
-                      open={open}
+                      sellingStockSymbol={sellingStockSymbol}
                     />
                   </TableCell>
                 </TableRow>

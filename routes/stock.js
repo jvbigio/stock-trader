@@ -65,6 +65,18 @@ router.get('/stocks/user', async (req, res) => {
   }
 })
 
+router.post('/stocks/sell', async (req, res) => {
+  try {
+    const stockHoldingsSell = await pool.query(
+      'DELETE FROM holdings WHERE (name, symbol, price, value, quantity) = ($1, $2, $3, $4, $5) AND user_id = $6 RETURNING *'
+    )
+    res.send(stockHoldingsSell.rows[0])
+  } catch (error) {
+    res.status(500).send(error)
+    // res.sendStatus(500).send(error)
+  }
+})
+
 // res = outgoing response, req = incoming request
 
 module.exports = router

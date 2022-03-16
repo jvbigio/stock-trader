@@ -35,7 +35,7 @@ const style = {
 export default function BuyModal ({
   inputs,
   getUserInput,
-  handleSubmit,
+  handleBuySubmit,
   open,
   handleOpen,
   handleClose
@@ -88,6 +88,7 @@ export default function BuyModal ({
             }}
             maxWidth='md'
             noValidate
+            onSubmit={handleBuySubmit} // testing
           >
             <TextField
               id='stock-symbol'
@@ -112,7 +113,8 @@ export default function BuyModal ({
             />
             <Button
               disabled={!(inputs.stockSymbol && inputs.shareAmount)}
-              onClick={handleSubmit}
+              onClick={handleBuySubmit}
+              // onSubmit={handleSubmit} // not working
               variant='contained'
               sx={{
                 backgroundColor: '#1373B4',
