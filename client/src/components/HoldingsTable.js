@@ -115,7 +115,7 @@ export const HoldingsTable = ({
                   </TableCell>
                   <TableCell align='right'>{stock.quantity}</TableCell>
                   <TableCell align='right'>
-                    <SellModal inputs={inputs} getUserInput={getUserInput} />
+                    <SellModal inputs={inputs} getUserInput={getUserInput} stockData={stockData} />
                   </TableCell>
                 </TableRow>
               ))}

@@ -67,7 +67,7 @@ router.get('/stocks/user', async (req, res) => {
 
 router.post('/stocks/sell', async (req, res) => {
   const { name, symbol, price, value, quantity, id } = req.body
-  const { transactionID } = req.query
+  // const { transactionID } = req.query
 
   try {
     // if stocks reach 0 delete from holdings:
@@ -76,8 +76,8 @@ router.post('/stocks/sell', async (req, res) => {
         // 'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
         'DELETE FROM holdings WHERE symbol = $1 AND id = $2',
         // id is transaction id NOT user_id
-        // [symbol, id]
-        [symbol, transactionID]
+        [symbol, id]
+        // [symbol, transactionID]
       )
       res.send(deleteStock.rows[0])
     } else {
@@ -85,7 +85,8 @@ router.post('/stocks/sell', async (req, res) => {
         // 'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
         // [quantity, value, symbol, id]
         'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND id = $4 RETURNING *',
-        [quantity, value, symbol, transactionID]
+        // [quantity, value, symbol, transactionID]
+        [quantity, value, symbol, id]
       )
       res.send(updateStockHoldings.rows[0])
     }
