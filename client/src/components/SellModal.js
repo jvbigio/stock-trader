@@ -25,11 +25,15 @@ const style = {
   p: 4
 }
 
-export default function SellModal ({ inputs, getUserInput, stockData }) {
+export default function SellModal({ inputs, getUserInput }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
-  const [sellingStockQuantity, setSellingStockQuantity] = useState('')
+  // const [sellingStockQuantity, setSellingStockQuantity] = useState('')
+  const [sellingStockData, setSellingStockData] = useState({
+    symbol: '',
+    quantity: ''
+  }) // testing
 
   const handleSellOpen = e => {
     setOpen(true)
@@ -38,7 +42,7 @@ export default function SellModal ({ inputs, getUserInput, stockData }) {
       e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
         .innerText
     // console.log(stockSymbol) // works
-    setSellingStockSymbol(stockSymbol)
+    setSellingStockSymbol(stockSymbol) // keep
   }
 
   const handleClose = () => setOpen(false)
@@ -48,31 +52,39 @@ export default function SellModal ({ inputs, getUserInput, stockData }) {
       // send sell request to server with stockSymbol and sellingStockQuantity
       e.preventDefault()
       const sellStockRequest = '/api/stocks/sell'
-      const data = {
-        stockSymbol: sellingStockSymbol,
+      const stockData = {
+        symbol: sellingStockSymbol,
         amount: inputs.shareAmount
       }
 
-      const response = await axios.post(sellStockRequest, data)
-      console.log(response.data)
+      // testing, not working yet:
+      // const stockToSell = {
+      //   stockSymbol: setSellingStockData.symbol,
+      //   amount: setSellingStockData.quantity
+      // }
 
-      // update userTable
+      const response = await axios.post(sellStockRequest, stockData)
 
-      // const sellStockResponse = await axios.post(sellStockRequest, data)
-      // console.log(sellStockResponse.data) // not working
-      // console.log(sellStockResponse.data.stockSymbol) // undefined
-      // console.log(sellStockResponse.data.amount) // undefined
-      // console.log(inputs.shareAmount) // works
-      // setSellingStockQuantity(inputs.shareAmount)
-      // console.log(sellStockResponse.data) // blank ""
-      // setStockData(sellStockResponse.data)
-      // setSellingStockQuantity(sellStockResponse.data)
+      // console.log(stockData.symbol, stockData.amount) // works
+      // setSellingStockData({
+      //   symbol: sellingStockSymbol,
+      //   quantity: inputs.shareAmount
+      // })
+      setSellingStockData(stockData)
+
+      // console.log(stockData) // works
+      // console.log(response.data) // blank
+      // console.log(sellingStockData)
+
       handleClose()
-      // return sellStockResponse.data
     } catch (error) {
       console.log(error)
     }
   }
+
+  // console.log(response.data)
+
+  // console.log(sellingStockData)
 
   return (
     <>
