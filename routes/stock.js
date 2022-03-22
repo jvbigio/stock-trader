@@ -71,28 +71,36 @@ router.post('/stocks/sell', async (req, res) => {
   id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
   try {
-    // if stocks reach 0 delete from holdings:
-    // > than amount in table, amount = 2
-    // amount.length < or = amount in table = 1
-    // fix when amount is 0, don't allow that
-    // console.log(amount, !amount, amount.length, amount === '0')
-    // console.log(id)
-
-    if (amount) {
-      const deleteStock = await pool.query(
-        'DELETE FROM holdings WHERE symbol = $1 AND id = $2',
-        [symbol, id]
-      )
-      res.send(deleteStock.rows[0])
-    } else {
+    // check if holdings table stock amount is greater than 0, if so update, if not delete
+    const isStockInHoldings = await pool.query(
+      'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
+      [symbol, id] // user enters
+    )
+    // first check holdings table stock quantity is greater than 0
+    if (isStockInHoldings.rows[0].quantity > 0) {
+      // if so, update holdings table stock quantity and value
       const updateStockHoldings = await pool.query(
-        'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND id = $4 RETURNING *',
+        'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
         [amount, value, symbol, id]
       )
       res.send(updateStockHoldings.rows[0])
+    } else {
+      // if not, delete stock from holdings table
+      const deleteStockHoldings = await pool.query(
+        'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
+        [symbol, id]
+      )
+      res.send(deleteStockHoldings.rows[0])
     }
   } catch (error) {
-    res.sendStatus(500).send(error)
+    // res.sendStatus(500).send(error)
+    // res.send(error)
+    res.status(500).send({ message: error.message })
+    // res.json({ token, email });
+    //   } catch (err) {
+    //     res.status(500).send({ message: err.message });
+    //   }
+    // });
   }
 })
 
