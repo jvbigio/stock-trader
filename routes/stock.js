@@ -56,7 +56,7 @@ router.get('/stocks/user', async (req, res) => {
     const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
     const userHoldings = await pool.query(
-      'SELECT * FROM holdings WHERE user_id = ($1)',
+      'SELECT * FROM holdings WHERE user_id = $1',
       [id]
     )
     res.send(userHoldings.rows)
@@ -71,30 +71,23 @@ router.post('/stocks/sell', async (req, res) => {
   id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
   try {
-    const stockHoldingsQuantity = await pool.query(
-      'SELECT * FROM holdings WHERE quantity < $1 AND symbol = $2 AND user_id = $3',
-      [amount, symbol, id]
+    const checkTable = await pool.query(
+      'SELECT * FROM holdings WHERE user_id = $1',
+      [id]
     )
-    // console.log(stockHoldingsQuantity.rows)
-    console.log(quantity)
-    // if stocks reach 0 delete from holdings:
-    // > than amount in table, amount = 2
-    // amount.length < or = amount in table = 1
-    // fix when amount is 0, don't allow that
-    // console.log(amount, !amount, amount.length, amount === '0')
-    // console.log(id)
-    // if (amount) {
-      const deleteStock = await pool.query(
-        // 'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
-        // 'DELETE FROM holdings WHERE symbol = $1 AND id = $2',
-        // [symbol, id]
-        // testing.. deletes entire row, not just the quantity:
-        // 'DELETE FROM holdings WHERE symbol = $1',
-        // [symbol]
-        // end testing
-        // id is transaction id NOT user_id
-        // [symbol, transactionID]
-      )
+    console.log(amount)
+    if (amount) {
+      const deleteStock = await pool.query
+      // 'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
+      // 'DELETE FROM holdings WHERE symbol = $1 AND id = $2',
+      // [symbol, id]
+      // testing.. deletes entire row, not just the quantity:
+      // 'DELETE FROM holdings WHERE symbol = $1',
+      // [symbol]
+      // end testing
+      // id is transaction id NOT user_id
+      // [symbol, transactionID]
+
       res.send(deleteStock.rows[0])
       // res.send(deleteStock.rows[0].symbol)
     } else {
