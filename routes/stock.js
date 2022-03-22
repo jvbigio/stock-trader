@@ -71,10 +71,10 @@ router.post('/stocks/sell', async (req, res) => {
 
   try {
     // if stocks reach 0 delete from holdings:
-    // also same when < or > than amount in table
+    // > than amount in table, amount = 2
     // amount.length < or = amount in table = 1
     // fix when amount is 0, don't allow that
-    console.log(amount, !amount, amount.length)
+    console.log(amount, !amount, amount.length, amount === '0')
     // console.log(id)
 
     if (!amount) {

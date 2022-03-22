@@ -88,7 +88,7 @@ export default function BuyModal ({
             }}
             maxWidth='md'
             noValidate
-            onSubmit={handleBuySubmit} // testing
+            // onSubmit={handleBuySubmit} // testing
           >
             <TextField
               id='stock-symbol'

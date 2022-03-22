@@ -134,14 +134,29 @@ export default function SellModal({ inputs, getUserInput }) {
               value={sellingStockSymbol}
             />
             <TextField
+              // error={
+              //   !!(inputs.shareAmount === '' || inputs.shareAmount === '0')
+              // }
               id='share-amount'
               label='Share Amount'
               variant='outlined'
               color='success'
               helperText={`Shares Owned:${100}`}
+              // helperText={
+              //   inputs.shareAmount === '0'
+              //     ? 'Must be greater than 0'
+              //     : `Shares Owned:${inputs.shareAmount}`
+              // }
               name='shareAmount'
               type='number'
-              value={inputs.shareAmount || ''}
+              // type={'number' && !0}
+              // value={inputs.shareAmount || ''}
+              value={inputs.shareAmount === '0' ? Error : inputs.shareAmount}
+              // value={
+              //   inputs.shareAmount > 0
+              //     ? inputs.shareAmount
+              //     : (helperText = 'Value must be greater than 0')
+              // }
               onChange={getUserInput}
             />
             <Button
