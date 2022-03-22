@@ -25,7 +25,7 @@ const style = {
   p: 4
 }
 
-export default function SellModal({ inputs, getUserInput }) {
+export default function SellModal ({ inputs, getUserInput }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
@@ -149,8 +149,7 @@ export default function SellModal({ inputs, getUserInput }) {
               // }
               name='shareAmount'
               type='number'
-              // type={'number' && !0}
-              // value={inputs.shareAmount || ''}
+              // value={inputs.shareAmount || ''} // original
               value={inputs.shareAmount === '0' ? Error : inputs.shareAmount}
               // value={
               //   inputs.shareAmount > 0
