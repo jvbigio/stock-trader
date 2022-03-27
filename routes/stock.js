@@ -67,7 +67,11 @@ router.get('/stocks/user', async (req, res) => {
 })
 
 router.post('/stocks/sell', async (req, res) => {
+  // price is stock price/share. value is price * quantity
+
   let { name, symbol, price, value, amount, id } = req.body
+
+  // id is user_id
   id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
   try {
@@ -83,7 +87,7 @@ router.post('/stocks/sell', async (req, res) => {
         'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
         [amount, value, symbol, id]
       )
-      res.send(updateStockHoldings.rows[0])
+      res.send(updateStockHoldings.rows[0].value)
     } else {
       // if not, delete stock from holdings table
       const deleteStockHoldings = await pool.query(

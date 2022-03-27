@@ -31,12 +31,13 @@ const Portfolio = () => {
 
   const getUserHoldings = async () => {
     const response = await axios.get('/api/stocks/user')
-    setUserTable(response.data)
+    return setUserTable(response.data)
   }
   // is this causing infinite http requests?
   useEffect(() => {
     getUserHoldings()
-  }, [userTable])
+    // }, [userTable]) // causes infinite http requests
+  }, [stockData])
 
   const handleBuySubmit = async e => {
     e.preventDefault()
