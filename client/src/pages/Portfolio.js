@@ -33,7 +33,7 @@ const Portfolio = () => {
     const response = await axios.get('/api/stocks/user')
     setUserTable(response.data)
   }
-
+  // is this causing infinite http requests?
   useEffect(() => {
     getUserHoldings()
   }, [userTable])

@@ -25,7 +25,7 @@ const style = {
   p: 4
 }
 
-export default function SellModal ({ inputs, getUserInput }) {
+export default function SellModal({ inputs, getUserInput }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
@@ -41,7 +41,6 @@ export default function SellModal ({ inputs, getUserInput }) {
     const stockSymbol =
       e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
         .innerText
-    // console.log(stockSymbol) // works
     setSellingStockSymbol(stockSymbol) // keep
   }
 
@@ -57,29 +56,34 @@ export default function SellModal ({ inputs, getUserInput }) {
         amount: inputs.shareAmount
       }
 
+      // send stock symbol and quantity to server
+      const response = await axios.post(sellStockRequest, stockData)
+      setSellingStockData(response.data)
+
       // testing, not working yet:
       // const stockToSell = {
       //   stockSymbol: setSellingStockData.symbol,
       //   amount: setSellingStockData.quantity
       // }
 
-      const response = await axios.post(sellStockRequest, stockData)
+      // const response = await axios.post(sellStockRequest, stockData)
 
       // console.log(stockData.symbol, stockData.amount) // works
       // setSellingStockData({
       //   symbol: sellingStockSymbol,
       //   quantity: inputs.shareAmount
       // })
-      setSellingStockData(stockData)
+      // setSellingStockData(stockData)
 
       // console.log(stockData) // works
       // console.log(response.data) // blank
       // console.log(sellingStockData)
 
-      handleClose()
+      // handleClose()
     } catch (error) {
       console.log(error)
     }
+    handleClose()
   }
 
   // console.log(response.data)
@@ -149,8 +153,10 @@ export default function SellModal ({ inputs, getUserInput }) {
               // }
               name='shareAmount'
               type='number'
-              // value={inputs.shareAmount || ''} // original
-              value={inputs.shareAmount === '0' ? Error : inputs.shareAmount}
+              // do not allow '0' to be entered in input
+              value={inputs.shareAmount || ''} // original
+              // causes error:
+              // value={inputs.shareAmount === '0' ? Error : inputs.shareAmount}
               // value={
               //   inputs.shareAmount > 0
               //     ? inputs.shareAmount

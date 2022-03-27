@@ -55,6 +55,7 @@ router.get('/stocks/user', async (req, res) => {
     // const { symbol, price, value, quantity } = req.body
     const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
+    // render table based on user_id
     const userHoldings = await pool.query(
       'SELECT * FROM holdings WHERE user_id = ($1)',
       [id]
@@ -67,7 +68,6 @@ router.get('/stocks/user', async (req, res) => {
 
 router.post('/stocks/sell', async (req, res) => {
   let { name, symbol, price, value, amount, id } = req.body
-  // const { transactionID } = req.query
   id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
   try {
