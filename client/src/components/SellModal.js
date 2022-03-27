@@ -50,7 +50,9 @@ export default function SellModal({ inputs, getUserInput }) {
     try {
       // send sell request to server with stockSymbol and sellingStockQuantity
       e.preventDefault()
-      const sellStockRequest = '/api/stocks/sell'
+      // const sellStockRequest = '/api/stocks/sell'
+      // const sellStockRequest = `/api/stocks/sell?stock_symbol=${sellingStockSymbol}&quantity=${sellingStockData.quantity}`
+      const sellStockRequest = `/api/stocks/sell?stock_symbol=${sellingStockSymbol}&quantity=${inputs.shareAmount}`
       const stockData = {
         symbol: sellingStockSymbol,
         amount: inputs.shareAmount
