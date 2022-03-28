@@ -30,10 +30,10 @@ export default function SellModal({ inputs, getUserInput }) {
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
   // const [sellingStockQuantity, setSellingStockQuantity] = useState('')
-  const [sellingStockData, setSellingStockData] = useState({
-    symbol: '',
-    quantity: ''
-  }) // testing
+  // const [sellingStockData, setSellingStockData] = useState({
+  //   symbol: '',
+  //   quantity: ''
+  // }) // testing
 
   const handleSellOpen = e => {
     setOpen(true)
@@ -57,10 +57,20 @@ export default function SellModal({ inputs, getUserInput }) {
         symbol: sellingStockSymbol,
         amount: inputs.shareAmount
       }
+      const sellStockResponse = await axios.post(sellStockRequest, stockData)
+      console.log(sellStockResponse.data)
+      //     setSellingStockData(sellStockResponse.data) // testing
+      //     getUserHoldings()
+      //     handleClose()
+      //     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
+      //   } catch (err) {
+      //     console.log(err)
+      //   }
+      // }
 
       // send stock symbol and quantity to server
-      const response = await axios.post(sellStockRequest, stockData)
-      setSellingStockData(response.data)
+      // const response = await axios.post(sellStockRequest, stockData)// keep
+      // setSellingStockData(response.data) // keep
 
       // testing, not working yet:
       // const stockToSell = {
@@ -82,11 +92,14 @@ export default function SellModal({ inputs, getUserInput }) {
       // console.log(sellingStockData)
 
       // handleClose()
+      // ORIG
     } catch (error) {
       console.log(error)
     }
     handleClose()
   }
+
+  // END ORIGINAL
 
   // console.log(response.data)
 

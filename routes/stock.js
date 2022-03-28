@@ -45,7 +45,8 @@ router.post('/stocks/buy', async (req, res) => {
       res.send(updateStockHoldings.rows[0])
     }
   } catch (error) {
-    res.sendStatus(500).send(error)
+    // res.sendStatus(500).send(error)
+    res.status(500).send({ message: error.message })
   }
 })
 
@@ -62,15 +63,26 @@ router.get('/stocks/user', async (req, res) => {
     )
     res.send(userHoldings.rows)
   } catch (error) {
-    res.sendStatus(500).send(error)
+    // res.sendStatus(500).send(error)
+    res.status(500).send({ message: error.message })
   }
 })
 
 router.post('/stocks/sell', async (req, res) => {
   // price is stock price/share. value is price * quantity
 
+  // let { symbol, value, amount, id } = req.body
   let { name, symbol, price, value, amount, id } = req.body
-
+  // name = response.data.companyName
+  // symbol = response.data.symbol
+  // price = response.data.latestPrice
+  // value = price * amount
+  symbol = req.query.stock_symbol
+  amount = req.query.quantity
+  // convert value from string to number
+  value = parseInt(value)
+  amount = parseInt(amount)
+  value = price - amount
   // id is user_id
   id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
@@ -78,7 +90,7 @@ router.post('/stocks/sell', async (req, res) => {
     // check if holdings table stock amount is greater than 0, if so update, if not delete
     const isStockInHoldings = await pool.query(
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
-      [symbol, id] // user enters
+      [symbol, id] // user entered data
     )
     // first check holdings table stock quantity is greater than 0
     if (isStockInHoldings.rows[0].quantity > 0) {
@@ -87,19 +99,24 @@ router.post('/stocks/sell', async (req, res) => {
         'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
         [amount, value, symbol, id]
       )
-      res.send(updateStockHoldings.rows[0].value)
+
+      // send updated value to client
+      res.send(updateStockHoldings.rows[0])
     } else {
-      // if not, delete stock from holdings table
+      // if not, delete from holdings table
       const deleteStockHoldings = await pool.query(
         'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
         [symbol, id]
       )
+      //   'DELETE FROM holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
+      //   [name, symbol, price, value, amount, id]
+      // )
       res.send(deleteStockHoldings.rows[0])
     }
   } catch (error) {
     // res.sendStatus(500).send(error)
-    // res.send(error)
-    res.status(500).send({ message: error.message })
+    res.send(error.message)
+    // res.status(500).send({ message: error.message })
     // res.json({ token, email });
     //   } catch (err) {
     //     res.status(500).send({ message: err.message });
