@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import {
@@ -25,7 +25,13 @@ const style = {
   p: 4
 }
 
-export default function SellModal({ inputs, getUserInput }) {
+// stockData testing props
+export default function SellModal ({
+  inputs,
+  getUserInput
+  // getUserHoldings,
+  // stockData
+}) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
@@ -43,6 +49,11 @@ export default function SellModal({ inputs, getUserInput }) {
         .innerText
     setSellingStockSymbol(stockSymbol) // keep
   }
+
+  // testing:
+  // useEffect(() => {
+  //   getUserHoldings()
+  // }, [stockData])
 
   const handleClose = () => setOpen(false)
 

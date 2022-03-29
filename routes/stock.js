@@ -72,13 +72,15 @@ router.post('/stocks/sell', async (req, res) => {
   // price is stock price/share. value is price * quantity
 
   // let { symbol, value, amount, id } = req.body
-  let { name, symbol, price, value, amount, id } = req.body
+  // let { name, symbol, price, value, amount, id } = req.body
+  let { name, symbol, price, value, amount, id } = req.query
   // name = response.data.companyName
   // symbol = response.data.symbol
   // price = response.data.latestPrice
   // value = price * amount
   symbol = req.query.stock_symbol
   amount = req.query.quantity
+  // console.log(amount) // amount entered in input field
   // convert value from string to number
   value = parseInt(value)
   amount = parseInt(amount)
@@ -92,8 +94,10 @@ router.post('/stocks/sell', async (req, res) => {
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id] // user entered data
     )
-    // first check holdings table stock quantity is greater than 0
-    if (isStockInHoldings.rows[0].quantity > 0) {
+    // console.log(isStockInHoldings.rows[0].quantity) // from table
+    // console.log(isStockInHoldings.rows[0].amount) // undefined
+    // amount = typeof number
+    if (isStockInHoldings.rows[0].quantity > '0') {
       // if so, update holdings table stock quantity and value
       const updateStockHoldings = await pool.query(
         'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
@@ -102,11 +106,15 @@ router.post('/stocks/sell', async (req, res) => {
 
       // send updated value to client
       res.send(updateStockHoldings.rows[0])
-    } else {
-      // if not, delete from holdings table
+    } else if (isStockInHoldings.rows[0].quantity <= '0') {
+      // testing, was just else
       const deleteStockHoldings = await pool.query(
-        'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
-        [symbol, id]
+        // 'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
+        // [symbol, id]
+        // 'DELETE FROM holdings WHERE symbol = $1',
+        // [symbol]
+        // delete entire row
+        
       )
       //   'DELETE FROM holdings(name, symbol, price, value, quantity, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
       //   [name, symbol, price, value, amount, id]
