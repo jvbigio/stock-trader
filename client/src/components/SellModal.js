@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import {
@@ -25,15 +25,21 @@ const style = {
   p: 4
 }
 
-export default function SellModal ({ inputs, getUserInput }) {
+// stockData testing props
+export default function SellModal ({
+  inputs,
+  getUserInput
+  // getUserHoldings,
+  // stockData
+}) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
   // const [sellingStockQuantity, setSellingStockQuantity] = useState('')
-  const [sellingStockData, setSellingStockData] = useState({
-    symbol: '',
-    quantity: ''
-  }) // testing
+  // const [sellingStockData, setSellingStockData] = useState({
+  //   symbol: '',
+  //   quantity: ''
+  // }) // testing
 
   const handleSellOpen = e => {
     setOpen(true)
@@ -41,9 +47,13 @@ export default function SellModal ({ inputs, getUserInput }) {
     const stockSymbol =
       e.target.parentElement.parentElement.parentElement.firstChild.nextSibling
         .innerText
-    // console.log(stockSymbol) // works
     setSellingStockSymbol(stockSymbol) // keep
   }
+
+  // testing:
+  // useEffect(() => {
+  //   getUserHoldings()
+  // }, [stockData])
 
   const handleClose = () => setOpen(false)
 
@@ -51,11 +61,27 @@ export default function SellModal ({ inputs, getUserInput }) {
     try {
       // send sell request to server with stockSymbol and sellingStockQuantity
       e.preventDefault()
-      const sellStockRequest = '/api/stocks/sell'
+      // const sellStockRequest = '/api/stocks/sell'
+      // const sellStockRequest = `/api/stocks/sell?stock_symbol=${sellingStockSymbol}&quantity=${sellingStockData.quantity}`
+      const sellStockRequest = `/api/stocks/sell?stock_symbol=${sellingStockSymbol}&quantity=${inputs.shareAmount}`
       const stockData = {
         symbol: sellingStockSymbol,
         amount: inputs.shareAmount
       }
+      const sellStockResponse = await axios.post(sellStockRequest, stockData)
+      console.log(sellStockResponse.data)
+      //     setSellingStockData(sellStockResponse.data) // testing
+      //     getUserHoldings()
+      //     handleClose()
+      //     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
+      //   } catch (err) {
+      //     console.log(err)
+      //   }
+      // }
+
+      // send stock symbol and quantity to server
+      // const response = await axios.post(sellStockRequest, stockData)// keep
+      // setSellingStockData(response.data) // keep
 
       // testing, not working yet:
       // const stockToSell = {
@@ -63,24 +89,28 @@ export default function SellModal ({ inputs, getUserInput }) {
       //   amount: setSellingStockData.quantity
       // }
 
-      const response = await axios.post(sellStockRequest, stockData)
+      // const response = await axios.post(sellStockRequest, stockData)
 
       // console.log(stockData.symbol, stockData.amount) // works
       // setSellingStockData({
       //   symbol: sellingStockSymbol,
       //   quantity: inputs.shareAmount
       // })
-      setSellingStockData(stockData)
+      // setSellingStockData(stockData)
 
       // console.log(stockData) // works
       // console.log(response.data) // blank
       // console.log(sellingStockData)
 
-      handleClose()
+      // handleClose()
+      // ORIG
     } catch (error) {
       console.log(error)
     }
+    handleClose()
   }
+
+  // END ORIGINAL
 
   // console.log(response.data)
 
@@ -149,8 +179,10 @@ export default function SellModal ({ inputs, getUserInput }) {
               // }
               name='shareAmount'
               type='number'
-              // value={inputs.shareAmount || ''} // original
-              value={inputs.shareAmount === '0' ? Error : inputs.shareAmount}
+              // do not allow '0' to be entered in input
+              value={inputs.shareAmount || ''} // original
+              // causes error:
+              // value={inputs.shareAmount === '0' ? Error : inputs.shareAmount}
               // value={
               //   inputs.shareAmount > 0
               //     ? inputs.shareAmount

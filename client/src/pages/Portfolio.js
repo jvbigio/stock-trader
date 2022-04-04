@@ -23,7 +23,7 @@ const Portfolio = () => {
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     const data = {
       symbol: inputs.stockSymbol,
-      amount: inputs.shareAmount
+      quantity: inputs.shareAmount
     }
     const response = await axios.post(buyStockUrl, data)
     setStockData(response.data)
@@ -33,10 +33,11 @@ const Portfolio = () => {
     const response = await axios.get('/api/stocks/user')
     setUserTable(response.data)
   }
-
+  // is this causing infinite http requests?
   useEffect(() => {
     getUserHoldings()
-  }, [userTable])
+    // }, [userTable]) // (original) causes infinite http requests
+  }, [stockData])
 
   const handleBuySubmit = async e => {
     e.preventDefault()
@@ -72,6 +73,8 @@ const Portfolio = () => {
                 handleOpen={handleOpen}
                 handleClose={handleClose}
                 userTable={userTable}
+                // test
+                // getUserHoldings={getUserHoldings}
               />
             </Paper>
           </Grid>

@@ -27,6 +27,7 @@ export const HoldingsTable = ({
   handleOpen,
   handleClose,
   userTable
+  // getUserHoldings
 }) => {
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
@@ -115,7 +116,14 @@ export const HoldingsTable = ({
                   </TableCell>
                   <TableCell align='right'>{stock.quantity}</TableCell>
                   <TableCell align='right'>
-                    <SellModal inputs={inputs} getUserInput={getUserInput} stockData={stockData} />
+                    <SellModal
+                      inputs={inputs}
+                      getUserInput={getUserInput}
+                      stockData={stockData}
+                      // handleClose={handleClose}
+                      // test
+                      // getUserHoldings={getUserHoldings}
+                    />
                   </TableCell>
                 </TableRow>
               ))}
