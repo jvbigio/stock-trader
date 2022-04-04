@@ -23,7 +23,8 @@ const Portfolio = () => {
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     const data = {
       symbol: inputs.stockSymbol,
-      amount: inputs.shareAmount
+      quantity: inputs.shareAmount
+      // amount: inputs.shareAmount // original
     }
     const response = await axios.post(buyStockUrl, data)
     setStockData(response.data)
