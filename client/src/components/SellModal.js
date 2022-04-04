@@ -61,8 +61,7 @@ export default function SellModal ({
     try {
       // send sell request to server with stockSymbol and sellingStockQuantity
       e.preventDefault()
-      // const sellStockRequest = '/api/stocks/sell'
-      // const sellStockRequest = `/api/stocks/sell?stock_symbol=${sellingStockSymbol}&quantity=${sellingStockData.quantity}`
+
       const sellStockRequest = `/api/stocks/sell?stock_symbol=${sellingStockSymbol}&quantity=${inputs.shareAmount}`
       const stockData = {
         symbol: sellingStockSymbol,
@@ -70,51 +69,11 @@ export default function SellModal ({
       }
       const sellStockResponse = await axios.post(sellStockRequest, stockData)
       console.log(sellStockResponse.data)
-      //     setSellingStockData(sellStockResponse.data) // testing
-      //     getUserHoldings()
-      //     handleClose()
-      //     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
-      //   } catch (err) {
-      //     console.log(err)
-      //   }
-      // }
-
-      // send stock symbol and quantity to server
-      // const response = await axios.post(sellStockRequest, stockData)// keep
-      // setSellingStockData(response.data) // keep
-
-      // testing, not working yet:
-      // const stockToSell = {
-      //   stockSymbol: setSellingStockData.symbol,
-      //   amount: setSellingStockData.quantity
-      // }
-
-      // const response = await axios.post(sellStockRequest, stockData)
-
-      // console.log(stockData.symbol, stockData.amount) // works
-      // setSellingStockData({
-      //   symbol: sellingStockSymbol,
-      //   quantity: inputs.shareAmount
-      // })
-      // setSellingStockData(stockData)
-
-      // console.log(stockData) // works
-      // console.log(response.data) // blank
-      // console.log(sellingStockData)
-
-      // handleClose()
-      // ORIG
     } catch (error) {
       console.log(error)
     }
     handleClose()
   }
-
-  // END ORIGINAL
-
-  // console.log(response.data)
-
-  // console.log(sellingStockData)
 
   return (
     <>
