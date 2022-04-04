@@ -34,14 +34,10 @@ const Portfolio = () => {
     setUserTable(response.data)
   }
   // is this causing infinite http requests?
-  useEffect(
-    () => {
-      getUserHoldings()
-      // }, [userTable]) // (original) causes infinite http requests
-    },
-    [stockData]
-    // []
-  )
+  useEffect(() => {
+    getUserHoldings()
+    // }, [userTable]) // (original) causes infinite http requests
+  }, [stockData])
 
   const handleBuySubmit = async e => {
     e.preventDefault()

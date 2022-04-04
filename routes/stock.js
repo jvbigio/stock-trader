@@ -25,6 +25,8 @@ router.post('/stocks/buy', async (req, res) => {
     value = price * amount
     id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
 
+    console.log(response)
+
     const isStockInHoldings = await pool.query(
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
       [symbol, id]
@@ -71,32 +73,26 @@ router.get('/stocks/user', async (req, res) => {
 router.post('/stocks/sell', async (req, res) => {
   // price is stock price/share. value is price * quantity
 
-  // let { symbol, value, amount, id } = req.body
-  let { name, symbol, price, value, amount, id } = req.body
-  // let { name, symbol, price, value, amount, id } = req.query
+  // let { name, symbol, price, value, amount, id } = req.body // org
+  let { name, symbol, price, value, amount, user_id } = req.body
 
   symbol = req.query.stock_symbol
   amount = req.query.quantity
-  // console.log(amount) // amount entered in input field
-  // convert value from string to number
-  // value = parseInt(value)
-  // amount = parseInt(amount)
-  // value = price - amount
-  // value = (amount * price).toFixed(2) - amount
-  // update value to be the amount of money the user has after selling
-  const updatedValue = Number(value) - (amount * price).toFixed(2)
 
-  // value = (Number(value) - Number(amount * price).toFixed(2)).toFixed(2)
-  console.log(updatedValue)
   // id is user_id
-  id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+  // id = 'd72220bc-6844-4a97-b6b9-32303abc60a8' // keep
 
   try {
     // check if holdings table stock amount is greater than 0, if so update, if not delete
     const isStockInHoldings = await pool.query(
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
-      [symbol, id] // user entered data
+      [symbol, user_id] // user entered data
     )
+
+    const updatedValue =
+      parseInt(isStockInHoldings.rows[0].quantity) - parseInt(quantity)
+    console.log(updatedValue)
+
     // console.log(isStockInHoldings.rows[0].quantity) // from table
     // console.log(isStockInHoldings.rows[0].amount) // undefined
     // amount = typeof number
@@ -106,7 +102,7 @@ router.post('/stocks/sell', async (req, res) => {
 
       const updateStockHoldings = await pool.query(
         'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
-        [amount, parseInt(value), symbol, id]
+        [amount, value, symbol, user_id]
         // [amount, value, symbol, id]
       )
 
@@ -115,12 +111,15 @@ router.post('/stocks/sell', async (req, res) => {
       // } else if (isStockInHoldings.rows[0].quantity <= 0) { // orig
       // testing, was just else
       // if table quantity is less than amount entered in input, delete table row
-    } else if (isStockInHoldings.rows[0].quantity <= amount) {
+      // } else if (isStockInHoldings.rows[0].quantity <= amount) {
+    } else if (updatedValue === 0) {
       // if so, delete table row
       const deleteStockHoldings = await pool.query(
         // if user enters more than or equal to amount in table, delete row
-        'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
-        [symbol, id]
+        // 'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
+        // [symbol, id]
+        'DELETE FROM holdings WHERE id = $1',
+        [isStockInHoldings.rows[0].id]
       )
       res.send(deleteStockHoldings.rows[0])
     }
