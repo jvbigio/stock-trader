@@ -114,18 +114,27 @@ router.post('/stocks/sell', async (req, res) => {
 
     const newQuantity = match.quantity - amount // works
     const newValue = newQuantity * parseFloat(match.price).toFixed(2)
-    console.log(
-      `Price: ${match.price}. Updated quantity: ${newQuantity}, value: ${newValue}`
-    )
+    // console.log(
+    //   `Price: ${match.price}. Updated quantity: ${newQuantity}, value: ${newValue}`
+    // )
 
     match.quantity = newQuantity
-    amount = newQuantity
+    // amount = newQuantity
+    match.value = newValue
+
     // table quantity, table symbol, user entered quantity:
-    console.log(match.quantity, match.symbol, amount) // works
+    console.log(
+      `Symbol: ${match.symbol}, Price: ${match.price}, Value: ${match.value}, Quantity left: ${match.quantity}, Shares sold: ${amount}`
+    ) // works
     if (match && match.quantity > 0) {
       const sellStock = await pool.query(
-        'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
+        // multiply new quantity by price:
+        'UPDATE holdings SET quantity = quantity - $1, value = value - $2 * $1 WHERE symbol = $3 AND user_id = $4 RETURNING *',
         [newQuantity, newValue, symbol, user_id]
+        // 'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
+
+        // [match.quantity, newValue, symbol, user_id]
+        // [newQuantity, newValue, symbol, user_id]
         // [amount, newValue, symbol, user_id] // works except value
       )
       res.json(sellStock.rows[0])
