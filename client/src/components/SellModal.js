@@ -26,7 +26,7 @@ const style = {
 }
 
 // stockData testing props
-export default function SellModal({
+export default function SellModal ({
   inputs,
   getUserInput
   // getUserHoldings,
@@ -66,7 +66,8 @@ export default function SellModal({
         symbol: sellingStockSymbol,
         amount: inputs.shareAmount
       }
-      const sellStockResponse = await axios.post(sellStockRequest, stockData)
+      // const sellStockResponse = await axios.post(sellStockRequest, stockData)
+      await axios.post(sellStockRequest, stockData)
       // console.log(sellStockResponse.data) // works
       //     setSellingStockData(sellStockResponse.data) // testing
       //     getUserHoldings()

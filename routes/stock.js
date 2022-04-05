@@ -86,16 +86,10 @@ router.get('/stocks/user', async (req, res) => {
 })
 
 router.post('/stocks/sell', async (req, res) => {
-  // let { symbol, price, value, amount, user_id } = req.body
-  const { symbol, amount } = req.body
+  let { symbol, amount } = req.body
   let { user_id } = req.body
-  let price
-  let value
-  let newQuantity
-  let newValue
-
   user_id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
-  // const { amount } = req.query
+
   // console.log(req.params) // {}
   // console.log(req.body) // { symbol: 'FB', amount: '5' }
   // console.log(req.query) // { stock_symbol: 'FB', quantity: '5' }
@@ -113,40 +107,28 @@ router.post('/stocks/sell', async (req, res) => {
     // amount = user entered stock quantity
     // quantity = table stock quantity
 
+    // do i need this?
     const match = isStockInHoldings.rows.find(
       stock => stock.symbol === req.query.stock_symbol
     )
 
-    newQuantity = match.quantity - amount // works
-    newValue = parseFloat(newQuantity) * parseFloat(match.price).toFixed(2)
-    // const updatedValue = parseFloat(match.value).toFixed(2) - newValue
-    // console.log(updatedValue)
-
-    // const updatedValue =
-    // parseFloat(match.value).toFixed(2) - parseFloat(newValue).toFixed(2)
-
+    const newQuantity = match.quantity - amount // works
+    const newValue = newQuantity * parseFloat(match.price).toFixed(2)
     console.log(
       `Price: ${match.price}. Updated quantity: ${newQuantity}, value: ${newValue}`
     )
 
-    // console.log(match.value) // returns value on table
-
+    match.quantity = newQuantity
+    amount = newQuantity
     // table quantity, table symbol, user entered quantity:
     console.log(match.quantity, match.symbol, amount) // works
     if (match && match.quantity > 0) {
       const sellStock = await pool.query(
         'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
         [newQuantity, newValue, symbol, user_id]
-        // [match.quantity, newValue, symbol, user_id]
         // [amount, newValue, symbol, user_id] // works except value
       )
       res.json(sellStock.rows[0])
-      // console.log(newValue)
-
-      // based on 100 stocks - 99 stocks:
-      // console.log(sellStock.rows[0].value) // not working..
-      // console.log(isStockInHoldings.rows[0].value) // not working..
-      // when 1 stock in table it shows in value (99 stocks value), not 1 stock value
     } else {
       // const deleteStock = await pool.query(
       //   // 'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
@@ -159,9 +141,9 @@ router.post('/stocks/sell', async (req, res) => {
       // res.json(deleteStock.rows[0])
     }
   } catch (error) {
-    // res.sendStatus(500).send(error)
     res.status(500).send({ message: error.message })
   }
+  amount = 0
 })
 
 //   const { quantity, value } = isStockInHoldings.rows[0]
