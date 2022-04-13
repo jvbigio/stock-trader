@@ -128,11 +128,7 @@ router.post('/stocks/sell', async (req, res) => {
     ) // works
     if (match && match.quantity > 0) {
       const sellStock = await pool.query(
-        // multiply new quantity by price:
-        // 'UPDATE holdings SET quantity = quantity - $1, value = value - $2 * $1 WHERE symbol = $3 AND user_id = $4 RETURNING *',
-        // [newQuantity, newValue, symbol, user_id]
         'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
-
         [newQuantity, newValue, symbol, user_id]
         // [match.quantity, newValue, symbol, user_id]
         // [amount, newValue, symbol, user_id] // works except value
