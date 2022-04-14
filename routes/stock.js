@@ -118,9 +118,6 @@ router.post('/stocks/sell', async (req, res) => {
     match.quantity = newQuantity
     match.value = newValue
 
-    console.log(
-      `Symbol: ${match.symbol}, Price: ${match.price}, Value: ${match.value}, Quantity left: ${match.quantity}, Shares sold: ${amount}`
-    )
     if (match && match.quantity > 0) {
       const sellStock = await pool.query(
         'UPDATE holdings SET quantity = $1, value = $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
