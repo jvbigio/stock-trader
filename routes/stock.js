@@ -112,26 +112,19 @@ router.post('/stocks/sell', async (req, res) => {
       stock => stock.symbol === req.query.stock_symbol
     )
 
-    const newQuantity = match.quantity - amount // works
+    const newQuantity = match.quantity - amount
     const newValue = newQuantity * parseFloat(match.price).toFixed(2)
-    // console.log(
-    //   `Price: ${match.price}. Updated quantity: ${newQuantity}, value: ${newValue}`
-    // )
 
     match.quantity = newQuantity
-    // amount = newQuantity
     match.value = newValue
 
-    // table quantity, table symbol, user entered quantity:
     console.log(
       `Symbol: ${match.symbol}, Price: ${match.price}, Value: ${match.value}, Quantity left: ${match.quantity}, Shares sold: ${amount}`
-    ) // works
+    )
     if (match && match.quantity > 0) {
       const sellStock = await pool.query(
-        'UPDATE holdings SET quantity = quantity - $1, value = value - $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
+        'UPDATE holdings SET quantity = $1, value = $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
         [newQuantity, newValue, symbol, user_id]
-        // [match.quantity, newValue, symbol, user_id]
-        // [amount, newValue, symbol, user_id] // works except value
       )
       res.json(sellStock.rows[0])
     } else {
@@ -150,35 +143,6 @@ router.post('/stocks/sell', async (req, res) => {
   }
   amount = 0
 })
-
-//   const { quantity, value } = isStockInHoldings.rows[0]
-//   const newQuantity = quantity - amount
-//   const newValue = value - price * amount
-//   // const newQuantity = isStockInHoldings.rows[0].quantity - quantity
-//   // const newValue = value - price * quantity
-//   console.log(newQuantity, newValue)
-
-//   if (newQuantity > 0) {
-//     const updateStockHoldings = await pool.query(
-//       'UPDATE holdings SET quantity = $1, value = $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
-//       [newQuantity, newValue, symbol, user_id]
-//     )
-//     res.json(updateStockHoldings.rows[0])
-//   } else {
-//     const deleteStockHoldings = await pool.query(
-//       'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
-//       [symbol, user_id]
-//     )
-//     res.json(deleteStockHoldings.rows[0])
-//   }
-// } else {
-//   res.status(404).send({ message: 'Stock not found' })
-// }
-//   } catch (error) {
-//     // res.sendStatus(500).send(error)
-//     res.status(500).send({ message: error.message })
-//   }
-// })
 
 // res = outgoing response, req = incoming request
 
