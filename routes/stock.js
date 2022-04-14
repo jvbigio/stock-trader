@@ -128,15 +128,11 @@ router.post('/stocks/sell', async (req, res) => {
       )
       res.json(sellStock.rows[0])
     } else {
-      // const deleteStock = await pool.query(
-      //   // 'DELETE FROM holdings WHERE symbol = $1 AND user_id = $2 RETURNING *',
-      //   // [symbol, user_id]
-      //   'DELETE FROM holdings WHERE id = $1',
-      //   [isStockInHoldings.rows[0].id]
-      //   // 'DELETE FROM holdings WHERE symbol = $1',
-      //   // [symbol]
-      // )
-      // res.json(deleteStock.rows[0])
+      const deleteStock = await pool.query(
+        'DELETE FROM holdings WHERE id = $1',
+        [isStockInHoldings.rows[0].id]
+      )
+      res.json(deleteStock.rows[0])
     }
   } catch (error) {
     res.status(500).send({ message: error.message })
