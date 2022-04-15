@@ -43,7 +43,6 @@ const Portfolio = () => {
   const handleBuySubmit = async e => {
     e.preventDefault()
     fetchData()
-    // getUserHoldings()
     handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }

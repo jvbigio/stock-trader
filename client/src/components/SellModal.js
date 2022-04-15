@@ -26,7 +26,7 @@ const style = {
 }
 
 // stockData testing props
-export default function SellModal({
+export default function SellModal ({
   inputs,
   getUserInput,
   getUserHoldings,
@@ -36,10 +36,11 @@ export default function SellModal({
   // const handleOpen = () => setOpen(true) // original
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
   // const [sellingStockQuantity, setSellingStockQuantity] = useState('')
-  // const [sellingStockData, setSellingStockData] = useState({
-  //   symbol: '',
-  //   quantity: ''
-  // }) // testing
+  const [soldStock, setSoldStock] = useState({
+    symbol: '',
+    quantity: ''
+  }) // testing
+  // const [sellingStockData, setSellingStockData] = useState({})
 
   const handleSellOpen = e => {
     setOpen(true)
@@ -49,11 +50,10 @@ export default function SellModal({
         .innerText
     setSellingStockSymbol(stockSymbol) // keep
   }
-  console.log(getUserHoldings)
   // useEffect when sell modal button is clicked, refresh holding table
   // useEffect(() => {
   //   getUserHoldings()
-  // }, [])
+  // }, [soldStock])
 
   const handleClose = () => setOpen(false)
 
@@ -63,16 +63,28 @@ export default function SellModal({
       e.preventDefault()
       const sellStockRequest = `/api/stocks/sell?stock_symbol=${sellingStockSymbol}&quantity=${inputs.shareAmount}`
       // use this to update the users cash balance (1 stock sold = 1 * stock price), then add to users cash balance
+      // should this be changes to state
       const stockData = {
         symbol: sellingStockSymbol,
         amount: inputs.shareAmount
       }
       // const sellStockResponse = await axios.post(sellStockRequest, stockData)
       const sellStockResponse = await axios.post(sellStockRequest, stockData)
+      setSoldStock({
+        symbol: sellStockResponse.data.symbol,
+        quantity: sellStockResponse.data.quantity
+      })
+
       console.log(
-        `sellStockResponse: ${sellStockResponse.data}, stockData: ${stockData.symbol}, ${stockData.amount}, sellStockRequest: ${sellStockRequest}`
+        `soldStock: ${soldStock.symbol}, ${soldStock.quantity}, stockData: ${stockData.symbol}, ${stockData.amount}, sellStockRequest: ${sellStockRequest}`
       )
+
       // await axios.post(sellStockRequest, stockData) // keep. this works
+
+      // clear inputs after submit
+      // setInputs({ ...inputs, stockSymbol: '', shareAmount: '' }) // from portfolio.js
+      inputs.shareAmount = ''
+      // inputs.stockSymbol = ''
     } catch (error) {
       console.log(error)
     }
