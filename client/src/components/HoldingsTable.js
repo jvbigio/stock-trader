@@ -26,8 +26,8 @@ export const HoldingsTable = ({
   open,
   handleOpen,
   handleClose,
-  userTable
-  // getUserHoldings
+  userTable,
+  getUserHoldings
 }) => {
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
@@ -122,7 +122,7 @@ export const HoldingsTable = ({
                       stockData={stockData}
                       // handleClose={handleClose}
                       // test
-                      // getUserHoldings={getUserHoldings}
+                      getUserHoldings={getUserHoldings}
                     />
                   </TableCell>
                 </TableRow>

@@ -75,7 +75,7 @@ const Portfolio = () => {
                 handleClose={handleClose}
                 userTable={userTable}
                 // test
-                // getUserHoldings={getUserHoldings}
+                getUserHoldings={getUserHoldings}
               />
             </Paper>
           </Grid>
