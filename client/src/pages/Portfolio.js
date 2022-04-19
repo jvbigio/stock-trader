@@ -11,12 +11,10 @@ const Portfolio = () => {
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
   const [userTable, setUserTable] = useState([])
-  const [userHoldings, setUserHoldings] = useState([])
-  // const [userInputs, setUserInputs] = useState([])
-  // const [userData, setUserData] = useState([])
+  const [userCashBalance, setUserCashBalance] = useState(100000)
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
 
-  // testing
+  // testing, try using this to add to userCashBalance when stock sold
   const [soldStock, setSoldStock] = useState({
     symbol: '',
     quantity: ''
@@ -24,7 +22,6 @@ const Portfolio = () => {
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  // const handleSellClose = () => setOpen(false)
 
   const getUserInput = e => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))

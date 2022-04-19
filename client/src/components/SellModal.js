@@ -59,11 +59,6 @@ export default function SellModal ({
     setSellingStockSymbol(stockSymbol) // keep
   }
 
-  // useEffect when sell modal button is clicked, refresh holding table
-  // useEffect(() => {
-  //   getUserHoldings()
-  // }, [stockData])
-
   const handleSellClose = () => setOpen(false)
 
   const handleSellButtonClick = async e => {

@@ -40,6 +40,9 @@ export const HoldingsTable = ({
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
+  // testing
+  console.log(stockData)
+
   const handleClick = e => {
     // both work:
     // console.log(e.target.innerText)
