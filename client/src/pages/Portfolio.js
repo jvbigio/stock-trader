@@ -38,11 +38,14 @@ const Portfolio = () => {
     setStockData(response.data)
   }
 
+  // // testing
+  // console.log(stockData)
+
   const getUserHoldings = async () => {
     const response = await axios.get('/api/stocks/user')
     setUserTable(response.data)
   }
-  // is this causing infinite http requests?
+
   useEffect(() => {
     getUserHoldings()
     // }, [userTable]) // (original) causes infinite http requests
@@ -78,7 +81,7 @@ const Portfolio = () => {
           <Grid item xs={12}>
             <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
               <HoldingsTable
-                stockData={stockData}
+                // stockData={stockData}
                 inputs={inputs}
                 getUserInput={getUserInput}
                 handleBuySubmit={handleBuySubmit}

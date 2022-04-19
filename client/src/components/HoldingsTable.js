@@ -19,7 +19,7 @@ import SellModal from './SellModal'
 
 export const HoldingsTable = ({
   handleSearch,
-  stockData,
+  // stockData,
   inputs,
   getUserInput,
   handleBuySubmit,
@@ -39,9 +39,6 @@ export const HoldingsTable = ({
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
-
-  // testing
-  console.log(stockData)
 
   const handleClick = e => {
     // both work:
@@ -129,7 +126,7 @@ export const HoldingsTable = ({
                     <SellModal
                       inputs={inputs}
                       getUserInput={getUserInput}
-                      stockData={stockData}
+                      // stockData={stockData}
                       handleClose={handleClose}
                       // test
                       getUserHoldings={getUserHoldings}

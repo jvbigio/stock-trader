@@ -26,11 +26,11 @@ const style = {
 }
 
 // stockData testing props
-export default function SellModal ({
+export default function SellModal({
   inputs,
   getUserInput,
   getUserHoldings,
-  stockData,
+  // stockData,
   // handleSellButtonClick,
   sellingStockSymbol,
   setSellingStockSymbol,
@@ -67,12 +67,12 @@ export default function SellModal ({
       e.preventDefault()
       const sellStockRequest = `/api/stocks/sell?stock_symbol=${sellingStockSymbol}&quantity=${inputs.shareAmount}`
       // use this to update the users cash balance (1 stock sold = 1 * stock price), then add to users cash balance
-      // should this be changes to state
+      // should this be changed to state?
       const stockData = {
         symbol: sellingStockSymbol,
         amount: inputs.shareAmount
       }
-      // const sellStockResponse = await axios.post(sellStockRequest, stockData)
+      console.log(stockData.symbol, stockData.amount) // works. This is the stock symbol and quantity sold
       const sellStockResponse = await axios.post(sellStockRequest, stockData)
       setSoldStock({
         symbol: sellStockResponse.data.symbol,
