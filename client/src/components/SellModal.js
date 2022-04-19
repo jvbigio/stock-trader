@@ -73,14 +73,19 @@ export default function SellModal({
         amount: inputs.shareAmount
       }
       console.log(stockData.symbol, stockData.amount) // works. This is the stock symbol and quantity sold
-      const sellStockResponse = await axios.post(sellStockRequest, stockData)
+
+      const sellStockResponse = await axios.post(sellStockRequest, stockData) // original
+      // const sellStockResponse = await axios.post(sellStockRequest, soldStock) // this causes stock to be completely deleted even when selling only 1 share
+
       setSoldStock({
         symbol: sellStockResponse.data.symbol,
-        quantity: sellStockResponse.data.quantity
+        // quantity: inputs.shareAmount
+        quantity: sellStockResponse.data.quantity // original
       })
 
       console.log(
         `soldStock: ${soldStock.symbol}, ${soldStock.quantity}, stockData: ${stockData.symbol}, ${stockData.amount}, sellStockRequest: ${sellStockRequest}`
+        // `soldStock: ${soldStock.symbol}, ${soldStock.quantity}, sellStockRequest: ${sellStockRequest}, sellStockResponse: ${sellStockResponse.data.symbol}, ${sellStockResponse.data.quantity}`
       )
 
       // await axios.post(sellStockRequest, stockData) // keep. this works
