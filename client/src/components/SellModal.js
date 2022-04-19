@@ -30,16 +30,24 @@ export default function SellModal ({
   inputs,
   getUserInput,
   getUserHoldings,
-  stockData
+  stockData,
+  // handleSellButtonClick,
+  sellingStockSymbol,
+  setSellingStockSymbol,
+  soldStock,
+  setSoldStock
+  // handleClose,
+  // handleSellOpen,
+  // handleSellClose
 }) {
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
-  const [sellingStockSymbol, setSellingStockSymbol] = useState('')
+  // const [sellingStockSymbol, setSellingStockSymbol] = useState('') // moved to portfolio to test
   // const [sellingStockQuantity, setSellingStockQuantity] = useState('')
-  const [soldStock, setSoldStock] = useState({
-    symbol: '',
-    quantity: ''
-  }) // testing
+  // const [soldStock, setSoldStock] = useState({
+  //   symbol: '',
+  //   quantity: ''
+  // }) // testing
   // const [sellingStockData, setSellingStockData] = useState({})
 
   const handleSellOpen = e => {
@@ -50,12 +58,13 @@ export default function SellModal ({
         .innerText
     setSellingStockSymbol(stockSymbol) // keep
   }
+
   // useEffect when sell modal button is clicked, refresh holding table
   // useEffect(() => {
   //   getUserHoldings()
-  // }, [soldStock])
+  // }, [stockData])
 
-  const handleClose = () => setOpen(false)
+  const handleSellClose = () => setOpen(false)
 
   const handleSellButtonClick = async e => {
     try {
@@ -88,7 +97,7 @@ export default function SellModal ({
     } catch (error) {
       console.log(error)
     }
-    handleClose()
+    handleSellClose()
   }
 
   return (
@@ -106,7 +115,7 @@ export default function SellModal ({
           color='action'
         />
       </Tooltip>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={handleSellClose}>
         <Box sx={style}>
           <Typography
             id='modal-modal-title'

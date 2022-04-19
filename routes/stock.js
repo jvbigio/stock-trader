@@ -111,6 +111,8 @@ router.post('/stocks/sell', async (req, res) => {
     const match = isStockInHoldings.rows.find(
       stock => stock.symbol === req.query.stock_symbol
     )
+    console.log(match)
+    console.log(req.query.stock_symbol)
 
     const newQuantity = match.quantity - amount
     const newValue = newQuantity * parseFloat(match.price).toFixed(2)
@@ -118,6 +120,7 @@ router.post('/stocks/sell', async (req, res) => {
     match.quantity = newQuantity
     match.value = newValue
 
+    // BUG: Stock deleted is the top row one, not the target stock in table
     if (match && match.quantity > 0) {
       const sellStock = await pool.query(
         'UPDATE holdings SET quantity = $1, value = $2 WHERE symbol = $3 AND user_id = $4 RETURNING *',
@@ -127,9 +130,11 @@ router.post('/stocks/sell', async (req, res) => {
     } else {
       const deleteStock = await pool.query(
         'DELETE FROM holdings WHERE id = $1',
-        [isStockInHoldings.rows[0].id]
+        [match.id]
+        // [isStockInHoldings.rows[0].id]
       )
-      res.json(deleteStock.rows[0])
+      res.json(deleteStock.rows[0]) // original
+      // res.json(deleteStock.rows) // didn't fix bug
     }
   } catch (error) {
     res.status(500).send({ message: error.message })

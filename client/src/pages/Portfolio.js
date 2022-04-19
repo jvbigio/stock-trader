@@ -11,9 +11,20 @@ const Portfolio = () => {
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
   const [userTable, setUserTable] = useState([])
+  const [userHoldings, setUserHoldings] = useState([])
+  // const [userInputs, setUserInputs] = useState([])
+  // const [userData, setUserData] = useState([])
+  const [sellingStockSymbol, setSellingStockSymbol] = useState('')
+
+  // testing
+  const [soldStock, setSoldStock] = useState({
+    symbol: '',
+    quantity: ''
+  })
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  // const handleSellClose = () => setOpen(false)
 
   const getUserInput = e => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
@@ -39,6 +50,11 @@ const Portfolio = () => {
     getUserHoldings()
     // }, [userTable]) // (original) causes infinite http requests
   }, [stockData])
+
+  // new:
+  useEffect(() => {
+    getUserHoldings()
+  }, [soldStock])
 
   const handleBuySubmit = async e => {
     e.preventDefault()
@@ -75,6 +91,13 @@ const Portfolio = () => {
                 userTable={userTable}
                 // test
                 getUserHoldings={getUserHoldings}
+                // handleSellButtonClick={handleSellButtonClick}
+                // handleSellOpen={handleSellOpen}
+                handleSellClose={handleClose}
+                sellingStockSymbol={sellingStockSymbol}
+                setSellingStockSymbol={setSellingStockSymbol}
+                soldStock={soldStock}
+                setSoldStock={setSoldStock}
               />
             </Paper>
           </Grid>
