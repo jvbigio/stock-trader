@@ -75,6 +75,7 @@ export default function SellModal({
       // console.log(stockData.symbol, stockData.amount) // works. This is the stock symbol and quantity sold
 
       const sellStockResponse = await axios.post(sellStockRequest, stockData) // original
+      // await axios.post(sellStockRequest, stockData) // keep. this works
 
       // works
       setSoldStock({
@@ -91,8 +92,6 @@ export default function SellModal({
       console.log(
         `soldStock: ${soldStock.symbol}, ${soldStock.amount}, stockData: ${stockData.symbol}, ${stockData.amount}, sellStockRequest: ${sellStockRequest}`
       )
-
-      // await axios.post(sellStockRequest, stockData) // keep. this works
 
       // clear inputs after submit
       // setInputs({ ...inputs, stockSymbol: '', shareAmount: '' }) // from portfolio.js
