@@ -17,7 +17,7 @@ const Portfolio = () => {
   // testing, try using this to add to userCashBalance when stock sold
   const [soldStock, setSoldStock] = useState({
     symbol: '',
-    quantity: ''
+    amount: ''
   })
 
   const handleOpen = () => setOpen(true)
