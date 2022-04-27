@@ -44,10 +44,35 @@ const Portfolio = () => {
   const getUserHoldings = async () => {
     const response = await axios.get('/api/stocks/user')
     setUserTable(response.data)
+    // console.log(response.data) // array of the stocks the user owns
   }
+
+  // option 1
+  // useEffect(() => {
+  //   const updateCashBalance = () => {
+  //     userTable.forEach(stock => {
+  //       // console.log(stock.value)
+  //       setUserCashBalance(prevState => prevState - stock.value)
+  //       // console.log(userCashBalance)
+  //       console.log(stock.value)
+  //     })
+  //     // console.log(userCashBalance)
+  //   }
+  //   updateCashBalance()
+  // }, [userTable])
+
+  // const getCashBalance = userCashBalance.forEach(stock => {
+  //   console.log(stock.value)
+  //   // return stock
+  // })
+
+  // getCashBalance()
+
+  console.log(userCashBalance)
 
   useEffect(() => {
     getUserHoldings()
+    // updateCashBalance() // testing
     // }, [userTable]) // (original) causes infinite http requests
   }, [stockData])
 
