@@ -26,7 +26,7 @@ const style = {
 }
 
 // stockData testing props
-export default function SellModal({
+export default function SellModal ({
   inputs,
   getUserInput,
   getUserHoldings,

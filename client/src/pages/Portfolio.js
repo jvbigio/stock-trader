@@ -68,8 +68,6 @@ const Portfolio = () => {
 
   // getCashBalance()
 
-  console.log(userCashBalance)
-
   useEffect(() => {
     getUserHoldings()
     // updateCashBalance() // testing
@@ -123,6 +121,7 @@ const Portfolio = () => {
                 setSellingStockSymbol={setSellingStockSymbol}
                 soldStock={soldStock}
                 setSoldStock={setSoldStock}
+                userCashBalance={userCashBalance}
               />
             </Paper>
           </Grid>

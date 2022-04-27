@@ -34,7 +34,8 @@ export const HoldingsTable = ({
   sellingStockSymbol,
   setSellingStockSymbol,
   soldStock,
-  setSoldStock
+  setSoldStock,
+  userCashBalance
 }) => {
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
@@ -79,6 +80,7 @@ export const HoldingsTable = ({
               open={open}
               handleOpen={handleOpen}
               handleClose={handleClose}
+              userCashBalance={userCashBalance}
             />
           </Box>
           <Typography

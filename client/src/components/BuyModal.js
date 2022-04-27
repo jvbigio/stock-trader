@@ -32,13 +32,14 @@ const style = {
 - In either your portfolio page or your report page you’ll have access to the latest data once you’re db is updated from the previous step.
 */
 
-export default function BuyModal ({
+export default function BuyModal({
   inputs,
   getUserInput,
   handleBuySubmit,
   open,
   handleOpen,
-  handleClose
+  handleClose,
+  userCashBalance
 }) {
   return (
     <>
@@ -74,7 +75,7 @@ export default function BuyModal ({
             Buy
           </Typography>
           <Typography variant='subtitle2' textAlign='center' gutterBottom>
-            Cash Available to Trade: ${100000.0}
+            Cash Available to Trade: ${userCashBalance}
           </Typography>
           <Box
             autoComplete='off'
