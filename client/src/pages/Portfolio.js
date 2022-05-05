@@ -68,6 +68,17 @@ const Portfolio = () => {
 
   // getCashBalance()
 
+  // option 2
+  const handleUserCashBalance = () => {
+    userTable.forEach(stock => {
+      // console.log(stock.value)
+      setUserCashBalance(prevState => prevState - stock.value)
+    })
+    console.log(userCashBalance)
+  }
+
+  handleUserCashBalance()
+
   useEffect(() => {
     getUserHoldings()
     // updateCashBalance() // testing
@@ -122,6 +133,7 @@ const Portfolio = () => {
                 soldStock={soldStock}
                 setSoldStock={setSoldStock}
                 userCashBalance={userCashBalance}
+                setUserCashBalance={setUserCashBalance}
               />
             </Paper>
           </Grid>

@@ -110,8 +110,8 @@ router.post('/stocks/sell', async (req, res) => {
     const match = isStockInHoldings.rows.find(
       stock => stock.symbol === req.query.stock_symbol
     )
-    console.log(match)
-    console.log(req.query.stock_symbol)
+    // console.log(match) // { id, name, symbol, price, value, quantity, user_id }
+    // console.log(req.query.stock_symbol) // whatever stock user sells
 
     const newQuantity = match.quantity - amount
     const newValue = newQuantity * parseFloat(match.price).toFixed(2)

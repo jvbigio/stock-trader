@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // import axios from 'axios'
 
@@ -35,11 +35,24 @@ export const HoldingsTable = ({
   setSellingStockSymbol,
   soldStock,
   setSoldStock,
-  userCashBalance
+  userCashBalance,
+  setUserCashBalance
 }) => {
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+
+  // test
+  // console.log(userTable) // works. work on iterating through the user's stocks
+
+  // TODO: move to useEffect to update userCashBalance
+  // const handleUserCashBalance = () => {
+  //   userTable.forEach(stock => {
+  //     console.log(stock.value)
+  //     setUserCashBalance(prevState => prevState - stock.value)
+  //     console.log(userCashBalance)
+  //   })
+  // }
 
   const handleClick = e => {
     // both work:
