@@ -69,15 +69,23 @@ const Portfolio = () => {
   // getCashBalance()
 
   // option 2
-  const handleUserCashBalance = () => {
-    userTable.forEach(stock => {
-      // console.log(stock.value)
-      setUserCashBalance(prevState => prevState - stock.value)
-    })
-    console.log(userCashBalance)
-  }
+  useEffect(() => {
+    const handleUserCashBalance = () => {
+      if (userCashBalance > 0) {
+        userTable.forEach(stock => {
+          // console.log(stock.value)
+          setUserCashBalance(prevState => prevState - stock.value)
+          console.log(userCashBalance)
+        })
+        // stop the function and don't subtract
+        console.log('no more money')
+      }
+      // console.log(userCashBalance)
+    }
+    handleUserCashBalance()
+  }, [userCashBalance, userTable])
 
-  handleUserCashBalance()
+  // console.log(userTable) // works. work on iterating through the user's stocks
 
   useEffect(() => {
     getUserHoldings()

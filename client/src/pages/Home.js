@@ -1,7 +1,16 @@
 import React from 'react'
 import './Home.css'
 
-import { Box, Typography, Container, Card, CardContent, CardMedia, Paper, Grid } from '@mui/material'
+import {
+  Box,
+  Typography,
+  Container,
+  Card,
+  CardContent,
+  CardMedia,
+  Paper,
+  Grid
+} from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { sizing } from '@mui/system'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
@@ -36,9 +45,21 @@ const Home = () => {
     <ThemeProvider theme={theme}>
       <Container maxWidth='md'>
         <Box
-          sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', width: '100%' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '100%'
+          }}
         >
-          <Typography variant='h4' component='div' paragraph gutterBottom mt={2}>
+          <Typography
+            variant='h4'
+            component='div'
+            paragraph
+            gutterBottom
+            mt={2}
+          >
             Simple. Intuitive. Fast.
             <br />
             Test drive StoX's fantasy trading experience
@@ -57,20 +78,8 @@ const Home = () => {
           justifyContent='center'
           alignItems='center'
         >
-          <Box
-            className='flex-img'
-            component='img'
-            src={hand}
-            p={1}
-            mb={1}
-          />
-          <Box
-            className='flex-img'
-            component='img'
-            src={report}
-            p={1}
-            mb={1}
-          />
+          <Box className='flex-img' component='img' src={hand} p={1} mb={1} />
+          <Box className='flex-img' component='img' src={report} p={1} mb={1} />
           <Box
             className='flex-img'
             component='img'
@@ -83,26 +92,70 @@ const Home = () => {
       {/* maxWidth in card below throws DOM error */}
       {/* <Card sx={{ display: 'flex', mt: 5, justifyContent: 'center', width: 'md' }} elevation={0} maxWidth='md'> */}
       {/* <Card id='secondary-content' sx={{ display: 'flex', mt: 5, justifyContent: 'center', maxWidth: 'md' }} elevation={12}> */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        <CardContent sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-          <Typography variant='h6' gutterBottom textAlign='center' className='description-main'>
-            StoX is a stock trading platform that allows you to trade with fantasy money
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <CardContent
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column'
+          }}
+        >
+          <Typography
+            variant='h6'
+            gutterBottom
+            textAlign='center'
+            className='description-main'
+          >
+            StoX is a stock trading platform that allows you to trade with
+            fantasy money
           </Typography>
-          <Typography variant='body2' textAlign='center' className='description-secondary'>
+          <Typography
+            variant='body2'
+            textAlign='center'
+            className='description-secondary'
+          >
             Mastery comes with practice...
           </Typography>
         </CardContent>
-        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
           <ExpandMoreIcon />
           {/* original */}
-          <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 250, width: 500, mt: 5 }} elevation={0}>
+          <Paper
+            sx={{
+              bgcolor: '#ffffff',
+              display: 'flex',
+              flexDirection: 'column',
+              height: 250,
+              width: 500,
+              mt: 5
+            }}
+            elevation={0}
+          >
             {/* Good option for embedded video: */}
             {/* <Paper sx={{ bgcolor: '#ffffff', display: 'flex', flexDirection: 'column', height: 350, width: 500, mt: 5 }} elevation={11}> */}
-            <Typography variant='body2' align='center' flexDirection='column' pt={2}>
-
+            <Typography
+              variant='body2'
+              align='center'
+              flexDirection='column'
+              pt={2}
+            >
               {/* embedded video typography: */}
               {/* <Typography variant='body2' align='center' flexDirection='column'> */}
-              Add content here...
+              Add game rules or ask user how much cash they want to start with
             </Typography>
             {/* testing video embed */}
             {/* <iframe width={500} height={350} src='https://www.youtube.com/embed/y7iVTTH5tOA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen /> */}
