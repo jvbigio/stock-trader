@@ -61,25 +61,35 @@ const Portfolio = () => {
   //   updateCashBalance()
   // }, [userTable])
 
-  // const getCashBalance = userCashBalance.forEach(stock => {
-  //   console.log(stock.value)
-  //   // return stock
-  // })
-
-  // getCashBalance()
-
   // option 2
+  // useEffect(() => {
+  //   const handleUserCashBalance = () => {
+  //     if (userCashBalance > 0) {
+  //       userTable.forEach(stock => {
+  //         // console.log(stock.value)
+  //         setUserCashBalance(prevState => prevState - stock.value)
+  //         console.log(userCashBalance)
+  //       })
+  //       // stop the function and don't subtract
+  //       console.log('no more money')
+  //     }
+  //     // console.log(userCashBalance)
+  //   }
+  //   handleUserCashBalance()
+  // }, [userCashBalance, userTable])
+
+  // option 3
   useEffect(() => {
     const handleUserCashBalance = () => {
-      if (userCashBalance > 0) {
-        userTable.forEach(stock => {
-          // console.log(stock.value)
+      userTable.forEach(stock => {
+        // console.log(stock.value)
+        if (userCashBalance > 0 && userCashBalance > stock.value) {
           setUserCashBalance(prevState => prevState - stock.value)
-          console.log(userCashBalance)
-        })
-        // stop the function and don't subtract
-        console.log('no more money')
-      }
+          // console.log(userCashBalance)
+        } else {
+          console.log('no more money')
+        }
+      })
       // console.log(userCashBalance)
     }
     handleUserCashBalance()

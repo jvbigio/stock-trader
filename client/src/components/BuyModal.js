@@ -93,24 +93,28 @@ export default function BuyModal({
           >
             <TextField
               id='stock-symbol'
-              label='Symbol'
+              label='Stock Symbol'
               variant='outlined'
               color='success'
-              helperText={`Current Price: $${36.64}`}
+              // helperText={`Current Price: $${36.64}`}
               name='stockSymbol'
               value={inputs.stockSymbol || ''}
               onChange={getUserInput}
+              // onError={getUserInput}
             />
             <TextField
               id='share-amount'
               label='Share Amount'
               variant='outlined'
               color='success'
-              helperText={`Estimated Value: $${7500.14}`}
+              // create conditional to show error if useCashBalance === 0, else success
+              // helperText={`Estimated Value: $${7500.14}`}
               name='shareAmount'
               type='number'
               value={inputs.shareAmount || ''}
               onChange={getUserInput}
+              error={userCashBalance === 0}
+              helperText={userCashBalance === 0 ? 'Insufficient Funds' : ''}
             />
             <Button
               disabled={!(inputs.stockSymbol && inputs.shareAmount)}
