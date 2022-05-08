@@ -27,6 +27,9 @@ const Portfolio = () => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
 
+  // this is the function that will be called when the user clicks the buy button
+  // create a new function that will handle users CashBalance? Separation of concerns?
+  // but the option to buy a stock relies on having the cash available...
   const fetchData = async () => {
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
     const data = {
@@ -79,6 +82,7 @@ const Portfolio = () => {
   // }, [userCashBalance, userTable])
 
   // option 3
+  // maybe instead of useEffect try to use /buy route?
   useEffect(() => {
     const handleUserCashBalance = () => {
       userTable.forEach(stock => {
@@ -86,8 +90,9 @@ const Portfolio = () => {
         if (userCashBalance > 0 && userCashBalance > stock.value) {
           setUserCashBalance(prevState => prevState - stock.value)
           // console.log(userCashBalance)
-        } else {
+        } else if (userCashBalance <= 0) {
           console.log('no more money')
+          // stop function
         }
       })
       // console.log(userCashBalance)
