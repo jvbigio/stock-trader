@@ -66,7 +66,7 @@ const Portfolio = () => {
     if (userCashBalance >= inputs.shareAmount * stockData.price) {
       const response = await axios.post(buyStockUrl, data)
       setStockData(response.data)
-      setUserCashBalance(prevState => prevState - response.data.value) // not working properly
+      setUserCashBalance(prevState => prevState - response.data.value) // not working properly - not persisting on refresh
     } else {
       alert('You do not have enough cash to buy this stock')
     }
