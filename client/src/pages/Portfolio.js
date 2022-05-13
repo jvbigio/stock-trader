@@ -55,14 +55,21 @@ const Portfolio = () => {
   // another FetchData option to try:
   // manage user cash balance to buy stocks
   const fetchData = async () => {
+    console.log(userCashBalance)
+
     const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}&amount=${inputs.shareAmount}`
     const data = {
       symbol: inputs.stockSymbol,
       amount: inputs.shareAmount
     }
-    const response = await axios.post(buyStockUrl, data)
-    setStockData(response.data)
-    setUserCashBalance(prevState => prevState - response.data.value)
+    // only execute buyStockUrl if user has enough cash
+    if (userCashBalance >= inputs.shareAmount * stockData.price) {
+      const response = await axios.post(buyStockUrl, data)
+      setStockData(response.data)
+      setUserCashBalance(prevState => prevState - response.data.value) // not working properly
+    } else {
+      alert('You do not have enough cash to buy this stock')
+    }
   }
 
   // refactored fetchData
