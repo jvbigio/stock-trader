@@ -42,41 +42,59 @@ const Portfolio = () => {
   //   setStockData(response.data)
   // }
 
-  // refactored fetchData
+  /*
+   NOTES:
+
+   Maybe try to set userCashBalance inside fetchData, but have the userCashBalance in its own route?
+   ex: /api/users/:user_id/cash_balance
+
+   Manage cash balance inside that route but set it in fetchData?
+    ex: /api/users/:user_id/cash_balance/buy?stock_symbol=${inputs.stockSymbol}&amount=${inputs.shareAmount} // another example for brainstorming solution.
+  */
+
+  // another FetchData option to try:
+  // manage user cash balance to buy stocks
   const fetchData = async () => {
-    const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+    const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}&amount=${inputs.shareAmount}`
     const data = {
       symbol: inputs.stockSymbol,
       amount: inputs.shareAmount
     }
-    // iterate over userTable to get the holding value of the stock
-    // if userCashBalance is greater than the holding value, then buy the stock
-    // then subtract the holding value from the user's cash balance
-    // then add the stock to the user's table
-    // else, alert the user that they don't have enough cash
-    const userTable = await axios.get('/api/stocks/user')
-    // try creating state to keep track of user's cash balance
-    // const userCashBalance = await axios.get('/api/stocks/user')
-    // console.log(userCashBalance)
-    // console.log(userTable)
-    // console.log(userCashBalance)
-    // console.log(userTable.data[0].cash_balance)
-    // console.log(userTable.data[0].holdings)
-    // console.log(userTable.data[0].holdings[0].value)
-    // console.log(userTable.data[0].holdings[0].symbol)
-    // console.log(userTable.data[0].holdings[0].quantity)
-    // console.log(userTable.data[0].holdings[0].amount)
-    // console.log(userTable.data[0].holdings[0].total_value)
-    userTable.data.forEach(stock => { // causes too many requests
-      if (userCashBalance > stock.value) {
-        axios.post(buyStockUrl, data)
-        setUserCashBalance(prevState => prevState - stock.value)
-        setUserTable(prevState => [...prevState, stock])
-      } else {
-        alert('You do not have enough cash to buy this stock')
-      }
-    })
+    const response = await axios.post(buyStockUrl, data)
+    setStockData(response.data)
+    setUserCashBalance(prevState => prevState - response.data.value)
   }
+
+  // refactored fetchData
+  // const fetchData = async () => {
+  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+  //   const data = {
+  //     symbol: inputs.stockSymbol,
+  //     amount: inputs.shareAmount
+  //   }
+  //   // iterate over userTable to get the holding value of the stock
+
+  //   // if userCashBalance is greater than the holding value, then buy the stock
+  //   // then subtract the holding value from the user's cash balance
+  //   // then add the stock to the user's table
+  //   // else, alert the user that they don't have enough cash
+  //   // try creating state to keep track of user's cash balance
+
+  //   // const userCashBalance = await axios.get('/api/stocks/user')
+  //   // console.log(userCashBalance)
+  //   // setUserCashBalance(userCashBalance.data.cashBalance)
+
+  //   userTable.data.forEach(stock => {
+  //     // causes too many requests
+  //     if (userCashBalance > stock.value) {
+  //       axios.post(buyStockUrl, data)
+  //       setUserCashBalance(prevState => prevState - stock.value)
+  //       setUserTable(prevState => [...prevState, stock])
+  //     } else {
+  //       alert('You do not have enough cash to buy this stock')
+  //     }
+  //   })
+  // }
 
   // // testing
   // console.log(stockData)
@@ -140,7 +158,7 @@ const Portfolio = () => {
   //   handleUserCashBalance()
   // }, [userCashBalance, userTable])
 
-  console.log(userTable) // works. work on iterating through the user's stocks
+  // console.log(userTable) // works. work on iterating through the user's stocks
 
   useEffect(() => {
     getUserHoldings()
