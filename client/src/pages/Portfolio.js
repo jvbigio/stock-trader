@@ -30,17 +30,19 @@ const Portfolio = () => {
   // this is the function that will be called when the user clicks the buy button
   // create a new function that will handle users CashBalance? Separation of concerns?
   // but the option to buy a stock relies on having the cash available...
-  // const fetchData = async () => {
-  //   // original fetchData
-  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
-  //   const data = {
-  //     symbol: inputs.stockSymbol,
-  //     // quantity: inputs.shareAmount
-  //     amount: inputs.shareAmount // original
-  //   }
-  //   const response = await axios.post(buyStockUrl, data)
-  //   setStockData(response.data)
-  // }
+  const fetchData = async () => {
+    // original fetchData
+    const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+    const data = {
+      symbol: inputs.stockSymbol,
+      // quantity: inputs.shareAmount
+      amount: inputs.shareAmount // original
+    }
+    const response = await axios.post(buyStockUrl, data)
+    setStockData(response.data)
+    console.log(response.data.value)
+    console.log(response.data.price)
+  }
 
   /*
    NOTES:
@@ -50,27 +52,35 @@ const Portfolio = () => {
 
    Manage cash balance inside that route but set it in fetchData?
     ex: /api/users/:user_id/cash_balance/buy?stock_symbol=${inputs.stockSymbol}&amount=${inputs.shareAmount} // another example for brainstorming solution.
+
+  NEW:
+    use MUI Alert for when userCashBalance < the stock value being purchased.
+    handle userCashBalance in a separate function since it is all frontend.
   */
 
   // another FetchData option to try:
   // manage user cash balance to buy stocks
-  const fetchData = async () => {
-    console.log(userCashBalance)
+  // const fetchData = async () => {
+  //   console.log(userCashBalance)
 
-    const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}&amount=${inputs.shareAmount}`
-    const data = {
-      symbol: inputs.stockSymbol,
-      amount: inputs.shareAmount
-    }
-    // only execute buyStockUrl if user has enough cash
-    if (userCashBalance >= inputs.shareAmount * stockData.price) {
-      const response = await axios.post(buyStockUrl, data)
-      setStockData(response.data)
-      setUserCashBalance(prevState => prevState - response.data.value) // not working properly - not persisting on refresh
-    } else {
-      alert('You do not have enough cash to buy this stock')
-    }
-  }
+  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}&amount=${inputs.shareAmount}`
+  //   const data = {
+  //     symbol: inputs.stockSymbol,
+  //     amount: inputs.shareAmount
+  //   }
+  //   // debugger
+  //   // console.log(stockData.price) // undefined
+  //   // only execute buyStockUrl if user has enough cash
+  //   if (userCashBalance >= inputs.shareAmount * stockData.price) {
+  //     const response = await axios.post(buyStockUrl, data)
+  //     setStockData(response.data)
+  //     console.log(response.data.price)
+  //     console.log(response.data.value)
+  //     setUserCashBalance(prevState => prevState - response.data.value) // not working properly - not persisting on refresh
+  //   } else {
+  //     alert('You do not have enough cash to buy this stock')
+  //   }
+  // }
 
   // refactored fetchData
   // const fetchData = async () => {

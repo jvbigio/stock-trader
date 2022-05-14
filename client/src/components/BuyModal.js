@@ -8,7 +8,8 @@ import {
   Fade,
   Fab,
   Tooltip,
-  TextField
+  TextField,
+  Alert
 } from '@mui/material'
 
 import AddIcon from '@mui/icons-material/Add'
@@ -131,6 +132,13 @@ export default function BuyModal ({
               Order
             </Button>
           </Box>
+          {/* only show Alert when userCashBalance insufficient */}
+          {/* do in Portfolio to alert true/false then import that into here to show when truthy */}
+          {userCashBalance === 0 && (
+            <Alert severity='error'>
+              Insufficient Funds - Unable to Complete!
+            </Alert>
+          )}
         </Box>
       </Modal>
     </>
