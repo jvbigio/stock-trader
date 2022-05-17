@@ -33,7 +33,7 @@ const style = {
 - In either your portfolio page or your report page you’ll have access to the latest data once you’re db is updated from the previous step.
 */
 
-export default function BuyModal ({
+export default function BuyModal({
   inputs,
   getUserInput,
   handleBuySubmit,
@@ -134,7 +134,7 @@ export default function BuyModal ({
           </Box>
           {/* only show Alert when userCashBalance insufficient */}
           {/* do in Portfolio to alert true/false then import that into here to show when truthy */}
-          {userCashBalance === 0 && (
+          {userCashBalance && (
             <Alert severity='error'>
               Insufficient Funds - Unable to Complete!
             </Alert>
