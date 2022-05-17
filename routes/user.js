@@ -22,6 +22,8 @@ router.get('/:user_id/balance', async (req, res) => {
 })
 
 // show Alert in BuyModal when userCashBalance insufficient, hide when userCashBalance sufficient
+
+// example:
 // userCashBalance > stockPrice * stockAmount ? hideAlert : showAlert
 
 module.exports = router
