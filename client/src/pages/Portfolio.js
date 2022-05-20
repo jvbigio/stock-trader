@@ -30,19 +30,41 @@ const Portfolio = () => {
   // this is the function that will be called when the user clicks the buy button
   // create a new function that will handle users CashBalance? Separation of concerns?
   // but the option to buy a stock relies on having the cash available...
-  const fetchData = async () => {
-    // original fetchData
-    const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
-    const data = {
-      symbol: inputs.stockSymbol,
-      // quantity: inputs.shareAmount
-      amount: inputs.shareAmount // original
-    }
-    const response = await axios.post(buyStockUrl, data)
-    setStockData(response.data)
-    console.log(response.data.value)
-    console.log(response.data.price)
-  }
+  // const fetchData = async () => {
+  //   // original fetchData
+  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
+  //   const data = {
+  //     symbol: inputs.stockSymbol,
+  //     // quantity: inputs.shareAmount
+  //     amount: inputs.shareAmount // original
+  //   }
+  //   const response = await axios.post(buyStockUrl, data)
+  //   setStockData(response.data)
+  //   console.log(response.data.value)
+  //   console.log(response.data.price)
+  //   console.log(response.data)
+  // }
+
+  // const getTotalValue = () => {
+  //   for (const stock of userTable) {
+  //     console.log(stock.value)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   // getTotalValue()
+  //   for (const stock of userTable) {
+  //     // console.log(stock.value)
+  //     // make sure userCashBalance is greater than stock to buy
+  //     if (userCashBalance > stock.value) {
+  //       // update userCashBalance
+  //       setUserCashBalance(
+  //         prevState =>
+  //           (prevState = parseInt(inputs.amount) * parseInt(stock.value))
+  //       )
+  //     }
+  //   }
+  // }, [userTable])
 
   // show cashBalanceAlert ternary here?
 
@@ -62,41 +84,55 @@ const Portfolio = () => {
 
   // another FetchData option to try:
   // manage user cash balance to buy stocks
-  // const fetchData = async () => {
-  //   console.log(userCashBalance)
+  const fetchData = async () => {
+    // console.log(userCashBalance)
 
-  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}&amount=${inputs.shareAmount}`
-  //   const data = {
-  //     symbol: inputs.stockSymbol,
-  //     amount: inputs.shareAmount
-  //   }
-  //   // debugger
-  //   // console.log(stockData.price) // undefined
-  //   // only execute buyStockUrl if user has enough cash
-  //   if (userCashBalance >= inputs.shareAmount * stockData.price) {
-  //     const response = await axios.post(buyStockUrl, data)
-  //     setStockData(response.data)
-  //     console.log(response.data.price)
-  //     console.log(response.data.value)
-  // not working properly - not persisting on refresh - need local storage to persist
-  //     setUserCashBalance(prevState => prevState - response.data.value)
-  //   } else {
-  //     alert('You do not have enough cash to buy this stock')
-  //   }
-  // }
+    const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}&amount=${inputs.shareAmount}`
+    const data = {
+      symbol: inputs.stockSymbol,
+      amount: inputs.shareAmount
+    }
+    // debugger
+    // console.log(stockData.price) // undefined
+    // only execute buyStockUrl if user has enough cash
+    const response = await axios.post(buyStockUrl, data)
+    if (userCashBalance >= inputs.shareAmount * response.data.price) {
+      setStockData(response.data)
+      console.log(response.data.price)
+      console.log(response.data.value)
+      // not working properly - not persisting on refresh - need local storage to persist
+      setUserCashBalance(prevState => prevState - response.data.value)
+      localStorage.setItem('userCashBalance', userCashBalance)
+      // set userCashBalance to the new value in localStorage
+
+      console.log(`Cash Balance: ${userCashBalance}`)
+    } else {
+      alert('You do not have enough cash to buy this stock')
+    }
+  }
 
   // set local storage userCashBalance
-  const updateUserCashBalance = () => {
-    console.log(userCashBalance)
-    localStorage.setItem('userCashBalance', userCashBalance)
-  }
+  // const updateUserCashBalance = () => {
+  //   console.log(userCashBalance)
+  //   localStorage.setItem('userCashBalance', userCashBalance)
+  // }
 
-  // get local storage userCashBalance
+  // // get local storage userCashBalance
   const getUserCashBalance = () => {
-    console.log(userCashBalance)
-    const userCashBalance = localStorage.getItem('userCashBalance')
+    // const userCashBalance = localStorage.getItem('userCashBalance')
+    localStorage.getItem('userCashBalance')
+    // console.log(`Cash: ${userCashBalance}`)
     setUserCashBalance(userCashBalance)
   }
+
+  useEffect(() => {
+    getUserCashBalance()
+  }, [])
+
+  // // render updateUserCashBalance when user buys stock
+  // useEffect(() => {
+  //   updateUserCashBalance()
+  // }, [])
 
   // refactored fetchData
   // const fetchData = async () => {
