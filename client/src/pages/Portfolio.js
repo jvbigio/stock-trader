@@ -78,11 +78,25 @@ const Portfolio = () => {
   //     setStockData(response.data)
   //     console.log(response.data.price)
   //     console.log(response.data.value)
-  //     setUserCashBalance(prevState => prevState - response.data.value) // not working properly - not persisting on refresh
+  // not working properly - not persisting on refresh - need local storage to persist
+  //     setUserCashBalance(prevState => prevState - response.data.value)
   //   } else {
   //     alert('You do not have enough cash to buy this stock')
   //   }
   // }
+
+  // set local storage userCashBalance
+  const updateUserCashBalance = () => {
+    console.log(userCashBalance)
+    localStorage.setItem('userCashBalance', userCashBalance)
+  }
+
+  // get local storage userCashBalance
+  const getUserCashBalance = () => {
+    console.log(userCashBalance)
+    const userCashBalance = localStorage.getItem('userCashBalance')
+    setUserCashBalance(userCashBalance)
+  }
 
   // refactored fetchData
   // const fetchData = async () => {
