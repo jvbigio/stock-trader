@@ -33,7 +33,7 @@ const style = {
 - In either your portfolio page or your report page you’ll have access to the latest data once you’re db is updated from the previous step.
 */
 
-export default function BuyModal({
+export default function BuyModal ({
   inputs,
   getUserInput,
   handleBuySubmit,

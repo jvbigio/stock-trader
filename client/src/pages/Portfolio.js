@@ -44,6 +44,8 @@ const Portfolio = () => {
     console.log(response.data.price)
   }
 
+  // show cashBalanceAlert ternary here?
+
   /*
    NOTES:
 

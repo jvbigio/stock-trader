@@ -11,6 +11,7 @@ const router = express.Router()
 // const buyQuery = require('../database/queries/transactions')
 
 // GET user by user_id
+// this should be in routes/user file
 // router.get('/:user_id', async (req, res) => {
 //   try {
 //     const { user_id } = req.params
