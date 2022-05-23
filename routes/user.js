@@ -9,8 +9,9 @@ const router = express.Router()
 // GET user by user_id
 // route for cash balance based on user_id
 // /user/:user_id/balance
-router.get('/:user_id/balance', async (req, res) => {
+router.get('/cash/:user_id', async (req, res) => {
   try {
+    const cashBalance = 100000
     const { user_id } = req.params
     const response = await pool.query('SELECT cash FROM users WHERE id = $1', [
       user_id

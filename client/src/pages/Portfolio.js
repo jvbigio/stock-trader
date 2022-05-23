@@ -101,8 +101,12 @@ const Portfolio = () => {
       console.log(response.data.price)
       console.log(response.data.value)
       // not working properly - not persisting on refresh - need local storage to persist
-      setUserCashBalance(prevState => prevState - response.data.value)
-      localStorage.setItem('userCashBalance', userCashBalance)
+      setUserCashBalance(
+        prevState => (prevState -= parseInt(response.data.value))
+      )
+      // JSON.stringify first:
+      // localStorage.setItem('userCashBalance', JSON.stringify(userCashBalance))
+      // localStorage.setItem('userCashBalance', userCashBalance)
       // set userCashBalance to the new value in localStorage
 
       console.log(`Cash Balance: ${userCashBalance}`)
@@ -111,6 +115,16 @@ const Portfolio = () => {
     }
   }
 
+  // set localStorage to userCashBalance with useEffect
+  useEffect(() => {
+    localStorage.setItem('userCashBalance', userCashBalance)
+  }, [userCashBalance])
+
+  useEffect(() => {
+    const userCashBalance = localStorage.getItem('userCashBalance')
+    setUserCashBalance(userCashBalance)
+  }, [])
+
   // set local storage userCashBalance
   // const updateUserCashBalance = () => {
   //   console.log(userCashBalance)
@@ -118,16 +132,19 @@ const Portfolio = () => {
   // }
 
   // // get local storage userCashBalance
-  const getUserCashBalance = () => {
-    // const userCashBalance = localStorage.getItem('userCashBalance')
-    localStorage.getItem('userCashBalance')
-    // console.log(`Cash: ${userCashBalance}`)
-    setUserCashBalance(userCashBalance)
-  }
+  // const getUserCashBalance = async () => {
+  //   //   const userCashBalanceUrl = `/api/users/cash_balance`
+  //   //   const response = await axios.get(userCashBalanceUrl)
+  //   //   setUserCashBalance(response.data.cash_balance)
+  //   //   console.log(response.data.cash_balance)
+  //   // }
+  //   const getCash = localStorage.getItem('userCashBalance')
+  //   console.log(`Current Cash: ${getCash}`)
+  // }
 
-  useEffect(() => {
-    getUserCashBalance()
-  }, [])
+  // useEffect(() => {
+  //   getUserCashBalance()
+  // }, [userCashBalance])
 
   // // render updateUserCashBalance when user buys stock
   // useEffect(() => {
