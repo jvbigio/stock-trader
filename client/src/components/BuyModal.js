@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import axios from 'axios'
+import { roundAccurately } from '../utils/helper-function'
 
 import {
   Modal,
@@ -59,6 +60,10 @@ export default function BuyModal({
   //     .catch(err => console.error(err.message))
   // }, [])
 
+  // repeated in HoldingsTable.js as well. refactor to use import/export
+  // const roundAccurately = (number, decimalPlaces) =>
+  //   Number(Math.round(`${number}e${decimalPlaces}`) + `e-${decimalPlaces}`)
+
   return (
     <>
       <Tooltip
@@ -93,7 +98,9 @@ export default function BuyModal({
             Buy
           </Typography>
           <Typography variant='subtitle2' textAlign='center' gutterBottom>
-            Cash Available to Trade: ${userCashBalance}
+            {/* Cash Available to Trade: ${parseInt(userCashBalance).toFixed(2)} */}
+            Cash Available to Trade: $
+            {roundAccurately(userCashBalance, 2).toFixed(2)}
           </Typography>
           <Box
             autoComplete='off'

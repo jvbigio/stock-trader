@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-// import axios from 'axios'
-
 import {
   Box,
   TableContainer,
@@ -16,6 +14,9 @@ import {
 
 import BuyModal from './BuyModal'
 import SellModal from './SellModal'
+
+// import axios from 'axios'
+import { roundAccurately } from '../utils/helper-function'
 
 export const HoldingsTable = ({
   handleSearch,
@@ -37,6 +38,7 @@ export const HoldingsTable = ({
   setSoldStock,
   userCashBalance,
   setUserCashBalance
+  // roundAccurately
 }) => {
   // const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
@@ -69,8 +71,8 @@ export const HoldingsTable = ({
     setPage(0)
   }
 
-  const roundAccurately = (number, decimalPlaces) =>
-    Number(Math.round(`${number}e${decimalPlaces}`) + `e-${decimalPlaces}`)
+  // const roundAccurately = (number, decimalPlaces) =>
+  //   Number(Math.round(`${number}e${decimalPlaces}`) + `e-${decimalPlaces}`)
 
   return (
     <>
@@ -135,6 +137,7 @@ export const HoldingsTable = ({
                   <TableCell align='right'>${stock.price}</TableCell>
                   <TableCell align='right'>
                     ${roundAccurately(stock.value, 2).toFixed(2)}
+                    {/* {helperFunction.roundAccurately(stock.value, 2).toFixed(2)} */}
                   </TableCell>
                   <TableCell align='right'>{stock.quantity}</TableCell>
                   <TableCell align='right'>

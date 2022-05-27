@@ -21,12 +21,26 @@ router.get('/cash', async (req, res) => {
       'SELECT * FROM holdings WHERE user_id = ($1)',
       [id]
     )
+    // works
+    // for (const stock of response.rows) {
+    //   stockValue += stock.quantity * stock.price
+    // }
 
-    for (const stock of response.rows) {
-      stockValue += stock.quantity * stock.price
-    }
-    // res.json(response.rows[0])
-    console.log(userCashBalance)
+    // try mapping through response.rows
+    response.rows.map(stock => ({
+      // ...stock, stockValue += stock.quantity * stock.price
+      ...stock,
+      stockValue: (stockValue += stock.quantity * stock.price)
+    }))
+
+    // res.json({ userCashBalance: updateCash })
+
+    // res.json({
+    //   cash: userCashBalance,
+    //   stocks: updateCash,
+    //   totalValue
+    // })
+
     res.json({ userCashBalance: userCashBalance - stockValue, stockValue })
   } catch (err) {
     res.status(500).send({ message: err.message })
