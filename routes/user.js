@@ -14,10 +14,13 @@ router.get('/cash', async (req, res) => {
   try {
     const userCashBalance = 100000
     let stockValue = 0
-    const { user_id } = req.params
-    const response = await pool.query('SELECT cash FROM users WHERE id = $1', [
-      user_id
-    ])
+    // const { user_id } = req.params // for when registration works
+    const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+
+    const response = await pool.query(
+      'SELECT * FROM holdings WHERE user_id = ($1)',
+      [id]
+    )
 
     for (const stock of response.rows) {
       stockValue += stock.amount * stock.price

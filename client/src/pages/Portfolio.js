@@ -11,7 +11,7 @@ const Portfolio = () => {
   const [inputs, setInputs] = useState({})
   const [stockData, setStockData] = useState({})
   const [userTable, setUserTable] = useState([])
-  const [userCashBalance, setUserCashBalance] = useState(100000)
+  const [userCashBalance, setUserCashBalance] = useState(0)
   const [sellingStockSymbol, setSellingStockSymbol] = useState('')
 
   // testing, try using this to add to userCashBalance when stock sold
@@ -58,15 +58,16 @@ const Portfolio = () => {
       console.log(response.data.price)
       console.log(response.data.value)
       // not working properly - not persisting on refresh - need local storage to persist
-      setUserCashBalance(
-        prevState => (prevState -= parseInt(response.data.value))
-      )
+      // setUserCashBalance(
+      //   prevState => (prevState -= parseInt(response.data.value))
+      // ) // keep!!!
+
       // JSON.stringify first:
       // localStorage.setItem('userCashBalance', JSON.stringify(userCashBalance))
       // localStorage.setItem('userCashBalance', userCashBalance)
       // set userCashBalance to the new value in localStorage
 
-      console.log(`Cash Balance: ${userCashBalance}`)
+      // console.log(`Cash Balance: ${userCashBalance}`)
     } else {
       alert('You do not have enough cash to buy this stock')
     }
@@ -97,6 +98,26 @@ const Portfolio = () => {
     handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
   }
+
+  // handle cash
+  const getCash = async () => {
+    try {
+      // once register function works, will need to getItem from localStorage for user_id
+      // const response = await axios.get(`/api/cash/${data}.id`) // use this when registration works
+      const response = await axios.get('/api/cash')
+
+      return response.data
+    } catch (err) {
+      console.error(err.message)
+    }
+  }
+
+  // render getCash with useEffect
+  useEffect(() => {
+    getCash()
+      .then(res => setUserCashBalance(res.userCashBalance))
+      .catch(err => console.error(err.message))
+  }, [])
 
   return (
     <Box sx={{ display: 'flex' }}>
