@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+import axios from 'axios'
 
 import {
   Modal,
@@ -39,9 +41,31 @@ export default function BuyModal ({
   handleBuySubmit,
   open,
   handleOpen,
-  handleClose,
-  userCashBalance
+  handleClose
+  // userCashBalance
 }) {
+  const [userCashBalance, setUserCashBalance] = useState(0)
+
+  // get cash balance from db
+  const getCash = async () => {
+    try {
+      // once register function works, will need to getItem from localStorage for user_id
+      // const response = await axios.get(`/api/cash/${data}.id`) // use this when registration works
+      const response = await axios.get('/api/cash')
+
+      return response.data
+    } catch (err) {
+      console.error(err.message)
+    }
+  }
+
+  // render getCash with useEffect
+  useEffect(() => {
+    getCash()
+      .then(res => setUserCashBalance(res.userCashBalance))
+      .catch(err => console.error(err.message))
+  }, [userCashBalance])
+
   return (
     <>
       <Tooltip

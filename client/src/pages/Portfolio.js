@@ -121,9 +121,9 @@ const Portfolio = () => {
   }, [userCashBalance])
 
   useEffect(() => {
-    const userCashBalance = localStorage.getItem('userCashBalance')
-    setUserCashBalance(userCashBalance)
-  }, [])
+    const cashBalance = localStorage.getItem('userCashBalance')
+    setUserCashBalance(cashBalance)
+  }, [userCashBalance])
 
   // set local storage userCashBalance
   // const updateUserCashBalance = () => {
