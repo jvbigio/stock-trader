@@ -27,47 +27,6 @@ const Portfolio = () => {
     setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }
 
-  // this is the function that will be called when the user clicks the buy button
-  // create a new function that will handle users CashBalance? Separation of concerns?
-  // but the option to buy a stock relies on having the cash available...
-  // const fetchData = async () => {
-  //   // original fetchData
-  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
-  //   const data = {
-  //     symbol: inputs.stockSymbol,
-  //     // quantity: inputs.shareAmount
-  //     amount: inputs.shareAmount // original
-  //   }
-  //   const response = await axios.post(buyStockUrl, data)
-  //   setStockData(response.data)
-  //   console.log(response.data.value)
-  //   console.log(response.data.price)
-  //   console.log(response.data)
-  // }
-
-  // const getTotalValue = () => {
-  //   for (const stock of userTable) {
-  //     console.log(stock.value)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   // getTotalValue()
-  //   for (const stock of userTable) {
-  //     // console.log(stock.value)
-  //     // make sure userCashBalance is greater than stock to buy
-  //     if (userCashBalance > stock.value) {
-  //       // update userCashBalance
-  //       setUserCashBalance(
-  //         prevState =>
-  //           (prevState = parseInt(inputs.amount) * parseInt(stock.value))
-  //       )
-  //     }
-  //   }
-  // }, [userTable])
-
-  // show cashBalanceAlert ternary here?
-
   /*
    NOTES:
 
@@ -92,9 +51,7 @@ const Portfolio = () => {
       symbol: inputs.stockSymbol,
       amount: inputs.shareAmount
     }
-    // debugger
-    // console.log(stockData.price) // undefined
-    // only execute buyStockUrl if user has enough cash
+
     const response = await axios.post(buyStockUrl, data)
     if (userCashBalance >= inputs.shareAmount * response.data.price) {
       setStockData(response.data)
@@ -115,134 +72,11 @@ const Portfolio = () => {
     }
   }
 
-  // set localStorage to userCashBalance with useEffect
-  useEffect(() => {
-    localStorage.setItem('userCashBalance', userCashBalance)
-  }, [userCashBalance])
-
-  useEffect(() => {
-    const cashBalance = localStorage.getItem('userCashBalance')
-    setUserCashBalance(cashBalance)
-  }, [userCashBalance])
-
-  // set local storage userCashBalance
-  // const updateUserCashBalance = () => {
-  //   console.log(userCashBalance)
-  //   localStorage.setItem('userCashBalance', userCashBalance)
-  // }
-
-  // // get local storage userCashBalance
-  // const getUserCashBalance = async () => {
-  //   //   const userCashBalanceUrl = `/api/users/cash_balance`
-  //   //   const response = await axios.get(userCashBalanceUrl)
-  //   //   setUserCashBalance(response.data.cash_balance)
-  //   //   console.log(response.data.cash_balance)
-  //   // }
-  //   const getCash = localStorage.getItem('userCashBalance')
-  //   console.log(`Current Cash: ${getCash}`)
-  // }
-
-  // useEffect(() => {
-  //   getUserCashBalance()
-  // }, [userCashBalance])
-
-  // // render updateUserCashBalance when user buys stock
-  // useEffect(() => {
-  //   updateUserCashBalance()
-  // }, [])
-
-  // refactored fetchData
-  // const fetchData = async () => {
-  //   const buyStockUrl = `/api/stocks/buy?stock_symbol=${inputs.stockSymbol}`
-  //   const data = {
-  //     symbol: inputs.stockSymbol,
-  //     amount: inputs.shareAmount
-  //   }
-  //   // iterate over userTable to get the holding value of the stock
-
-  //   // if userCashBalance is greater than the holding value, then buy the stock
-  //   // then subtract the holding value from the user's cash balance
-  //   // then add the stock to the user's table
-  //   // else, alert the user that they don't have enough cash
-  //   // try creating state to keep track of user's cash balance
-
-  //   // const userCashBalance = await axios.get('/api/stocks/user')
-  //   // console.log(userCashBalance)
-  //   // setUserCashBalance(userCashBalance.data.cashBalance)
-
-  //   userTable.data.forEach(stock => {
-  //     // causes too many requests
-  //     if (userCashBalance > stock.value) {
-  //       axios.post(buyStockUrl, data)
-  //       setUserCashBalance(prevState => prevState - stock.value)
-  //       setUserTable(prevState => [...prevState, stock])
-  //     } else {
-  //       alert('You do not have enough cash to buy this stock')
-  //     }
-  //   })
-  // }
-
-  // // testing
-  // console.log(stockData)
-
   const getUserHoldings = async () => {
     const response = await axios.get('/api/stocks/user')
     setUserTable(response.data)
     // console.log(response.data) // array of the stocks the user owns
   }
-
-  // option 1
-  // useEffect(() => {
-  //   const updateCashBalance = () => {
-  //     userTable.forEach(stock => {
-  //       // console.log(stock.value)
-  //       if (userCashBalance > stock.value) {
-  //         setUserCashBalance(prevState => prevState - stock.value)
-  //         console.log(userCashBalance)
-  //         // console.log(stock.value)
-  //       } else if (userCashBalance < stock.value) {
-  //         console.log('not enough cash')
-  //       }
-  //     })
-  //   }
-  //   updateCashBalance()
-  // })
-
-  // option 2
-  // useEffect(() => {
-  //   const handleUserCashBalance = () => {
-  //     if (userCashBalance > 0) {
-  //       userTable.forEach(stock => {
-  //         // console.log(stock.value)
-  //         setUserCashBalance(prevState => prevState - stock.value)
-  //         console.log(userCashBalance)
-  //       })
-  //       // stop the function and don't subtract
-  //       console.log('no more money')
-  //     }
-  //     // console.log(userCashBalance)
-  //   }
-  //   handleUserCashBalance()
-  // }, [userCashBalance, userTable])
-
-  // option 3
-  // maybe instead of useEffect try to use /buy route?
-  // useEffect(() => {
-  //   const handleUserCashBalance = () => {
-  //     userTable.forEach(stock => {
-  //       // console.log(stock.value)
-  //       if (userCashBalance > 0 && userCashBalance > stock.value) {
-  //         setUserCashBalance(prevState => prevState - stock.value)
-  //         // console.log(userCashBalance)
-  //       } else if (userCashBalance <= 0) {
-  //         console.log('no more money')
-  //         // stop function
-  //       }
-  //     })
-  //     // console.log(userCashBalance)
-  //   }
-  //   handleUserCashBalance()
-  // }, [userCashBalance, userTable])
 
   // console.log(userTable) // works. work on iterating through the user's stocks
 
