@@ -114,6 +114,7 @@ export default function BuyModal({
               label='Stock Symbol'
               variant='outlined'
               color='success'
+              // use this to do a route for /quote with stock symbol only and render price:
               // helperText={`Current Price: $${36.64}`}
               name='stockSymbol'
               value={inputs.stockSymbol || ''}

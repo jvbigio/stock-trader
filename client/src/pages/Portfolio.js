@@ -67,7 +67,7 @@ const Portfolio = () => {
       // localStorage.setItem('userCashBalance', userCashBalance)
       // set userCashBalance to the new value in localStorage
 
-      // console.log(`Cash Balance: ${userCashBalance}`)
+      console.log(`Cash Balance: ${userCashBalance}`)
     } else {
       alert('You do not have enough cash to buy this stock')
     }
@@ -113,11 +113,15 @@ const Portfolio = () => {
   }
 
   // render getCash with useEffect
-  useEffect(() => {
-    getCash()
-      .then(res => setUserCashBalance(res.userCashBalance))
-      .catch(err => console.error(err.message))
-  }, [])
+  useEffect(
+    () => {
+      getCash()
+        .then(res => setUserCashBalance(res.userCashBalance))
+        .catch(err => console.error(err.message))
+    },
+    // []
+    [userTable]
+  )
 
   return (
     <Box sx={{ display: 'flex' }}>

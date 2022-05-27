@@ -23,9 +23,10 @@ router.get('/cash', async (req, res) => {
     )
 
     for (const stock of response.rows) {
-      stockValue += stock.amount * stock.price
+      stockValue += stock.quantity * stock.price
     }
     // res.json(response.rows[0])
+    console.log(userCashBalance)
     res.json({ userCashBalance: userCashBalance - stockValue, stockValue })
   } catch (err) {
     res.status(500).send({ message: err.message })
