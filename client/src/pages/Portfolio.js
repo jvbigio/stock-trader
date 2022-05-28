@@ -22,9 +22,12 @@ const Portfolio = () => {
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-
+  // just added toUpperCase. Make sure no bugs:
   const getUserInput = e => {
-    setInputs(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
+    setInputs(prevState => ({
+      ...prevState,
+      [e.target.name]: e.target.value.toUpperCase()
+    }))
   }
 
   /*

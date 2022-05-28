@@ -98,7 +98,6 @@ export default function BuyModal({
             Buy
           </Typography>
           <Typography variant='subtitle2' textAlign='center' gutterBottom>
-            {/* Cash Available to Trade: ${parseInt(userCashBalance).toFixed(2)} */}
             Cash Available to Trade: $
             {roundAccurately(userCashBalance, 2).toFixed(2)}
           </Typography>
@@ -123,6 +122,12 @@ export default function BuyModal({
               color='success'
               // use this to do a route for /quote with stock symbol only and render price:
               // helperText={`Current Price: $${36.64}`}
+              // ternary helperText:
+              helperText={
+                inputs.stockSymbol
+                  ? `${inputs.stockSymbol} Price: $${36.64}`
+                  : `Stock Price $${36.64}`
+              }
               name='stockSymbol'
               value={inputs.stockSymbol || ''}
               onChange={getUserInput}
@@ -134,7 +139,8 @@ export default function BuyModal({
               variant='outlined'
               color='success'
               // create conditional to show error if useCashBalance === 0, else success
-              // helperText={`Estimated Value: $${7500.14}`}
+              // also, see if u can show total value based on stock * quantity:
+              helperText={`Estimated Value: $${7500.14}`}
               name='shareAmount'
               type='number'
               value={inputs.shareAmount || ''}

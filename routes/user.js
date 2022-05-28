@@ -6,9 +6,6 @@ require('dotenv').config()
 
 const router = express.Router()
 
-// GET user by user_id
-// route for cash balance based on user_id
-// /user/:user_id/balance
 // router.get('/cash/:user_id', async (req, res) => { // use this when registration works
 router.get('/cash', async (req, res) => {
   try {
