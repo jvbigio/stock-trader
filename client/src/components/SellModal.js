@@ -27,7 +27,7 @@ const style = {
 }
 
 // stockData testing props
-export default function SellModal ({
+export default function SellModal({
   inputs,
   getUserInput,
   getUserHoldings,
@@ -41,6 +41,8 @@ export default function SellModal ({
   // handleSellOpen,
   // handleSellClose
 }) {
+  // TODO: delete all unused code comments
+
   const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true) // original
   // const [sellingStockSymbol, setSellingStockSymbol] = useState('') // moved to portfolio to test
