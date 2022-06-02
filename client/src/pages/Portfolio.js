@@ -86,7 +86,6 @@ const Portfolio = () => {
 
   useEffect(() => {
     getUserHoldings()
-    // updateCashBalance() // testing
     // }, [userTable]) // (original) causes infinite http requests
   }, [stockData])
 
@@ -115,16 +114,11 @@ const Portfolio = () => {
     }
   }
 
-  // render getCash with useEffect
-  useEffect(
-    () => {
-      getCash()
-        .then(res => setUserCashBalance(res.userCashBalance))
-        .catch(err => console.error(err.message))
-    },
-    // []
-    [userTable]
-  )
+  useEffect(() => {
+    getCash()
+      .then(res => setUserCashBalance(res.userCashBalance))
+      .catch(err => console.error(err.message))
+  }, [userTable])
 
   return (
     <Box sx={{ display: 'flex' }}>

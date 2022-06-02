@@ -28,7 +28,11 @@ router.get('/cash', async (req, res) => {
       stockValue: (stockValue += stock.quantity * stock.price)
     }))
 
+    // maybe do conditional if buy or sell to add or subtract from cash balance
+    // if buy, subtract cash balance
     res.json({ userCashBalance: userCashBalance - stockValue, stockValue })
+    // else, add cash balance
+    // res.json({ userCashBalance: userCashBalance + stockValue, stockValue })
   } catch (err) {
     res.status(500).send({ message: err.message })
   }
