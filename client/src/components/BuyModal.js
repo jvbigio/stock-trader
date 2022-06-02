@@ -38,38 +38,10 @@ export default function BuyModal({
   handleClose,
   userCashBalance
 }) {
-  // const [userCashBalance, setUserCashBalance] = useState(0)
-
-  // get cash balance from db
-  // const getCash = async () => {
-  //   try {
-  //     // once register function works, will need to getItem from localStorage for user_id
-  //     // const response = await axios.get(`/api/cash/${data}.id`) // use this when registration works
-  //     const response = await axios.get('/api/cash')
-
-  //     return response.data
-  //   } catch (err) {
-  //     console.error(err.message)
-  //   }
-  // }
-
-  // // render getCash with useEffect
-  // useEffect(() => {
-  //   getCash()
-  //     .then(res => setUserCashBalance(res.userCashBalance))
-  //     .catch(err => console.error(err.message))
-  // }, [])
-
-  // repeated in HoldingsTable.js as well. refactor to use import/export
-  // const roundAccurately = (number, decimalPlaces) =>
-  //   Number(Math.round(`${number}e${decimalPlaces}`) + `e-${decimalPlaces}`)
-
   return (
     <>
       <Tooltip
         title='Buy'
-        // when on right side of screen:
-        // placement='left'
         placement='right'
         arrow
         TransitionComponent={Fade}
@@ -159,6 +131,8 @@ export default function BuyModal({
                 '&:hover': { backgroundColor: '#1976D2' },
                 color: '#FFF'
               }}
+              // testing:
+              className='buy-button'
             >
               Order
             </Button>

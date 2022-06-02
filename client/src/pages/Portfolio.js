@@ -69,8 +69,6 @@ const Portfolio = () => {
       // localStorage.setItem('userCashBalance', JSON.stringify(userCashBalance))
       // localStorage.setItem('userCashBalance', userCashBalance)
       // set userCashBalance to the new value in localStorage
-
-      console.log(`Cash Balance: ${userCashBalance}`)
     } else {
       alert('You do not have enough cash to buy this stock')
     }
@@ -99,6 +97,21 @@ const Portfolio = () => {
     fetchData()
     handleClose()
     setInputs({ ...inputs, stockSymbol: '', shareAmount: '' })
+    // testing
+    isTransactionBuyOrSell(e)
+  }
+
+  // TODO: maybe wait to add this functionality to allow profits from selling stock so balance goes above/below based on current stock price when sold
+  const isTransactionBuyOrSell = e => {
+    // testing to capture when buy or sell to manage userCashBalance:
+    // get current className of the button
+    // const className = e.target.className
+    // console.log(className) // works
+    if (e.target.className === 'buy-button') {
+      console.log('buy')
+    } else if (e.target.className === 'sell-button') {
+      console.log('sell')
+    }
   }
 
   // handle cash

@@ -27,7 +27,7 @@ const style = {
 }
 
 // stockData testing props
-export default function SellModal({
+export default function SellModal ({
   inputs,
   getUserInput,
   getUserHoldings,
@@ -190,6 +190,8 @@ export default function SellModal({
                 '&:hover': { backgroundColor: '#1976D2' },
                 color: '#FFF'
               }}
+              // testing:
+              className='sell-button'
             >
               Sell
             </Button>
