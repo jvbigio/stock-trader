@@ -14,6 +14,8 @@ import {
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
+import axios from 'axios'
+
 function Copyright (props) {
   return (
     <Typography
@@ -33,16 +35,21 @@ function Copyright (props) {
 
 const theme = createTheme()
 
-export default function SignUp () {
-  const handleSubmit = e => {
+export default function SignUp() {
+  const handleSubmit = async e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
     // eslint-disable-next-line no-console
-    console.log({
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password')
+    // })
+    console.log('SignUp handleSubmit')
+    await axios.post('/api/signup', {
       email: data.get('email'),
       password: data.get('password')
     })
-    console.log('SignUp handleSubmit')
+    console.log('SignUp handleSubmit after axios.post')
   }
 
   return (
