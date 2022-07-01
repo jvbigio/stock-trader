@@ -29,7 +29,7 @@ const style = {
   p: 4
 }
 
-export default function BuyModal({
+export default function BuyModal ({
   inputs,
   getUserInput,
   handleBuySubmit,

@@ -1,18 +1,32 @@
 import * as React from 'react'
-import { Avatar, Button, CssBaseline, TextField, Link, Grid, Box, Typography, Container } from '@mui/material'
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container
+} from '@mui/material'
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 function Copyright (props) {
   return (
-    <Typography variant='body2' color='text.secondary' align='center' {...props}>
+    <Typography
+      variant='body2'
+      color='text.secondary'
+      align='center'
+      {...props}
+    >
       {'Copyright © '}
       <Link color='inherit' href='http://localhost:3000/'>
         StoX
       </Link>{' '}
-      {new Date().getFullYear()}
-      .
+      {new Date().getFullYear()}.
     </Typography>
   )
 }
@@ -20,7 +34,7 @@ function Copyright (props) {
 const theme = createTheme()
 
 export default function SignUp () {
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
     // eslint-disable-next-line no-console
@@ -28,6 +42,7 @@ export default function SignUp () {
       email: data.get('email'),
       password: data.get('password')
     })
+    console.log('SignUp handleSubmit')
   }
 
   return (
@@ -46,9 +61,14 @@ export default function SignUp () {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-            Sign up
+            Sign Up
           </Typography>
-          <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box
+            component='form'
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField

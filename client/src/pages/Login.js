@@ -1,6 +1,16 @@
 import * as React from 'react'
 
-import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography } from '@mui/material'
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Link,
+  Paper,
+  Box,
+  Grid,
+  Typography
+} from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
@@ -18,16 +28,20 @@ const randomImage = () => {
   return randomized
 }
 
-const Copyright = (props) => {
+const Copyright = props => {
   return (
-    <Typography variant='body2' color='text.secondary' align='center' {...props}>
+    <Typography
+      variant='body2'
+      color='text.secondary'
+      align='center'
+      {...props}
+    >
       {'Copyright © '}
       {/* update site after deployed to heroku */}
       <Link color='inherit' href='http://localhost:3000/'>
         StoX
       </Link>{' '}
-      {new Date().getFullYear()}
-      .
+      {new Date().getFullYear()}.
     </Typography>
   )
 }
@@ -35,14 +49,14 @@ const Copyright = (props) => {
 const theme = createTheme()
 
 function Login () {
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password')
-    })
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password')
+    // })
   }
 
   return (
@@ -58,8 +72,10 @@ function Login () {
             // backgroundImage: `url(${Subway})`,
             backgroundImage: `url(${randomImage()})`,
             backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundColor: t =>
+              t.palette.mode === 'light'
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
@@ -80,7 +96,12 @@ function Login () {
             <Typography component='h1' variant='h5'>
               Sign in
             </Typography>
-            <Box component='form' noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box
+              component='form'
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1 }}
+            >
               <TextField
                 margin='normal'
                 required
@@ -111,7 +132,7 @@ function Login () {
               </Button>
               <Grid container justifyContent='center'>
                 <Grid item>
-                  <Link href='/signUp' variant='body2'>
+                  <Link href='/signup' variant='body2'>
                     Don't have an account? Sign Up
                   </Link>
                 </Grid>
