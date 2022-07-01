@@ -26,8 +26,8 @@ router.post('/signup', async (req, res) => {
         'INSERT INTO users(email, password) VALUES($1, $2) RETURNING *',
         [email, hashedPassword]
       )
-      // res.json(newUser.rows[0])
       res.json({ newUser })
+      // res.redirect('/portfolio')
     }
   } catch (err) {
     res.status(500).send({ message: err.message })

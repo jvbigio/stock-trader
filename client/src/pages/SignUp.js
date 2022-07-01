@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { useHistory } from 'react-router-dom'
+
 import {
   Avatar,
   Button,
@@ -16,7 +18,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import axios from 'axios'
 
-function Copyright (props) {
+function Copyright(props) {
   return (
     <Typography
       variant='body2'
@@ -36,6 +38,8 @@ function Copyright (props) {
 const theme = createTheme()
 
 export default function SignUp() {
+  const history = useHistory()
+
   const handleSubmit = async e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
@@ -44,12 +48,12 @@ export default function SignUp() {
     //   email: data.get('email'),
     //   password: data.get('password')
     // })
-    console.log('SignUp handleSubmit')
     await axios.post('/api/signup', {
       email: data.get('email'),
       password: data.get('password')
     })
-    console.log('SignUp handleSubmit after axios.post')
+    // redirect to home page
+    history.push('/portfolio')
   }
 
   return (
