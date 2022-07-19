@@ -1,4 +1,7 @@
 import * as React from 'react'
+import { useHistory } from 'react-router-dom'
+
+import axios from 'axios'
 
 import {
   Avatar,
@@ -48,15 +51,20 @@ const Copyright = props => {
 
 const theme = createTheme()
 
-function Login () {
-  const handleSubmit = e => {
+function Login() {
+  const history = useHistory()
+
+  const handleSubmit = async e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
-    // eslint-disable-next-line no-console
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password')
-    // })
+
+    const login = await axios.post('/api/login', {
+      email: data.get('email'),
+      password: data.get('password')
+    })
+    console.log(login.status)
+
+    if (login.status === 200) return history.push('/portfolio')
   }
 
   return (
@@ -104,7 +112,7 @@ function Login () {
             >
               <TextField
                 margin='normal'
-                required='true'
+                required
                 fullWidth
                 id='email'
                 label='Email Address'
@@ -115,7 +123,7 @@ function Login () {
               />
               <TextField
                 margin='normal'
-                required='true'
+                required
                 fullWidth
                 name='password'
                 label='Password'

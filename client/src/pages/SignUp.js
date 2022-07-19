@@ -18,7 +18,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import axios from 'axios'
 
-function Copyright(props) {
+function Copyright (props) {
   return (
     <Typography
       variant='body2'
@@ -37,7 +37,7 @@ function Copyright(props) {
 
 const theme = createTheme()
 
-export default function SignUp() {
+export default function SignUp () {
   const history = useHistory()
 
   const handleSubmit = async e => {
@@ -83,7 +83,8 @@ export default function SignUp() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  required='true'
+                  // fix required bug. still allows blank inputs
+                  required
                   fullWidth
                   id='email'
                   label='Email Address'
@@ -94,7 +95,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required='true'
+                  required
                   fullWidth
                   name='password'
                   label='Password'

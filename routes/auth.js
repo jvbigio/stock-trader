@@ -39,9 +39,35 @@ router.post('/signup', async (req, res) => {
 })
 
 // login
-// router.post('/login', (req, res) => {
-//   // login user
-//   const { username } = req.body
-// })
+router.post('/login', async (req, res) => {
+  // login user
+  const { email, password } = req.body
+
+  try {
+    const user = await pool.query('SELECT * FROM users WHERE email = $1', [
+      email
+    ])
+    if (user.rows.length === 0) {
+      res.status(400).send({ message: 'User does not exist' })
+    }
+    // if user exists, compare password
+    const isPasswordValid = await bcrypt.compare(
+      password,
+      user.rows[0].password
+    )
+    if (!isPasswordValid) {
+      res.status(400).send({ message: 'Incorrect password' })
+    }
+    // if password is valid, create token and send to client
+    const token = jwt.sign(
+      { user: user.rows[0] },
+      process.env.ACCESS_TOKEN_SECRET
+    )
+
+    res.json({ token })
+  } catch (err) {
+    res.status(500).send({ message: err.message })
+  }
+})
 
 module.exports = router
