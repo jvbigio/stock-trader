@@ -37,7 +37,7 @@ const Copyright = props => {
       {...props}
     >
       {'Copyright © '}
-      {/* update site after deployed to heroku */}
+      {/* update site url after deployed to heroku */}
       <Link color='inherit' href='http://localhost:3000/'>
         StoX
       </Link>{' '}
@@ -104,17 +104,18 @@ function Login () {
             >
               <TextField
                 margin='normal'
-                required
+                required='true'
                 fullWidth
                 id='email'
                 label='Email Address'
+                type='email'
                 name='email'
                 autoComplete='email'
                 autoFocus
               />
               <TextField
                 margin='normal'
-                required
+                required='true'
                 fullWidth
                 name='password'
                 label='Password'

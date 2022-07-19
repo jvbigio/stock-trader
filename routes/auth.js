@@ -7,6 +7,9 @@ const bcrypt = require('bcrypt')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 
+// TODO: on client side check if user is logged in and redirect to portfolio page if they are
+// TODO: also handle logged in or out status on client by showing they are logged in or not on the navbar button
+
 // register
 router.post('/signup', async (req, res) => {
   try {
@@ -19,8 +22,9 @@ router.post('/signup', async (req, res) => {
       res.status(400).send({ message: 'User already exists' })
     } else {
       // if user does not exist, hash password and insert user into database
-      const saltRounds = 10
-      const hashedPassword = await bcrypt.hash(password, saltRounds)
+      // const saltRounds = 10
+      // const hashedPassword = await bcrypt.hash(password, saltRounds) // original code
+      const hashedPassword = await bcrypt.hash(password, 10) // works
 
       const newUser = await pool.query(
         'INSERT INTO users(email, password) VALUES($1, $2) RETURNING *',
