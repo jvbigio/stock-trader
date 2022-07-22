@@ -43,12 +43,12 @@ export default function SignUp () {
   const handleSubmit = async e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
-    // eslint-disable-next-line no-console
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password')
-    // })
+    console.log({
+      email: data.get('email'),
+      password: data.get('password')
+    })
     await axios.post('/api/signup', {
+      // NOT SECURE??
       email: data.get('email'),
       password: data.get('password')
     })
@@ -83,7 +83,7 @@ export default function SignUp () {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  // fix required bug. still allows blank inputs
+                  // TODO: fix required bug. still allows blank inputs
                   required
                   fullWidth
                   id='email'

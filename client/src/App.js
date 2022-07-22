@@ -1,7 +1,9 @@
+import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
@@ -14,6 +16,8 @@ import SignUp from './pages/SignUp'
 import './App.css'
 
 function App () {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'))
+
   return (
     <Router>
       <div className='App'>
@@ -24,6 +28,19 @@ function App () {
             <Route path='/portfolio' component={Portfolio} />
             <Route path='/report' component={Report} />
             <Route path='/login' component={Login} />
+
+            {/* redirect from login to portfolio if logged in */}
+            {/* <Route
+              path='/login'
+              render={() => {
+                // return isLoggedIn ? (
+                //   <Portfolio setIsLoggedIn={setIsLoggedIn} />
+                // ) : (
+                //   <Redirect to='/portfolio' />
+                // )
+                return isLoggedIn ? <Redirect to='/portfolio' /> : <Login />
+              }}
+            /> */}
             <Route path='/signUp' component={SignUp} />
           </Switch>
         </main>

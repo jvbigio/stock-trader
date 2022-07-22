@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import axios from 'axios'
@@ -12,7 +12,8 @@ import {
   Paper,
   Box,
   Grid,
-  Typography
+  Typography,
+  Alert
 } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
@@ -51,7 +52,9 @@ const Copyright = props => {
 
 const theme = createTheme()
 
-function Login() {
+function Login () {
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedInError, setLoggedInError] = useState(false)
   const history = useHistory()
 
   const handleSubmit = async e => {
@@ -60,11 +63,23 @@ function Login() {
 
     const login = await axios.post('/api/login', {
       email: data.get('email'),
-      password: data.get('password')
+      password: data.get('password') // network tab shows this as plain text. Should be hashed?
     })
     console.log(login.status)
+    console.log('Sign in initialized')
 
-    if (login.status === 200) return history.push('/portfolio')
+    if (login.status === 400) {
+      // alert('Incorrect email or password')
+      alert('Incorrect email or password')
+      setLoggedIn(false)
+      setLoggedInError(true)
+      // history.push('/login')
+    }
+
+    if (login.status === 200) {
+      history.push('/portfolio')
+      setLoggedIn(true)
+    }
   }
 
   return (
@@ -131,6 +146,9 @@ function Login() {
                 id='password'
                 autoComplete='current-password'
               />
+              {loggedInError && (
+                <Alert severity='error'>Incorrect email or password</Alert>
+              )}
               <Button
                 type='submit'
                 fullWidth
