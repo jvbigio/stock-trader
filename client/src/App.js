@@ -16,12 +16,14 @@ import SignUp from './pages/SignUp'
 import './App.css'
 
 function App () {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'))
+  // const [loggedIn, setLoggedIn] = useState(false)
+  // const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'))
 
   return (
     <Router>
       <div className='App'>
         <Navbar />
+        {/* <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} /> */}
         <main className='card'>
           <Switch>
             <Route path='/' exact component={Home} />

@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import LoginContext from '../context/LoginProvider'
+
 import { useHistory } from 'react-router-dom'
 
 import axios from 'axios'
@@ -52,33 +54,79 @@ const Copyright = props => {
 
 const theme = createTheme()
 
-function Login () {
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [loggedInError, setLoggedInError] = useState(false)
+// function Login ({ loggedIn, setLoggedIn}) {
+const Login = () => {
+  // const { loggedIn, setLoggedIn } = useContext(LoginContext) // incorrect?
+  // const [loggedIn, setLoggedIn] = useContext(LoginContext) // testing
+  const isLoggedIn = useContext(LoginContext)
+  // elevate loggedIn state to parent component.. App? Is needed in Login, Navbar, DrawerComponent
+  // const [loggedIn, setLoggedIn] = useState(false) // elevated to App. Try useContext hook also
+  const [errMsg, setErrMsg] = useState('')
   const history = useHistory()
 
   const handleSubmit = async e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
 
-    const login = await axios.post('/api/login', {
-      email: data.get('email'),
-      password: data.get('password') // network tab shows this as plain text. Should be hashed?
-    })
-    console.log(login.status)
-    console.log('Sign in initialized')
+    //   try {
+    //     const login = await axios.post('/api/auth/login', {
+    //       email: data.get('email'),
+    //       password: data.get('password')
+    //     })
 
-    if (login.status === 400) {
-      // alert('Incorrect email or password')
-      alert('Incorrect email or password')
-      setLoggedIn(false)
-      setLoggedInError(true)
-      // history.push('/login')
-    }
+    //     if (login?.status === 200) {
+    //       localStorage.setItem('token', JSON.stringify(login.data.token))
+    //       setLoggedIn(true)
+    //       history.push('/portfolio')
+    //     }
+    //   } catch (err) {
+    //     if (!err?.login) {
+    //       setErrMsg('No Server Response')
+    //       setLoggedIn(false)
+    //     } else if (err.login?.status === 400) {
+    //       setErrMsg('Missing Username or Password')
+    //       setLoggedIn(false)
+    //     } else if (err.login?.status === 401) {
+    //       setErrMsg('Unauthorized')
+    //       setLoggedIn(false)
+    //     } else {
+    //       setErrMsg('Login Failed')
+    //       setLoggedIn(false)
+    //     }
+    //   }
+    //   console.log(errMsg)
+    // }
 
-    if (login.status === 200) {
-      history.push('/portfolio')
-      setLoggedIn(true)
+    // original:
+    try {
+      const login = await axios.post('/api/auth/login', {
+        email: data.get('email'),
+        password: data.get('password') // network tab shows this as plain text. Should be hashed?
+      })
+      console.log(login.data)
+      console.log(login.status)
+      console.log('Sign in initialized')
+      console.log(loggedIn)
+
+      if (login.status === 400) {
+        // setLoggedInError(true)
+        // setLoggedIn(false)
+        alert('Incorrect email or password')
+        // setTimeout(() => {
+        //   window.location.reload()
+        // }, 3000)
+      }
+
+      if (login.status === 200) {
+        localStorage.setItem('token', JSON.stringify(login.data.token))
+        // set LoggedIn to true using context
+        setLoggedIn(true)
+        history.push('/portfolio')
+      }
+    } catch (err) {
+      console.log(err)
+      // setErrMsg(login.errorMesssage)
+      // setLoggedIn(false)
     }
   }
 
@@ -146,7 +194,7 @@ function Login () {
                 id='password'
                 autoComplete='current-password'
               />
-              {loggedInError && (
+              {errMsg && (
                 <Alert severity='error'>Incorrect email or password</Alert>
               )}
               <Button
@@ -155,6 +203,7 @@ function Login () {
                 variant='contained'
                 sx={{ mt: 3, mb: 2 }}
               >
+                {/* if signed in change to sign out */}
                 Sign In
               </Button>
               <Grid container justifyContent='center'>
