@@ -17,13 +17,14 @@ import './App.css'
 
 function App () {
   // const [loggedIn, setLoggedIn] = useState(false)
-  // const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'))
+  // persist a boolean value in localStorage to keep user logged in.
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'))
 
   return (
     <Router>
       <div className='App'>
-        <Navbar />
-        {/* <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} /> */}
+        {/* <Navbar /> */}
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <main className='card'>
           <Switch>
             <Route path='/' exact component={Home} />

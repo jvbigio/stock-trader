@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import LoginContext from '../context/LoginProvider'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 
 import DrawerComponent from './DrawerComponent'
 // import { css } from '@emotion/react'
@@ -22,9 +22,10 @@ import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
 import './Navbar.css'
 
-// const Navbar = ({ loggedIn, setLoggedIn }) => {
-const Navbar = () => {
-  const { loggedIn, setLoggedIn } = useContext(LoginContext)
+const Navbar = ({ loggedIn, setLoggedIn }) => {
+  const history = useHistory()
+  // const Navbar = () => {
+  // const { loggedIn, setLoggedIn } = useContext(LoginContext)
   const [value, setValue] = useState(0)
 
   const handleClickTab = (e, newValue) => {
@@ -36,6 +37,13 @@ const Navbar = () => {
 
   const handleBtnClick = () => {
     setValue(null)
+    // TODO: if logged in, send to /api/logout route to logout user and clear localStorage
+    if (!loggedIn) {
+      // setLoggedIn(false)
+      // localStorage.clear() // doesn't work
+      localStorage.removeItem('token')
+      history.push('/login')
+    }
   }
 
   const theme = useTheme()
@@ -99,6 +107,7 @@ const Navbar = () => {
                 variant='contained'
                 component={NavLink}
                 to='/login'
+                // if logged in, redirect to portfolio
                 className='btn-login'
                 onClick={handleBtnClick}
               >

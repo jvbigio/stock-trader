@@ -54,13 +54,15 @@ const Copyright = props => {
 
 const theme = createTheme()
 
-// function Login ({ loggedIn, setLoggedIn}) {
-const Login = () => {
+function Login ({ loggedIn, setLoggedIn }) {
+  // const Login = () => {
   // const { loggedIn, setLoggedIn } = useContext(LoginContext) // incorrect?
   // const [loggedIn, setLoggedIn] = useContext(LoginContext) // testing
-  const isLoggedIn = useContext(LoginContext)
+  // const isLoggedIn = useContext(LoginContext)
   // elevate loggedIn state to parent component.. App? Is needed in Login, Navbar, DrawerComponent
   // const [loggedIn, setLoggedIn] = useState(false) // elevated to App. Try useContext hook also
+  // useContext to pass loggedIn state to parent component
+  // const [loggedIn, setLoggedIn] = useContext(LoginContext)
   const [errMsg, setErrMsg] = useState('')
   const history = useHistory()
 
@@ -68,36 +70,6 @@ const Login = () => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
 
-    //   try {
-    //     const login = await axios.post('/api/auth/login', {
-    //       email: data.get('email'),
-    //       password: data.get('password')
-    //     })
-
-    //     if (login?.status === 200) {
-    //       localStorage.setItem('token', JSON.stringify(login.data.token))
-    //       setLoggedIn(true)
-    //       history.push('/portfolio')
-    //     }
-    //   } catch (err) {
-    //     if (!err?.login) {
-    //       setErrMsg('No Server Response')
-    //       setLoggedIn(false)
-    //     } else if (err.login?.status === 400) {
-    //       setErrMsg('Missing Username or Password')
-    //       setLoggedIn(false)
-    //     } else if (err.login?.status === 401) {
-    //       setErrMsg('Unauthorized')
-    //       setLoggedIn(false)
-    //     } else {
-    //       setErrMsg('Login Failed')
-    //       setLoggedIn(false)
-    //     }
-    //   }
-    //   console.log(errMsg)
-    // }
-
-    // original:
     try {
       const login = await axios.post('/api/auth/login', {
         email: data.get('email'),
@@ -105,23 +77,27 @@ const Login = () => {
       })
       console.log(login.data)
       console.log(login.status)
-      console.log('Sign in initialized')
+      console.log(!login)
       console.log(loggedIn)
 
-      if (login.status === 400) {
-        // setLoggedInError(true)
-        // setLoggedIn(false)
-        alert('Incorrect email or password')
-        // setTimeout(() => {
-        //   window.location.reload()
-        // }, 3000)
-      }
+      // if (login.status === 400) {
+      //   // setLoggedInError(true)
+      //   // setLoggedIn(false)
+      //   alert('Incorrect email or password')
+      //   setTimeout(() => {
+      //     window.location.reload()
+      //   }, 3000)
+      // }
 
       if (login.status === 200) {
-        localStorage.setItem('token', JSON.stringify(login.data.token))
-        // set LoggedIn to true using context
-        setLoggedIn(true)
+        // don't need stringify here since it's always a string?
+        localStorage.setItem('token', login.data.token)
+        localStorage.setItem('email', login.data.email)
+        // setLoggedIn(true)
+        setErrMsg('')
         history.push('/portfolio')
+      } else {
+        setErrMsg('Login Failed')
       }
     } catch (err) {
       console.log(err)
@@ -203,7 +179,6 @@ const Login = () => {
                 variant='contained'
                 sx={{ mt: 3, mb: 2 }}
               >
-                {/* if signed in change to sign out */}
                 Sign In
               </Button>
               <Grid container justifyContent='center'>
