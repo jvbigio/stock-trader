@@ -105,7 +105,7 @@ const Navbar = () => {
                   to='/report'
                 />
               </Tabs>
-              {/* <Button
+              <Button
                 sx={{
                   color: 'black',
                   backgroundColor: '#fff'
@@ -118,37 +118,8 @@ const Navbar = () => {
                 onClick={handleBtnClick}
               >
                 Login
-              </Button> */}
+              </Button>
               {/* if loggedIn show one button, else show logout button */}
-              {loggedIn ? (
-                <Button
-                  sx={{
-                    color: 'black',
-                    backgroundColor: '#fff'
-                  }}
-                  variant='contained'
-                  component={NavLink}
-                  to='/portfolio'
-                  className='btn-login'
-                  onClick={handleBtnClick}
-                >
-                  Logout
-                </Button>
-              ) : (
-                <Button
-                  sx={{
-                    color: 'black',
-                    backgroundColor: '#fff'
-                  }}
-                  variant='contained'
-                  component={NavLink}
-                  to='/login'
-                  className='btn-login'
-                  onClick={handleBtnClick}
-                >
-                  Login
-                </Button>
-              )}
             </>
           )}
         </Toolbar>
