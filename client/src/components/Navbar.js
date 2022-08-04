@@ -21,11 +21,13 @@ import { styled, useTheme } from '@mui/system'
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
 
 import './Navbar.css'
+import Login from '../pages/Login'
 
-const Navbar = ({ loggedIn, setLoggedIn }) => {
+// const Navbar = ({ loggedIn, setLoggedIn }) => {
+const Navbar = () => {
   const history = useHistory()
-  // const Navbar = () => {
-  // const { loggedIn, setLoggedIn } = useContext(LoginContext)
+  const { loggedIn, setLoggedIn } = useContext(LoginContext)
+  // const loginStatus = useContext(LoginContext)
   const [value, setValue] = useState(0)
 
   const handleClickTab = (e, newValue) => {
@@ -35,8 +37,11 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
     // console.log(e.currentTarget)
   }
 
+  console.log(loggedIn)
+
   const handleBtnClick = () => {
     setValue(null)
+
     // TODO: if logged in, send to /api/logout route to logout user and clear localStorage
     if (!loggedIn) {
       // setLoggedIn(false)
@@ -55,6 +60,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
       <AppBar position='static' sx={{ backgroundColor: '#368727' }}>
         <Toolbar>
           <Typography className='nav-title' variant='h5'>
+            {/* <Typography className='nav-title' variant='button' to='/'> */}
             StoX
           </Typography>
           {/* <Button className='nav-title' variant='text' size='large' color='inherit' disableRipple>StoX</Button> */}
@@ -99,7 +105,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
                   to='/report'
                 />
               </Tabs>
-              <Button
+              {/* <Button
                 sx={{
                   color: 'black',
                   backgroundColor: '#fff'
@@ -107,12 +113,42 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
                 variant='contained'
                 component={NavLink}
                 to='/login'
-                // if logged in, redirect to portfolio
+                // to={loggedIn ? '/portfolio' : '/login'}
                 className='btn-login'
                 onClick={handleBtnClick}
               >
-                {loggedIn ? 'Logout' : 'Login'}
-              </Button>
+                Login
+              </Button> */}
+              {/* if loggedIn show one button, else show logout button */}
+              {loggedIn ? (
+                <Button
+                  sx={{
+                    color: 'black',
+                    backgroundColor: '#fff'
+                  }}
+                  variant='contained'
+                  component={NavLink}
+                  to='/portfolio'
+                  className='btn-login'
+                  onClick={handleBtnClick}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button
+                  sx={{
+                    color: 'black',
+                    backgroundColor: '#fff'
+                  }}
+                  variant='contained'
+                  component={NavLink}
+                  to='/login'
+                  className='btn-login'
+                  onClick={handleBtnClick}
+                >
+                  Login
+                </Button>
+              )}
             </>
           )}
         </Toolbar>
