@@ -6,7 +6,7 @@ import {
   Redirect
 } from 'react-router-dom'
 
-import { LoginContext } from '../context/LoginProvider'
+// import { LoginContext } from '../context/LoginProvider'
 
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
@@ -17,26 +17,26 @@ import SignUp from './pages/SignUp'
 
 import './App.css'
 
-function App () {
+function App() {
   // const [loggedIn, setLoggedIn] = useState(false)
   // persist a boolean value in localStorage to keep user logged in.
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'))
+  // const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'))
 
   return (
     <Router>
-      <LoginContext.Provider value={(loggedIn, setLoggedIn)}>
-        <div className='App'>
-          {/* <Navbar /> */}
-          <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-          <main className='card'>
-            <Switch>
-              <Route path='/' exact component={Home} />
-              <Route path='/portfolio' component={Portfolio} />
-              <Route path='/report' component={Report} />
-              <Route path='/login' component={Login} />
+      {/* <LoginContext.Provider value={(loggedIn, setLoggedIn)}> */}
+      <div className='App'>
+        <Navbar />
+        {/* <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} /> */}
+        <main className='card'>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/portfolio' component={Portfolio} />
+            <Route path='/report' component={Report} />
+            <Route path='/login' component={Login} />
 
-              {/* redirect from login to portfolio if logged in */}
-              {/* <Route
+            {/* redirect from login to portfolio if logged in */}
+            {/* <Route
               path='/login'
               render={() => {
                 // return isLoggedIn ? (
@@ -47,11 +47,11 @@ function App () {
                 return isLoggedIn ? <Redirect to='/portfolio' /> : <Login />
               }}
             /> */}
-              <Route path='/signUp' component={SignUp} />
-            </Switch>
-          </main>
-        </div>
-      </LoginContext.Provider>
+            <Route path='/signUp' component={SignUp} />
+          </Switch>
+        </main>
+      </div>
+      {/* </LoginContext.Provider> */}
     </Router>
   )
 }
