@@ -1,15 +1,23 @@
 import React, { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Drawer, List, ListItem, ListItemText, ListItemIcon, IconButton } from '@mui/material'
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  IconButton
+} from '@mui/material'
 
 import HomeIcon from '@mui/icons-material/Home'
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter'
 import AssessmentIcon from '@mui/icons-material/Assessment'
 import LoginIcon from '@mui/icons-material/Login'
+import LogoutIcon from '@mui/icons-material/Logout'
 import MenuIcon from '@mui/icons-material/Menu'
 
-const DrawerComponent = () => {
+const DrawerComponent = ({ loggedIn }) => {
   const [openDrawer, setOpenDrawer] = useState(false)
 
   return (
@@ -39,10 +47,18 @@ const DrawerComponent = () => {
             </ListItemIcon>
           </ListItem>
           <ListItem button component={NavLink} to='/login'>
-            <ListItemIcon>
-              <LoginIcon sx={{ mr: 1 }} />
-              <ListItemText primary='Login' />
-            </ListItemIcon>
+            {/* TODO: if logged out use LoginIcon, else LogoutIcon */}
+            {loggedIn ? (
+              <ListItemIcon>
+                <LogoutIcon sx={{ mr: 1 }} />
+                <ListItemText primary='Logout' />
+              </ListItemIcon>
+            ) : (
+              <ListItemIcon>
+                <LoginIcon sx={{ mr: 1 }} />
+                <ListItemText primary='Login' />
+              </ListItemIcon>
+            )}
           </ListItem>
         </List>
       </Drawer>

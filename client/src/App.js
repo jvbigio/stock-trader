@@ -17,7 +17,7 @@ import SignUp from './pages/SignUp'
 
 import './App.css'
 
-function App() {
+function App () {
   // const [loggedIn, setLoggedIn] = useState(false)
   // persist a boolean value in localStorage to keep user logged in.
   // const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'))

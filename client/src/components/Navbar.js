@@ -19,7 +19,7 @@ import {
 
 import { styled, useTheme } from '@mui/system'
 import { GoHome, GoBriefcase, GoRepo } from 'react-icons/go'
-
+import { BiLogIn, BiLogOut } from 'react-icons/bi'
 import './Navbar.css'
 import Login from '../pages/Login'
 
@@ -39,15 +39,31 @@ const Navbar = () => {
 
   console.log(loggedIn)
 
-  const handleBtnClick = () => {
+  // for login/logout button.. commented out and added a Tab instead
+  // const handleBtnClick = () => {
+  //   setValue(null)
+
+  //   // TODO: if logged in, send to /api/logout route to logout user and clear localStorage
+  //   if (!loggedIn) {
+  //     // setLoggedIn(false)
+  //     // localStorage.clear() // doesn't work
+  //     localStorage.removeItem('token')
+  //     history.push('/login')
+  //   }
+  // }
+
+  const handleLoginLogout = () => {
     setValue(null)
 
-    // TODO: if logged in, send to /api/logout route to logout user and clear localStorage
-    if (!loggedIn) {
-      // setLoggedIn(false)
-      // localStorage.clear() // doesn't work
-      localStorage.removeItem('token')
+    if (loggedIn) {
+      setLoggedIn(true)
       history.push('/login')
+      // set value to 'login'
+    } else {
+      setLoggedIn(false)
+      localStorage.removeItem('token')
+      history.push('/')
+      // set tab value to 'logout'
     }
   }
 
@@ -104,8 +120,22 @@ const Navbar = () => {
                   component={NavLink}
                   to='/report'
                 />
+                <Tab
+                  className='tab-item'
+                  // icon={<BiLogIn />}
+                  icon={loggedIn ? <BiLogOut /> : <BiLogIn />}
+                  disableRipple
+                  label={loggedIn ? 'Logout' : 'Login'}
+                  // label='Login'
+                  component={NavLink}
+                  to='/login'
+                  onClick={handleLoginLogout}
+                  // onClick={() => {
+                  //   loggedIn ? handleLogout : handleLogin
+                  // }}
+                />
               </Tabs>
-              <Button
+              {/* <Button
                 sx={{
                   color: 'black',
                   backgroundColor: '#fff'
@@ -118,7 +148,7 @@ const Navbar = () => {
                 onClick={handleBtnClick}
               >
                 Login
-              </Button>
+              </Button> */}
               {/* if loggedIn show one button, else show logout button */}
             </>
           )}
