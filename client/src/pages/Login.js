@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
-import LoginContext from '../context/LoginProvider'
+// import LoginContext from '../context/LoginProvider'
+import AuthContext from '../context/AuthContext'
 
 import { useHistory } from 'react-router-dom'
 
@@ -54,8 +55,9 @@ const Copyright = props => {
 
 const theme = createTheme()
 
-function Login ({ loggedIn, setLoggedIn }) {
-  // const Login = () => {
+const Login = () => {
+  const { loggedIn, setLoggedIn } = useContext(AuthContext)
+
   // const { loggedIn, setLoggedIn } = useContext(LoginContext) // incorrect?
   // const [loggedIn, setLoggedIn] = useContext(LoginContext) // testing
   // const isLoggedIn = useContext(LoginContext)
@@ -78,7 +80,7 @@ function Login ({ loggedIn, setLoggedIn }) {
       console.log(login.data)
       console.log(login.status)
       console.log(!login)
-      console.log(loggedIn)
+      console.log(`Login Component: ${loggedIn}`)
 
       // if (login.status === 400) {
       //   // setLoggedInError(true)

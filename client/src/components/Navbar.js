@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
-import LoginContext from '../context/LoginProvider'
+// import LoginContext from '../context/LoginProvider'
+import AuthContext from '../context/AuthContext'
 import { NavLink, useHistory } from 'react-router-dom'
 
 import DrawerComponent from './DrawerComponent'
@@ -23,11 +24,9 @@ import { BiLogIn, BiLogOut } from 'react-icons/bi'
 import './Navbar.css'
 import Login from '../pages/Login'
 
-// const Navbar = ({ loggedIn, setLoggedIn }) => {
 const Navbar = () => {
   const history = useHistory()
-  const { loggedIn, setLoggedIn } = useContext(LoginContext)
-  // const loginStatus = useContext(LoginContext)
+  const { loggedIn, setLoggedIn } = useContext(AuthContext)
   const [value, setValue] = useState(0)
 
   const handleClickTab = (e, newValue) => {
@@ -37,7 +36,7 @@ const Navbar = () => {
     // console.log(e.currentTarget)
   }
 
-  console.log(loggedIn)
+  console.log(`Logged in Status: ${loggedIn}`)
 
   // for login/logout button.. commented out and added a Tab instead
   // const handleBtnClick = () => {
