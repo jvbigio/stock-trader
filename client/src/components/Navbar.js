@@ -28,6 +28,7 @@ const Navbar = () => {
   const history = useHistory()
   const { loggedIn, setLoggedIn } = useContext(AuthContext)
   const [value, setValue] = useState(0)
+  // const [value, setValue] = useState('one')
 
   const handleClickTab = (e, newValue) => {
     setValue(newValue)
@@ -52,7 +53,8 @@ const Navbar = () => {
   // }
 
   const handleLoginLogout = () => {
-    setValue(null)
+    // setValue(null) // original
+    // setValue(3)
 
     if (loggedIn) {
       setLoggedIn(true)
@@ -102,6 +104,8 @@ const Navbar = () => {
                   label='Home'
                   component={NavLink}
                   to='/'
+                  value={0}
+                  // value='one'
                 />
                 <Tab
                   className='tab-item'
@@ -110,6 +114,8 @@ const Navbar = () => {
                   label='Portfolio'
                   component={NavLink}
                   to='/portfolio'
+                  value={1}
+                  // value='two'
                 />
                 <Tab
                   className='tab-item'
@@ -118,6 +124,8 @@ const Navbar = () => {
                   label='Report'
                   component={NavLink}
                   to='/report'
+                  value={2}
+                  // value='three'
                 />
                 <Tab
                   className='tab-item'
@@ -128,6 +136,8 @@ const Navbar = () => {
                   // label='Login'
                   component={NavLink}
                   to='/login'
+                  value={3}
+                  // value='four'
                   onClick={handleLoginLogout}
                   // onClick={() => {
                   //   loggedIn ? handleLogout : handleLogin

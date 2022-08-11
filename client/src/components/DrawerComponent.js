@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
 
-
 import {
   Drawer,
   List,
@@ -22,7 +21,6 @@ import MenuIcon from '@mui/icons-material/Menu'
 const DrawerComponent = () => {
   const [openDrawer, setOpenDrawer] = useState(false)
   const { loggedIn, setLoggedIn } = useContext(AuthContext)
-
 
   return (
     <>
