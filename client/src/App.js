@@ -22,6 +22,7 @@ const App = () => {
   // const [loggedIn, setLoggedIn] = useState(false)
   // persist a boolean value in localStorage to keep user logged in.
   // const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'))
+  // TODO: protected routes
 
   return (
     <Router>
