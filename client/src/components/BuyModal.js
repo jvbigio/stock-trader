@@ -29,7 +29,7 @@ const style = {
   p: 4
 }
 
-export default function BuyModal ({
+const BuyModal = ({
   inputs,
   getUserInput,
   handleBuySubmit,
@@ -37,7 +37,7 @@ export default function BuyModal ({
   handleOpen,
   handleClose,
   userCashBalance
-}) {
+}) => {
   return (
     <>
       <Tooltip
@@ -149,3 +149,5 @@ export default function BuyModal ({
     </>
   )
 }
+
+export default BuyModal

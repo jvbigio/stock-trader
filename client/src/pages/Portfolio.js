@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Portfolio.css'
-import { HoldingsTable } from '../components/HoldingsTable'
+import HoldingsTable from '../components/HoldingsTable'
 
 import { Grid, Paper, Container, Box } from '@mui/material'
 

@@ -18,7 +18,7 @@ import SellModal from './SellModal'
 // import axios from 'axios'
 import { roundAccurately } from '../utils/helper-function'
 
-export const HoldingsTable = ({
+const HoldingsTable = ({
   handleSearch,
   // stockData,
   inputs,
@@ -174,3 +174,5 @@ export const HoldingsTable = ({
     </>
   )
 }
+
+export default HoldingsTable
