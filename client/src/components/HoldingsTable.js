@@ -71,9 +71,6 @@ const HoldingsTable = ({
     setPage(0)
   }
 
-  // const roundAccurately = (number, decimalPlaces) =>
-  //   Number(Math.round(`${number}e${decimalPlaces}`) + `e-${decimalPlaces}`)
-
   return (
     <>
       <TableContainer sx={{ maxHeight: 550 }}>
@@ -85,7 +82,6 @@ const HoldingsTable = ({
             alignItems: 'center'
           }}
           mb={4}
-          // ml={1} // testing for when FAB on left side of holdings table
         >
           <Box sx={{ '& > :not(style)': { m: 1 } }}>
             <BuyModal

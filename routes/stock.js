@@ -39,7 +39,8 @@ router.post('/stocks/buy', async (req, res) => {
     symbol = response.data.symbol
     price = response.data.latestPrice
     value = price * amount
-    id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+    // id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+    id = '98111394-5e2d-40fe-87d0-fd25ec049bf9'
 
     const isStockInHoldings = await pool.query(
       'SELECT * FROM holdings WHERE symbol = $1 AND user_id = $2',
@@ -72,7 +73,9 @@ router.get('/stocks/user', async (req, res) => {
   // id on holdings table is transaction id
   try {
     // const { symbol, price, value, quantity } = req.body
-    const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+    // original.. keep:
+    // const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+    const id = '98111394-5e2d-40fe-87d0-fd25ec049bf9'
 
     // render table based on user_id
     const userHoldings = await pool.query(
@@ -89,7 +92,9 @@ router.get('/stocks/user', async (req, res) => {
 router.post('/stocks/sell', async (req, res) => {
   let { symbol, amount } = req.body
   let { user_id } = req.body
-  user_id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+  // original, keep:
+  // user_id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
+  user_id = '98111394-5e2d-40fe-87d0-fd25ec049bf9'
 
   // console.log(req.params) // {}
   // console.log(req.body) // { symbol: 'FB', amount: '5' }
