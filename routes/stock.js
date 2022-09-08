@@ -73,8 +73,6 @@ router.get('/stocks/user', async (req, res) => {
   // id on holdings table is transaction id
   try {
     // const { symbol, price, value, quantity } = req.body
-    // original.. keep:
-    // const id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
     const id = '98111394-5e2d-40fe-87d0-fd25ec049bf9'
 
     // render table based on user_id
@@ -92,8 +90,6 @@ router.get('/stocks/user', async (req, res) => {
 router.post('/stocks/sell', async (req, res) => {
   let { symbol, amount } = req.body
   let { user_id } = req.body
-  // original, keep:
-  // user_id = 'd72220bc-6844-4a97-b6b9-32303abc60a8'
   user_id = '98111394-5e2d-40fe-87d0-fd25ec049bf9'
 
   // console.log(req.params) // {}
