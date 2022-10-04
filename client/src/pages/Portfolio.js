@@ -87,7 +87,6 @@ const Portfolio = () => {
     // }, [userTable]) // (original) causes infinite http requests
   }, [stockData])
 
-  // new:
   useEffect(() => {
     getUserHoldings()
   }, [soldStock])
