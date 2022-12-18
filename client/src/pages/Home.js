@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { sizing } from '@mui/system'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-// move images to own file and import
+// TODO: move images to own file and import
 import chart from '../images/data-chart.jpg'
 import analysis from '../images/analysis.jpg'
 import bull from '../images/bull.jpg'
