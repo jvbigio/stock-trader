@@ -43,6 +43,7 @@ export default function SignUp () {
   const handleSubmit = async e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
+    // TODO: delete this console.log
     console.log({
       email: data.get('email'),
       password: data.get('password')
